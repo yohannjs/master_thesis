@@ -1,0 +1,93 @@
+\documentclass[11pt,english,a4paper,openright]{report} % Use report because that gives us fancy tables.
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amsthm,bm} % Math packages 
+\usepackage{graphicx} % To include figures
+\usepackage{fancyhdr} % Allows for headers
+\usepackage{lastpage} % Allows for page numbering in footer
+\usepackage{tcolorbox} % To make colourful boxes (objectives)
+\usepackage[margin=1.0in]{geometry} % To change page margins
+\usepackage[Lenny]{fncychap} % To get fance chapter headings. Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage{booktabs} % For fancy tables
+\usepackage{minted} % To include code in project.
+\usepackage{longtable} % For tables spanning multiple pages
+\usepackage{hyperref} % To include hyperlinks in the text and footnotes
+\usepackage{tikz} % To make cool diagrams
+\usetikzlibrary{shapes.geometric, arrows}
+
+\usepackage[style=numeric-comp, sorting=none]{biblatex} % For references, style is to get compressed references [4-12]
+\addbibresource{references.bib}
+
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}} % Something about allowing more space between rows in fancy tables.
+\newtheorem{theorem}{Definition} % To allow labelled definitions 
+
+\begin{document}
+
+\setlength\parindent{0pt} % Zero Indent in paragraphs
+
+\pagestyle{fancy}
+
+\begin{titlepage}
+    \begin{center}
+    
+    \LARGE 
+    Auto-strain master thesis \\
+    \vspace{1cm}
+
+    \Large
+    Written by\\
+    \vspace{0.1cm}
+    \textbf{Yohann  Jacob Sandvik}\\
+    \vspace{1cm}
+    \large
+    Master thesis EMNEKODE \\
+    \vspace{0.5cm}
+    Supervised by\\
+    \vspace{0.1cm}
+    \textbf{Lasse Løvstakken}\\
+    \vspace{2cm}
+
+    \includegraphics[width=0.5\textwidth]{ntnu_logo}
+    
+    \vspace{1cm}
+    \large
+    Department of electronic systems\\
+    Faculty of Information Technology and Electrical Engineering\\
+    Norwegian University of Science and Technology\\
+    \today
+
+\end{center}
+\end{titlepage}
+
+\begin{abstract}
+    This is the abstract.
+    \medskip
+
+    \begin{center} \textbf{Acknowledgements} \end{center}
+    These are my acknowledgements. 
+\end{abstract}
+
+\pagenumbering{arabic} % Page numbering in the table of contents
+\fancyhf{}
+%\lhead{left header}
+%\rhead{right header}
+%\lfoot{left footer}
+\rfoot{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+
+\tableofcontents
+% \newpage
+\listoffigures
+\listoftables
+
+
+\include{intro/intro}
+\include{method/method}
+\include{discussion/discussion}
+\include{conclusion/conclusion}
+
+% \include{appendix/time_warping_figures}
+% \include{appendix/code}
+
+\printbibliography
+
+\end{document}
