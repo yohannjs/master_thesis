@@ -2,6 +2,16 @@
 
 This is the section where we detail the specific models used. \bigskip
 
+\section{Models} 
+
+\subsection{Time-series clustering}
+
+\subsection{Peak-value clustering}
+
+\subsection{Recurrent Neural Network}
+
+\subsection{Supervised Peak-value Classifiers}
+
 \section{Description of The Datasets}
 
 Since the different ML models detailed in chapter REFERENCE require different types of input data the, datasets have been divided into two main categories: 
@@ -12,30 +22,34 @@ The peak-value datasets and the time-series datasets. \bigskip
 \begin{table*}[h]
     \centering
     \ra{1.3}
-    \begin{tabular}{ lr }
+    \begin{tabular}{ rlr }
         \toprule
-        Input variables   & Shape \\
+        Nr & Input variables   & Shape \\
         \midrule
-        Single RLS curves & (3600, 1) \\
-        RLS curves        & (200, 18) \\
-        GLS curves        & (200, 3)  \\
-        Strain curves     & (200, 21) \\
+        1  & Single RLS curves & (3600, 1) \\
+        2  & RLS curves        & (200, 18) \\
+        3  & GLS curves        & (200, 3)  \\
+        4  & Strain curves     & (200, 21) \\
         \bottomrule
     \end{tabular}
-    \caption{Time-series datasets. The ''Shape'' parameter is indicates: (Number of objects in the dataset, Number of curves in each individual object).}
+    \caption{Time-series datasets. The ''Shape'' parameter is indicates: (Number of objects in the dataset, Number of curves in each individual object). The curve length is not included in the shape parameter because it differs for different curves.}
     \label{tab:ts_dsets}
 \end{table*}
 
 Table \ref{tab:ts_dsets} shows the different time-series datasets that will be used. 
 All the datasets except \textit{Single RLS curves} will be used to predict the diagnosis of patients, and whether the patient has heart failure.
-Recall that the different diagnosises are described in section REFERENCE, and there occurance in the data are illustrated in figure \ref{fig:hf_ind_dist}.
+Recall that the different diagnosises are described in section REFERENCE, and there occurance rate are illustrated in figure \ref{fig:hf_ind_dist}.
 \textit{Single RLS curves} will be used to predict the segment indications shown in figure \ref{fig:segm_label_dis} and described in section REFERENCE. 
 The point of classifying individual segments of a patients left ventricle is that if a single segment is found to be \textit{not normal}, 
 this would also mean that the patient can be considered as \textit{not healthy}.
 As mentioned in the description of table \ref{tab:ts_dsets} the ''Shape'' parameter shows how many objects each dataset has, and how many curves are associated to each object. 
 Since each ultrasound examination takes ultrasound inspections from three views (four chamber, two chamber, and APLAX chamber), each patient has three views to estimate a GLS curve from. 
 Since each GLS curve, also can be divided into six RLS curves, there is a total of 21 strain curves per patient. 
-Both the RNN, and the TSC model have been applied on the datasets listed in table \ref{tab:ts_dsets}, 
+Since each patient has 18 RLS curves, there are $18 \times 200 = 3600$ curves that make up dataset number 1.
+Both the RNN, and the TSC model are applied on the datasets listed in table \ref{tab:ts_dsets}, 
+\bigskip
+
+\textbf{NOT SURE ABOUT THIS ANYMORE}
 however there have been made some significant changes to the multivariate time series to accomodate the DL model.
 Even though RNNs are capable of handling objects of different sizes, the curves that make up a single object must be of the same size.
 Since the strain curves extracted from different views often are of different lengths, the RNN has been limited to only using the strain curves associated with a single view
@@ -46,17 +60,17 @@ when evaluating the diagnosis, or heart failure status of one patient.
 \begin{table*}[h]
     \centering
     \ra{1.3}
-    \begin{tabular}{ lr }
+    \begin{tabular}{ rlr }
         \toprule
-        Input variables                     & Shape \\
+        Nr & Input variables                     & Shape \\
         \midrule                              
-        Single peak systolic RLS values     & (3600, 1) \\
-        Peak systolic RLS values            & (200, 18) \\
-        Peak systolic GLS values            & (200, 3)  \\
-        Peak systolic strain values         & (200, 21) \\
-        Peak systolic RLS, and EF values    & (200, 19) \\
-        Peak systolic GLS, and EF values    & (200, 4)  \\
-        Peak systolic strain, and EF values & (200, 22) \\
+        1  & Single peak systolic RLS values     & (3600, 1) \\
+        2  & Peak systolic RLS values            & (200, 18) \\
+        3  & Peak systolic GLS values            & (200, 3)  \\
+        4  & Peak systolic strain values         & (200, 21) \\
+        5  & Peak systolic RLS, and EF values    & (200, 19) \\
+        6  & Peak systolic GLS, and EF values    & (200, 4)  \\
+        7  & Peak systolic strain, and EF values & (200, 22) \\
         \bottomrule
     \end{tabular}
     \caption{Peak-value datasets. The ''Shape'' parameter is indicates: (Number of objects in the dataset, Number of dimensions of each individual object).}
@@ -71,14 +85,16 @@ with EF to determine whether a combination of peak systolic strain and EF can ha
 
 \section{Case Studies}
 The results of this paper will be presented in the form of three case studies. 
-Each case study will compare model-performance with regard to its predictive power of a specific target variable. 
-Recall that the three target variables that will be considered in this thesis are: Heart failure, patient diagnosis, and the indication of individual left ventricle segments.
-As mentioned previously in this chapter there are four main machine learning models that will be tested, and many variations of these four models.
-In each case study a brief discussion of performance different model variations within their category will be made, 
-and then the best model variation will be used to compare the performance of the main models. 
+Each case study will focus on a single target variable, and aims to find which model group performs best at predicting the target variable in question.
 
-\begin{itemize}
-    \item Heart failure
-    \item Patient diagnosis
-    \item Left ventricle segment indication
-\end{itemize}
+Recall that the three target variables that will be considered in this thesis are: Heart failure, patient diagnosis, and the indication of individual left ventricle segments.
+As mentioned previously in this chapter there are four main machine learning models that will be tested, but also many variations of these four models.
+The variations within the main model categories differ slightly for the different subgroups. 
+For the peak-value clustering models the variation between models is what dataset the model is applied on, what linkage is used to define the distance between cluster prototypes, and which number of clusters one chooses to divide the dataset into. 
+For the time-series clustering models the variations are choice of dataset, which type of preprocessing is used, what linkage is used and the number of clusters.
+For the RNN, the variations are choice of dataset and the type of preprocessing used. 
+The main group of peak-value classifiers is a broad group which encompasses ten complex machine learning classifiers. 
+No changes will be made to the hyperparameters of the individual models, so the variations in this group will be which particular classifier is used and which dataset the models are applied on. 
+In each case study a brief discussion of performance of different model variations within each main category will be made, 
+and then the best model variation will be used to compare the performance of the model groups.
+
