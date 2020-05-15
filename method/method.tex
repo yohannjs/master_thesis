@@ -1,8 +1,7 @@
 \chapter{Method}
 
-This is the section where we detail the specific models used. \bigskip
-
 \section{Models} 
+This is the section where we detail the specific models used. \bigskip
 
 \subsection{Time-series clustering}
 
@@ -26,10 +25,10 @@ The peak-value datasets and the time-series datasets. \bigskip
         \toprule
         Nr & Input variables   & Shape \\
         \midrule
-        1  & Single RLS curves & (3600, 1) \\
-        2  & RLS curves        & (200, 18) \\
-        3  & GLS curves        & (200, 3)  \\
-        4  & Strain curves     & (200, 21) \\
+        1  & Single RLS curves & $(3600,1)$ \\
+        2  & RLS curves        & $(200,18)$ \\
+        3  & GLS curves        & $(200,3)$  \\
+        4  & Strain curves     & $(200,21)$ \\
         \bottomrule
     \end{tabular}
     \caption{Time-series datasets. The ''Shape'' parameter is indicates: (Number of objects in the dataset, Number of curves in each individual object). The curve length is not included in the shape parameter because it differs for different curves.}
@@ -64,13 +63,13 @@ when evaluating the diagnosis, or heart failure status of one patient.
         \toprule
         Nr & Input variables                     & Shape \\
         \midrule                              
-        1  & Single peak systolic RLS values     & (3600, 1) \\
-        2  & Peak systolic RLS values            & (200, 18) \\
-        3  & Peak systolic GLS values            & (200, 3)  \\
-        4  & Peak systolic strain values         & (200, 21) \\
-        5  & Peak systolic RLS, and EF values    & (200, 19) \\
-        6  & Peak systolic GLS, and EF values    & (200, 4)  \\
-        7  & Peak systolic strain, and EF values & (200, 22) \\
+        1  & Single peak systolic RLS values     & $(3600,1)$ \\
+        2  & Peak systolic RLS values            & $(200,18)$ \\
+        3  & Peak systolic GLS values            & $(200,3)$  \\
+        4  & Peak systolic strain values         & $(200,21)$ \\
+        5  & Peak systolic RLS, and EF values    & $(200,19)$ \\
+        6  & Peak systolic GLS, and EF values    & $(200,4)$  \\
+        7  & Peak systolic strain, and EF values & $(200,22)$ \\
         \bottomrule
     \end{tabular}
     \caption{Peak-value datasets. The ''Shape'' parameter is indicates: (Number of objects in the dataset, Number of dimensions of each individual object).}
@@ -86,15 +85,8 @@ with EF to determine whether a combination of peak systolic strain and EF can ha
 \section{Case Studies}
 The results of this paper will be presented in the form of three case studies. 
 Each case study will focus on a single target variable, and aims to find which model group performs best at predicting the target variable in question.
-
 Recall that the three target variables that will be considered in this thesis are: Heart failure, patient diagnosis, and the indication of individual left ventricle segments.
-As mentioned previously in this chapter there are four main machine learning models that will be tested, but also many variations of these four models.
-The variations within the main model categories differ slightly for the different subgroups. 
-For the peak-value clustering models the variation between models is what dataset the model is applied on, what linkage is used to define the distance between cluster prototypes, and which number of clusters one chooses to divide the dataset into. 
-For the time-series clustering models the variations are choice of dataset, which type of preprocessing is used, what linkage is used and the number of clusters.
-For the RNN, the variations are choice of dataset and the type of preprocessing used. 
-The main group of peak-value classifiers is a broad group which encompasses ten complex machine learning classifiers. 
-No changes will be made to the hyperparameters of the individual models, so the variations in this group will be which particular classifier is used and which dataset the models are applied on. 
-In each case study a brief discussion of performance of different model variations within each main category will be made, 
-and then the best model variation will be used to compare the performance of the model groups.
+As mentioned earlier in the chapter, four model groups will be tested. 
+The case studies will first deal with each model group individually, where variants of the models with different hypermarameters will be tested on the different datasets. 
+Then, the best model within each model group will be used to compare the four model groups.
 
