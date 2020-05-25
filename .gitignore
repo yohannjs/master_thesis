@@ -1,3 +1,4 @@
+/* Intermediary latex files */
 **.bbl
 **.out
 **.bcf
@@ -11,4 +12,13 @@
 **.run.xml
 **.synctex.gz
 **.toc
+**.acn
+**.acr
+**.alg
+**.glg
+**.glo
+**.gls
+**.ist
+
+/* Vim swap files */
 **.swp

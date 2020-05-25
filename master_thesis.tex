@@ -1,4 +1,6 @@
-\documentclass[11pt,english,a4paper,openright]{report} % Use report because that gives us fancy tables.
+\documentclass[11pt,english,a4paper,openright]{report} % Use report because that gives us fancy tables and chapters.
+
+%% Package inclusion
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsfonts,amsthm,bm} % Math packages 
@@ -9,17 +11,22 @@
 \usepackage[margin=1.0in]{geometry} % To change page margins
 \usepackage[Lenny]{fncychap} % To get fance chapter headings. Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
 \usepackage{booktabs} % For fancy tables
-\usepackage{minted} % To include code in project.
+% \usepackage{minted} % To include code in project.
 \usepackage{longtable} % For tables spanning multiple pages
 \usepackage{hyperref} % To include hyperlinks in the text and footnotes
+\usepackage[acronym, toc]{glossaries} % To allow for a list of abbreviations.
 \usepackage{tikz} % To make cool diagrams
-\usetikzlibrary{shapes.geometric, arrows}
-
 \usepackage[style=numeric-comp, sorting=none]{biblatex} % For references, style is to get compressed references [4-12]
+
+%% Commands and simple includes
+\usetikzlibrary{shapes.geometric, arrows} % Including the geometric shapes that will be used in the tikz figures.
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}} % Something about allowing more space between rows in fancy tables.
+
+%% Reference files
 \addbibresource{references.bib}
 
-\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}} % Something about allowing more space between rows in fancy tables.
-\newtheorem{theorem}{Definition} % To allow labelled definitions 
+%% Abbreviations
+\input{abbrev.tex}
 
 \begin{document}
 
@@ -76,7 +83,11 @@
 
 \tableofcontents
 % \newpage
+\printglossary[type=\acronymtype, title=List of Abbreviations, toctitle=List of Abbreviations]
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
+\addcontentsline{toc}{chapter}{\listtablename}
 \listoftables
 
 
