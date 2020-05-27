@@ -13,7 +13,7 @@ This is the section where we detail the specific models used. \bigskip
 
 \section{Description of The Datasets}
 
-Since the different ML models detailed in chapter REFERENCE require different types of input data the, datasets have been divided into two main categories: 
+Since the different \acrshort{ml} models detailed in chapter REFERENCE require different types of input data the, datasets have been divided into two main categories: 
 The peak-value datasets and the time-series datasets. \bigskip
 
 \subsection{Time-series Datasets}
@@ -25,10 +25,10 @@ The peak-value datasets and the time-series datasets. \bigskip
         \toprule
         Nr & Input variables   & Shape \\
         \midrule
-        1  & Single RLS curves & $(3600,1)$ \\
-        2  & RLS curves        & $(200,18)$ \\
-        3  & GLS curves        & $(200,3)$  \\
-        4  & Strain curves     & $(200,21)$ \\
+        1  & Single \acrshort{rls} curves & $(3600,1)$ \\
+        2  & \acrshort{rls} curves        & $(200,18)$ \\
+        3  & \acrshort{gls} curves        & $(200,3)$  \\
+        4  & Strain curves                & $(200,21)$ \\
         \bottomrule
     \end{tabular}
     \caption{Time-series datasets. The ''Shape'' parameter is indicates: (Number of objects in the dataset, Number of curves in each individual object). The curve length is not included in the shape parameter because it differs for different curves.}
@@ -36,23 +36,17 @@ The peak-value datasets and the time-series datasets. \bigskip
 \end{table*}
 
 Table \ref{tab:ts_dsets} shows the different time-series datasets that will be used. 
-All the datasets except \textit{Single RLS curves} will be used to predict the diagnosis of patients, and whether the patient has heart failure.
+All the datasets except \textit{Single \acrshort{rls} curves} will be used to predict the diagnosis of patients, and whether the patient has heart failure.
 Recall that the different diagnosises are described in section REFERENCE, and there occurance rate are illustrated in figure \ref{fig:hf_ind_dist}.
-\textit{Single RLS curves} will be used to predict the segment indications shown in figure \ref{fig:segm_label_dis} and described in section REFERENCE. 
+\textit{Single \acrshort{rls} curves} will be used to predict the segment indications shown in figure \ref{fig:segm_label_dis} and described in section REFERENCE. 
 The point of classifying individual segments of a patients left ventricle is that if a single segment is found to be \textit{not normal}, 
 this would also mean that the patient can be considered as \textit{not healthy}.
 As mentioned in the description of table \ref{tab:ts_dsets} the ''Shape'' parameter shows how many objects each dataset has, and how many curves are associated to each object. 
-Since each ultrasound examination takes ultrasound inspections from three views (four chamber, two chamber, and APLAX chamber), each patient has three views to estimate a GLS curve from. 
-Since each GLS curve, also can be divided into six RLS curves, there is a total of 21 strain curves per patient. 
-Since each patient has 18 RLS curves, there are $18 \times 200 = 3600$ curves that make up dataset number 1.
-Both the RNN, and the TSC model are applied on the datasets listed in table \ref{tab:ts_dsets}, 
+Since each ultrasound examination takes ultrasound inspections from three views (four chamber, two chamber, and APLAX chamber), each patient has three views to estimate a \acrshort{gls} curve from. 
+Since each \acrshort{gls} curve, also can be divided into six \acrshort{rls} curves, there is a total of 21 strain curves per patient. 
+Since each patient has 18 \acrshort{rls} curves, there are $18 \times 200 = 3600$ curves that make up dataset number 1.
+Both the \acrshort{rnn}, and the \acrshort{tsc} model are applied on the datasets listed in table \ref{tab:ts_dsets}, 
 \bigskip
-
-\textbf{NOT SURE ABOUT THIS ANYMORE}
-however there have been made some significant changes to the multivariate time series to accomodate the DL model.
-Even though RNNs are capable of handling objects of different sizes, the curves that make up a single object must be of the same size.
-Since the strain curves extracted from different views often are of different lengths, the \acrshort{rnn} has been limited to only using the strain curves associated with a single view
-when evaluating the diagnosis, or heart failure status of one patient.
 
 \subsection{Peak-value Datasets}
 
@@ -63,13 +57,13 @@ when evaluating the diagnosis, or heart failure status of one patient.
         \toprule
         Nr & Input variables                     & Shape \\
         \midrule                              
-        1  & Single peak systolic RLS values     & $(3600,1)$ \\
-        2  & Peak systolic RLS values            & $(200,18)$ \\
-        3  & Peak systolic GLS values            & $(200,3)$  \\
-        4  & Peak systolic strain values         & $(200,21)$ \\
-        5  & Peak systolic RLS, and EF values    & $(200,19)$ \\
-        6  & Peak systolic GLS, and EF values    & $(200,4)$  \\
-        7  & Peak systolic strain, and EF values & $(200,22)$ \\
+        1  & Single peak systolic \acrshort{rls} values                & $(3600,1)$ \\
+        2  & Peak systolic \acrshort{rls} values                       & $(200,18)$ \\
+        3  & Peak systolic \acrshort{gls} values                       & $(200,3)$  \\
+        4  & Peak systolic strain values                               & $(200,21)$ \\
+        5  & Peak systolic \acrshort{rls}, and \acrshort{ef} values    & $(200,19)$ \\
+        6  & Peak systolic \acrshort{gls}, and \acrshort{ef} values    & $(200,4)$  \\
+        7  & Peak systolic strain, and \acrshort{ef} values            & $(200,22)$ \\
         \bottomrule
     \end{tabular}
     \caption{Peak-value datasets. The ''Shape'' parameter is indicates: (Number of objects in the dataset, Number of dimensions of each individual object).}
@@ -77,13 +71,14 @@ when evaluating the diagnosis, or heart failure status of one patient.
 \end{table*}
 
 Table \ref{tab:pv_dsets} shows the different peak-value datasets. 
-All the datasets with exception of \textit{Single peak systolic RLS values} will be used to predict the diagnosis of patients, and whether the patient has heart failure. 
-\textit{Single peak systolic RLS values} is also the only peak-value dataset that is not suited for clustering, as a minimum of two dimensions is required to cluster a point-value dataset.
-The reason that there are more peak-value datasets than there are time-series datasets, is that the peak-value version of three datasets in table \ref{tab:ts_dsets} have been combined 
-with EF to determine whether a combination of peak systolic strain and EF can have a higher predictive power than strain alone.
+All the datasets with exception of \textit{Single peak systolic \acrshort{rls} values} will be used to predict the diagnosis of patients, 
+and whether the patient has heart failure. \textit{Single peak systolic \acrshort{rls} values} is also the only peak-value dataset that is not suited for clustering, 
+since a minimum of two dimensions is required to cluster a point-value dataset. The reason that there are more peak-value datasets than there are time-series datasets, 
+is that the peak-value version of three datasets in table \ref{tab:ts_dsets} have been combined with \acrshort{ef} to determine whether a combination of peak systolic strain,
+and \acrshort{ef} can have a higher predictive power than strain alone.
 
 \section{Case Studies}
-The results of this paper will be presented in the form of three case studies. 
+The results will be presented in the form of three case studies. 
 Each case study will focus on a single target variable, and aims to find which model group performs best at predicting the target variable in question.
 Recall that the three target variables that will be considered in this thesis are: Heart failure, patient diagnosis, and the indication of individual left ventricle segments.
 As mentioned earlier in the chapter, four model groups will be tested. 
