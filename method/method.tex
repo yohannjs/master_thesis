@@ -36,7 +36,7 @@ The peak-value datasets and the time-series datasets. \bigskip
 \end{table*}
 
 Table \ref{tab:ts_dsets} shows the different time-series datasets that will be used. 
-All the datasets except \textit{Single \acrshort{rls} curves} will be used to predict the diagnosis of patients, and whether the patient has heart failure.
+All the datasets except \textit{Single \acrshort{rls} curves} will be used to predict whether or not the patient is diagnosed, and whether the patient has heart failure.
 Recall that the different diagnosises are described in section REFERENCE, and there occurance rate are illustrated in figure \ref{fig:hf_ind_dist}.
 \textit{Single \acrshort{rls} curves} will be used to predict the segment indications shown in figure \ref{fig:segm_label_dis} and described in section REFERENCE. 
 The point of classifying individual segments of a patients left ventricle is that if a single segment is found to be \textit{not normal}, 
@@ -84,4 +84,10 @@ Recall that the three target variables that will be considered in this thesis ar
 As mentioned earlier in the chapter, four model groups will be tested. 
 The case studies will first deal with each model group individually, where variants of the models with different hypermarameters will be tested on the different datasets. 
 Then, the best model within each model group will be used to compare the four model groups.
+Since the unsupervised models will be evaluated with regard to \acrshort{ari} in addition to the other evaluation metrics,
+the performance of these models will be evaluated on the different datasets individually.
+However, since the supervised models will not be evaluated with regard to \acrshort{ari} the performance of the models on the different datasets are aggregated,
+and the best performing combination of dataset and model variation is taken further to compare the four models.
+
+
 
