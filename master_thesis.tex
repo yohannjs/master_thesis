@@ -5,6 +5,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsfonts,amsthm,bm} % Math packages 
 \usepackage{graphicx} % To include figures
+\usepackage{caption}    % To include subfigures
+\usepackage{subcaption} % To include subcaptions
 \usepackage{fancyhdr} % Allows for headers
 \usepackage{lastpage} % Allows for page numbering in footer
 \usepackage{tcolorbox} % To make colourful boxes (objectives)
@@ -21,6 +23,7 @@
 %% Commands and simple includes
 \usetikzlibrary{shapes.geometric, arrows} % Including the geometric shapes that will be used in the tikz figures.
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}} % Something about allowing more space between rows in fancy tables.
+\newcommand{\txw}{\textwidth} %
 
 %% Reference files
 \addbibresource{references_snowballing.bib}
