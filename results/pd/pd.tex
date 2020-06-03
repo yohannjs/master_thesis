@@ -1,0 +1,229 @@
+\section{Case Study: Patient Diagnosis}
+
+\subsection{Time-series Clustering}
+
+\begin{figure}[htb]
+    \centering
+    % \includegraphics[width=\textwidth]{results/tsc_ind_dor_sens_spec_dist.png}
+    \input{results/pd/tsc_ind_dor_sens_spec_dist.pgf}
+    \caption{Distribution of DOR, sensitivity and specificity for the different TSC methods when classifying patient diagnosis.}
+    \label{fig:tsc_ind_dor_sens_spec_dist}
+\end{figure}
+
+\begin{comment}
+    [ ] 
+\end{comment}
+
+\begin{table*}
+    \centering
+    \ra{1.3}
+    \begin{tabular}{lrrrr}
+        \toprule
+        Dataset-Method             &  Accuracy &  Sensitivity &  Specificity &   DOR \\
+        \midrule
+        gls/2CH/regular/centroid/2 &      0.74 &         0.71 &         0.93 & 33.47 \\
+        gls/2CH/scaled/centroid/2  &      0.74 &         0.71 &         0.93 & 33.47 \\
+        gls/2CH/scaled/average/2   &      0.73 &         0.69 &         0.93 & 30.71 \\
+        gls/2CH/regular/average/2  &      0.73 &         0.69 &         0.93 & 30.71 \\
+        gls/2CH/scaled/ward/2      &      0.71 &         0.67 &         0.93 & 27.49 \\
+        \bottomrule
+    \end{tabular}
+    \caption{The accuracy, DOR, sensitivity and specicity scores of the five best performing two-cluster-center TSC methods in terms of DOR, at detecting patient diagnoses.
+             The \textbf{Dataset-Method} column indicates 
+             \textit{Dataset used}$/$\textit{View used}$/$\textit{Type of preprocessing used}$/$\textit{Linkage criteria of method}$/$\textit{Number of cluster centers}.}
+    \label{tab:tsc_ind_dor_sens_spec_dist}
+\end{table*}
+
+\begin{comment}
+    [ ] 
+\end{comment}
+
+\begin{table*}
+    \centering
+    \ra{1.3}
+    \begin{tabular}{lr}
+        \toprule
+        Dataset-Method                   &  ARI \\
+        \midrule
+        gls-rls/4CH/regular/complete/2   & 0.36 \\
+        gls/all-views/regular/weighted/2 & 0.34 \\
+        gls/all-views/scaled/weighted/4  & 0.33 \\
+        gls/all-views/scaled/weighted/3  & 0.33 \\
+        gls/APLAX/regular/single/10      & 0.32 \\
+        \bottomrule
+    \end{tabular}
+    \caption{The five highest ARI scores attained when applying TSC for detecting patient diagnoses.
+             The \textbf{Dataset-Method} column indicates \textit{Dataset used}$/$\textit{View used}$/$\textit{Linkage criteria of method}$/$\textit{Number of cluster centers}.}
+    \label{tab:tsc_ind_ari}
+\end{table*}
+
+% \begin{figure}[htb]
+%     \centering
+%     \input{results/pd/five_members_gls_rls_4CH_regular_complete_two.pgf}
+%     \caption{Each row represents one of the seven possible strain curves in the 4CH view. Coloumn (a) and (b) represent cluster 1 and 2 respectively.
+%              To make it easier to visually separate the curves, only five random members from cluster 1 and 2 are included in the figure.}
+%     \label{fig:five_members_gls_rls_4CH_regular_complete_two}
+% \end{figure}
+
+\newpage
+
+\subsection{Peak-value Clustering}
+
+\begin{figure}[htb]
+    \centering
+    % \includegraphics[width=\textwidth]{results/pvc_ind_dor_sens_spec_dist.png}
+    \input{results/pd/pvc_ind_dor_sens_spec_dist.pgf}
+    \caption{Distribution of DOR, sensitivity and specificity for the different PVC methods when classifying patient diagnosis.}
+    \label{fig:pvc_ind_dor_sens_spec_dist}
+\end{figure}
+
+\begin{comment}
+    [ ] 
+\end{comment}
+
+\begin{table*}
+    \centering
+    \ra{1.3}
+    \begin{tabular}{lrrrr}
+        \toprule
+        Dataset-Method    &  Accuracy &  Sensitivity &  Specificity &   DOR \\
+        \midrule
+        gls-EF/ward/2     &      0.76 &         0.72 &         0.94 & 39.33 \\
+        rls-EF/complete/2 &      0.77 &         0.74 &         0.93 & 37.61 \\
+        gls-rls-EF/ward/2 &      0.76 &         0.72 &         0.93 & 35.16 \\
+        gls-EF/average/2  &      0.74 &         0.70 &         0.94 & 34.90 \\
+        gls-EF/complete/2 &      0.68 &         0.63 &         0.94 & 25.75 \\
+        \bottomrule
+    \end{tabular}
+    \caption{The accuracy, DOR, sensitivity and specicity scores of the five best performing two-cluster-center PVC methods in terms of DOR, at detecting patient diagnoses.
+             The \textbf{Dataset-Method} column indicates \textit{Dataset used}$/$\textit{Linkage criteria of method}$/$\textit{Number of cluster centers}.}
+    \label{tab:pvc_ind_dor_sens_spec_dist}
+\end{table*}
+
+\begin{table*}
+    \centering
+    \ra{1.3}
+    \begin{tabular}{lr}
+        \toprule
+        Dataset-Method     &  ARI \\
+        \midrule
+        gls/average/6      & 0.29 \\
+        gls/average/7      & 0.29 \\
+        gls-rls/complete/3 & 0.28 \\
+        rls-EF/complete/2  & 0.26 \\
+        gls-EF/ward/2      & 0.25 \\
+        \bottomrule
+    \end{tabular}
+    \caption{The five highest ARI scores attained when applying PVC for detecting patient diagnoses.
+             The \textbf{Dataset-Method} column indicates \textit{Dataset used}$/$\textit{Linkage criteria of method}$/$\textit{Number of cluster centers}.}
+    \label{tab:pvc_ind_ari}
+\end{table*}
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.99\textwidth]{results/pd/scatter_gls_indication_bin.png}
+        \caption{Patient Diagnosis.}
+        \label{fig:scatter_gls_ef_hf}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.99\textwidth]{results/pd/scatter_gls_EF_ward2.png}
+        \caption{\textit{GLS-EF Ward/2} cluster assignments.}
+        \label{fig:scatter_gls_ef_ward2}
+    \end{subfigure}\\
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.99\textwidth]{results/pd/scatter_gls_average6.png}
+        \caption{\textit{GLS Average/6} cluster assignments.}
+        \label{fig:scatter_gls_ef_complete2}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.99\textwidth]{results/pd/scatter_gls_average7.png}
+        \caption{\textit{GLS Average/7} cluster assignments.}
+        \label{fig:scatter_gls_ef_average2}
+    \end{subfigure}
+    \caption{Scatterplot of peak GLS values in each view. Colors in the of the different dots are given by heart failure diagnosis, and cluster assignments of 
+             \textit{gls-EF/ward/2}, \textit{average/6} and \textit{average/7} methods. Numbers are not included on the axes because the point of the figure is to illustrate the separability 
+             of clusters, and patient diagnosis.}
+             \label{fig:scatter_gls_ef_hf_cluster_assignments}
+\end{figure}
+
+\newpage
+
+\subsection{Deep Neural Network}
+
+\begin{figure}[htb]
+    \centering
+    % \includegraphics[width=\textwidth]{results/dl_ind_dor_sens_spec_dist.png}
+    \input{results/pd/dl_ind_dor_sens_spec_dist.pgf}
+    \caption{Distribution of DOR, sensitivity and specificity for the NN-variations trained to predict patient diagnosis.}
+    \label{fig:dl_ind_dor_sens_spec_dist}
+\end{figure}
+
+\begin{table*}
+    \centering
+    \ra{1.3}
+    \begin{tabular}{lrrrr}
+        \toprule
+        Dataset-Model              &  Accuracy &  Sensitivity &  Specificity &  DOR \\
+        \midrule
+        gls/2CH/regular            &      0.85 &         1.00 &         0.00 &  NaN \\
+        rls/2CH/regular            &      0.85 &         1.00 &         0.00 &  NaN \\
+        all-strain/2CH/regular     &      0.85 &         1.00 &         0.00 &  NaN \\
+        all-strain/2CH/downsampled &      0.85 &         1.00 &         0.00 &  NaN \\
+        all-strain/2CH/upsampled   &      0.85 &         1.00 &         0.00 &  NaN \\
+        \bottomrule
+    \end{tabular}
+    \caption{The accuracy, DOR, sensitivity and specicity scores of the five best performing variations of the NN in terms of DOR, when trained to predict patient diagnoses.
+             The \textbf{Dataset-Model} column indicates \textit{Dataset used}$/$\textit{View used}$/$\textit{Whether curve has been upsampled, downsampled or is regular}.}
+    \label{tab:dl_hf_dor_sens_spec_dist}
+\end{table*}
+
+\begin{comment}
+    [ ] 
+\end{comment}
+
+\newpage
+
+\subsection{Peak-value Classifiers}
+
+\begin{figure}[htb]
+    \centering
+    % \includegraphics[width=\textwidth]{results/pvmlc_ind_dor_sens_spec_dist.png}
+    \input{results/pd/pvmlc_ind_dor_sens_spec_dist.pgf}
+    \caption{Distribution of DOR, sensitivity and specificity for the different peak-value classifiers trained to predict patient diagnosis.}
+    \label{fig:pvmlc_ind_dor_sens_spec_dist}
+\end{figure}
+
+\begin{table*}
+    \centering
+    \ra{1.3}
+    \begin{tabular}{lrrrr}
+        \toprule
+        Dataset-Model              &  Accuracy &  Sensitivity &  Specificity &  DOR \\
+        \midrule
+        gls-rls-EF/Ada-Boost   &      0.95 &         0.97 &         0.79 & 138.42 \\
+        gls-rls/KNN            &      0.93 &         0.95 &         0.82 &  84.53 \\
+        rls-EF/Extra-Trees     &      0.93 &         0.96 &         0.75 &  76.50 \\
+        gls-rls-EF/Extra-Trees &      0.93 &         0.97 &         0.71 &  75.00 \\
+        gls-rls/Extra-Trees    &      0.93 &         0.97 &         0.71 &  75.00 \\
+        \bottomrule
+    \end{tabular}
+    \caption{The accuracy, DOR, sensitivity and specicity scores of the five best performing PVSC models in terms of DOR, when trained to predict patient diagnosis.
+             The \textbf{Dataset-Model} column indicates \textit{Dataset used}$/$\textit{Specific machine learning model used}.}
+    \label{tab:dl_hf_dor_sens_spec_dist}
+\end{table*}
+
+\begin{comment}
+    [ ] 
+\end{comment}
+
+\newpage
+
+\subsection{Comparisons}
+
+\newpage
+

@@ -1,0 +1,84 @@
+\section{Case Study: Segment Indication}
+
+\subsection{Time-series Clustering}
+
+\begin{figure}[htb]
+    \centering
+    \input{results/segm/tsc_segm_ind_dor_sens_spec_dist.pgf}
+    % \includegraphics[width=\textwidth]{results/tsc_segm_ind_dor_sens_spec_dist.png}
+    \caption{Distribution of DOR, sensitivity and specificity for the different TSC methods when classifying left ventrice segment indication.}
+    \label{fig:tsc_segm_ind_dor_sens_spec_dist}
+\end{figure}
+
+\begin{table*}[htb]
+    \centering
+    \ra{1.3}
+    \begin{tabular}{lrrrr}
+        \toprule
+        Dataset-Method     &  Accuracy &  Sensitivity &  Specificity &  DOR \\
+        \midrule
+        regular/weighted/2 &      0.68 &         0.44 &         0.95 & 14.80 \\
+        scaled/weighted/2  &      0.68 &         0.44 &         0.95 & 14.80 \\
+        regular/ward/2     &      0.76 &         0.64 &         0.88 & 13.15 \\
+        scaled/ward/2      &      0.76 &         0.64 &         0.88 & 13.15 \\
+        regular/complete/2 &      0.74 &         0.60 &         0.89 & 12.89 \\
+        \bottomrule
+    \end{tabular}
+    \caption{The accuracy, DOR, sensitivity and specicity scores of the five best performing two-cluster-center TSC methods in terms of DOR, at detecting segment indication.
+             The \textbf{Dataset-Method} column indicates \textit{Type of preprocessing used}$/$\textit{Linkage criteria of method}$/$\textit{Number of cluster centers}.}
+    \label{tab:tsc_segm_ind_dor_sens_spec_dist}
+\end{table*}
+
+\begin{comment}
+    [ ] 
+\end{comment}
+
+\begin{table*}
+    \centering
+    \ra{1.3}
+    \begin{tabular}{lr}
+        \toprule
+        Dataset-Method     &  ARI \\
+        \midrule
+        scaled/centroid/5  & 0.26 \\
+        regular/centroid/5 & 0.26 \\
+        regular/ward/2     & 0.26 \\
+        scaled/ward/2      & 0.26 \\
+        scaled/centroid/6  & 0.25 \\
+        \bottomrule
+    \end{tabular}
+    \caption{The five highest ARI scores attained when applying TSC for detecting segmend indication.
+             The \textbf{Dataset-Method} column indicates \textit{Type of preprocessing used}$/$\textit{Linkage criteria of method}$/$\textit{Number of cluster centers}.}
+    \label{tab:pvc_ind_ari}
+\end{table*}
+
+\newpage
+
+\subsection{Deep Neural Network}
+
+\begin{table*}[htb]
+    \centering
+    \ra{1.3}
+    \begin{tabular}{lrrrr}
+        \toprule
+        Method      &  Accuracy &  Sensitivity &  Specificity &  DOR \\
+        \midrule
+        regular     &      0.74 &         0.80 &         0.68 & 8.65 \\
+        downsampled &      0.74 &         0.74 &         0.75 & 8.38 \\
+        upsampled   &      0.65 &         0.55 &         0.73 & 3.36 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Evaluation metrics of the NN for classifying the binary indication of individual segments in the left ventricle.}
+    \label{tab:NN_segm_ind_perf}
+\end{table*}
+
+\begin{comment}
+    [ ] 
+\end{comment}
+
+\subsection{Comparisons}
+
+\begin{comment}
+    [ ] 
+\end{comment}
+

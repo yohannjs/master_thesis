@@ -1,0 +1,43 @@
+\section{Raw model results}
+
+\subsection{Time-series Clustering}
+
+\input{appendix/raw_results_tsc_hf.tex} 
+\input{appendix/raw_results_tsc_pd.tex} 
+% \input{appendix/raw_results_tsc_segm.tex} 
+
+\subsection{Peak-value Clustering}
+
+\begin{longtable}{lrrrr}
+    \caption{Classification results of applying PVC to identify patient diagnoses among patients.
+             The results are sorted in descending order of DOR, although DOR is not included.}
+    \label{tab:tsc_hf_raw_results}
+    \hline
+    Dataset-Method        &     TP &    TN &    FP &    FN \\
+    \hline
+    gls-EF/ward/2         & 118.00 & 30.00 &  2.00 & 45.00 \\
+    rls-EF/complete/2     & 117.00 & 27.00 &  2.00 & 42.00 \\
+    gls-rls-EF/ward/2     & 112.00 & 27.00 &  2.00 & 43.00 \\
+    gls-EF/average/2      & 114.00 & 30.00 &  2.00 & 49.00 \\
+    gls-EF/complete/2     & 103.00 & 30.00 &  2.00 & 60.00 \\
+    gls-rls-EF/complete/2 &  97.00 & 27.00 &  2.00 & 58.00 \\
+    rls/complete/2        &  81.00 & 27.00 &  2.00 & 78.00 \\
+    rls/average/2         &  78.00 & 27.00 &  2.00 & 81.00 \\
+    gls-rls/ward/2        &  74.00 & 27.00 &  2.00 & 81.00 \\
+    rls/ward/2            &  75.00 & 27.00 &  2.00 & 84.00 \\
+    rls-EF/ward/2         &  73.00 & 27.00 &  2.00 & 86.00 \\
+    gls/ward/2            &  82.00 & 29.00 &  3.00 & 81.00 \\
+    gls-rls/average/2     & 153.00 &  2.00 & 27.00 &  2.00 \\
+    gls/complete/2        & 137.00 &  7.00 & 25.00 & 26.00 \\
+    gls-rls/complete/2    & 150.00 &  0.00 & 29.00 &  5.00 \\
+    gls-EF/single/2       & 162.00 &  0.00 & 32.00 &  1.00 \\
+    rls-EF/single/2       & 158.00 &  0.00 & 29.00 &  1.00 \\
+    rls/single/2          & 158.00 &  0.00 & 29.00 &  1.00 \\
+    rls-EF/average/2      & 158.00 &  0.00 & 29.00 &  1.00 \\
+    gls-rls-EF/single/2   & 154.00 &  0.00 & 29.00 &  1.00 \\
+    gls-rls-EF/average/2  & 154.00 &  0.00 & 29.00 &  1.00 \\
+    gls/single/2          & 163.00 &  1.00 & 31.00 &  0.00 \\
+    gls/average/2         & 163.00 &  1.00 & 31.00 &  0.00 \\
+    gls-rls/single/2      & 155.00 &  1.00 & 28.00 &  0.00 \\
+    \hline
+\end{longtable}
