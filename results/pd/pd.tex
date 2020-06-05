@@ -2,7 +2,7 @@
 
 \subsection{Time-series Clustering}
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     % \includegraphics[width=\textwidth]{results/tsc_ind_dor_sens_spec_dist.png}
     \input{results/pd/tsc_ind_dor_sens_spec_dist.pgf}
@@ -11,7 +11,26 @@
 \end{figure}
 
 \begin{comment}
-    [ ] 
+[0] \textbf{Comment on spread of DOR.}
+    * From the distribution plot in figure \ref{fig:tsc_ind_dor_sens_spec_dist}a one can see that the majority of DORs are close to zero, but there are some methods that acheive a DOR above 30.
+[0] \textbf{Comment on spread of sensitivity and specificity.}
+    * In the scatter plot in figure \ref{fig:tsc_ind_dor_sens_spec_dist}b one can see that the specificity of the methods and range from $0.5$ to 1, 
+      and the sensitivity scores range from 0 to $0.93$. 
+    * 
+[0] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
+    * As with heart failure, the TSC methods that perform best in terms of DOR use data from a single view. 
+      The 2CH view, and GLS curves are the only view and curve that are used among the methods that achieve the five highest DORs.
+    * From the table of all the method results in the appendix \ref{tab:tsc_ind_raw_results} one can see that the highest performing method in terms of DOR
+      to use a dataset other than GLS curves alone is \textit{gls-rls/2CH/scaled/ward/2} and it achieves a DOR of $26.76$.
+    * One can also note that the highest performing method in terms of DOR that uses a view other than only 2CH is \textit{rls/all-views/normalized/weighted/2}
+      which achieves a DOR of 25.56.
+    * The TSC methods that achieve the highest DOR scores all use no preprocessing, or scaling. 
+[0] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
+[0] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
+    * From table \ref{tab:tsc_ind_dor_sens_spec_dist} one can see that the TSC methods that acheive the highest DOR scores are \textit{gls/2CH/regular/centroid/2}, 
+      and \textit{gls/2CH/scaled/centroid/2} which are the same two methods that achieve the highest DORs in the heart failure case study.
+\textbf{IF NOT CLUSTERING METHOD}
+[NA] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
 \end{comment}
 
 \begin{table*}
@@ -34,10 +53,6 @@
     \label{tab:tsc_ind_dor_sens_spec_dist}
 \end{table*}
 
-\begin{comment}
-    [ ] 
-\end{comment}
-
 \begin{table*}
     \centering
     \ra{1.3}
@@ -57,19 +72,51 @@
     \label{tab:tsc_ind_ari}
 \end{table*}
 
-% \begin{figure}[htb]
-%     \centering
-%     \input{results/pd/five_members_gls_rls_4CH_regular_complete_two.pgf}
-%     \caption{Each row represents one of the seven possible strain curves in the 4CH view. Coloumn (a) and (b) represent cluster 1 and 2 respectively.
-%              To make it easier to visually separate the curves, only five random members from cluster 1 and 2 are included in the figure.}
-%     \label{fig:five_members_gls_rls_4CH_regular_complete_two}
-% \end{figure}
+\begin{comment}
+\textbf{ARI PARAGRAPH. ONLY FOR CLUSTERING METHODS}.
+[0] \textbf{Comment on the spread of ARI scores. Be specific since the distribution plots are ommitted}
+    * The majority of the ARI scorer for all the TSC methods evaluated at two to nine cluster centers are centered around zero.
+[0] \textbf{Comment on the general trends of high performing methods in terms of ARI - are they the same trends as scores performing high in terms of DOR?}
+    * As with the TSC methods attaining the highest DORs the methods using no preprocessing or scaling acheive the highest ARI indices when used to identify patient diagnoses.
+    * In addition, the GLS curves are also most often part of the dataset for the TSC methods receiving the highest ARI when used to identify patient diagnoses.
+[0] \textbf{Comment on whether the methods in the top 5 ARIs are the same methods with the highest DOR. If not, mention it.}
+    * From table \ref{tab:tsc_ind_ari} one can see that the TSC methods receiving the five highest ARI scores, are not among the TSC methods that receive the highest DOR scores. 
+    * The TSC method \textit{gls-rls/4CH/regular/complete/2} attains the highest ARI score when applied to identify patient diagnoses, and achieves an 
+      accuracy of $0.84$, a sensitivity of $0.87$ a specificity of $0.69$ and a DOR $14.65$. 
+    * The TSC method \textit{gls/all-views/regular/weighted/2} achieves the second highest ARI when applied to identify patient diagnoses, and achieves an
+      accuracy of $0.82$, a sensitivity of $0.81$ a specificity of $0.83$ and a DOR $21.06$. 
+    * What should also be noted is that the TSC methods achieving the two highest ARIs when applied to identify patient diagnoses are methods evaluated at two cluster centers,
+      which means that none of the TSC methods evaluated at cluster centers between three and nine can perform better than the ones evaluated at two cluster centers.
+[NA] \textbf{If the top 1 or 2 ARIs are also top in DOR no further discussion is needed. You can then plot some of the cluster realizations to see what they look like.}
+[ ] \textbf{If NOT, why do they differ? Is the method with the highest ARI evaluated at a higher cluster number that 2? Attempt to visualize it, if it is not too difficult.}
+    * It may seem strange that the ordered lists of DORs, and ARIs are so different. 
+    * The reason for this is not because DOR inherently values sensitivity higher than specificity, but stems from how the DOR is defined. 
+    * Recall that $\mathrm{DOR = ( TP \times TN )/ (FP \times FN)}$, since the patient diagnoses dataset is skewed in favour of positives TP has the potential of being as high as 170 
+      while TN can be as high as 30. 
+    * Therefore the DOR will be higher for methods with a high sensitivity than for methods with an equally high sensitivity.
+[ ] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, DOR, ARI and potentially the plots, and make an informed choice.}
+    * The TSC method that is chosen as the best method for identifying patient diagnoses is \textit{gls/all-views/regular/weighted/2}, because it achieves the second highest ARI, and
+      because it's sensitivity and specificity are more balanced than the method attaining the highest ARI and the methods that achieve higher DORs.
+[ ] \textbf{Plot some visualizations of the clustering, and comment on them.}
+    * 
+\end{comment}
 
-\newpage
+\clearpage
+
+\begin{figure}[ht]
+    \centering
+    \input{results/pd/five_members_gls_all_views_regular_weighted_two.pgf}
+    \caption{Here the curves of five random cluster members assigned by the \textit{gls/all-views/regular/weighted/2} method.
+             Each row represents one of the seven possible strain curves in the 4CH view. Coloumn (a) and (b) represent cluster 1 and 2 respectively.
+             To make it easier to visually separate the curves, only five random members from cluster 1 and 2 are included in the figure.}
+    \label{fig:five_members_gls_rls_4CH_regular_complete_two}
+\end{figure}
+
+\clearpage
 
 \subsection{Peak-value Clustering}
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     % \includegraphics[width=\textwidth]{results/pvc_ind_dor_sens_spec_dist.png}
     \input{results/pd/pvc_ind_dor_sens_spec_dist.pgf}
@@ -78,7 +125,20 @@
 \end{figure}
 
 \begin{comment}
-    [ ] 
+[ ] \textbf{Comment on spread of DOR.}
+    * From the distribution plot in figure \ref{fig:pvc_ind_dor_sens_spec_dist}a one can see that the majority of the PVC methods get DORs close to zero,
+      but there are a few methods that attain DORs above 30, and close to 40. 
+[ ] \textbf{Comment on spread of sensitivity and specificity.}
+    * From the scatterplot in \ref{fig:pvc_ind_dor_sens_spec_dist}b one can see that almost all the sensitivity scores are above $0.5$, while the specificity scores are concentrated
+      in the areas $0$ to $0.25$ and $0.95$.
+[ ] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
+    * As with the heart failure case study the PVC methods that perform high in terms of DOR use a dataset that is a combination of peak systolic strain values and EF.
+[ ] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
+[ ] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
+    * From table \ref{tab:pvc_ind_dor_sens_spec_dist} one can see that \textit{gls-EF/ward/2} and \textit{rls-EF/complete/2} are the two top performers in terms of DOR. 
+    * \textit{gls-EF/ward/2} achieves a slightly higher specificity score, where as \textit{rls-EF/complete/2} attains a slightly higher specificity score.
+\textbf{IF NOT CLUSTERING METHOD}
+[NA] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
 \end{comment}
 
 \begin{table*}
@@ -119,7 +179,7 @@
     \label{tab:pvc_ind_ari}
 \end{table*}
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
@@ -151,11 +211,22 @@
              \label{fig:scatter_gls_ef_hf_cluster_assignments}
 \end{figure}
 
+\begin{comment}
+\textbf{ARI PARAGRAPH. ONLY FOR CLUSTERING METHODS}.
+[ ] \textbf{Comment on the spread of ARI scores. Be specific since the distribution plots are ommitted}
+[ ] \textbf{Comment on the general trends of high performing methods in terms of ARI - are they the same trends as scores performing high in terms of DOR?}
+[ ] \textbf{Comment on whether the methods in the top 5 ARIs are the same methods with the highest DOR. If not, mention it.}
+[ ] \textbf{If the top 1 or 2 ARIs are also top in DOR no further discussion is needed. You can then plot some of the cluster realizations to see what they look like.}
+[ ] \textbf{If NOT, why do they differ? Is the method with the highest ARI evaluated at a higher cluster number that 2? Attempt to visualize it, if it is not too difficult.}
+[ ] \textbf{Plot some visualizations of the clustering, and comment on them.}
+[ ] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, DOR, ARI and potentially the plots, and make an informed choice.}
+\end{comment}
+
 \newpage
 
 \subsection{Deep Neural Network}
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     % \includegraphics[width=\textwidth]{results/dl_ind_dor_sens_spec_dist.png}
     \input{results/pd/dl_ind_dor_sens_spec_dist.pgf}
@@ -183,14 +254,20 @@
 \end{table*}
 
 \begin{comment}
-    [ ] 
+[ ] \textbf{Comment on spread of DOR.}
+[ ] \textbf{Comment on spread of sensitivity and specificity.}
+[ ] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
+[ ] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
+[ ] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
+\textbf{IF NOT CLUSTERING METHOD}
+[ ] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
 \end{comment}
 
 \newpage
 
 \subsection{Peak-value Classifiers}
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     % \includegraphics[width=\textwidth]{results/pvmlc_ind_dor_sens_spec_dist.png}
     \input{results/pd/pvmlc_ind_dor_sens_spec_dist.pgf}
@@ -218,7 +295,13 @@
 \end{table*}
 
 \begin{comment}
-    [ ] 
+[ ] \textbf{Comment on spread of DOR.}
+[ ] \textbf{Comment on spread of sensitivity and specificity.}
+[ ] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
+[ ] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
+[ ] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
+\textbf{IF NOT CLUSTERING METHOD}
+[ ] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
 \end{comment}
 
 \newpage

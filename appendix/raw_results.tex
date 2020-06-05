@@ -4,40 +4,336 @@
 
 \input{appendix/raw_results_tsc_hf.tex} 
 \input{appendix/raw_results_tsc_pd.tex} 
-% \input{appendix/raw_results_tsc_segm.tex} 
+\input{appendix/raw_results_tsc_segm.tex} 
 
 \subsection{Peak-value Clustering}
 
 \begin{longtable}{lrrrr}
-    \caption{Classification results of applying PVC to identify patient diagnoses among patients.
+    \caption{Classification results of applying PVC to identify heart failure among patients.
              The results are sorted in descending order of DOR, although DOR is not included.}
-    \label{tab:tsc_hf_raw_results}
+    \label{tab:pvc_hf_raw_results}\\
     \hline
     Dataset-Method        &     TP &    TN &    FP &    FN \\
     \hline
-    gls-EF/ward/2         & 118.00 & 30.00 &  2.00 & 45.00 \\
-    rls-EF/complete/2     & 117.00 & 27.00 &  2.00 & 42.00 \\
-    gls-rls-EF/ward/2     & 112.00 & 27.00 &  2.00 & 43.00 \\
-    gls-EF/average/2      & 114.00 & 30.00 &  2.00 & 49.00 \\
-    gls-EF/complete/2     & 103.00 & 30.00 &  2.00 & 60.00 \\
-    gls-rls-EF/complete/2 &  97.00 & 27.00 &  2.00 & 58.00 \\
-    rls/complete/2        &  81.00 & 27.00 &  2.00 & 78.00 \\
-    rls/average/2         &  78.00 & 27.00 &  2.00 & 81.00 \\
-    gls-rls/ward/2        &  74.00 & 27.00 &  2.00 & 81.00 \\
-    rls/ward/2            &  75.00 & 27.00 &  2.00 & 84.00 \\
-    rls-EF/ward/2         &  73.00 & 27.00 &  2.00 & 86.00 \\
-    gls/ward/2            &  82.00 & 29.00 &  3.00 & 81.00 \\
-    gls-rls/average/2     & 153.00 &  2.00 & 27.00 &  2.00 \\
-    gls/complete/2        & 137.00 &  7.00 & 25.00 & 26.00 \\
-    gls-rls/complete/2    & 150.00 &  0.00 & 29.00 &  5.00 \\
-    gls-EF/single/2       & 162.00 &  0.00 & 32.00 &  1.00 \\
-    rls-EF/single/2       & 158.00 &  0.00 & 29.00 &  1.00 \\
-    rls/single/2          & 158.00 &  0.00 & 29.00 &  1.00 \\
-    rls-EF/average/2      & 158.00 &  0.00 & 29.00 &  1.00 \\
-    gls-rls-EF/single/2   & 154.00 &  0.00 & 29.00 &  1.00 \\
-    gls-rls-EF/average/2  & 154.00 &  0.00 & 29.00 &  1.00 \\
-    gls/single/2          & 163.00 &  1.00 & 31.00 &  0.00 \\
-    gls/average/2         & 163.00 &  1.00 & 31.00 &  0.00 \\
-    gls-rls/single/2      & 155.00 &  1.00 & 28.00 &  0.00 \\
+    gls-EF/ward/2         & 83 &  63 & 37 & 12 \\
+    gls-EF/complete/2     & 77 &  72 & 28 & 18 \\
+    gls-EF/average/2      & 81 &  65 & 35 & 14 \\
+    rls-EF/complete/2     & 83 &  55 & 36 & 14 \\
+    gls-rls-EF/ward/2     & 78 &  55 & 36 & 15 \\
+    gls-rls-EF/complete/2 & 70 &  62 & 29 & 23 \\
+    rls-EF/ward/2         & 58 &  74 & 17 & 39 \\
+    rls/average/2         & 61 &  72 & 19 & 36 \\
+    gls-rls/ward/2        & 56 &  71 & 20 & 37 \\
+    rls/ward/2            & 57 &  71 & 20 & 40 \\
+    gls/ward/2            & 59 &  74 & 26 & 36 \\
+    gls-rls/complete/2    &  4 &  90 &  1 & 89 \\
+    rls/complete/2        & 58 &  66 & 25 & 39 \\
+    gls-rls/average/2     & 92 &   3 & 88 &  1 \\
+    gls/complete/2        & 16 &  83 & 17 & 79 \\
+    rls-EF/single/2       & 96 &   0 & 91 &  1 \\
+    rls-EF/average/2      & 96 &   0 & 91 &  1 \\
+    gls/average/2         &  0 &  99 &  1 & 95 \\
+    gls/single/2          &  0 &  99 &  1 & 95 \\
+    gls-rls-EF/single/2   & 92 &   0 & 91 &  1 \\
+    gls-rls-EF/average/2  & 92 &   0 & 91 &  1 \\
+    rls/single/2          & 97 &   1 & 90 &  0 \\
+    gls-EF/single/2       &  1 & 100 &  0 & 94 \\
+    gls-rls/single/2      & 93 &   1 & 90 &  0 \\
     \hline
 \end{longtable}
+
+\begin{longtable}{lrrrr}
+    \caption{Classification results of applying PVC to identify patient diagnoses among patients.
+             The results are sorted in descending order of DOR, although DOR is not included.}
+    \label{tab:pvc_ind_raw_results}\\
+    \hline
+    Dataset-Method        &     TP &    TN &    FP &    FN \\
+    \hline
+    gls-EF/ward/2         & 118 & 30 &  2 & 45 \\
+    rls-EF/complete/2     & 117 & 27 &  2 & 42 \\
+    gls-rls-EF/ward/2     & 112 & 27 &  2 & 43 \\
+    gls-EF/average/2      & 114 & 30 &  2 & 49 \\
+    gls-EF/complete/2     & 103 & 30 &  2 & 60 \\
+    gls-rls-EF/complete/2 &  97 & 27 &  2 & 58 \\
+    rls/complete/2        &  81 & 27 &  2 & 78 \\
+    rls/average/2         &  78 & 27 &  2 & 81 \\
+    gls-rls/ward/2        &  74 & 27 &  2 & 81 \\
+    rls/ward/2            &  75 & 27 &  2 & 84 \\
+    rls-EF/ward/2         &  73 & 27 &  2 & 86 \\
+    gls/ward/2            &  82 & 29 &  3 & 81 \\
+    gls-rls/average/2     & 153 &  2 & 27 &  2 \\
+    gls/complete/2        & 137 &  7 & 25 & 26 \\
+    gls-rls/complete/2    & 150 &  0 & 29 &  5 \\
+    gls-EF/single/2       & 162 &  0 & 32 &  1 \\
+    rls-EF/single/2       & 158 &  0 & 29 &  1 \\
+    rls/single/2          & 158 &  0 & 29 &  1 \\
+    rls-EF/average/2      & 158 &  0 & 29 &  1 \\
+    gls-rls-EF/single/2   & 154 &  0 & 29 &  1 \\
+    gls-rls-EF/average/2  & 154 &  0 & 29 &  1 \\
+    gls/single/2          & 163 &  1 & 31 &  0 \\
+    gls/average/2         & 163 &  1 & 31 &  0 \\
+    gls-rls/single/2      & 155 &  1 & 28 &  0 \\
+    \hline
+\end{longtable}
+
+\section{Neural Network}
+
+\begin{longtable}{lrrrr}
+    \caption{Classification results of NN, when trained to predict heart failure among patients.
+             The results are sorted in descending order of DOR, although DOR is not included.}
+    \label{tab:dl_hf_raw_results}\\
+    \hline
+    Dataset-Model                    & TP & TN & FP & FN \\
+    \hline
+    gls/4CH/upsampled                & 46 & 61 & 39 & 53 \\
+    rls/APLAX/regular                & 48 & 58 & 42 & 51 \\
+    rls/4CH/regular                  & 36 & 68 & 32 & 64 \\
+    gls/APLAX/downsampled            & 62 & 40 & 60 & 36 \\
+    gls/2CH/downsampled              & 60 & 39 & 58 & 39 \\
+    gls/4CH/downsampled              & 48 & 52 & 48 & 51 \\
+    gls/APLAX/regular                & 48 & 50 & 50 & 51 \\
+    gls/2CH/regular                  & 57 & 39 & 58 & 43 \\
+    gls/4CH/regular                  & 61 & 34 & 66 & 39 \\
+    all-strain/4CH/regular           & 52 & 31 & 69 & 48 \\
+    rls/APLAX/downsampled            & 33 & 47 & 53 & 65 \\
+    all-strain/all-views/regular     & 53 & 27 & 70 & 46 \\
+    rls/2CH/downsampled              & 30 & 45 & 52 & 69 \\
+    all-strain/all-views/downsampled & 36 & 36 & 61 & 62 \\
+    gls/APLAX/upsampled              & 49 & 24 & 76 & 49 \\
+    rls/2CH/regular                  & 36 & 34 & 63 & 64 \\
+    gls/2CH/upsampled                & 58 & 16 & 81 & 41 \\
+    all-strain/4CH/upsampled         & 19 & 54 & 46 & 80 \\
+    all-strain/2CH/downsampled       & 64 & 10 & 87 & 35 \\
+    all-strain/APLAX/regular         & 41 & 22 & 78 & 58 \\
+    all-strain/all-views/upsampled   & 25 & 33 & 64 & 73 \\
+    all-strain/APLAX/downsampled     & 34 & 22 & 78 & 64 \\
+    gls/all-views/regular            & 25 & 28 & 69 & 74 \\
+    all-strain/2CH/upsampled         & 51 &  9 & 88 & 48 \\
+    rls/all-views/downsampled        & 51 &  8 & 89 & 47 \\
+    all-strain/4CH/downsampled       & 35 & 15 & 85 & 64 \\
+    rls/4CH/upsampled                & 22 & 24 & 76 & 77 \\
+    rls/4CH/downsampled              & 36 & 13 & 87 & 63 \\
+    rls/APLAX/upsampled              & 27 & 16 & 84 & 71 \\
+    rls/all-views/upsampled          & 13 & 29 & 68 & 85 \\
+    gls/all-views/upsampled          & 13 & 29 & 68 & 85 \\
+    gls/all-views/downsampled        & 46 &  6 & 91 & 52 \\
+    rls/all-views/regular            & 27 & 13 & 84 & 72 \\
+    rls/2CH/upsampled                & 32 &  9 & 88 & 67 \\
+    all-strain/APLAX/upsampled       & 41 &  3 & 97 & 57 \\
+    all-strain/2CH/regular           & 42 &  0 & 97 & 58 \\
+    \hline
+\end{longtable}
+
+\begin{longtable}{lrrrr}
+    \caption{Classification results of NN, when trained to predict patient diagnoses.
+             The results are sorted in descending order of DOR, although DOR is not included.}
+    \label{tab:dl_ind_raw_results}\\
+    \hline
+    Dataset-Preprocessing            &  TP &TN & FP & FN \\
+    \hline
+    all-strain/4CH/upsampled         & 166 & 0 & 32 & 1 \\
+    all-strain/2CH/regular           & 168 & 0 & 29 & 0 \\
+    gls/2CH/regular                  & 168 & 0 & 29 & 0 \\
+    rls/2CH/regular                  & 168 & 0 & 29 & 0 \\
+    all-strain/2CH/downsampled       & 167 & 0 & 29 & 0 \\
+    all-strain/2CH/upsampled         & 167 & 0 & 29 & 0 \\
+    gls/2CH/downsampled              & 167 & 0 & 29 & 0 \\
+    gls/2CH/upsampled                & 167 & 0 & 29 & 0 \\
+    rls/2CH/downsampled              & 167 & 0 & 29 & 0 \\
+    rls/2CH/upsampled                & 167 & 0 & 29 & 0 \\
+    all-strain/all-views/regular     & 167 & 0 & 29 & 0 \\
+    gls/all-views/regular            & 167 & 0 & 29 & 0 \\
+    rls/all-views/regular            & 167 & 0 & 29 & 0 \\
+    all-strain/all-views/downsampled & 166 & 0 & 29 & 0 \\
+    all-strain/all-views/upsampled   & 166 & 0 & 29 & 0 \\
+    gls/all-views/downsampled        & 166 & 0 & 29 & 0 \\
+    gls/all-views/upsampled          & 166 & 0 & 29 & 0 \\
+    rls/all-views/downsampled        & 166 & 0 & 29 & 0 \\
+    rls/all-views/upsampled          & 166 & 0 & 29 & 0 \\
+    all-strain/4CH/regular           & 168 & 0 & 32 & 0 \\
+    gls/4CH/regular                  & 168 & 0 & 32 & 0 \\
+    rls/4CH/regular                  & 168 & 0 & 32 & 0 \\
+    all-strain/4CH/downsampled       & 167 & 0 & 32 & 0 \\
+    gls/4CH/downsampled              & 167 & 0 & 32 & 0 \\
+    gls/4CH/upsampled                & 167 & 0 & 32 & 0 \\
+    rls/4CH/downsampled              & 167 & 0 & 32 & 0 \\
+    rls/4CH/upsampled                & 167 & 0 & 32 & 0 \\
+    all-strain/APLAX/regular         & 167 & 0 & 32 & 0 \\
+    gls/APLAX/regular                & 167 & 0 & 32 & 0 \\
+    rls/APLAX/regular                & 167 & 0 & 32 & 0 \\
+    all-strain/APLAX/downsampled     & 166 & 0 & 32 & 0 \\
+    all-strain/APLAX/upsampled       & 166 & 0 & 32 & 0 \\
+    gls/APLAX/downsampled            & 166 & 0 & 32 & 0 \\
+    gls/APLAX/upsampled              & 166 & 0 & 32 & 0 \\
+    rls/APLAX/downsampled            & 166 & 0 & 32 & 0 \\
+    rls/APLAX/upsampled              & 166 & 0 & 32 & 0 \\
+    \hline
+\end{longtable}
+
+
+\begin{longtable}{lrrrr}
+    \caption{Classification results of NN, when trained to predict segment indication.
+             The results are sorted in descending order of DOR, although DOR is not included.}
+    \label{tab:dl_segm_ind_raw_results}\\
+    \hline
+    Preprocessing &   TP &   TN &  FP &  FN \\
+    \hline
+    regular       & 1364 & 1274 & 607 & 331 \\
+    downsampled   & 1255 & 1390 & 473 & 440 \\
+    upsampled     &  934 & 1365 & 498 & 761 \\
+    \hline
+\end{longtable}
+
+\subsection{Peak-value Supervised Classifiers}
+
+\begin{longtable}{lrrrr}
+    \caption{Classification results of PVSC, when trained to predict heart failure among patients.
+             The results are sorted in descending order of DOR, although DOR is not included.}
+    \label{tab:pvsc_hf_raw_results}\\
+    \hline
+    Dataset-Model                    &  TP &  TN &  FP &  FN \\
+    gls-EF/Gaussian-Process          &  74 &  72 &  27 &  21 \\
+    rls-EF/MLP                       &  74 &  67 &  23 &  23 \\
+    rls-EF/Linear-SVM                &  73 &  67 &  23 &  24 \\
+    gls-EF/Ada-Boost                 &  73 &  72 &  27 &  22 \\
+    gls-EF/Naive-Bayes               &  72 &  73 &  26 &  23 \\
+    gls-EF/Linear-SVM                &  71 &  74 &  25 &  24 \\
+    rls-EF/Decision-Tree             &  76 &  62 &  28 &  21 \\
+    gls-EF/KNN                       &  70 &  73 &  26 &  25 \\
+    gls-EF/Random-Forest             &  74 &  68 &  31 &  21 \\
+    rls-EF/Extra-Trees               &  77 &  60 &  30 &  20 \\
+    gls-rls-EF/Naive-Bayes           &  71 &  63 &  27 &  22 \\
+    rls-EF/Naive-Bayes               &  72 &  65 &  25 &  25 \\
+    rls/Naive-Bayes                  &  73 &  64 &  26 &  24 \\
+    gls-rls-EF/Linear-SVM            &  68 &  66 &  24 &  25 \\
+    gls-rls-EF/Extra-Trees           &  72 &  61 &  29 &  21 \\
+    gls-rls/Decision-Tree            &  71 &  62 &  28 &  22 \\
+    gls-rls/Naive-Bayes              &  70 &  63 &  27 &  23 \\
+    gls-EF/Discriminant-Analysis     &  67 &  74 &  25 &  28 \\
+    gls-EF/Extra-Trees               &  69 &  72 &  27 &  26 \\
+    gls-rls-EF/Ada-Boost             &  69 &  64 &  26 &  24 \\
+    rls/KNN                          &  79 &  55 &  35 &  18 \\
+    gls-rls-EF/Random-Forest         &  70 &  62 &  28 &  23 \\
+    gls-rls/Extra-Trees              &  72 &  59 &  31 &  21 \\
+    gls/Gaussian-Process             &  70 &  69 &  30 &  25 \\
+    rls/Ada-Boost                    &  74 &  60 &  30 &  23 \\
+    gls-rls/Ada-Boost                &  70 &  61 &  29 &  23 \\
+    gls/Linear-SVM                   &  70 &  68 &  31 &  25 \\
+    rls/Linear-SVM                   &  73 &  60 &  30 &  24 \\
+    gls-EF/Decision-Tree             &  67 &  71 &  28 &  28 \\
+    rls-EF/KNN                       &  75 &  57 &  33 &  22 \\
+    gls/Ada-Boost                    &  70 &  67 &  32 &  25 \\
+    gls/Naive-Bayes                  &  69 &  68 &  31 &  26 \\
+    gls-rls/Linear-SVM               &  67 &  62 &  28 &  26 \\
+    rls/Extra-Trees                  &  74 &  57 &  33 &  23 \\
+    gls-rls-EF/KNN                   &  69 &  59 &  31 &  24 \\
+    rls-EF/Ada-Boost                 &  68 &  63 &  27 &  29 \\
+    rls-EF/Random-Forest             &  71 &  60 &  30 &  26 \\
+    rls/Decision-Tree                &  74 &  56 &  34 &  23 \\
+    gls-rls-EF/Decision-Tree         &  66 &  61 &  29 &  27 \\
+    gls-rls/KNN                      &  71 &  55 &  35 &  22 \\
+    gls/Discriminant-Analysis        &  65 &  69 &  30 &  30 \\
+    gls-rls/Random-Forest            &  67 &  59 &  31 &  26 \\
+    gls-rls/MLP                      &  65 &  61 &  29 &  28 \\
+    gls/KNN                          &  60 &  73 &  26 &  35 \\
+    rls/MLP                          &  64 &  64 &  26 &  33 \\
+    rls/Random-Forest                &  69 &  58 &  32 &  28 \\
+    rls-EF/Discriminant-Analysis     &  68 &  59 &  31 &  29 \\
+    gls/Extra-Trees                  &  64 &  67 &  32 &  31 \\
+    rls/Discriminant-Analysis        &  67 &  59 &  31 &  30 \\
+    gls-rls-EF/MLP                   &  55 &  67 &  23 &  38 \\
+    gls/Random-Forest                &  69 &  60 &  39 &  26 \\
+    rls/Gaussian-Process             &  69 &  52 &  38 &  28 \\
+    rls-EF/Gaussian-Process          &  69 &  52 &  38 &  28 \\
+    gls-rls-EF/Discriminant-Analysis &  57 &  61 &  29 &  36 \\
+    gls-rls-EF/Gaussian-Process      &  64 &  54 &  36 &  29 \\
+    gls/Decision-Tree                &  62 &  63 &  36 &  33 \\
+    gls/RBF-SVM                      &  43 &  76 &  23 &  52 \\
+    gls-rls/Discriminant-Analysis    &  54 &  59 &  31 &  39 \\
+    gls-EF/RBF-SVM                   &   9 &  95 &   4 &  86 \\
+    gls-EF/MLP                       &  42 &  74 &  25 &  53 \\
+    gls-rls/Gaussian-Process         &  59 &  49 &  41 &  34 \\
+    gls/MLP                          &  40 &  72 &  27 &  55 \\
+    rls/RBF-SVM                      &  97 &   0 &  90 &   0 \\
+    gls-rls/RBF-SVM                  &  93 &   0 &  90 &   0 \\
+    rls-EF/RBF-SVM                   &  97 &   0 &  90 &   0 \\
+    gls-rls-EF/RBF-SVM               &  93 &   0 &  90 &   0 \\
+    \hline
+\end{longtable}
+
+\begin{longtable}{lrrrr}
+    \caption{Classification results of PVSC, when trained to predict patient diagnoses.
+             The results are sorted in descending order of DOR, although DOR is not included.}
+    \label{tab:pvsc_ind_raw_results}\\
+    \hline
+    Dataset-Model &     TP &    TN &    FP &    FN \\
+    \hline
+    gls-rls-EF/Ada-Boost             &  151 &  22 &   6 &   4 \\
+    gls-rls/KNN                      &  147 &  23 &   5 &   8 \\
+    rls-EF/Extra-Trees               &  153 &  21 &   7 &   6 \\
+    gls-rls-EF/Extra-Trees           &  150 &  20 &   8 &   5 \\
+    gls-rls/Extra-Trees              &  150 &  20 &   8 &   5 \\
+    gls-rls-EF/KNN                   &  146 &  23 &   5 &   9 \\
+    rls/Linear-SVM                   &  155 &  18 &  10 &   4 \\
+    rls-EF/Random-Forest             &  155 &  18 &  10 &   4 \\
+    rls/Extra-Trees                  &  154 &  19 &   9 &   5 \\
+    gls-rls-EF/Linear-SVM            &  150 &  19 &   9 &   5 \\
+    rls-EF/Gaussian-Process          &  150 &  22 &   6 &   9 \\
+    rls-EF/Linear-SVM                &  154 &  18 &  10 &   5 \\
+    rls-EF/KNN                       &  149 &  22 &   6 &  10 \\
+    rls-EF/Ada-Boost                 &  153 &  19 &   9 &   6 \\
+    gls-rls-EF/Gaussian-Process      &  144 &  22 &   6 &  11 \\
+    rls/KNN                          &  151 &  20 &   8 &   8 \\
+    gls-rls/Decision-Tree            &  147 &  20 &   8 &   8 \\
+    gls-rls/Linear-SVM               &  149 &  18 &  10 &   6 \\
+    gls-rls/Random-Forest            &  148 &  18 &  10 &   7 \\
+    rls/Random-Forest                &  154 &  15 &  13 &   5 \\
+    rls/Ada-Boost                    &  151 &  18 &  10 &   8 \\
+    rls/Gaussian-Process             &  147 &  20 &   8 &  12 \\
+    gls-rls-EF/Decision-Tree         &  143 &  20 &   8 &  12 \\
+    gls-rls/Ada-Boost                &  149 &  15 &  13 &   6 \\
+    rls/Naive-Bayes                  &  121 &  25 &   3 &  38 \\
+    gls-rls/Naive-Bayes              &  117 &  25 &   3 &  38 \\
+    rls-EF/Naive-Bayes               &  120 &  25 &   3 &  39 \\
+    gls-rls-EF/Naive-Bayes           &  116 &  25 &   3 &  39 \\
+    gls-EF/Extra-Trees               &  154 &  18 &  13 &   9 \\
+    gls-EF/Naive-Bayes               &  132 &  26 &   5 &  31 \\
+    gls/Naive-Bayes                  &  137 &  25 &   6 &  26 \\
+    rls-EF/Decision-Tree             &  151 &  15 &  13 &   8 \\
+    gls-rls-EF/Random-Forest         &  147 &  15 &  13 &   8 \\
+    gls-rls/Gaussian-Process         &  142 &  18 &  10 &  13 \\
+    gls-rls/MLP                      &  145 &  16 &  12 &  10 \\
+    rls/Decision-Tree                &  149 &  15 &  13 &  10 \\
+    gls-EF/Random-Forest             &  152 &  16 &  15 &  11 \\
+    gls-EF/KNN                       &  148 &  18 &  13 &  15 \\
+    rls-EF/MLP                       &  151 &  11 &  17 &   8 \\
+    gls/Extra-Trees                  &  152 &  14 &  17 &  11 \\
+    gls-EF/Gaussian-Process          &  162 &   2 &  29 &   1 \\
+    gls-EF/Decision-Tree             &  147 &  17 &  14 &  16 \\
+    gls/Random-Forest                &  153 &  13 &  18 &  10 \\
+    gls/KNN                          &  152 &  13 &  18 &  11 \\
+    rls/Discriminant-Analysis        &  157 &   3 &  25 &   2 \\
+    rls-EF/Discriminant-Analysis     &  157 &   3 &  25 &   2 \\
+    gls-rls-EF/MLP                   &  146 &  10 &  18 &   9 \\
+    rls/MLP                          &  148 &  11 &  17 &  11 \\
+    gls/MLP                          &  160 &   4 &  27 &   3 \\
+    gls-EF/Ada-Boost                 &  147 &  14 &  17 &  16 \\
+    gls/Decision-Tree                &  147 &  14 &  17 &  16 \\
+    gls-EF/Discriminant-Analysis     &  153 &  10 &  21 &  10 \\
+    gls/Discriminant-Analysis        &  153 &  10 &  21 &  10 \\
+    gls/Ada-Boost                    &  147 &  13 &  18 &  16 \\
+    gls-EF/MLP                       &  158 &   5 &  26 &   5 \\
+    gls-EF/Linear-SVM                &  161 &   2 &  29 &   2 \\
+    gls/Linear-SVM                   &  161 &   2 &  29 &   2 \\
+    gls/Gaussian-Process             &  160 &   2 &  29 &   3 \\
+    gls/RBF-SVM                      &  163 &   1 &  30 &   0 \\
+    rls/RBF-SVM                      &  159 &   0 &  28 &   0 \\
+    gls-rls/RBF-SVM                  &  155 &   0 &  28 &   0 \\
+    gls-rls/Discriminant-Analysis    &  155 &   1 &  27 &   0 \\
+    gls-EF/RBF-SVM                   &  163 &   0 &  31 &   0 \\
+    rls-EF/RBF-SVM                   &  159 &   0 &  28 &   0 \\
+    gls-rls-EF/RBF-SVM               &  155 &   0 &  28 &   0 \\
+    gls-rls-EF/Discriminant-Analysis &  155 &   1 &  27 &   0 \\
+    \hline
+\end{longtable}
+
