@@ -6,18 +6,31 @@
     \centering
     % \includegraphics[width=\textwidth]{results/tsc_ind_dor_sens_spec_dist.png}
     \input{results/pd/tsc_ind_dor_sens_spec_dist.pgf}
-    \caption{Distribution of DOR, sensitivity and specificity for the different TSC methods when classifying patient diagnosis.}
+    \caption{(a) Distribution plot of DOR of all TSC methods evaluated at two cluster centers when applied to classify patient diagnosis.
+             (b) Scatter plot of the same methods sensitivity, and specificity.}
     \label{fig:tsc_ind_dor_sens_spec_dist}
 \end{figure}
 
+From the distribution plot in figure \ref{fig:tsc_ind_dor_sens_spec_dist}a one can see that the majority of DORs are close to zero, but there are some methods that acheive a DOR above 30.
+In the scatter plot in figure \ref{fig:tsc_ind_dor_sens_spec_dist}b one can see that the specificity of the methods and range from $0.5$ to 1, 
+and the sensitivity scores range from 0 to $0.93$. 
+As with heart failure, the TSC methods that perform best in terms of DOR use data from a single view. 
+The 2CH view, and GLS curves are the only view and curve that are used among the methods that achieve the five highest DORs.
+From the table of all the method results in the appendix \ref{tab:tsc_ind_raw_results} one can see that the highest performing method in terms of DOR
+to use a dataset other than GLS curves alone is \textit{gls-rls/2CH/scaled/ward/2} and it achieves a DOR of $26.76$.
+One can also note that the highest performing method in terms of DOR that uses a view other than only 2CH is \textit{rls/all-views/normalized/weighted/2}
+which achieves a DOR of 25.56.
+The TSC methods that achieve the highest DOR scores all use no preprocessing, or scaling. 
+From table \ref{tab:tsc_ind_dor_sens_spec_dist} one can see that the TSC methods that acheive the highest DOR scores are \textit{gls/2CH/regular/centroid/2}, 
+and \textit{gls/2CH/scaled/centroid/2} which are the same two methods that achieve the highest DORs in the heart failure case study.
+
 \begin{comment}
-[0] \textbf{Comment on spread of DOR.}
+[X] \textbf{Comment on spread of DOR.}
     * From the distribution plot in figure \ref{fig:tsc_ind_dor_sens_spec_dist}a one can see that the majority of DORs are close to zero, but there are some methods that acheive a DOR above 30.
-[0] \textbf{Comment on spread of sensitivity and specificity.}
+[X] \textbf{Comment on spread of sensitivity and specificity.}
     * In the scatter plot in figure \ref{fig:tsc_ind_dor_sens_spec_dist}b one can see that the specificity of the methods and range from $0.5$ to 1, 
       and the sensitivity scores range from 0 to $0.93$. 
-    * 
-[0] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
+[X] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
     * As with heart failure, the TSC methods that perform best in terms of DOR use data from a single view. 
       The 2CH view, and GLS curves are the only view and curve that are used among the methods that achieve the five highest DORs.
     * From the table of all the method results in the appendix \ref{tab:tsc_ind_raw_results} one can see that the highest performing method in terms of DOR
@@ -25,8 +38,8 @@
     * One can also note that the highest performing method in terms of DOR that uses a view other than only 2CH is \textit{rls/all-views/normalized/weighted/2}
       which achieves a DOR of 25.56.
     * The TSC methods that achieve the highest DOR scores all use no preprocessing, or scaling. 
-[0] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
-[0] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
+[X] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
+[X] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
     * From table \ref{tab:tsc_ind_dor_sens_spec_dist} one can see that the TSC methods that acheive the highest DOR scores are \textit{gls/2CH/regular/centroid/2}, 
       and \textit{gls/2CH/scaled/centroid/2} which are the same two methods that achieve the highest DORs in the heart failure case study.
 \textbf{IF NOT CLUSTERING METHOD}
@@ -72,14 +85,37 @@
     \label{tab:tsc_ind_ari}
 \end{table*}
 
+The majority of the ARI scorer for all the TSC methods evaluated at two to nine cluster centers are centered around zero.
+As with the TSC methods attaining the highest DORs the methods using no preprocessing or scaling acheive the highest ARI indices when used to identify patient diagnoses.
+In addition, the GLS curves are also most often part of the dataset for the TSC methods receiving the highest ARI when used to identify patient diagnoses.
+From table \ref{tab:tsc_ind_ari} one can see that the TSC methods receiving the five highest ARI scores, are not among the TSC methods that receive the highest DOR scores. 
+The TSC method \textit{gls-rls/4CH/regular/complete/2} attains the highest ARI score when applied to identify patient diagnoses, and achieves an 
+accuracy of $0.84$, a sensitivity of $0.87$ a specificity of $0.69$ and a DOR $14.65$. 
+The TSC method \textit{gls/all-views/regular/weighted/2} achieves the second highest ARI when applied to identify patient diagnoses, and achieves an
+accuracy of $0.82$, a sensitivity of $0.81$ a specificity of $0.83$ and a DOR $21.06$. 
+What should also be noted is that the TSC methods achieving the two highest ARIs when applied to identify patient diagnoses are methods evaluated at two cluster centers,
+which means that none of the TSC methods evaluated at cluster centers between three and nine can perform better than the ones evaluated at two cluster centers.
+It may seem strange that the ordered lists of DORs, and ARIs are so different. 
+The reason for this is not because DOR inherently values sensitivity higher than specificity, but stems from how the DOR is defined. 
+Recall that $\mathrm{DOR = ( TP \times TN )/ (FP \times FN)}$, since the patient diagnoses dataset is skewed in favour of positives TP has the potential of being as high as 170 
+while TN can be as high as 30. 
+Therefore the DOR will be higher for methods with a high sensitivity than for methods with an equally high sensitivity.
+In figure \ref{fig:five_members_gls_rls_4CH_regular_complete_two} curves of five random cluster members assigned by the \textit{gls/all-views/regular/weighted/2} method are plotted.
+As with the observations made with regard to figure \ref{fig:tsc_hf_best_meth_5_samples} it is not possible to make any conclusive statements as to what the similarities are
+based on such a small sample size.
+However, based on the small sample size in \ref{fig:five_members_gls_rls_4CH_regular_complete_two} it seems as though the curves in cluster 2 (column (b)) are smoother in shape,
+than the curves in cluster 1 (column (a)).
+The TSC method that is chosen as the best method for identifying patient diagnoses is \textit{gls/all-views/regular/weighted/2}, because it achieves the second highest ARI, and
+because it's sensitivity and specificity are more balanced than the method attaining the highest ARI and the methods that achieve higher DORs.
+
 \begin{comment}
 \textbf{ARI PARAGRAPH. ONLY FOR CLUSTERING METHODS}.
-[0] \textbf{Comment on the spread of ARI scores. Be specific since the distribution plots are ommitted}
+[X] \textbf{Comment on the spread of ARI scores. Be specific since the distribution plots are ommitted}
     * The majority of the ARI scorer for all the TSC methods evaluated at two to nine cluster centers are centered around zero.
-[0] \textbf{Comment on the general trends of high performing methods in terms of ARI - are they the same trends as scores performing high in terms of DOR?}
+[X] \textbf{Comment on the general trends of high performing methods in terms of ARI - are they the same trends as scores performing high in terms of DOR?}
     * As with the TSC methods attaining the highest DORs the methods using no preprocessing or scaling acheive the highest ARI indices when used to identify patient diagnoses.
     * In addition, the GLS curves are also most often part of the dataset for the TSC methods receiving the highest ARI when used to identify patient diagnoses.
-[0] \textbf{Comment on whether the methods in the top 5 ARIs are the same methods with the highest DOR. If not, mention it.}
+[X] \textbf{Comment on whether the methods in the top 5 ARIs are the same methods with the highest DOR. If not, mention it.}
     * From table \ref{tab:tsc_ind_ari} one can see that the TSC methods receiving the five highest ARI scores, are not among the TSC methods that receive the highest DOR scores. 
     * The TSC method \textit{gls-rls/4CH/regular/complete/2} attains the highest ARI score when applied to identify patient diagnoses, and achieves an 
       accuracy of $0.84$, a sensitivity of $0.87$ a specificity of $0.69$ and a DOR $14.65$. 
@@ -88,17 +124,21 @@
     * What should also be noted is that the TSC methods achieving the two highest ARIs when applied to identify patient diagnoses are methods evaluated at two cluster centers,
       which means that none of the TSC methods evaluated at cluster centers between three and nine can perform better than the ones evaluated at two cluster centers.
 [NA] \textbf{If the top 1 or 2 ARIs are also top in DOR no further discussion is needed. You can then plot some of the cluster realizations to see what they look like.}
-[ ] \textbf{If NOT, why do they differ? Is the method with the highest ARI evaluated at a higher cluster number that 2? Attempt to visualize it, if it is not too difficult.}
+[X] \textbf{If NOT, why do they differ? Is the method with the highest ARI evaluated at a higher cluster number that 2? Attempt to visualize it, if it is not too difficult.}
     * It may seem strange that the ordered lists of DORs, and ARIs are so different. 
     * The reason for this is not because DOR inherently values sensitivity higher than specificity, but stems from how the DOR is defined. 
     * Recall that $\mathrm{DOR = ( TP \times TN )/ (FP \times FN)}$, since the patient diagnoses dataset is skewed in favour of positives TP has the potential of being as high as 170 
       while TN can be as high as 30. 
     * Therefore the DOR will be higher for methods with a high sensitivity than for methods with an equally high sensitivity.
-[ ] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, DOR, ARI and potentially the plots, and make an informed choice.}
+[X] \textbf{Plot some visualizations of the clustering, and comment on them.}
+    * In figure \ref{fig:five_members_gls_rls_4CH_regular_complete_two} curves of five random cluster members assigned by the \textit{gls/all-views/regular/weighted/2} method are plotted.
+    * As with the observations made with regard to figure \ref{fig:tsc_hf_best_meth_5_samples} it is not possible to make any conclusive statements as to what the similarities are
+      based on such a small sample size.
+    * However, based on the small sample size in \ref{fig:five_members_gls_rls_4CH_regular_complete_two} it seems as though the curves in cluster 2 (column (b)) are smoother in shape,
+      than the curves in cluster 1 (column (a)).
+[X] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, DOR, ARI and potentially the plots, and make an informed choice.}
     * The TSC method that is chosen as the best method for identifying patient diagnoses is \textit{gls/all-views/regular/weighted/2}, because it achieves the second highest ARI, and
       because it's sensitivity and specificity are more balanced than the method attaining the highest ARI and the methods that achieve higher DORs.
-[ ] \textbf{Plot some visualizations of the clustering, and comment on them.}
-    * 
 \end{comment}
 
 \clearpage
@@ -106,7 +146,7 @@
 \begin{figure}[ht]
     \centering
     \input{results/pd/five_members_gls_all_views_regular_weighted_two.pgf}
-    \caption{Here the curves of five random cluster members assigned by the \textit{gls/all-views/regular/weighted/2} method.
+    \caption{Here the curves of five random cluster members assigned by the \textit{gls/all-views/regular/weighted/2} method are plotted.
              Each row represents one of the seven possible strain curves in the 4CH view. Coloumn (a) and (b) represent cluster 1 and 2 respectively.
              To make it easier to visually separate the curves, only five random members from cluster 1 and 2 are included in the figure.}
     \label{fig:five_members_gls_rls_4CH_regular_complete_two}
@@ -120,21 +160,30 @@
     \centering
     % \includegraphics[width=\textwidth]{results/pvc_ind_dor_sens_spec_dist.png}
     \input{results/pd/pvc_ind_dor_sens_spec_dist.pgf}
-    \caption{Distribution of DOR, sensitivity and specificity for the different PVC methods when classifying patient diagnosis.}
+    \caption{(a) Distribution plot of DOR of all PVC methods evaluated at two cluster centers when applied to classify patient diagnosis.
+             (b) Scatter plot of the same methods sensitivity, and specificity.}
     \label{fig:pvc_ind_dor_sens_spec_dist}
 \end{figure}
 
+From the distribution plot in figure \ref{fig:pvc_ind_dor_sens_spec_dist}a one can see that the majority of the PVC methods get DORs close to zero,
+but there are a few methods that attain DORs above 30, and close to 40. 
+From the scatter plot in \ref{fig:pvc_ind_dor_sens_spec_dist}b one can see that almost all the sensitivity scores are above $0.5$, while the specificity scores are concentrated
+in the areas $0$ to $0.25$ and $0.95$.
+As with the heart failure case study the PVC methods that perform high in terms of DOR use a dataset that is a combination of peak systolic strain values and EF.
+From table \ref{tab:pvc_ind_dor_sens_spec_dist} one can see that \textit{gls-EF/ward/2} and \textit{rls-EF/complete/2} are the two top performers in terms of DOR. 
+\textit{gls-EF/ward/2} achieves a slightly higher specificity score, where as \textit{rls-EF/complete/2} attains a slightly higher specificity score.
+
 \begin{comment}
-[ ] \textbf{Comment on spread of DOR.}
+[X] \textbf{Comment on spread of DOR.}
     * From the distribution plot in figure \ref{fig:pvc_ind_dor_sens_spec_dist}a one can see that the majority of the PVC methods get DORs close to zero,
       but there are a few methods that attain DORs above 30, and close to 40. 
-[ ] \textbf{Comment on spread of sensitivity and specificity.}
-    * From the scatterplot in \ref{fig:pvc_ind_dor_sens_spec_dist}b one can see that almost all the sensitivity scores are above $0.5$, while the specificity scores are concentrated
+[X] \textbf{Comment on spread of sensitivity and specificity.}
+    * From the scatter plot in \ref{fig:pvc_ind_dor_sens_spec_dist}b one can see that almost all the sensitivity scores are above $0.5$, while the specificity scores are concentrated
       in the areas $0$ to $0.25$ and $0.95$.
-[ ] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
+[X] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
     * As with the heart failure case study the PVC methods that perform high in terms of DOR use a dataset that is a combination of peak systolic strain values and EF.
-[ ] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
-[ ] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
+[X] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
+[X] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
     * From table \ref{tab:pvc_ind_dor_sens_spec_dist} one can see that \textit{gls-EF/ward/2} and \textit{rls-EF/complete/2} are the two top performers in terms of DOR. 
     * \textit{gls-EF/ward/2} achieves a slightly higher specificity score, where as \textit{rls-EF/complete/2} attains a slightly higher specificity score.
 \textbf{IF NOT CLUSTERING METHOD}
@@ -179,48 +228,100 @@
     \label{tab:pvc_ind_ari}
 \end{table*}
 
+The majority of the ARI scores of PVC methods applied to identify patient diagnoses are centered around zero, but as one can see from table \ref{tab:pvc_ind_ari}
+there are a few methods that acieve an ARI above $0.2$ close to $0.3$.
+For a change, the PVC methods that perform best in terms of ARI, are neither methods evaluated at two cluster centers, or methods that are applied on a combination
+of peak systolic strain values and EF.
+In contrast to the heart failure case study, the PVC methods that achieve the highest ARIs, when applied to identify patient diagnoses, are not the same methods that achieve the 
+highest DORs.
+The two PVC methods that achieve the highest ARIs are the \textit{gls/average} method evaluated at 6 and 7 cluster centers respectively. 
+To get a better idea of why \textit{gls/average/6} and \textit{gls/average/7} attain the ARIs they do, scatter plots of these two methods, and \textit{gls-EF/ward/2}
+have been given in figure \ref{fig:scatter_gls_ef_hf_cluster_assignments}. A scatter plot of the target variable patient diagnosis is also given for comparison.
+The dimensions used are peak systolic GLS in all three views as these are the dimensions that are common to all three methods.
+From the scatter plot in plot \ref{fig:scatter_gls_pd} one can see that the healthy patients are in the minority, and are concentrated in the corner 
+with low peak systolic GLS values in the 4CH, 2CH and APLAX views. 
+There are also some healthy patients with low-medium peak systolic GLS values, and very few healthy patients with high peak systolic GLS values.
+From plot \ref{fig:scatter_gls_ef_ward2_ind} one can see that \textit{gls-EF/ward/2} is able to isolate the concentration of healthy patients with low peak systolic GLS, 
+but at the cost of many FNs.
+* In plot \ref{fig:scatter_gls_average6} and \ref{fig:scatter_gls_average7} one can see that cluster 1 of method \textit{gls/average/6}, 
+and cluster 2 of method \textit{gls/average/7} capture the healthy patients with low peak systolic GLS, but are unable of capturing the healthy patients with
+medium to high values.
+If one combines clusters 1 and 5 of \textit{gls/average/6}, and lets them represent healthy patients, and let the remaining clusters represent unhealthy patients the method attains 
+an accuracy of $0.74$, a sensitivity of $0.70$, a specificity of $0.94$ and a DOR of $34.90$.
+If one combines clusters 2 and 5 of \textit{gls/average/7}, and lets them represent healthy patients, and let the remaining clusters represent unhealthy patients this method attains 
+an accuracy of $0.74$, a sensitivity of $0.70$, a specificity of $0.94$ and a DOR of $35.94$.
+While the performance of the revised \textit{gls/average/6} and \textit{gls/average/6} methods are good, 
+they are still not as good as the performance of the top three performers in terms of DOR, which attain higher accuracy, sensitivity and DORs.
+Therefore, \textit{rls-EF/complete/2} is chosen as the best of the PVC methods at identifying patient diagnosis, as it achieves the second highest DOR, 
+and a more balanced sensitivity/specificity than \textit{gls-EF/ward/2} that attains the highest DOR score.
+
+\begin{comment}
+\textbf{ARI PARAGRAPH. ONLY FOR CLUSTERING METHODS}.
+[X] \textbf{Comment on the spread of ARI scores. Be specific since the distribution plots are ommitted}
+    * The majority of the ARI scores of PVC methods applied to identify patient diagnoses are centered around zero, but as one can see from table \ref{tab:pvc_ind_ari}
+      there are a few methods that acieve an ARI above $0.2$ close to $0.3$.
+[X] \textbf{Comment on the general trends of high performing methods in terms of ARI - are they the same trends as scores performing high in terms of DOR?}
+    * For a change, the PVC methods that perform best in terms of ARI, are neither methods evaluated at two cluster centers, or methods that are applied on a combination
+      of peak systolic strain values and EF.
+[X] \textbf{Comment on whether the methods in the top 5 ARIs are the same methods with the highest DOR. If not, mention it.}
+    * In contrast to the heart failure case study, the PVC methods that achieve the highest ARIs, when applied to identify patient diagnoses, are not the same methods that achieve the 
+      highest DORs.
+    * The two PVC methods that achieve the highest ARIs are the \textit{gls/average} method evaluated at 6 and 7 cluster centers respectively. 
+[NA] \textbf{If the top 1 or 2 ARIs are also top in DOR no further discussion is needed. You can then plot some of the cluster realizations to see what they look like.}
+[X] \textbf{Plot some visualizations of the clustering, and comment on them.}
+    * To get a better idea of why \textit{gls/average/6} and \textit{gls/average/7} attain the ARIs they do, scatter plots of these two methods, and \textit{gls-EF/ward/2}
+      have been given in figure \ref{fig:scatter_gls_ef_hf_cluster_assignments}. A scatter plot of the target variable patient diagnosis is also given for comparison.
+      The dimensions used are peak systolic GLS in all three views as these are the dimensions that are common to all three methods.
+    * From the scatter plot in plot \ref{fig:scatter_gls_pd} one can see that the healthy patients are in the minority, and are concentrated in the corner 
+      with low peak systolic GLS values in the 4CH, 2CH and APLAX views. 
+    * There are also some healthy patients with low-medium peak systolic GLS values, and very few healthy patients with high peak systolic GLS values.
+    * From plot \ref{fig:scatter_gls_ef_ward2_ind} one can see that \textit{gls-EF/ward/2} is able to isolate the concentration of healthy patients with low peak systolic GLS, 
+      but at the cost of many FNs.
+      * In plot \ref{fig:scatter_gls_average6} and \ref{fig:scatter_gls_average7} one can see that cluster 1 of method \textit{gls/average/6}, 
+      and cluster 2 of method \textit{gls/average/7} capture the healthy patients with low peak systolic GLS, but are unable of capturing the healthy patients with
+      medium to high values.
+    * If one combines clusters 1 and 5 of \textit{gls/average/6}, and lets them represent healthy patients, and let the remaining clusters represent unhealthy patients the method attains 
+      an accuracy of $0.74$, a sensitivity of $0.70$, a specificity of $0.94$ and a DOR of $34.90$.
+    * If one combines clusters 2 and 5 of \textit{gls/average/7}, and lets them represent healthy patients, and let the remaining clusters represent unhealthy patients this method attains 
+      an accuracy of $0.74$, a sensitivity of $0.70$, a specificity of $0.94$ and a DOR of $35.94$.
+[X] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, DOR, ARI and potentially the plots, and make an informed choice.}
+    * While the performance of the revised \textit{gls/average/6} and \textit{gls/average/6} methods are good, 
+      they are still not as good as the performance of the top three performers in terms of DOR, which attain higher accuracy, sensitivity and DORs.
+      * Therefore, \textit{rls-EF/complete/2} is chosen as the best of the PVC methods at identifying patient diagnosis, as it achieves the second highest DOR, 
+      and a more balanced sensitivity/specificity than \textit{gls-EF/ward/2} that attains the highest DOR score.
+\end{comment}
+
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=0.99\textwidth]{results/pd/scatter_gls_indication_bin.png}
-        \caption{Patient Diagnosis.}
-        \label{fig:scatter_gls_ef_hf}
+        \caption{Patient Diagnosis. \textbf{H} stands for \textbf{Healthy}, and \textbf{U} stands for \textbf{Unhealthy}}
+        \label{fig:scatter_gls_pd}
     \end{subfigure}
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=0.99\textwidth]{results/pd/scatter_gls_EF_ward2.png}
         \caption{\textit{GLS-EF Ward/2} cluster assignments.}
-        \label{fig:scatter_gls_ef_ward2}
+        \label{fig:scatter_gls_ef_ward2_ind}
     \end{subfigure}\\
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=0.99\textwidth]{results/pd/scatter_gls_average6.png}
         \caption{\textit{GLS Average/6} cluster assignments.}
-        \label{fig:scatter_gls_ef_complete2}
+        \label{fig:scatter_gls_average6}
     \end{subfigure}
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=0.99\textwidth]{results/pd/scatter_gls_average7.png}
         \caption{\textit{GLS Average/7} cluster assignments.}
-        \label{fig:scatter_gls_ef_average2}
+        \label{fig:scatter_gls_average7}
     \end{subfigure}
     \caption{Scatterplot of peak GLS values in each view. Colors in the of the different dots are given by heart failure diagnosis, and cluster assignments of 
              \textit{gls-EF/ward/2}, \textit{average/6} and \textit{average/7} methods. Numbers are not included on the axes because the point of the figure is to illustrate the separability 
              of clusters, and patient diagnosis.}
-             \label{fig:scatter_gls_ef_hf_cluster_assignments}
+             \label{fig:scatter_gls_ind_cluster_assignments}
 \end{figure}
-
-\begin{comment}
-\textbf{ARI PARAGRAPH. ONLY FOR CLUSTERING METHODS}.
-[ ] \textbf{Comment on the spread of ARI scores. Be specific since the distribution plots are ommitted}
-[ ] \textbf{Comment on the general trends of high performing methods in terms of ARI - are they the same trends as scores performing high in terms of DOR?}
-[ ] \textbf{Comment on whether the methods in the top 5 ARIs are the same methods with the highest DOR. If not, mention it.}
-[ ] \textbf{If the top 1 or 2 ARIs are also top in DOR no further discussion is needed. You can then plot some of the cluster realizations to see what they look like.}
-[ ] \textbf{If NOT, why do they differ? Is the method with the highest ARI evaluated at a higher cluster number that 2? Attempt to visualize it, if it is not too difficult.}
-[ ] \textbf{Plot some visualizations of the clustering, and comment on them.}
-[ ] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, DOR, ARI and potentially the plots, and make an informed choice.}
-\end{comment}
 
 \newpage
 
@@ -228,9 +329,9 @@
 
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=\textwidth]{results/dl_ind_dor_sens_spec_dist.png}
     \input{results/pd/dl_ind_dor_sens_spec_dist.pgf}
-    \caption{Distribution of DOR, sensitivity and specificity for the NN-variations trained to predict patient diagnosis.}
+    \caption{(a) Distribution plot of DOR of all NN models when trained to classify patient diagnosis.
+             (b) Scatter plot of the same methods sensitivity, and specificity.}
     \label{fig:dl_ind_dor_sens_spec_dist}
 \end{figure}
 
@@ -241,11 +342,11 @@
         \toprule
         Dataset-Model              &  Accuracy &  Sensitivity &  Specificity &  DOR \\
         \midrule
+        all-strain/4CH/upsampled   &      0.83 &         0.99 &         0.00 & 0.00 \\
+        all-strain/2CH/regular     &      0.85 &         1.00 &         0.00 &  NaN \\
         gls/2CH/regular            &      0.85 &         1.00 &         0.00 &  NaN \\
         rls/2CH/regular            &      0.85 &         1.00 &         0.00 &  NaN \\
-        all-strain/2CH/regular     &      0.85 &         1.00 &         0.00 &  NaN \\
         all-strain/2CH/downsampled &      0.85 &         1.00 &         0.00 &  NaN \\
-        all-strain/2CH/upsampled   &      0.85 &         1.00 &         0.00 &  NaN \\
         \bottomrule
     \end{tabular}
     \caption{The accuracy, DOR, sensitivity and specicity scores of the five best performing variations of the NN in terms of DOR, when trained to predict patient diagnoses.
@@ -253,14 +354,27 @@
     \label{tab:dl_hf_dor_sens_spec_dist}
 \end{table*}
 
+From the distribution plot in figure \ref{fig:dl_ind_dor_sens_spec_dist} one can see that the collective performance of the different variations of the NN trained to predict patient diagnosis
+is terrible.
+The DOR of all the methods are either zero because the number of TNs attained are zero, or not defined because the number of FNs are zero. 
+The sensitivities are all 1, or close to 1, and the specificities are all 0. 
+It is evident that the NNs are not able to generalize the traits of the healthy patients from such a small dataset. 
+The NN models are will therefore not be discussed further with relation to prediction of patient diagnosis, and are not included in the comparison of the four model groups.
+
 \begin{comment}
-[ ] \textbf{Comment on spread of DOR.}
-[ ] \textbf{Comment on spread of sensitivity and specificity.}
-[ ] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
-[ ] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
-[ ] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
+[X] \textbf{Comment on spread of DOR.}
+    * From the distribution plot in figure \ref{fig:dl_ind_dor_sens_spec_dist} one can see that the collective performance of the different variations of the NN trained to predict patient diagnosis
+      is terrible.
+    * The DOR of all the methods are either zero because the number of TNs attained are zero, or not defined because the number of FNs are zero. 
+[X] \textbf{Comment on spread of sensitivity and specificity.}
+    * The sensitivities are all 1, or close to 1, and the specificities are all 0. 
+    * It is evident that the NNs are not able to generalize the traits of the healthy patients from such a small dataset. 
+    * The NN models are will therefore not be discussed further with relation to prediction of patient diagnosis, and are not included in the comparison of the four model groups.
+[X] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
+[X] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
+[X] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
 \textbf{IF NOT CLUSTERING METHOD}
-[ ] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
+[X] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
 \end{comment}
 
 \newpage
@@ -271,7 +385,8 @@
     \centering
     % \includegraphics[width=\textwidth]{results/pvmlc_ind_dor_sens_spec_dist.png}
     \input{results/pd/pvmlc_ind_dor_sens_spec_dist.pgf}
-    \caption{Distribution of DOR, sensitivity and specificity for the different peak-value classifiers trained to predict patient diagnosis.}
+    \caption{(a) Distribution plot of DOR of all PVSC models when trained to classify patient diagnosis.
+             (b) Scatter plot of the same methods sensitivity, and specificity.}
     \label{fig:pvmlc_ind_dor_sens_spec_dist}
 \end{figure}
 
@@ -280,7 +395,7 @@
     \ra{1.3}
     \begin{tabular}{lrrrr}
         \toprule
-        Dataset-Model              &  Accuracy &  Sensitivity &  Specificity &  DOR \\
+        Dataset-Model          &  Accuracy &  Sensitivity &  Specificity &  DOR \\
         \midrule
         gls-rls-EF/Ada-Boost   &      0.95 &         0.97 &         0.79 & 138.42 \\
         gls-rls/KNN            &      0.93 &         0.95 &         0.82 &  84.53 \\
@@ -291,22 +406,71 @@
     \end{tabular}
     \caption{The accuracy, DOR, sensitivity and specicity scores of the five best performing PVSC models in terms of DOR, when trained to predict patient diagnosis.
              The \textbf{Dataset-Model} column indicates \textit{Dataset used}$/$\textit{Specific machine learning model used}.}
-    \label{tab:dl_hf_dor_sens_spec_dist}
+    \label{tab:pvsc_hf_dor_sens_spec_dist}
 \end{table*}
 
+From the distribution plot in figure \ref{fig:pvsc_hf_dor_sens_spec_dist} one can see that the majority of the DOR scores are close to zero, but there are couple of methods that attain DORs 
+close to 100, and one method that attains a DOR close to 150.
+From the scatter plot in figure \ref{fig:pvsc_hf_dor_sens_spec_dist} one can see that the sensitivity ranges from $0.75$ to 1, and the specificity ranges from 
+close to zero to approximately $0.95$. 
+Among the top five PVSC models in terms of DOR are many different combinations of models, and datasets. 
+Three of the five highest DOR scores are attained by Extra-Trees models, and the top two scores are attained by KNN and Ada Boost classifiers. 
+\textit{gls-rls-EF/Ada-Boost} and \textit{gls-rls/KNN} are the two top PVSC performers with regard to DOR.
+\textit{gls-rls-EF/Ada-Boost} achieves the highest sensitivity of the two by two points, and \textit{gls-rls/KNN} achieves the highest specificity of the two by three points.
+Since sensitivity and specificity is weighted equally in this study \textit{gls-rls/KNN} is chosen as the best of the PVSC models trained to identify patient diagnoses.
+
 \begin{comment}
-[ ] \textbf{Comment on spread of DOR.}
-[ ] \textbf{Comment on spread of sensitivity and specificity.}
-[ ] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
-[ ] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
-[ ] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
+[X] \textbf{Comment on spread of DOR.}
+    * From the distribution plot in figure \ref{fig:pvsc_hf_dor_sens_spec_dist} one can see that the majority of the DOR scores are close to zero, but there are couple of methods that attain DORs 
+      close to 100, and one method that attains a DOR close to 150.
+[X] \textbf{Comment on spread of sensitivity and specificity.}
+    * From the scatter plot in figure \ref{fig:pvsc_hf_dor_sens_spec_dist} one can see that the sensitivity ranges from $0.75$ to 1, and the specificity ranges from 
+      close to zero to approximately $0.95$. 
+[X] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
+    * Among the top five PVSC models in terms of DOR are many different combinations of models, and datasets. 
+    * Three of the five highest DOR scores are attained by Extra-Trees models, and the top two scores are attained by KNN and Ada Boost classifiers. 
+[X] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
+[X] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
+    * \textit{gls-rls-EF/Ada-Boost} and \textit{gls-rls/KNN} are the two top PVSC performers with regard to DOR.
+    * \textit{gls-rls-EF/Ada-Boost} achieves the highest sensitivity of the two by two points, and \textit{gls-rls/KNN} achieves the highest specificity of the two by three points.
 \textbf{IF NOT CLUSTERING METHOD}
-[ ] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
+[X] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
+    * Since sensitivity and specificity is weighted equally in this study \textit{gls-rls/KNN} is chosen as the best of the PVSC models trained to identify patient diagnoses.
 \end{comment}
 
 \newpage
 
 \subsection{Comparisons}
+
+\begin{table*}
+    \centering
+    \ra{1.3}
+    \begin{tabular}{lcccc}
+        \toprule
+        Dataset-Model                                 &  Accuracy &  Sensitivity &  Specificity &  DOR \\
+        \midrule
+        \textbf{TSC}-gls/all-views/regular/weighted/2 &      0.82 &         0.81 &         0.83 & 21.06 \\
+        \textbf{PVC}-rls-EF/complete/2                &      0.77 &         0.74 &         0.93 & 37.61 \\
+        \textbf{PVSC}-gls-rls/KNN                     &      0.93 &         0.95 &         0.82 &  84.53 \\
+        \midrule
+        Dataset-Model                                 &  TP &  TN &  FP &  FN \\
+        \midrule
+        \textbf{TSC}-gls/all-views/regular/weighted/2 & 136 &  24 &   5 &  31 \\
+        \textbf{PVC}-rls-EF/complete/2                & 117 &  27 &   2 &  42 \\
+        \textbf{PVSC}-gls-rls/KNN                     & 147 &  23 &  5  &   4 \\
+        \bottomrule
+    \end{tabular}
+    \caption{A table comparing the best contenders within each model group for predicting patient diagnoses. 
+             The top table comprare the models by their accuracy, sensitivity, specificity and DOR, 
+             and the bottom table shows the number of TPs, TNs, FPs and FNs that the different models attain on their respective datasets.}
+    \label{tab:pd_compare}
+\end{table*}
+
+\begin{comment}
+    [ ] \textbf{How big is the difference in performance between the models?}
+    [ ] \textbf{}
+    [ ] \textbf{}
+\end{comment}
 
 \newpage
 

@@ -29,12 +29,45 @@
     \label{tab:tsc_segm_ind_dor_sens_spec_dist}
 \end{table*}
 
+From the distribution plot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}a one can see that the majority of the DORs are close to zero, 
+but a few methods are able to achieve DORs above 12, and some methods attain a DOR close to 15 when applied to identify segment indication.
+From the scatterplot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}b one can see that the sensitivity of the TSC methods range from $0.25$ to 1, 
+and the specificity of the TSC methods range from 0 to approximately 1. 
+The spread in both sensitivity and specificity is quite large, and there are very few methods that are 
+able to a attain a high sensitivity while at the same time attaining a high specificity, and vice versa. 
+Common to the high performing TSC methods in terms of DOR is that they all use either no preprocessing at all, or scaling.
+\textit{z-norm/complete/2} is the seventh best TSC method in terms of DOR, and attains a DOR of 5.92 when applied to identify segment indication. 
+\textit{norm/ward/2} is the ninth best methods in terms of DOR, and attains a DOR of 1.56, when applied to identify segment indication.
+This can be comfirmed from table \ref{tab:tsc_segm_ind_raw_results}
+The two TSC methods attaining the highest DORs \textit{regular/weighted/2}, and \textit{scaled/weighted/2} differ only in type of preprocessing used.
+From table \ref{tab:tsc_segm_ind_dor_sens_spec_dist} one can see that the two methods attain the same scores in all metrics,
+this is because they yield the exact same cluster assignments to the individual segment strain curves.
+The same goes for the next two TSC methods in line \textit{regular/ward/2} \textit{scaled/ward/2}, these two methods are also the methods that attain the highest accarcy of all the TSC methods.
+Of the two TSC methods \textit{regular/weighted/2}, and \textit{regular/ward/2} the latter is preferred for predicting segment indication because \textit{regular/ward/2} has a more persistent
+performance in both sensitivity and specificity, where as \textit{regular/weighted/2} has a high specificity, but a very low sensitivity.
+
 \begin{comment}
-[ ] \textbf{Comment on spread of DOR.}
-[ ] \textbf{Comment on spread of sensitivity and specificity.}
-[ ] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
-[ ] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
-[ ] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
+[0] \textbf{Comment on spread of DOR.}
+    * From the distribution plot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}a one can see that the majority of the DORs are close to zero, 
+      but a few methods are able to achieve DORs above 12, and some methods attain a DOR close to 15 when applied to identify segment indication.
+[0] \textbf{Comment on spread of sensitivity and specificity.}
+    * From the scatterplot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}b one can see that the sensitivity of the TSC methods range from $0.25$ to 1, 
+      and the specificity of the TSC methods range from 0 to approximately 1. 
+    * The spread in both sensitivity and specificity is quite large, and there are very few methods that are 
+      able to a attain a high sensitivity while at the same time attaining a high specificity, and vice versa. 
+[0] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
+    * Common to the high performing TSC methods in terms of DOR is that they all use either no preprocessing at all, or scaling.
+[0] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
+    * \textit{z-norm/complete/2} is the seventh best TSC method in terms of DOR, and attains a DOR of 5.92 when applied to identify segment indication. 
+    * \textit{norm/ward/2} is the ninth best methods in terms of DOR, and attains a DOR of 1.56, when applied to identify segment indication.
+    * This can be comfirmed from table \ref{tab:tsc_segm_ind_raw_results}
+[0] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
+    * The two TSC methods attaining the highest DORs \textit{regular/weighted/2}, and \textit{scaled/weighted/2} differ only in type of preprocessing used.
+    * From table \ref{tab:tsc_segm_ind_dor_sens_spec_dist} one can see that the two methods attain the same scores in all metrics,
+      this is because they yield the exact same cluster assignments to the individual segment strain curves.
+    * The same goes for the next two TSC methods in line \textit{regular/ward/2} \textit{scaled/ward/2}, these two methods are also the methods that attain the highest accarcy of all the TSC methods.
+    * Of the two TSC methods \textit{regular/weighted/2}, and \textit{regular/ward/2} the latter is preferred for predicting segment indication because \textit{regular/ward/2} has a more persistent
+      performance in both sensitivity and specificity, where as \textit{regular/weighted/2} has a high specificity, but a very low sensitivity.
 \textbf{IF NOT CLUSTERING METHOD}
 [ ] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
 \end{comment}
@@ -46,27 +79,42 @@
         \toprule
         Dataset-Method     &  ARI \\
         \midrule
-        scaled/centroid/5  & 0.26 \\
-        regular/centroid/5 & 0.26 \\
-        regular/ward/2     & 0.26 \\
-        scaled/ward/2      & 0.26 \\
-        scaled/centroid/6  & 0.25 \\
+        scaled/centroid/5  & 0.262 \\
+        regular/centroid/5 & 0.262 \\
+        regular/ward/2     & 0.260 \\
+        scaled/ward/2      & 0.260 \\
+        scaled/centroid/6  & 0.251 \\
         \bottomrule
     \end{tabular}
     \caption{The five highest ARI scores attained when applying TSC for detecting segmend indication.
              The \textbf{Dataset-Method} column indicates \textit{Type of preprocessing used}$/$\textit{Linkage criteria of method}$/$\textit{Number of cluster centers}.}
-    \label{tab:pvc_ind_ari}
+    \label{tab:tsc_segm_ind_ari}
 \end{table*}
+
+The majority of the ARIs of TSC methods applied to identify segment indication, but as one can see from table \ref{tab:tsc_segm_ind_ari} some methods are able to attain ARIs above 25.
+As with the other case studies, the TSC methods that attain the highest ARIs are methods that use either no preprocessing at all or scaling. 
+Puzzlingly enough the top two TSC methods for classifying segment indication in terms of ARI, are methods evaluated at five cluster centers, not two. 
+TSC methods \textit{scaled/centroid/5}, and \textit{regular/centroid/5} differ only in type of preprocessing used, and they yield the exact same cluster assignments, and evaluations scores.
+The next two methods in order of ARI \textit{regular/ward/2}, and \textit{scaled/ward/2} are familiar from the list of TSC methods attaining the highest DORs when applied to identify segment indication.
+From table \ref{tab:tsc_segm_ind_ari} one can also see that the difference in ARI between \textit{regular/centroid/5}, and \textit{regular/ward/2} is only 0.002
+Since the \textit{regular/ward/2} method will be considered the best of the TSC methods at classifying segment indication.
+It attains the third highest ARI of all the TSC methods applied to identify segment indication, and is the preferred method among the TSC methods evaluated at two cluster centers.
 
 \begin{comment}
 \textbf{ARI PARAGRAPH. ONLY FOR CLUSTERING METHODS}.
-[ ] \textbf{Comment on the spread of ARI scores. Be specific since the distribution plots are ommitted}
-[ ] \textbf{Comment on the general trends of high performing methods in terms of ARI - are they the same trends as scores performing high in terms of DOR?}
-[ ] \textbf{Comment on whether the methods in the top 5 ARIs are the same methods with the highest DOR. If not, mention it.}
-[ ] \textbf{If the top 1 or 2 ARIs are also top in DOR no further discussion is needed. You can then plot some of the cluster realizations to see what they look like.}
-[ ] \textbf{If NOT, why do they differ? Is the method with the highest ARI evaluated at a higher cluster number that 2? Attempt to visualize it, if it is not too difficult.}
-[ ] \textbf{Plot some visualizations of the clustering, and comment on them.}
-[ ] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, DOR, ARI and potentially the plots, and make an informed choice.}
+[0] \textbf{Comment on the spread of ARI scores. Be specific since the distribution plots are ommitted}
+    * The majority of the ARIs of TSC methods applied to identify segment indication, but as one can see from table \ref{tab:tsc_segm_ind_ari} some methods are able to attain ARIs above 25.
+[0] \textbf{Comment on the general trends of high performing methods in terms of ARI - are they the same trends as scores performing high in terms of DOR?}
+    * As with the other case studies, the TSC methods that attain the highest ARIs are methods that use either no preprocessing at all or scaling. 
+[0] \textbf{Comment on whether the methods in the top 5 ARIs are the same methods with the highest DOR. If not, mention it.}
+    * Puzzlingly enough the top two TSC methods for classifying segment indication in terms of ARI, are methods evaluated at five cluster centers, not two. 
+    * TSC methods \textit{scaled/centroid/5}, and \textit{regular/centroid/5} differ only in type of preprocessing used, and they yield the exact same cluster assignments, and evaluations scores.
+    * The next two methods in order of ARI \textit{regular/ward/2}, and \textit{scaled/ward/2} are familiar from the list of TSC methods attaining the highest DORs when applied to identify segment indication.
+    * From table \ref{tab:tsc_segm_ind_ari} one can also see that the difference in ARI between \textit{regular/centroid/5}, and \textit{regular/ward/2} is only 0.002
+[0] \textbf{Plot some visualizations of the clustering, and comment on them.}
+[0] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, DOR, ARI and potentially the plots, and make an informed choice.}
+    * Since the \textit{regular/ward/2} method will be considered the best of the TSC methods at classifying segment indication.
+    * It attains the third highest ARI of all the TSC methods applied to identify segment indication, and is the preferred method among the TSC methods evaluated at two cluster centers.
 \end{comment}
 
 \newpage
@@ -89,19 +137,52 @@
     \label{tab:NN_segm_ind_perf}
 \end{table*}
 
+Of the three variations of the NN model, the one that uses no resampling, and the one that downsamples all signals to the lowest sample rate achieve relatively similar DOR scores. 
+The variation that upsamples the sample rate of all the curves to the highest sample rate performs significantly worse than the other two in terms of DOR and sensitivity. 
+Of the three variations the model that uses downsampling is the preferred model of the three since its sensitivity and specificity are more balanced than the method that uses no resampling,
+and accuracy is higher than the method that uses upsampling.
+
 \begin{comment}
 [ ] \textbf{Comment on spread of DOR.}
+    * Of the three variations of the NN model, the one that uses no resampling, and the one that downsamples all signals to the lowest sample rate achieve relatively similar DOR scores. 
+    * The variation that upsamples the sample rate of all the curves to the highest sample rate performs significantly worse than the other two in terms of DOR and sensitivity. 
 [ ] \textbf{Comment on spread of sensitivity and specificity.}
 [ ] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
 [ ] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
 [ ] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
+    * Of the three variations the model that uses downsampling is the preferred model of the three since its sensitivity and specificity are more balanced than the method that uses no resampling,
+      and accuracy is higher than the method that uses upsampling.
 \textbf{IF NOT CLUSTERING METHOD}
 [ ] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
 \end{comment}
 
 \subsection{Comparisons}
 
+\begin{table*}
+    \centering
+    \ra{1.3}
+    \begin{tabular}{lcccc}
+        \toprule
+        Dataset-Model               & Accuracy & Sensitivity & Specificity & DOR \\
+        \midrule
+        \textbf{TSC}-regular/ward/2 &     0.76 &        0.64 &        0.88 & 13.15 \\
+        \textbf{NN}-downsampled     &     0.74 &        0.74 &        0.75 & 8.38 \\
+        \midrule
+        Dataset-Model               &  TP  &  TN  &  FP  &  FN \\
+        \midrule
+        \textbf{TSC}-regular/ward/2 & 1209 & 1491 &  204 &  672 \\
+        \textbf{NN}-downsampled     & 1255 & 1390 &  473 &  440 \\
+        \bottomrule
+    \end{tabular}
+    \caption{A table comparing the best contenders within each model group for predicting segment indication. 
+             The top table comprare the models by their accuracy, sensitivity, specificity and DOR, 
+             and the bottom table shows the number of TPs, TNs, FPs and FNs that the different models attain.}
+    \label{tab:segm_ind_compare}
+\end{table*}
+
 \begin{comment}
-    [ ] 
+    [ ] \textbf{How big is the difference in performance between the models?}
+    [ ] \textbf{}
+    [ ] \textbf{}
 \end{comment}
 

@@ -7,7 +7,7 @@
     % \includegraphics[width=\textwidth]{results/tsc_hf_dor_sens_spec_dist.png}
     \input{results/hf/tsc_hf_dor_sens_spec_dist.pgf}
     \caption{(a) Distribution plot of DOR of all TSC methods evaluated at two cluster centers when applied to classify heart failure.
-             (b) Scatter plot of the same methods sensitivity-, and specificity-scores.}
+             (b) Scatter plot of the same methods sensitivity, and specificity.}
     \label{fig:tsc_hf_dor_sens_spec_dist}
 \end{figure}
 
@@ -139,7 +139,7 @@ at identifying heart failure among patients. \textit{gls/2CH/regular/centroid/2}
     \centering
     \input{results/hf/pvc_hf_dor_sens_spec_dist.pgf}
     \caption{(a) Distribution plot of DOR of all PVC methods evaluated at two cluster centers when applied to classify heart failure.
-             (b) Scatter plot of the same methods sensitivity-, and specificity-scores.}
+             (b) Scatter plot of the same methods sensitivity, and specificity.}
     \label{fig:pvc_hf_dor_sens_spec_dist}
 \end{figure}
 
@@ -303,7 +303,7 @@ Since method \textit{complete/2} acheives the highest accuracy ($0.76$), highest
     % \includegraphics[width=\textwidth]{results/dl_hf_dor_sens_spec_dist.png}
     \input{results/hf/dl_hf_dor_sens_spec_dist.pgf}
     \caption{(a) Distribution plot of DOR of all NN models evaluated at two cluster centers when trained to predict heart failure.
-             (b) Scatter plot of the same models sensitivity-, and specificity-scores.}
+             (b) Scatter plot of the same models sensitivity, and specificity.}
     \label{fig:dl_hf_dor_sens_spec_dist}
 \end{figure}
 
@@ -363,7 +363,8 @@ The 11 highest DORs attained by NN models trained to classify heart failure are 
     \centering
     % \includegraphics[width=\textwidth]{results/pvmlc_hf_dor_sens_spec_dist.png}
     \input{results/hf/pvmlc_hf_dor_sens_spec_dist.pgf}
-    \caption{Distribution of DOR, sensitivity and specificity for the different peak-value classifiers trained to predict heart failure.}
+    \caption{(a) Distribution plot of DOR of all PVSC models evaluated at two cluster centers when trained to predict heart failure.
+             (b) Scatter plot of the same models sensitivity, and specificity.}
     \label{fig:pvmlc_hf_dor_sens_spec_dis}
 \end{figure}
 
@@ -426,24 +427,55 @@ is chosen as the PVSC model that performs best at predicting heart failure as it
 \begin{table*}
     \centering
     \ra{1.3}
-    \begin{tabular}{lrrrrr}
+    \begin{tabular}{lcccc}
         \toprule
-        Dataset-Model                            &  TP &  TN &  FP &  FN &  DOR \\
+        Dataset-Model                           &  Accuracy &  Sensitivity &  Specificity &  DOR \\
         \midrule
-        \textbf{TSC}-gls/2CH/regular/centroid/2  &  86 &  62 &  35 &  13 & 11.72 \\
-        \textbf{PVC}-gls-EF/complete/2           &  77 &  72 &  28 &  18 & 10.85 \\
-        \textbf{NN}-gls/4CH/upsampled            &  46 &  61 &  39 &  53 & 1.36 \\
-        \textbf{PVSC}-gls-EF/Gaussian-Process    &  74 &  72 &  27 &  21 & 9.40 \\
+        \textbf{TSC}-gls/2CH/regular/centroid/2 &      0.76 &         0.87 &         0.64 & 11.72 \\
+        \textbf{PVC}-gls-EF/complete/2          &      0.76 &         0.81 &         0.72 & 10.85 \\
+        \textbf{NN}-gls/4CH/upsampled           &      0.54 &         0.46 &         0.61 & 1.36 \\
+        \textbf{PVSC}-gls-EF/Gaussian-Process   &      0.75 &         0.78 &         0.73 & 9.40 \\
+        \midrule
+        Dataset-Model                           &  TP &  TN &  FP &  FN \\
+        \midrule
+        \textbf{TSC}-gls/2CH/regular/centroid/2 &  86 &  62 &  35 &  13 \\
+        \textbf{PVC}-gls-EF/complete/2          &  77 &  72 &  28 &  18 \\
+        \textbf{NN}-gls/4CH/upsampled           &  46 &  61 &  39 &  53 \\
+        \textbf{PVSC}-gls-EF/Gaussian-Process   &  74 &  72 &  27 &  21 \\
         \bottomrule
     \end{tabular}
-    \caption{The accuracy, DOR, sensitivity and specicity scores of the best model within each model group in terms of DOR, at detecting heart failure.}
+    \caption{A table comparing the best contenders within each model group for predicting heart failure among patients. 
+             The top table comprare the models by their accuracy, sensitivity, specificity and DOR, 
+             and the bottom table shows the number of TPs, TNs, FPs and FNs that the different models attain.}
     \label{tab:hf_compare}
 \end{table*}
 
+With exeption of the NN, the models performance of the different models are very close in terms of DOR and accuracy.
+From table \ref{tab:hf_compare} one can see that the TSC method \textit{gls/2CH/regular/centroid/2} achieves the highest sensitivity of all the models applied to predict heart failure,
+but it achieves the second lowest specificity of the four model groups. This can be confirmed by the fact that it attains 86 TPs, and 35 FPs.
+The PVSC model \textit{gls-EF/Gaussian-Process} attains the most balanced score in terms of sensitivity and specificity, and the highest specificity score of all the model groups.
+However, the PVC model \textit{gls-EF/complete/2} attains a higher accuracy, sensitivity and DOR than the PVSC model. 
+One can also see that the PVC model attains more TP, the same number of TN, fewer FP and fewer FN than the PVSC model.
+It should also be noted that the PVC model and the PVSC model are using the same dataset which is a combination of peak systolic GLS values, and EF.
+To conclude this particular case study, the PVC model is picked as the best model at predicting heart failure among patients as it achieves the highest accuracy of the model groups, highest
+number of TN, and one of the most balanced combinations of sensitivity, and specificity.
+
 \begin{comment}
-    [ ] \textbf{How big is the difference in performance between the models?}
-    [ ] \textbf{}
-    [ ] \textbf{}
+[ ] \textbf{How big is the difference in performance between the models? Can this be confirmed by the number of TP/TN attained.}
+    * With exeption of the NN, the models performance of the different models are very close in terms of DOR and accuracy.
+[ ] \textbf{Do any of the models score particularily high on sensitivity or specificity? Can this be confirmed by the number of TP/TN attained.}
+    * From table \ref{tab:hf_compare} one can see that the TSC method \textit{gls/2CH/regular/centroid/2} achieves the highest sensitivity of all the models applied to predict heart failure,
+      but it achieves the second lowest specificity of the four model groups. This can be confirmed by the fact that it attains 86 TPs, and 35 FPs.
+[ ] \textbf{Which model gets the most balanced score?}
+    * The PVSC model \textit{gls-EF/Gaussian-Process} attains the most balanced score in terms of sensitivity and specificity, and the highest specificity score of all the model groups.
+[ ] \textbf{Is the most balanced model the best one, or is there a model that performs better.}
+    * However, the PVC model \textit{gls-EF/complete/2} attains a higher accuracy, sensitivity and DOR than the PVSC model. 
+[ ] \textbf{Comments}
+    * One can also see that the PVC model attains more TP, the same number of TN, fewer FP and fewer FN than the PVSC model.
+    * It should also be noted that the PVC model and the PVSC model are using the same dataset which is a combination of peak systolic GLS values, and EF.
+[ ] \textbf{Conclusion}
+    * To conclude this particular case study, the PVC model is picked as the best model at predicting heart failure among patients as it achieves the highest accuracy of the model groups, highest
+      number of TN, and one of the most balanced combinations of sensitivity, and specificity.
 \end{comment}
 
 \newpage
