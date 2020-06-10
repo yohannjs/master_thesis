@@ -451,7 +451,7 @@ Since sensitivity and specificity is weighted equally in this study \textit{gls-
         \midrule
         \textbf{TSC}-gls/all-views/regular/weighted/2 &      0.82 &         0.81 &         0.83 & 21.06 \\
         \textbf{PVC}-rls-EF/complete/2                &      0.77 &         0.74 &         0.93 & 37.61 \\
-        \textbf{PVSC}-gls-rls/KNN                     &      0.93 &         0.95 &         0.82 &  84.53 \\
+        \textbf{PVSC}-gls-rls/KNN                     &      0.93 &         0.95 &         0.82 & 84.53 \\
         \midrule
         Dataset-Model                                 &  TP &  TN &  FP &  FN \\
         \midrule
@@ -466,10 +466,30 @@ Since sensitivity and specificity is weighted equally in this study \textit{gls-
     \label{tab:pd_compare}
 \end{table*}
 
+From the top table in \ref{tab:pd_compare} one can see that there is a significant difference in performance between the three models included for comparison.
+The TSC model \textit{gls/all-views/regular/weighted/2} attains the second highest accuracy, sensitivity and specificity of the three models, but also attains the lowest DOR.
+The TSC model can also be said to attain the most balanced scores in terms of sensitivity and specificity. 
+The PVC model \textit{rls-EF/complete/2} attains the highest specificity, second highest DOR, but lowest sensitivity and accuracy of the three models. 
+The PVSC model \textit{gls-rls/KNN} attains the highest accuracy, sensitivity and DOR of all the models, but it also achieves the lowest specificity of all the models. 
+However, since the PVSC model is so close to the TSC model in terms of specificity, and is so much better than the other two models in all other metrics, it is chosen as the best model of 
+identifying patient diagnoses.
+This can be confirmed from the bottom table in \ref{tab:pd_compare}, where one can see that the PVSC model only gets one TN less than the TSC model, but attains 11 more TP.
+
 \begin{comment}
-    [ ] \textbf{How big is the difference in performance between the models?}
-    [ ] \textbf{}
-    [ ] \textbf{}
+[0] \textbf{How big is the difference in performance between the models? Can this be confirmed by the number of TP/TN attained.}
+    * From the top table in \ref{tab:pd_compare} one can see that there is a significant difference in performance between the three models included for comparison.
+[0] \textbf{Do any of the models score particularily high on sensitivity or specificity? Can this be confirmed by the number of TP/TN attained.}
+    * The TSC model \textit{gls/all-views/regular/weighted/2} attains the second highest accuracy, sensitivity and specificity of the three models, but also attains the lowest DOR.
+    * The TSC model can also be said to attain the most balanced scores in terms of sensitivity and specificity. 
+    * The PVC model \textit{rls-EF/complete/2} attains the highest specificity, second highest DOR, but lowest sensitivity and accuracy of the three models. 
+[0] \textbf{Which model gets the most balanced score?}
+[0] \textbf{Is the most balanced model the best one, or is there a model that performs better.}
+    * The PVSC model \textit{gls-rls/KNN} attains the highest accuracy, sensitivity and DOR of all the models, but it also achieves the lowest specificity of all the models. 
+[0] \textbf{Comments}
+[0] \textbf{Conclusion}
+    * However, since the PVSC model is so close to the TSC model in terms of specificity, and is so much better than the other two models in all other metrics, it is chosen as the best model of 
+      identifying patient diagnoses.
+    * This can be confirmed from the bottom table in \ref{tab:pd_compare}, where one can see that the PVSC model only gets one TN less than the TSC model, but attains 11 more TP.
 \end{comment}
 
 \newpage

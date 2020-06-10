@@ -1,26 +1,181 @@
 \chapter{Discussion}
 
-This is the discussion. \bigskip
+In the results chapter, the performance results were presented in the order of the different target variables that were explored. 
+In the discussion chapter a different approach is taken, and the each model will be discussed individually based on their performance in the case studies.
 
 \section{Time-series Clustering}
 
 \begin{itemize}
-    \item Discuss why methods using data from single view performed better.
-    \item Discuss why methods using data using ''regular'' or ''scaled'' performed better than methods using normalization or z-normalization.
+    \item \textbf{Give a brief summary of how the TSC model was implemented.}
+    \begin{itemize}
+        \item Before dissimilarity was measured between strain curves, curves were preprocessed in one of four ways. 
+        \item Curves were either: not preprocessed, scaled between zero and one, normalized between zero and one or z-score normalized.
+        \item The TSC model was implemented by using DTW distance between strain curves as a dissimilarity measure to achieve a shape-based TSC model.
+        \item All the dissimilarity measures between a specific strain curve of one patient to the same strain curve of every other patient were combined into a dissimilarity matrix.
+        \item If the dataset represented patients with more than one strain curve the dissimilarity matrices of each indivial strain curves were added together,
+              such that there was a single dissimilarity matrix that represented the dissimilarity between the patients.
+        \item The dissimilarity matrix was then passed to the hierarchical agglomorative clustering algorithm which started out with each patient as an indivial cluster, 
+              and merged clusters together based on a specific linkage criteria.
+        \item Seven linkage criteria were tested: single, complete, average, ward, centroid, median and weighted.
+        \item The clustering model was calculated at the different number of cluster centers between two and nine.
+        \item The ARI was estimated for the all the cluster assignments generated, and the different target variables.
+        \item For the cluster assignments yielded by a clustering model evaluated at two cluster centers the accuracy, sensitivity, specicity and DOR was also calculated.
+    \end{itemize}
+    \item \textbf{Mention briefly which placements TSC has in the different case studies.}
+    \begin{itemize}
+        \item The TSC models did not perform best in any of the case studies, 
+              but variations of the TSC models generally yielded results with high performance in terms of accuracy, sensitivity and specicity.
+        \item In the heart failure case study the best variation of the TSC model achieved the highest sensitivity and DOR, but it was outperformed by the best variation of the PVC model overall.
+        \item In the patient diagnosis case study the best variation of the TSC model outperformed the best variation of the PVC model, but they were both outperformed by the best PVSC model.
+        \item In the segment indication case study the best variation of the TSC model attains the highest accuracy, specicity and DOR, 
+              but is outperformed by the NN because it attains a higher sensitivity score, and thereby attains a more balanced accuracy in the positives and negatives.
+    \end{itemize}
+    \item \textbf{Discuss why methods using data from single view performed better.}
+    \begin{itemize}
+        \item As discussed in section REFERENCE, a challenge for all statistical models is the ''curse of dimensionality''. 
+              Briefly described, in ML, and data mining the curse of dimensionality refers to the issue of attaining a good balance 
+              between the number of dimensions that an object is represented in, and the number of objects used to train and/or evaluate the model. 
+        \item In the heart failure and patient diagnoses case studies the TSC models that perform best in terms of DOR, 
+              and ARI are the models that use datasets where there are objects are represented by fewer dimensions.
+        \item A reason for this could be that for 200 patients, the heart failure diagnoses, and patient diagnoses are most seperable for the TSC models when only one strain curve is used. 
+        \item The curve that then gives the easiest separation of patients is then the 2CH GLS curve.
+        \item In the heart failure study the TSC models that attain the five best performing models in terms of DOR and ARI only use the GLS curve from the 2CH view, 
+              meaning that these methods only use one of 21 possible curves. This can be confirmed from table \ref{tab:tsc_hf_dor_sens_spec_dist} and \ref{tab:tsc_hf_ari}.
+        \item In the patient diagnoses study one can see from table \ref{tab:tsc_ind_dor_sens_spec_dist} that the five methods 
+              that attain the highest DOR also only use the GLS curve from the 2CH view. 
+        \item These two observations support the claim that at a dataset size of 200 objects using fewer strain curves makes it easier for TSC models to separate heart failure diagnoses, 
+              and patient diagnoses.
+        \item An observation that does not directly support this claim is that in the patient diagnosis case study, the TSC models that attain the four highest ARI use a combination of GLS and RLS
+              curves in the 4CH view, or use the GLS curves from all views.
+        \item However, these methods also only use three and seven of 21 curves in total, so this observation does not negate the claim entirely. 
+    \end{itemize}
+    \item \textbf{Discuss why methods using data using ''regular'' or ''scaled'' performed better than methods using normalization or z-normalization.}
+    \begin{itemize}
+        \item In all case studies it was found that TSC models that performed best in terms of DOR, and ARI used no preprocessing. 
+        \item In some cases models using scaling as a form of preprocessing yielded the same cluster assignments, which could indicate that scaling the curves before measuring dissimilarity
+              does not make much of a difference.
+        \item Since TSC models using normalization or z-score normalization as a form of preprocessing were not among the top five methods in terms of DOR, or ARI in any of the case studies
+              the argument could be made that these form of preprocessing are not suited when using DTW as a dissimilarity on left ventrice strain curves.
+    \end{itemize}
+    \item \textbf{Talk about the performance of different linkages.}
+    \begin{itemize}
+        \item Of the seven linkages tested, it was the centroid, weighted and ward linkages that went into the TSC models 
+              that performed best at predicting heart failure, patient diagnosis and segment indication respectively, in the different case studies. 
+        \item However, the single, complete and average linkages also went into the methods that appeared in the top five candidates in terms of DOR, or ARI.
+        \item So it is not possible to say certainly that all linkages other than centroid, weighted and ward linkages are not suited for clustering left ventricle strain curves,
+              but one can say with some degree of certainty that the median linkage does not go into any of the TSC models that perform well in any of the three case studies. 
+    \end{itemize}
+    \item \textbf{Talk about run-time challenges.}
+    \begin{itemize}
+        \item When calculating the dissimilarity matrix of a set of 200 curves, it took approximately 0.3 seconds using the C-optimized functions of the dtaidistance library.
+        \item The time it took to compute the clustering varied between 0.15 and 0.45 seconds depending on what linkage was used. 
+        \item The single linkage criteria was found to be the fastest, and the complete linkage was found to be the slowest. 
+        \item That the single linkage was the fastest could is to be expected, as it fairly easy to compute. 
+        \item However, it was unexpected that the complete linkage was the one that took the longest time to compute as one would expect the more complex linkages such as the ward linkage
+              to take the longest time to compute.
+    \end{itemize}
+
 \end{itemize}
 
 \section{Peak-value Clustering}
 
 \begin{itemize}
-    \item Comment on the fact that TSC generally performs better than PVC.
-    \item Note that the PVC methods that use combination of peak systolic strain values and EF performs significantly better, future work could be to combine EF values with strain curves as well.
-    \item 
-    \item 
-    \item 
+    \item \textbf{Give a brief summary of how the PVC model was implemented.}
+    \begin{itemize}
+        \item The PVC model was implemented in a similar fashion as the TSC model.
+        \item The datapoints used to represent patients were passed to an implementation of hierarchical agglomorative clustering in scikit-learn.
+        \item The dissimilarity between patients was measured as the Euclidean distance between the dimensions used to represent them.
+        \item The scikit-learn implementation did not have all the same clustering linkages available as the scipy implementation used for TSC,
+              so only the following four linkages were tested: single, complete, average and ward.
+        \item The evaluation procedure for the PVC model was the same as the procedure used for TSC.
+    \end{itemize}
+    \item \textbf{Mention briefly which placements PVC has in the different case studies.}
+    \begin{itemize}
+        \item The best variations of the PVC model had a high performance in the heart failure, and in the patient diagnosis case studies. 
+        \item It was chosen as the best model in the heart failure case study, but was closely followed by the TSC, and PVSC models.
+        \item In the patient diagnosis case study the best variation of the PVC models attained the highest specicity, and second highest DOR of the three models compared. 
+        \item However, it was outperformed by both the TSC, and PVSC models due to its low sensitivity.
+    \end{itemize}
+    \item \textbf{Note that the PVC methods that use combination of peak systolic strain values and EF performs significantly better, future work could be to combine EF values with strain curves as well.}
+    \begin{itemize}
+        \item In both case studies PVC models that used datasets that were a combination of peak systolic strain values and EF performed consistently better than the models than only
+              used the strain values. 
+        \item This is to some degree expected in the heart failure case study, as EF is parameter that is established in the current medical procedures used to diagnose patients with heart failure.
+        \item It would be interesting to see whether incorporating EF in the TSC model would improve its performance as well.
+        \item Since the hierarchical agglomorative clustering algorithm is uses dissimilarity matrix to cluster objects, 
+              it should be fairly straight-forward to calculate the dissimilarity matrix between a patients EF values, and add that to the dissimilarity matrices of the indivial curves.
+        \item However, this falls outside the scope of this thesis.
+    \end{itemize}
+    \item \textbf{Talk about the performance of different linkages.}
+    \begin{itemize}
+        \item In the heart failure case study it was the complete linkage which was used in the model that was chosen as the best performer, but the ward, and average linkages were also used
+              in the models that attained the top five DOR and ARI scores.
+        \item In the patient diagnosis case study the complete linkages was also used in the model that was chosen as the best performer.
+        \item In both case studies where PVC models where tested the models that were chosen as the best performers used the complete linkage, but the average and ward linkages were also used by
+              other model variations that attained the five highest DOR and ARI.
+        \item Hence, for PVC models using peak systolic strain values, and EF to identify heart failure among patients, and patient diagnosis the single linkage was not found to be suited.
+    \end{itemize}
+    \item \textbf{Talk about run-time challenges.}
+    \begin{itemize}
+        \item 
+        \item 
+        \item 
+    \end{itemize}
 \end{itemize}
 
 \section{Neural Networks}
 
 \begin{itemize}
-    \item 
+    \item \textbf{Give a brief summary of how the NN model was implemented.}
+    \begin{itemize}
+        \item 
+        \item 
+        \item 
+    \end{itemize}
+    \item \textbf{Mention briefly which placements NN has in the different case studies.}
+    \begin{itemize}
+        \item 
+        \item 
+        \item 
+    \end{itemize}
+    \item \textbf{Talk about the fact that none of the NN models were able to generalize the difference between healthy, and not healthy patients.}
+    \begin{itemize}
+        \item 
+        \item 
+        \item 
+    \end{itemize}
+    \item \textbf{Talk about the poor performance in the heart failure case study.}
+    \begin{itemize}
+        \item 
+        \item 
+        \item 
+    \end{itemize}
+    \item \textbf{Talk about the good performance in th segment indication case study.}
+    \begin{itemize}
+        \item 
+        \item 
+        \item 
+    \end{itemize}
+    \item \textbf{Talk about run-time challenges.}
+    \begin{itemize}
+        \item 
+        \item 
+        \item 
+    \end{itemize}
+\end{itemize}
+
+\section{Peak-value Supervised Classifiers}
+
+\begin{itemize}
+    \item \textbf{Give a brief summary of how the NN model was implemented.}
+    \item \textbf{Mention briefly which placements NN has in the different case studies.}
+    \item \textbf{Talk about the fact that none of the NN models were able to generalize the difference between healthy, and not healthy patients.}
+    \item \textbf{Talk about the poor performance in the heart failure case study.}
+    \item \textbf{Talk about the good performance in th segment indication case study.}
+    \item \textbf{Talk about run-time challenges.}
+    \begin{itemize}
+        \item 
+        \item 
+        \item 
+    \end{itemize}
 \end{itemize}

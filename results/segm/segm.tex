@@ -17,11 +17,11 @@
         \toprule
         Dataset-Method     &  Accuracy &  Sensitivity &  Specificity &  DOR \\
         \midrule
-        regular/weighted/2 &      0.68 &         0.44 &         0.95 & 14.80 \\
-        scaled/weighted/2  &      0.68 &         0.44 &         0.95 & 14.80 \\
-        regular/ward/2     &      0.76 &         0.64 &         0.88 & 13.15 \\
-        scaled/ward/2      &      0.76 &         0.64 &         0.88 & 13.15 \\
-        regular/complete/2 &      0.74 &         0.60 &         0.89 & 12.89 \\
+        regular/weighted/2 &      0.69 &         0.45 &         0.95 & 15.63 \\
+        scaled/weighted/2  &      0.69 &         0.45 &         0.95 & 15.63 \\
+        regular/ward/2     &      0.77 &         0.66 &         0.88 & 14.26 \\
+        scaled/ward/2      &      0.77 &         0.66 &         0.88 & 14.26 \\
+        regular/complete/2 &      0.75 &         0.62 &         0.89 & 13.92 \\
         \bottomrule
     \end{tabular}
     \caption{The accuracy, DOR, sensitivity and specicity scores of the five best performing two-cluster-center TSC methods in terms of DOR, at detecting segment indication.
@@ -31,7 +31,7 @@
 
 From the distribution plot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}a one can see that the majority of the DORs are close to zero, 
 but a few methods are able to achieve DORs above 12, and some methods attain a DOR close to 15 when applied to identify segment indication.
-From the scatterplot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}b one can see that the sensitivity of the TSC methods range from $0.25$ to 1, 
+From the scatter plot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}b one can see that the sensitivity of the TSC methods range from $0.25$ to 1, 
 and the specificity of the TSC methods range from 0 to approximately 1. 
 The spread in both sensitivity and specificity is quite large, and there are very few methods that are 
 able to a attain a high sensitivity while at the same time attaining a high specificity, and vice versa. 
@@ -40,36 +40,34 @@ Common to the high performing TSC methods in terms of DOR is that they all use e
 \textit{norm/ward/2} is the ninth best methods in terms of DOR, and attains a DOR of 1.56, when applied to identify segment indication.
 This can be comfirmed from table \ref{tab:tsc_segm_ind_raw_results}
 The two TSC methods attaining the highest DORs \textit{regular/weighted/2}, and \textit{scaled/weighted/2} differ only in type of preprocessing used.
-From table \ref{tab:tsc_segm_ind_dor_sens_spec_dist} one can see that the two methods attain the same scores in all metrics,
+From table \ref{tab:tsc_segm_ind_dor_sens_spec_dist} and table \ref{tab:tsc_segm_ind_raw_results} one can see that the two methods attain the same scores in all metrics,
 this is because they yield the exact same cluster assignments to the individual segment strain curves.
 The same goes for the next two TSC methods in line \textit{regular/ward/2} \textit{scaled/ward/2}, these two methods are also the methods that attain the highest accarcy of all the TSC methods.
 Of the two TSC methods \textit{regular/weighted/2}, and \textit{regular/ward/2} the latter is preferred for predicting segment indication because \textit{regular/ward/2} has a more persistent
 performance in both sensitivity and specificity, where as \textit{regular/weighted/2} has a high specificity, but a very low sensitivity.
 
 \begin{comment}
-[0] \textbf{Comment on spread of DOR.}
+[X] \textbf{Comment on spread of DOR.}
     * From the distribution plot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}a one can see that the majority of the DORs are close to zero, 
       but a few methods are able to achieve DORs above 12, and some methods attain a DOR close to 15 when applied to identify segment indication.
-[0] \textbf{Comment on spread of sensitivity and specificity.}
+[X] \textbf{Comment on spread of sensitivity and specificity.}
     * From the scatterplot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}b one can see that the sensitivity of the TSC methods range from $0.25$ to 1, 
       and the specificity of the TSC methods range from 0 to approximately 1. 
     * The spread in both sensitivity and specificity is quite large, and there are very few methods that are 
       able to a attain a high sensitivity while at the same time attaining a high specificity, and vice versa. 
-[0] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
+[X] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
     * Common to the high performing TSC methods in terms of DOR is that they all use either no preprocessing at all, or scaling.
-[0] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
+[X] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
     * \textit{z-norm/complete/2} is the seventh best TSC method in terms of DOR, and attains a DOR of 5.92 when applied to identify segment indication. 
     * \textit{norm/ward/2} is the ninth best methods in terms of DOR, and attains a DOR of 1.56, when applied to identify segment indication.
     * This can be comfirmed from table \ref{tab:tsc_segm_ind_raw_results}
-[0] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
+[X] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
     * The two TSC methods attaining the highest DORs \textit{regular/weighted/2}, and \textit{scaled/weighted/2} differ only in type of preprocessing used.
-    * From table \ref{tab:tsc_segm_ind_dor_sens_spec_dist} one can see that the two methods attain the same scores in all metrics,
+    * From table \ref{tab:tsc_segm_ind_dor_sens_spec_dist} and table \ref{tab:tsc_segm_ind_raw_results} one can see that the two methods attain the same scores in all metrics,
       this is because they yield the exact same cluster assignments to the individual segment strain curves.
     * The same goes for the next two TSC methods in line \textit{regular/ward/2} \textit{scaled/ward/2}, these two methods are also the methods that attain the highest accarcy of all the TSC methods.
     * Of the two TSC methods \textit{regular/weighted/2}, and \textit{regular/ward/2} the latter is preferred for predicting segment indication because \textit{regular/ward/2} has a more persistent
       performance in both sensitivity and specificity, where as \textit{regular/weighted/2} has a high specificity, but a very low sensitivity.
-\textbf{IF NOT CLUSTERING METHOD}
-[ ] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
 \end{comment}
 
 \begin{table*}
@@ -79,11 +77,11 @@ performance in both sensitivity and specificity, where as \textit{regular/weight
         \toprule
         Dataset-Method     &  ARI \\
         \midrule
-        scaled/centroid/5  & 0.262 \\
-        regular/centroid/5 & 0.262 \\
-        regular/ward/2     & 0.260 \\
-        scaled/ward/2      & 0.260 \\
-        scaled/centroid/6  & 0.251 \\
+        scaled/centroid/5  & 0.286 \\
+        regular/centroid/5 & 0.286 \\
+        regular/ward/2     & 0.284 \\
+        scaled/ward/2      & 0.284 \\
+        scaled/centroid/6  & 0.271 \\
         \bottomrule
     \end{tabular}
     \caption{The five highest ARI scores attained when applying TSC for detecting segmend indication.
@@ -170,7 +168,7 @@ and accuracy is higher than the method that uses upsampling.
         \midrule
         Dataset-Model               &  TP  &  TN  &  FP  &  FN \\
         \midrule
-        \textbf{TSC}-regular/ward/2 & 1209 & 1491 &  204 &  672 \\
+        \textbf{TSC}-regular/ward/2 & 1202 & 1491 &  204 &  616 \\
         \textbf{NN}-downsampled     & 1255 & 1390 &  473 &  440 \\
         \bottomrule
     \end{tabular}
@@ -180,9 +178,27 @@ and accuracy is higher than the method that uses upsampling.
     \label{tab:segm_ind_compare}
 \end{table*}
 
+From table \ref{tab:segm_ind_compare} one can see that the performances of the NN, and TSC models are quite close in terms of accuracy,
+but differ significantly in the other metrics. 
+The TSC model \textit{regular/ward/2} attains a higher accuracy, specificity and DOR than the NN model \textit{downsampled}. 
+This can also be confirmed by the fact that the TSC model attains more TN, and fewer FP than the NN model. 
+The NN model attains the highest sensitivity, which can be confirmed by the fact that it attains more TP and fewer FN than the TSC model.
+The NN model is also the model that attains the most balanced scores of sensitivity and specificity.
+Therefore the NN model is chosen as the best performer at predicting the segment indication. 
+
 \begin{comment}
-    [ ] \textbf{How big is the difference in performance between the models?}
-    [ ] \textbf{}
-    [ ] \textbf{}
+[ ] \textbf{How big is the difference in performance between the models? Can this be confirmed by the number of TP/TN attained.}
+    * From table \ref{tab:pd_compare} one can see that the performances of the NN, and TSC models are quite close in terms of accuracy,
+      but differ significantly in the other metrics. 
+[ ] \textbf{Do any of the models score particularily high on sensitivity or specificity? Can this be confirmed by the number of TP/TN attained.}
+    * The TSC model \textit{regular/ward/2} attains a higher accuracy, specificity and DOR than the NN model \textit{downsampled}. 
+    * This can also be confirmed by the fact that the TSC model attains more TN, and fewer FP than the NN model. 
+    * The NN model attains the highest sensitivity, which can be confirmed by the fact that it attains more TP and fewer FN than the TSC model.
+[ ] \textbf{Which model gets the most balanced score?}
+    * The NN model is also the model that attains the most balanced scores of sensitivity and specificity.
+[ ] \textbf{Is the most balanced model the best one, or is there a model that performs better.}
+[ ] \textbf{Comments}
+[ ] \textbf{Conclusion}
+    * Therefore the NN model is chosen as the best performer at predicting the segment indication. 
 \end{comment}
 

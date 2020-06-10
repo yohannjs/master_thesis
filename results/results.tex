@@ -7,9 +7,33 @@ As mentioned earlier in the chapter, four model groups will be tested.
 The case studies will first deal with each model group individually, where variants of the models with different hypermarameters will be tested on the different datasets. 
 Then, the best performing model within each model group will be used to compare the four model groups.
 The supervised models will be assessed with the metrics: accuracy, sensitivity, specificity and DOR.
-The unsupervised models evaluated at two cluster centers will be assessed with the same methods as the supervised models, and with ARI to determine 
+The clustering methods evaluated at two cluster centers will be assessed with the same methods as the supervised models. 
+The clustering methods evaluated at two to nine cluster centers will also be assessed with ARI to determine 
 whether the models evaluated at a higher number of cluster centers could fit the data better.
 
 \input{results/hf/hf.tex}
 \input{results/pd/pd.tex}
 \input{results/segm/segm.tex}
+
+\newpage
+\section*{Chapter Summary}
+
+In the heart failure case study the PVC model was found to be the best performer, by a narrow margin. 
+The TSC, and PVSC models also performed well, but the NN did not. In fact, the performance of the NN was not much better 
+than what could be achieved by randomly guessing the binary label with equal probability of choosing one or zero. 
+The PVC model that performed best at identifying heart failure among patients is \textit{gls-EF/complete/2}, and it attains an 
+accuracy of 0.76, sensitivity of 0.81, specificity of 0.72 and DOR of 10.85. \medskip
+
+In the patient diagnosis case study the PVSC model is regarded as the top performer.
+Here too, it was a close call between the PVSC, PVC and TSC models.
+The patient diagnosis dataset was skewed as there were 170 patients with a heart disease, and only 30 healthy patients. 
+For this reason it is probable that the NN was unable to generalize the feature of the healthy patients, 
+because almost all the variations of the NN ended up always making the prediction that the patient was diseased yielding a score of 0 in specificity. \smallskip
+The PVSC model that performed best at predicting patient diagnosis is \textit{gls-rls/KNN}, and it attains an
+accuracy of 0.93, sensitivity of 0.95, specificity of 0.82 and DOR of 84.53. \medskip
+
+In the segment indication case study only the TSC and NN models were compared, and for a change of pace it was only the NN that was chosen as the best performer. 
+The TSC model did not perform much worse, in fact it performed better than the NN in many respects. 
+The key reason for why the NN was preferred was because it had a more balanced sensitivity, and specificity scores than the TSC model. 
+The NN model that performed best at predicting segment indication is \textit{downsampled}, and it attains an
+accuracy of 0.74, sensitivity of 0.74, specificity of 0.72 and DOR of 8.38. 
