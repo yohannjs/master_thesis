@@ -156,10 +156,24 @@ In the discussion chapter a different approach is taken, and the each model will
         \item Since the different NN models differed in architecture depending on how many curves were used to represent one patient, they also varied in the number of trainable parameters they have. 
         \item The NN models which only take a single strain curve as input have 39457 trainable parameters, and the NN models that take 21 curves as input have 80417 trainable parameters.
         \item Even though there is no exact ratio of how big a dataset should be with regard to how many trainable parameters a model has, between 40 and 80 thousand parameters for a dataset of size 200 is likely too many trainable parameters.
+        \item On the other hand, the NN model was chosen as the best performing model at predicting segment indication. 
+        \item In that case study though the size of the dataset is significantly larger, and each object is represented by a single curve. 
+        \item Considering that the architecture of the NN was given, and not developed specifically for this classification problem the performance that the model achieves is significant. 
+    \end{itemize}
+    \item \textbf{Possible improvements}
+    \begin{itemize}
+        \item It is the authors opinion that if more time is spent adapting the model to the dataset at hand, even better performances are within reach. 
+        \item Especially for the segment indication classification problem where there is so much data, there is potential.
+        \item There are alternatives to SGD that could be tested such as batch gradient descent, and the most popular choice mini-batch gradient descent which is a middle road between the two, and is often considered the best alternative REFERENCE.
+        \item There is also the GRU cells that are an alternative to the LSTM cells. Like LSTM cells, GRU cells are able capture time-dependent connections. GRU cells are simpler than LSTM cells in composition, and are said to require less training data, to achieve the same accuracies as LSTM cells REFERENCE.
+        \item It could also be considered whether it would be beneficial to use some form of dimensionality reduction such as a max pooling layers, which for time series can be considered as a max-filter where only the highest value in a segment of a curve is kept on. 
+        \item Dropout layers are also a technique that are used frequently when NN architecture become deep and complex, they introduce the probability that any particular perceptron in the layers preceding the dropout layer can ''drop out'' meaning that they become inactive.
+        \item In complex NN architectures it is often found that during training the model becomes overly dependent on certain perceptrons, and specific paths through the network. This leads to the NN not entirely utilizing all the perceptrons at its disposal, and the accuracy suffers. It is found that by adding a probability that any given neuron can drop out during training remedies this effect, and can increase accuracy overall.
     \end{itemize}
     \item \textbf{Talk about run-time challenges.}
     \begin{itemize}
         \item Training, and validating the NN models were one of the more time-consuming computations required.
+        \item The time it took to train the network depended on what dataset was used, which makes sense as increasing the number of curves the NN can take as input also increases the number of trainable parameters that need to be trained for each step of the SCG algorithm.
         \item When validating the NN models, a single fold in the 10-fold cross validation took approximately 100 seconds in the heart failure, and patient diagnosis case studies.
         \item The time it took to execute one fold in the segment indication case study took approximately 640 seconds (11 min)
         \item However, these times do not reflect the times it will take to use the NN to evaluate new cases after training, so the same challenge one has with clustering is not as pressing should the aim be to deploy the NN in a real-time clinical setting.
@@ -182,14 +196,19 @@ In the discussion chapter a different approach is taken, and the each model will
     \end{itemize}
     \item \textbf{Mention that DOR distribution of PVSC models were significantly higher centered than the other models groups DOR distribution.}
     \begin{itemize}
-        \item What should be adressed is the fact that the distribution of the DOR scores of the 
-        \item 
-        \item 
+        \item What should be adressed is the fact that the distribution of the DOR for the different PVSC models, differ from the DOR distributions of the other models in some key ways.
+        \item In both the heart failure case study, and the patient diagnosis case study the distribution of DOR for variations of TSC, PVC and NN models are highly concentrated around zero. 
+        \item For the PVSC models the lowest DOR attained by a PVSC model in the heart failure study is 1.94, and the lowest DOR attained by a PVSC model in the patient diagnosis case study is 3.68.
+        \item In the heart failure case study it is especially evident that the DOR of the different PVSC models is distributed differently than the DOR of the other models.
+        \item It can be confirmed from figure \ref{fig:pvmlc_hf_dor_sens_spec_dis} that the distribution of DOR for the PVSC is especially concentrated in the range between four to eight.
+        \item The significance of this difference of DOR distribution is two-fold, the first thing to keep in mind is that not very much time was spent optimizing the hyperparameters of the PVSC models as it falls outside the scope of this thesis, and that in contrast to the clustering models the outcome of the PVSC model is probabilistic in the sense that it is highly dependent on the initial conditions of the model before it is trained. 
+        \item Since the DOR distribution of PVSC models in the heart failure, and patient diagnosis case studies are distributed higher in general than the TSC and PVC models, and that the PVSC are configured with what can be considered as ''standard hyperparameters'' it is probable that spending time on optimizing the hyperparameters of the PVSC models, and testing different initial conditions could improve the performance of all the PVSC models. 
     \end{itemize}
     \item \textbf{Talk about run-time challenges.}
     \begin{itemize}
-        \item 
-        \item 
-        \item 
+        \item The time it took to train and validate the PVSC models varied, and was highly dependent on the dimensions of the dataset and which specific ML model was used. 
+        \item The shortest training time encountered was at 201 seconds, and the longest was at 365 seconds.
+        \item These were the shortest training times encountered among the four model groups.
+        \item Similarily to the NN model the training times of the PVSC models do not hinder their ability to make predictions in real time, and deploy them in a clinical setting.
     \end{itemize}
 \end{itemize}
