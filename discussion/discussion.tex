@@ -73,8 +73,20 @@ In the discussion chapter a different approach is taken, and the each model will
         \item That the single linkage was the fastest could is to be expected, as it fairly easy to compute. 
         \item However, it was unexpected that the complete linkage was the one that took the longest time to compute as one would expect the more complex linkages such as the ward linkage
               to take the longest time to compute.
+        \item When the size of the dataset was increased to approximately 3600 curves it took 162 seconds to compute the dissimilarity matrix.
+        \item This increase in run time is in agreement with the time complexity of the DTW algorithm described in section REFERENCE.
+        \item In addition, the time it took to compute the clustering after the dissimilarity matrix was computed also increased to vary between 3 seconds for the single linkage, and 871 seconds for the ward linkage.
+        \item So for a bigger dataset the run time of the different linkages were more as expected. 
+        \item Although these run-times are attained with a with a regular desktop Lenove G510 laptop, it illustrates possible challenge of how run-time of the calculations of the dissimilarity matrix, and clustering increase quadratically with the size of the dataset.
     \end{itemize}
-
+    \item \textbf{Improvements that could be done on the existing model}
+    \begin{itemize}
+        \item It was often found that the PVC models that used EF in addition to peak systolic strain values performed better than the PVC models that only used strain values.
+        \item It would be interesting to see whether incorporating EF in the TSC model would improve its performance as well.
+        \item Since the hierarchical agglomorative clustering algorithm is uses dissimilarity matrix to cluster objects, 
+              it should be fairly straight-forward to calculate the dissimilarity matrix between a patients EF values, and add that to the dissimilarity matrices of the indivial curves.
+        \item However, it falls outside the scope of this thesis.
+    \end{itemize}
 \end{itemize}
 
 \section{Peak-value Clustering}
@@ -101,10 +113,6 @@ In the discussion chapter a different approach is taken, and the each model will
         \item In both case studies PVC models that used datasets that were a combination of peak systolic strain values and EF performed consistently better than the models than only
               used the strain values. 
         \item This is to some degree expected in the heart failure case study, as EF is parameter that is established in the current medical procedures used to diagnose patients with heart failure.
-        \item It would be interesting to see whether incorporating EF in the TSC model would improve its performance as well.
-        \item Since the hierarchical agglomorative clustering algorithm is uses dissimilarity matrix to cluster objects, 
-              it should be fairly straight-forward to calculate the dissimilarity matrix between a patients EF values, and add that to the dissimilarity matrices of the indivial curves.
-        \item However, this falls outside the scope of this thesis.
     \end{itemize}
     \item \textbf{Talk about the performance of different linkages.}
     \begin{itemize}
@@ -117,9 +125,9 @@ In the discussion chapter a different approach is taken, and the each model will
     \end{itemize}
     \item \textbf{Talk about run-time challenges.}
     \begin{itemize}
-        \item 
-        \item 
-        \item 
+        \item Since a scikit learn implementation was used for the PVC model, it was not possible to separate run-time of the dissimilarity calculation and the clustering itself.  
+        \item However, Euclidean distance is known to scale linearly with the number of dimensions per object, and number of objects in the dataset.
+        \item Since the underlying algorithm used by scikit learn is the same as the one used by scipy it is assumed that it would perform similarily to the TSC model in terms of run time.
     \end{itemize}
 \end{itemize}
 
@@ -128,50 +136,56 @@ In the discussion chapter a different approach is taken, and the each model will
 \begin{itemize}
     \item \textbf{Give a brief summary of how the NN model was implemented.}
     \begin{itemize}
-        \item 
-        \item 
-        \item 
+        \item For the NN two types of preprocessing were tested in addition the option of not preprocessing at all, upsampling the curves to the highest sample rate in the dataset and downsampling the curves to the lowest sample rate.
+        \item The curves of the dataset were then passed as input to the NN architecture detailed in section REFERENCE together with the relevant target variables.
+        \item The NN was trained for five epochs using the backpropagation algorithm and SGD.
+        \item To validate the NN models 10-fold cross validation was used, at the end of each fold the TP, TN, FP, and FN of the model were noted. 
+        \item After the NN had effectively attempted to predict every object of the dataset all the TP, TN, FP, and FN were summed and this grand total was used to estimate the models accuracy, sensitivity, specicity and DOR.
     \end{itemize}
     \item \textbf{Mention briefly which placements NN has in the different case studies.}
     \begin{itemize}
-        \item 
-        \item 
-        \item 
+        \item The NN models performed worst of the four model groups in the heart failure case study, and the patient diagnosis case study.
+        \item However, it attained the highest sensitivity in the segment indication case study, and was chosen as the best performing model because its sensitivity and specicity were more balanced than the TSC model.
     \end{itemize}
-    \item \textbf{Talk about the fact that none of the NN models were able to generalize the difference between healthy, and not healthy patients.}
+    \item \textbf{Talk about performance of NN in different case studies.}
     \begin{itemize}
-        \item 
-        \item 
-        \item 
-    \end{itemize}
-    \item \textbf{Talk about the poor performance in the heart failure case study.}
-    \begin{itemize}
-        \item 
-        \item 
-        \item 
-    \end{itemize}
-    \item \textbf{Talk about the good performance in th segment indication case study.}
-    \begin{itemize}
-        \item 
-        \item 
-        \item 
+        \item In the patient diagnosis case study close to all of the NN models predicted all the patients to be unhealthy. 
+        \item It is evident that a NN with the architecture used in this assignment was not suited to classify patient diagnosies with a skewed dataset of only 170 unhealthy patients and 30 healthy patients.
+        \item It is the authors opinion that the reason that the NN models performed so bad at predicting patient diagnosis is an aspect of ''the curse of dimensionality'', and that the network was not able to generalize the characteristics of healthy patients in the study, and therefore minimized loss function by predicting the outcome that was most probable.
+        \item From table \ref{tab:dl_hf_raw_results} one can see that the top nine variations of the NN model that performed best in the heart failure case study with regard to DOR, were models that used only the GLS curve from a single view, which supports the claim that 
+        \item Since the different NN models differed in architecture depending on how many curves were used to represent one patient, they also varied in the number of trainable parameters they have. 
+        \item The NN models which only take a single strain curve as input have 39457 trainable parameters, and the NN models that take 21 curves as input have 80417 trainable parameters.
+        \item Even though there is no exact ratio of how big a dataset should be with regard to how many trainable parameters a model has, between 40 and 80 thousand parameters for a dataset of size 200 is likely too many trainable parameters.
     \end{itemize}
     \item \textbf{Talk about run-time challenges.}
     \begin{itemize}
-        \item 
-        \item 
-        \item 
+        \item Training, and validating the NN models were one of the more time-consuming computations required.
+        \item When validating the NN models, a single fold in the 10-fold cross validation took approximately 100 seconds in the heart failure, and patient diagnosis case studies.
+        \item The time it took to execute one fold in the segment indication case study took approximately 640 seconds (11 min)
+        \item However, these times do not reflect the times it will take to use the NN to evaluate new cases after training, so the same challenge one has with clustering is not as pressing should the aim be to deploy the NN in a real-time clinical setting.
     \end{itemize}
 \end{itemize}
 
 \section{Peak-value Supervised Classifiers}
 
 \begin{itemize}
-    \item \textbf{Give a brief summary of how the NN model was implemented.}
-    \item \textbf{Mention briefly which placements NN has in the different case studies.}
-    \item \textbf{Talk about the fact that none of the NN models were able to generalize the difference between healthy, and not healthy patients.}
-    \item \textbf{Talk about the poor performance in the heart failure case study.}
-    \item \textbf{Talk about the good performance in th segment indication case study.}
+    \item \textbf{Give a brief summary of how the PVSC model was implemented.}
+    \begin{itemize}
+        \item The different peak-value datasets are passed the different supervised classifiers in the model group. 
+        \item The different datasets are detailed in section \ref{sec:datasets}, and the different supervised classifiers tested are detailed in section REFERENCE.
+        \item Each combination of dataset and classifiers is validated by a 10-fold cross-validation in the same manner as the NN. 
+    \end{itemize}
+    \item \textbf{Mention briefly which placements PVSC has in the different case studies.}
+    \begin{itemize}
+        \item In the heart failure case study the best PVSC model outperformed the best variations of the TSC, and NN models and had a performance that was on par with the PVC, although the best PVC model was ultimately deemed better in the end.
+        \item In the patient diagnosis case study the best PVSC model attained the highest accuracy, sensitivity and DOR of the four model groups, and it was deemed the best model group at predict patient diagnosis. 
+    \end{itemize}
+    \item \textbf{Mention that DOR distribution of PVSC models were significantly higher centered than the other models groups DOR distribution.}
+    \begin{itemize}
+        \item What should be adressed is the fact that the distribution of the DOR scores of the 
+        \item 
+        \item 
+    \end{itemize}
     \item \textbf{Talk about run-time challenges.}
     \begin{itemize}
         \item 
