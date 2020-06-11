@@ -11,7 +11,7 @@ This is the section where we detail the specific models used. \bigskip
 
 \subsection{Supervised Peak-value Classifiers}
 
-\section{Description of The Datasets}
+\section{Description of The Datasets} \label{sec:datasets}
 
 Since the different \acrshort{ml} models detailed in chapter REFERENCE require different types of input data the, datasets have been divided into two main categories: 
 The peak-value datasets and the time-series datasets. \bigskip
@@ -31,7 +31,7 @@ The peak-value datasets and the time-series datasets. \bigskip
         4  & Strain curves                & $(200,21)$ \\
         \bottomrule
     \end{tabular}
-    \caption{Time-series datasets. The ''Shape'' parameter is indicates: (Number of objects in the dataset, Number of curves in each individual object). The curve length is not included in the shape parameter because it differs for different curves.}
+    \caption{Time-series datasets. The ''Shape'' parameter is indicates: (Number of objects in the dataset, Number of curves used to represent each individual object). The curve length is not included in the shape parameter because it differs for different curves.}
     \label{tab:ts_dsets}
 \end{table*}
 
@@ -66,7 +66,7 @@ Both the \acrshort{rnn}, and the \acrshort{tsc} model are applied on the dataset
         7  & Peak systolic strain, and \acrshort{ef} values            & $(200,22)$ \\
         \bottomrule
     \end{tabular}
-    \caption{Peak-value datasets. The ''Shape'' parameter is indicates: (Number of objects in the dataset, Number of dimensions of each individual object).}
+    \caption{Peak-value datasets. The ''Shape'' parameter is indicates: (Number of objects in the dataset, Number of dimensions used to represent each individual object).}
     \label{tab:pv_dsets}
 \end{table*}
 
