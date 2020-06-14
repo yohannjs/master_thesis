@@ -14,3 +14,8 @@ rm master_thesis.acn*
 rm master_thesis.bbl*
 rm master_thesis.glo*
 rm master_thesis.ist*
+rm master_thesis.acr
+rm master_thesis.alg
+rm master_thesis.glg
+rm master_thesis.gls
+rm master_thesis.synctex.gz

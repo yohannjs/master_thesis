@@ -6,43 +6,43 @@
     \centering
     % \includegraphics[width=\textwidth]{results/tsc_hf_dor_sens_spec_dist.png}
     \input{results/hf/tsc_hf_dor_sens_spec_dist.pgf}
-    \caption{(a) Distribution plot of DOR of all TSC methods evaluated at two cluster centers when applied to classify heart failure.
-             (b) Scatter plot of the same methods sensitivity, and specificity.}
+    \caption{(a) Distribution plot of \acrshort{dor} of all \acrshort{tsc} models evaluated at two cluster centers when applied to classify heart failure.
+             (b) Scatter plot of the same models sensitivity, and specificity.}
     \label{fig:tsc_hf_dor_sens_spec_dist}
 \end{figure}
 
-Figure \ref{fig:tsc_hf_dor_sens_spec_dist}a shows that the DOR is close to zero for many of the two-cluster-center methods, 
-However, the best performing methods are able to acheive a DOR above ten, these methods are listed in table \ref{tab:tsc_hf_dor_sens_spec_dist}.
+Figure \ref{fig:tsc_hf_dor_sens_spec_dist}a shows that the \acrshort{dor} is close to zero for many of the two-cluster-center models, 
+However, the best performing models are able to acheive a \acrshort{dor} above ten, these models are listed in table \ref{tab:tsc_hf_dor_sens_spec_dist}.
 From the scatterplot in figure \ref{fig:tsc_hf_dor_sens_spec_dist}b one can see that the distribution of sensitivity, and specificity are quite widespread.
 Sensitivity and specificity scores range from 0 to 1.
-Common to the top 18 methods in terms of DOR is that they all use data from a single view, and 2CH is the only view that is represented among the five methods with highest DOR.
-What else is worth noting is that almost all the methods using normalization or z-normalization as preprocessing score below the methods that use scaling, or no preprocessing at all.
+Common to the top 18 models in terms of \acrshort{dor} is that they all use data from a single view, and \acrshort{2ch} is the only view that is represented among the five models with highest \acrshort{dor}.
+What else is worth noting is that almost all the models using normalization or z-normalization as preprocessing score below the models that use scaling, or no preprocessing at all.
 These observations can be confirmed from the table\ref{tab:tsc_hf_raw_results} in the appendix. 
-From table \ref{tab:tsc_hf_dor_sens_spec_dist} one can see that the two best-performing methods in terms of DOR received the exact same score in all metrics.
+From table \ref{tab:tsc_hf_dor_sens_spec_dist} one can see that the two best-performing models in terms of \acrshort{dor} received the exact same score in all metrics.
 \textit{gls/2CH/regular/centroid/2}, and \textit{gls/2CH/scaled/centroid/2} differ only in the way of preprocessing, the former does not preprocess the curves before clustering,
 and the latter uses scaling. However, for these two cases preprocessing did not matter as they have the exact same cluster assignments as well.
 \bigskip
 
 \begin{comment}
-\textbf{COMMON PARAGRAPH TO ALL METHODS}.
+\textbf{COMMON PARAGRAPH TO ALL modelS}.
 COMPLETE? \textbf{YES}
-[X] \textbf{Comment on spread of DOR.}
-    * DOR is close to zero for the majority of the methods.
-    * From scatterplot one can see that select few methods acheive DOR above 10
+[X] \textbf{Comment on spread of \acrshort{dor}.}
+    * \acrshort{dor} is close to zero for the majority of the models.
+    * From scatterplot one can see that select few models acheive \acrshort{dor} above 10
 [X] \textbf{Comment on spread of sensitivity and specificity.}
     * From the scatterplot in figure \ref{fig:tsc_hf_dor_sens_spec_dist}b one can see that the distribution of sensitivity, and specificity are quite widespread,
     * some scores are as high as 1, and some as low as zero.
-[X] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
-    * 2CH is the only view used by the 5 methods with highest DORs. The next four methods use the APLAX view. 
-    * Common to the top 18 methods (in terms of DOR) is that they all only use data from a single view.
-    * The forms of preprocessing that is most often found among the methods that perform well are ''regular'', and ''scaled''.
-[X] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
+[X] \textbf{Comment on common traits in the high performing models.} Here you can refer to raw performance results in appendix.
+    * \acrshort{2ch} is the only view used by the 5 models with highest \acrshort{dor}s. The next four models use the \acrshort{aplax} view. 
+    * Common to the top 18 models (in terms of \acrshort{dor}) is that they all only use data from a single view.
+    * The forms of preprocessing that is most often found among the models that perform well are ''regular'', and ''scaled''.
+[X] \textbf{Comment on common traits in the low performing models.} Here you can refer to raw performance results in appendix.
     * Meaning that normalizing and z-normalizing does not help with regard to classifying heart failure. --> Discussion
     * Meaning that too many views pose a problem with this size of dataset due to the curse of dimensionality. --> Discussion
-[0] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
-    * Mention the two best performing methods in terms of DOR, and their sensitivity and specificity values.
-\textbf{IF NOT CLUSTERING METHOD}
-[X] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
+[0] \textbf{Select one - three models that are good contendors for being the best model/model in the group and comment on their traits}
+    * Mention the two best performing models in terms of \acrshort{dor}, and their sensitivity and specificity values.
+\textbf{IF NOT CLUSTERING model}
+[X] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, and \acrshort{dor}, and make an informed choice.}
 \end{comment}
 
 \begin{table*}
@@ -50,17 +50,17 @@ COMPLETE? \textbf{YES}
     \ra{1.3}
     \begin{tabular}{lrrrr}
         \toprule
-        Dataset-Method             &  Accuracy &  Sensitivity &  Specificity & DOR \\
+        Dataset-model             &  Accuracy &  Sensitivity &  Specificity & \acrshort{dor} \\
         \midrule
-        gls/2CH/regular/centroid/2 &      0.76 &         0.87 &         0.64 & 11.72 \\
-        gls/2CH/scaled/centroid/2  &      0.76 &         0.87 &         0.64 & 11.72 \\
-        gls/2CH/regular/average/2  &      0.75 &         0.85 &         0.65 & 10.38 \\
-        gls/2CH/scaled/average/2   &      0.75 &         0.85 &         0.65 & 10.38 \\
-        gls-rls/2CH/scaled/ward/2  &      0.74 &         0.82 &         0.67 &  9.14 \\
+        \acrshort{gls}/2CH/regular/centroid/2 &      0.76 &         0.87 &         0.64 & 11.72 \\
+        \acrshort{gls}/2CH/scaled/centroid/2  &      0.76 &         0.87 &         0.64 & 11.72 \\
+        \acrshort{gls}/2CH/regular/average/2  &      0.75 &         0.85 &         0.65 & 10.38 \\
+        \acrshort{gls}/2CH/scaled/average/2   &      0.75 &         0.85 &         0.65 & 10.38 \\
+        \acrshort{gls}-rls/2CH/scaled/ward/2  &      0.74 &         0.82 &         0.67 &  9.14 \\
         \bottomrule
     \end{tabular}
-    \caption{The accuracy, DOR, sensitivity and specicity scores of the five best performing two-cluster-center TSC methods in terms of DOR, at detecting heart failure.
-             The \textbf{Dataset-Method} column indicates \textit{Dataset used}$/$\textit{View used}$/$\textit{Type of preprocessing used}$/$\textit{Linkage criteria of method}$/$\textit{Number of cluster centers}.}
+    \caption{The accuracy, \acrshort{dor}, sensitivity and specicity scores of the five best performing two-cluster-center\acrshort{tsc} models in terms of \acrshort{dor}, at detecting heart failure.
+             The \textbf{Dataset-model} column indicates \textit{Dataset used}$/$\textit{View used}$/$\textit{Type of preprocessing used}$/$\textit{Linkage criteria of model}$/$\textit{Number of cluster centers}.}
     \label{tab:tsc_hf_dor_sens_spec_dist}
 \end{table*}
 
@@ -69,64 +69,64 @@ COMPLETE? \textbf{YES}
     \ra{1.3}
     \begin{tabular}{lr}
         \toprule
-        Dataset-Method             &  ARI \\
+        Dataset-model             &  \acrshort{ari} \\
         \midrule
-        gls/2CH/regular/centroid/2 & 0.25 \\
-        gls/2CH/scaled/centroid/2  & 0.25 \\
-        gls/2CH/scaled/centroid/3  & 0.24 \\
-        gls/2CH/regular/centroid/3 & 0.24 \\
-        gls/2CH/scaled/average/2   & 0.24 \\
+        \acrshort{gls}/2CH/regular/centroid/2 & 0.25 \\
+        \acrshort{gls}/2CH/scaled/centroid/2  & 0.25 \\
+        \acrshort{gls}/2CH/scaled/centroid/3  & 0.24 \\
+        \acrshort{gls}/2CH/regular/centroid/3 & 0.24 \\
+        \acrshort{gls}/2CH/scaled/average/2   & 0.24 \\
         \bottomrule
     \end{tabular}
-    \caption{The five highest ARI scores attained when applying TSC for detecting heart failure.
-             The \textbf{Dataset-Method} column indicates \textit{Dataset used}$/$\textit{View used}$/$\textit{Linkage criteria of method}$/$\textit{Number of cluster centers}.}
+    \caption{The five highest \acrshort{ari} scores attained when applying\acrshort{tsc} for detecting heart failure.
+             The \textbf{Dataset-model} column indicates \textit{Dataset used}$/$\textit{View used}$/$\textit{Linkage criteria of model}$/$\textit{Number of cluster centers}.}
     \label{tab:tsc_hf_ari}
 \end{table*}
 
 \begin{figure}[htb]
     \centering
     \input{results/hf/five_members_gls_2CH_regular_centroid_two.pgf}
-    \caption{Here the curves of five random cluster members assigned by the \textit{gls/2CH/regular/centroid/2} method.
-             Each plot depicts the 2CH GLS curves for five random cluster members from the \textit{gls/2CH/regular/centroid/2} method. 
+    \caption{Here the curves of five random cluster members assigned by the \textit{gls/2CH/regular/centroid/2} model.
+             Each plot depicts the \acrshort{2ch} \acrshort{gls} curves for five random cluster members from the \textit{gls/2CH/regular/centroid/2} model. 
              (a) and (b) contain members from cluster 1 and 2 respectively. Only five curves are included to avoid making the plot to chaotic.}
     \label{fig:tsc_hf_best_meth_5_samples}
 \end{figure}
 
 \newpage
 
-The majority of ARI scores are close to zero, but 17 methods evaluated at different numbers of cluster centers are able to acheive an ARI score above $0.20$.
-As with DOR, the general trends for methods with a high ARI score is that they use data from a single view, use scaling or no preprocessing at all.
-From table \ref{tab:tsc_hf_ari} one can see that the top five methods only use the GLS curve from the 2CH view. 
-In addition, one can also see that the two methods with the highest ARI ($0.25$) are the clustering methods evaluated at two cluster centers that perform best in terms of DOR as well. 
-This means that there most likely are no methods evaluated at a number of cluster centers higher than two 
+The majority of \acrshort{ari} scores are close to zero, but 17 models evaluated at different numbers of cluster centers are able to acheive an \acrshort{ari} score above $0.20$.
+As with \acrshort{dor}, the general trends for models with a high \acrshort{ari} score is that they use data from a single view, use scaling or no preprocessing at all.
+From table \ref{tab:tsc_hf_ari} one can see that the top five models only use the \acrshort{gls} curve from the \acrshort{2ch} view. 
+In addition, one can also see that the two models with the highest \acrshort{ari} ($0.25$) are the clustering models evaluated at two cluster centers that perform best in terms of \acrshort{dor} as well. 
+This means that there most likely are no models evaluated at a number of cluster centers higher than two 
 that will perform better than \textit{gls/2CH/regular/centroid/2}, or \textit{gls/2CH/scaled/centroid/2}.
-Figure \ref{fig:tsc_hf_best_meth_5_samples} shows the 2CH GLS curves of five random cluster members from the \textit{gls/2CH/regular/centroid/2} method.
-Although one cannot make any conclusive statements about what the general similarities between cluster members are, from the plots in figure \ref{fig:tsc_hf_best_meth_5_samples}
+Figure \ref{fig:tsc_hf_best_meth_5_samples} shows the \acrshort{2ch} \acrshort{gls} curves of five random cluster members from the \textit{gls/2CH/regular/centroid/2} model.
+Although one caANNot make any conclusive statements about what the general similarities between cluster members are, from the plots in figure \ref{fig:tsc_hf_best_meth_5_samples}
 it seems like the curves of cluster 2 are smooth, while the curves of cluster 1 are more irregular in shape, which makes sense as this clustering algorithm uses a shape-based distance measure.
-Since \textit{gls/2CH/regular/centroid/2} is one of two methods to acheive the highest DOR ($11.72$), accuracy ($0.76$), and ARI ($0.25$) it is chosen as the best of the TSC methods
+Since \textit{gls/2CH/regular/centroid/2} is one of two models to acheive the highest \acrshort{dor} ($11.72$), accuracy ($0.76$), and \acrshort{ari} ($0.25$) it is chosen as the best of the\acrshort{tsc} models
 at identifying heart failure among patients. \textit{gls/2CH/regular/centroid/2} is chosen over \textit{gls/2CH/scaled/centroid/2} because it does not require preprocessing.
 \bigskip
 
 \begin{comment}
-\textbf{ARI PARAGRAPH. ONLY FOR CLUSTERING METHODS}.
-[X] \textbf{Comment on the spread of ARI scores. Be specific since the distribution plots are ommitted}
-    * The majority of ARI scores are also close to zero, however 43 methods evaluated at different numbers of cluster centers acheive an ARI above $0.20$.
-[X] \textbf{Comment on the general trends of high performing methods in terms of ARI - are they the same trends as scores performing high in terms of DOR?}
-    * Also for the ARI, the best performing methods use data from a single view, and use scaling or no preprocessing.
-[X] \textbf{Comment on whether the methods in the top 5 ARIs are the same methods with the highest DOR. If not, mention it.}
-    * Mention that the two methods with the highest ARI, are methods evaluated at two cluster centers, hence this paper has not explored whether clustering methods at a greater number of cluster centers
+\textbf{ARI PARAGRAPH. ONLY FOR CLUSTERING modelS}.
+[X] \textbf{Comment on the spread of \acrshort{ari} scores. Be specific since the distribution plots are ommitted}
+    * The majority of \acrshort{ari} scores are also close to zero, however 43 models evaluated at different numbers of cluster centers acheive an \acrshort{ari} above $0.20$.
+[X] \textbf{Comment on the general trends of high performing models in terms of \acrshort{ari} - are they the same trends as scores performing high in terms of \acrshort{dor}?}
+    * Also for the \acrshort{ari}, the best performing models use data from a single view, and use scaling or no preprocessing.
+[X] \textbf{Comment on whether the models in the top 5 \acrshort{ari}s are the same models with the highest \acrshort{dor}. If not, mention it.}
+    * Mention that the two models with the highest \acrshort{ari}, are models evaluated at two cluster centers, hence this paper has not explored whether clustering models at a greater number of cluster centers
         could be used for identifying heart failure.
-[X] \textbf{If the top 1 or 2 ARIs are also top in DOR no further discussion is needed. You can then plot some of the cluster realizations to see what they look like.}
-[NA] \textbf{If NOT, why do they differ? Is the method with the highest ARI evaluated at a higher cluster number that 2? Attempt to visualize it, if it is not too difficult.}
+[X] \textbf{If the top 1 or 2 \acrshort{ari}s are also top in \acrshort{dor} no further discussion is needed. You can then plot some of the cluster realizations to see what they look like.}
+[NA] \textbf{If NOT, why do they differ? Is the model with the highest \acrshort{ari} evaluated at a higher cluster number that 2? Attempt to visualize it, if it is not too difficult.}
 [X] \textbf{Plot some visualizations of the clustering, and comment on them.}
     * Explain that five random curves are included because any higher number of curves were found to be confusing, and hard to look at. 
     * State that it is hard to make any conclusive statements on what are the specific similarities between curves of the different cluster members.
     * However, from figure \ref{fig:tsc_hf_best_meth_5_samples} it seems like the curves of cluster 2 are smooth, while the curves of cluster 1 are more irregular in shape.
     * Which makes sense as this clustering algorithm uses a shape-based distance measure. 
-    * These curves, and cluster assignments are taken from the \textit{gls/2CH/regular/centroid/2} method, but it turns out \textit{gls/2CH/regular/centroid/2} has the exact same 
+    * These curves, and cluster assignments are taken from the \textit{gls/2CH/regular/centroid/2} model, but it turns out \textit{gls/2CH/regular/centroid/2} has the exact same 
         cluster assignments (REF RAW RESULTS TABLE), which explains why they acheive the exact same scores in every evaluation metric.
-[X] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, DOR, ARI and potentially the plots, and make an informed choice.}
-    * So, since \textit{gls/2CH/regular/centroid/2} is one of two methods to acheive the highest DOR ($11.72$), accuracy ($0.76$), and ARI ($0.25$) it is chosen as the best of the TSC methods
+[X] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, \acrshort{dor}, \acrshort{ari} and potentially the plots, and make an informed choice.}
+    * So, since \textit{gls/2CH/regular/centroid/2} is one of two models to acheive the highest \acrshort{dor} ($11.72$), accuracy ($0.76$), and \acrshort{ari} ($0.25$) it is chosen as the best of the\acrshort{tsc} models
         at identifying heart failure among patients.
     * \textit{gls/2CH/regular/centroid/2} is chosen over \textit{gls/2CH/scaled/centroid/2} because it does not require preprocessing.
 \end{comment}
@@ -138,42 +138,42 @@ at identifying heart failure among patients. \textit{gls/2CH/regular/centroid/2}
 \begin{figure}[htb]
     \centering
     \input{results/hf/pvc_hf_dor_sens_spec_dist.pgf}
-    \caption{(a) Distribution plot of DOR of all PVC methods evaluated at two cluster centers when applied to classify heart failure.
-             (b) Scatter plot of the same methods sensitivity, and specificity.}
+    \caption{(a) Distribution plot of \acrshort{dor} of all PVC models evaluated at two cluster centers when applied to classify heart failure.
+             (b) Scatter plot of the same models sensitivity, and specificity.}
     \label{fig:pvc_hf_dor_sens_spec_dist}
 \end{figure}
 
-From figure \ref{fig:pvc_hf_dor_sens_spec_dist}a one can see that the majority of DOR scores are centered around zero, 
-but there is a substantial number of methods that acheive a DOR score above 10.
+From figure \ref{fig:pvc_hf_dor_sens_spec_dist}a one can see that the majority of \acrshort{dor} scores are centered around zero, 
+but there is a substantial number of models that acheive a \acrshort{dor} score above 10.
 The scatterplot in figure \ref{fig:pvc_hf_dor_sens_spec_dist}b shows that there is also a great spread in sensitivity, and specificity. 
-A few methods are spread along the edges of the plot acheiving a sensitivity or specificity score close to zero, 
-but there are also methods that aceive sensitivity and specificity scores above $0.7$.
-Common to the highest performing PVC methods is that they all use the dataset that is a combination of peak systolic GLS values and EF values.
+A few models are spread along the edges of the plot acheiving a sensitivity or specificity score close to zero, 
+but there are also models that aceive sensitivity and specificity scores above $0.7$.
+Common to the highest performing PVC models is that they all use the dataset that is a combination of peak systolic \acrshort{gls} values and \acrshort{ef} values.
 This can be confirmed from the complete table of results in the appendix \ref{tab:pvc_hf_raw_results}.
-From table \ref{tab:pvc_hf_dor_sens_spec_dist} one can see that \textit{gls-EF/ward/2} is the PVC method that acheives the highest DOR of $11.59$ when applied to classify heart failure.
-The \textit{gls-EF/complete/2} method acheives the second highest DOR of $10.85$, but its' specificity is nine points higher than \textit{gls-EF/ward/2}, while its sensitivity is only
-six points lower, and it also has the highest accuracy of all the PVC methods applied to identify heart failure.
+From table \ref{tab:pvc_hf_dor_sens_spec_dist} one can see that \textit{gls-EF/ward/2} is the PVC model that acheives the highest \acrshort{dor} of $11.59$ when applied to classify heart failure.
+The \textit{gls-EF/complete/2} model acheives the second highest \acrshort{dor} of $10.85$, but its' specificity is nine points higher than \textit{gls-EF/ward/2}, while its sensitivity is only
+six points lower, and it also has the highest accuracy of all the PVC models applied to identify heart failure.
 \bigskip
 
 \begin{comment}
-\textbf{COMMON PARAGRAPH TO ALL METHODS}.
-[X] \textbf{Comment on spread of DOR.}
-    * From figure \ref{fig:pvc_hf_dor_sens_spec_dist}b one can see that the majority of DOR scores are centered around zero, 
-      but there is a substantial number of methods that acheive a DOR score above 10.
+\textbf{COMMON PARAGRAPH TO ALL modelS}.
+[X] \textbf{Comment on spread of \acrshort{dor}.}
+    * From figure \ref{fig:pvc_hf_dor_sens_spec_dist}b one can see that the majority of \acrshort{dor} scores are centered around zero, 
+      but there is a substantial number of models that acheive a \acrshort{dor} score above 10.
 [0] \textbf{Comment on spread of sensitivity and specificity.}
     * The scatterplot in figure \ref{fig:pvc_hf_dor_sens_spec_dist}b shows that there is also a great spread in sensitivity, and specificity. 
-      A few methods are spread along the edges of the plot acheiving a sensitivity or specificity score close to zero, 
-      but there are also methods that aceive sensitivity and specificity scores above $0.7$.
-[0] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
-    * Common to the highest performing PVC methods is that they all use the dataset that is a combination of peak systolic GLS values and EF values.
+      A few models are spread along the edges of the plot acheiving a sensitivity or specificity score close to zero, 
+      but there are also models that aceive sensitivity and specificity scores above $0.7$.
+[0] \textbf{Comment on common traits in the high performing models.} Here you can refer to raw performance results in appendix.
+    * Common to the highest performing PVC models is that they all use the dataset that is a combination of peak systolic \acrshort{gls} values and \acrshort{ef} values.
       This can be confirmed from the complete table of results in the appendix \ref{tab:pvc_hf_raw_results}.
-[0] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
-[0] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
-    * From table \ref{tab:pvc_hf_dor_sens_spec_dist} one can see that \textit{gls-EF/ward/2} is the PVC method that acheives the highest DOR of $11.59$ when applied to classify heart failure.
-    * The \textit{gls-EF/complete/2} method acheives the second highest DOR ofr $10.85$, but its' specificity is nine points higher than \textit{gls-EF/ward/2}, while its sensitivity is only
-      six points lower, and it also has the highest accuracy of all the PVC methods applied to identify heart failure.
-\textbf{IF NOT CLUSTERING METHOD}
-[NA] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
+[0] \textbf{Comment on common traits in the low performing models.} Here you can refer to raw performance results in appendix.
+[0] \textbf{Select one - three models that are good contendors for being the best model/model in the group and comment on their traits}
+    * From table \ref{tab:pvc_hf_dor_sens_spec_dist} one can see that \textit{gls-EF/ward/2} is the PVC model that acheives the highest \acrshort{dor} of $11.59$ when applied to classify heart failure.
+    * The \textit{gls-EF/complete/2} model acheives the second highest \acrshort{dor} ofr $10.85$, but its' specificity is nine points higher than \textit{gls-EF/ward/2}, while its sensitivity is only
+      six points lower, and it also has the highest accuracy of all the PVC models applied to identify heart failure.
+\textbf{IF NOT CLUSTERING model}
+[NA] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, and \acrshort{dor}, and make an informed choice.}
 \end{comment}
 
 \begin{table*}[htb]
@@ -181,7 +181,7 @@ six points lower, and it also has the highest accuracy of all the PVC methods ap
     \ra{1.3}
     \begin{tabular}{lrrrr}
         \toprule
-        Dataset-Method    &  Accuracy &  Sensitivity &  Specificity &   DOR \\
+        Dataset-model    &  Accuracy &  Sensitivity &  Specificity &   \acrshort{dor} \\
         \midrule
         gls-EF/ward/2     &      0.75 &         0.87 &         0.63 & 11.59 \\
         gls-EF/complete/2 &      0.76 &         0.81 &         0.72 & 10.85 \\
@@ -190,8 +190,8 @@ six points lower, and it also has the highest accuracy of all the PVC methods ap
         gls-rls-EF/ward/2 &      0.72 &         0.84 &         0.60 &  7.80 \\
         \bottomrule
     \end{tabular}
-    \caption{The accuracy, DOR, sensitivity and specicity scores of the five best performing two-cluster-center PVC methods in terms of DOR, at detecting heart failure.
-             The \textbf{Dataset-Method} column indicates \textit{Dataset used}$/$\textit{Linkage criteria of method}$/$\textit{Number of cluster centers}.}
+    \caption{The accuracy, \acrshort{dor}, sensitivity and specicity scores of the five best performing two-cluster-center PVC models in terms of \acrshort{dor}, at detecting heart failure.
+             The \textbf{Dataset-model} column indicates \textit{Dataset used}$/$\textit{Linkage criteria of model}$/$\textit{Number of cluster centers}.}
     \label{tab:pvc_hf_dor_sens_spec_dist}
 \end{table*}
 
@@ -200,7 +200,7 @@ six points lower, and it also has the highest accuracy of all the PVC methods ap
     \ra{1.3}
     \begin{tabular}{lr}
         \toprule
-        Dataset-Method    &  ARI \\
+        Dataset-model    &  \acrshort{ari} \\
         \midrule
         gls-EF/complete/2 & 0.27 \\
         gls-EF/ward/2     & 0.24 \\
@@ -209,57 +209,57 @@ six points lower, and it also has the highest accuracy of all the PVC methods ap
         gls-EF/complete/3 & 0.21 \\
         \bottomrule
     \end{tabular}
-    \caption{The five highest ARI scores attained when applying PVC for detecting heart failure.
-             The \textbf{Dataset-Method} column indicates \textit{Dataset used}$/$\textit{Linkage criteria of method}$/$\textit{Number of cluster centers}.}
+    \caption{The five highest \acrshort{ari} scores attained when applying PVC for detecting heart failure.
+             The \textbf{Dataset-model} column indicates \textit{Dataset used}$/$\textit{Linkage criteria of model}$/$\textit{Number of cluster centers}.}
     \label{tab:pvc_hf_ari}
 \end{table*}
 
 \newpage
 
-Many of the ARI of PVC methods for classifying heart failure are close to zero, but substantially more of the methods score above zero in ARI
-As with DOR, the methods that acheive the highest ARI scores use datasets that are combinations of strain curves and EF values.
-Table \ref{tab:pvc_hf_ari} shows that the three highest ARIs are attained by the same three methods that acheived the highest DORs. 
-This means that there are most likely no methods evaluated at a higher number of cluster centers that will outperform \textit{ward/2}, or \textit{complete/2} at classifying heart failure. 
-However, \textit{complete/2} acheives the highest ARI, although it only acheives the second highest DOR.
-\textit{complete/2} is chosen as the best performing PVC method when classifying heart failure, 
-since it has the highest accuracy (76$\%$), highest ARI (0.27), and second highest DOR (10.85). 
-In figure \ref{fig:scatter_gls_ef_hf_cluster_assignments} scatterplots patients are plotted with the dimensions: 4-chamber peak systolic GLS, 2-chamber peak systolic GLS and EF. 
+Many of the \acrshort{ari} of PVC models for classifying heart failure are close to zero, but substantially more of the models score above zero in \acrshort{ari}
+As with \acrshort{dor}, the models that acheive the highest \acrshort{ari} scores use datasets that are combinations of strain curves and \acrshort{ef} values.
+Table \ref{tab:pvc_hf_ari} shows that the three highest \acrshort{ari}s are attained by the same three models that acheived the highest \acrshort{dor}s. 
+This means that there are most likely no models evaluated at a higher number of cluster centers that will outperform \textit{ward/2}, or \textit{complete/2} at classifying heart failure. 
+However, \textit{complete/2} acheives the highest \acrshort{ari}, although it only acheives the second highest \acrshort{dor}.
+\textit{complete/2} is chosen as the best performing PVC model when classifying heart failure, 
+since it has the highest accuracy (76$\%$), highest \acrshort{ari} (0.27), and second highest \acrshort{dor} (10.85). 
+In figure \ref{fig:scatter_gls_ef_hf_cluster_assignments} scatterplots patients are plotted with the dimensions: 4-chamber peak systolic \acrshort{gls}, 2-chamber peak systolic \acrshort{gls} and \acrshort{ef}. 
 The colors of the points correspond to wheather the patient has heart failure or not, and which cluster the points belong to.
-The plots are actually a lower dimensional projection of the GLS-EF peak-value dataset. 
+The plots are actually a lower dimensional projection of the \acrshort{gls}-EF peak-value dataset. 
 This particular projection was chosen as it was found to be the projection where heart failure patients were as separable as possible. 
 From plots \ref{fig:scatter_gls_ef_hf_cluster_assignments}b-d one can see that the clusters are fairly separable, 
 heart failure on the other hand is not as easy to separate in these dimensions as can be seen in plot \ref{fig:scatter_gls_ef_average2}. 
 \textit{Ward/2} and \textit{complete/2} can in some sense be considered as binary classifiers where values under a certain threshold are categorized as heart failure.
-The \textit{ward/2} method has the highest threshold for what is considered heart failure, and \textit{complete/2} has the lowest, 
+The \textit{ward/2} model has the highest threshold for what is considered heart failure, and \textit{complete/2} has the lowest, 
 which explains their difference in sensitivity and specificity score. 
-Since method \textit{complete/2} acheives the highest accuracy ($0.76$), highest ARI ($0.27$) and second highest DOR ($10.85$) it is chosen as the best PVC method to identify heart failure among patients.
+Since model \textit{complete/2} acheives the highest accuracy ($0.76$), highest \acrshort{ari} ($0.27$) and second highest \acrshort{dor} ($10.85$) it is chosen as the best PVC model to identify heart failure among patients.
 \bigskip
 
 \begin{comment}
-\textbf{ARI PARAGRAPH. ONLY FOR CLUSTERING METHODS}.
-[X] \textbf{Comment on the spread of ARI scores. Be specific since the distribution plots are ommitted}
-    * Many of the ARI of PVC methods for classifying heart failure are close to zero, but substantially more of the methods score above zero in ARI
-[X] \textbf{Comment on the general trends of high performing methods in terms of ARI - are they the same trends as scores performing high in terms of DOR?}
-    * As with DOR, the methods that acheive the highest ARI scores use datasets that are combinations of strain curves and EF values.
-[X] \textbf{Comment on whether the methods in the top 5 ARIs are the same methods with the highest DOR. If not, mention it.}
-    * Table \ref{tab:pvc_hf_ari} shows that the three highest ARIs are attained by the same three methods that acheived the highest DORs. 
-    * This means that there are most likely no methods evaluated at a higher number of cluster centers that will outperform \textit{ward/2}, or \textit{complete/2} at classifying heart failure. 
-    * However, \textit{complete/2} acheives the highest ARI, although it only acheives the second highest DOR.
-    * \textit{complete/2} is chosen as the best performing PVC method when classifying heart failure, since it has the highest accuracy (76$\%$), highest ARI (0.27), and second highest DOR (10.85). 
-[NA] \textbf{If the top 1 or 2 ARIs are also top in DOR no further discussion is needed. You can then plot some of the cluster realizations to see what they look like.}
-[NA] \textbf{If NOT, why do they differ? Is the method with the highest ARI evaluated at a higher cluster number that 2? Attempt to visualize it, if it is not too difficult.}
+\textbf{ARI PARAGRAPH. ONLY FOR CLUSTERING modelS}.
+[X] \textbf{Comment on the spread of \acrshort{ari} scores. Be specific since the distribution plots are ommitted}
+    * Many of the \acrshort{ari} of PVC models for classifying heart failure are close to zero, but substantially more of the models score above zero in \acrshort{ari}
+[X] \textbf{Comment on the general trends of high performing models in terms of \acrshort{ari} - are they the same trends as scores performing high in terms of \acrshort{dor}?}
+    * As with \acrshort{dor}, the models that acheive the highest \acrshort{ari} scores use datasets that are combinations of strain curves and \acrshort{ef} values.
+[X] \textbf{Comment on whether the models in the top 5 \acrshort{ari}s are the same models with the highest \acrshort{dor}. If not, mention it.}
+    * Table \ref{tab:pvc_hf_ari} shows that the three highest \acrshort{ari}s are attained by the same three models that acheived the highest \acrshort{dor}s. 
+    * This means that there are most likely no models evaluated at a higher number of cluster centers that will outperform \textit{ward/2}, or \textit{complete/2} at classifying heart failure. 
+    * However, \textit{complete/2} acheives the highest \acrshort{ari}, although it only acheives the second highest \acrshort{dor}.
+    * \textit{complete/2} is chosen as the best performing PVC model when classifying heart failure, since it has the highest accuracy (76$\%$), highest \acrshort{ari} (0.27), and second highest \acrshort{dor} (10.85). 
+[NA] \textbf{If the top 1 or 2 \acrshort{ari}s are also top in \acrshort{dor} no further discussion is needed. You can then plot some of the cluster realizations to see what they look like.}
+[NA] \textbf{If NOT, why do they differ? Is the model with the highest \acrshort{ari} evaluated at a higher cluster number that 2? Attempt to visualize it, if it is not too difficult.}
 [X] \textbf{Plot some visualizations of the clustering, and comment on them.}
-    * In figure \ref{fig:scatter_gls_ef_hf_cluster_assignments} scatterplots patients are plotted with the dimensions: 4-chamber peak systolic GLS, 2-chamber peak systolic GLS and EF. 
+    * In figure \ref{fig:scatter_gls_ef_hf_cluster_assignments} scatterplots patients are plotted with the dimensions: 4-chamber peak systolic \acrshort{gls}, 2-chamber peak systolic \acrshort{gls} and \acrshort{ef}. 
     * The colors of the points correspond to wheather the patient has heart failure or not, and which cluster the points belong to.
-    * The plots are actually a lower dimensional projection of the GLS-EF peak-value dataset. 
+    * The plots are actually a lower dimensional projection of the \acrshort{gls}-EF peak-value dataset. 
     * This particular projection was chosen as it was found to be the projection where heart failure patients were as separable as possible. 
     * From plots \ref{fig:scatter_gls_ef_hf_cluster_assignments}b-d one can see that the clusters are fairly separable, 
       heart failure on the other hand is not as easy to separate in these dimensions as can be seen in plot \ref{fig:scatter_gls_ef_average2}. 
     * \textit{Ward/2} and \textit{complete/2} can in some sense be considered as binary classifiers where values under a certain threshold are categorized as heart failure.
-    * The \textit{ward/2} method has the highest threshold for what is considered heart failure, and \textit{complete/2} has the lowest, 
+    * The \textit{ward/2} model has the highest threshold for what is considered heart failure, and \textit{complete/2} has the lowest, 
       which explains their difference in sensitivity and specificity score. 
-[X] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, DOR, ARI and potentially the plots, and make an informed choice.}
-    * Since method \textit{complete/2} acheives the highest accuracy ($0.76$), highest ARI ($0.27$) and second highest DOR ($10.85$) it is chosen as the best PVC method to identify heart failure among patients.
+[X] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, \acrshort{dor}, \acrshort{ari} and potentially the plots, and make an informed choice.}
+    * Since model \textit{complete/2} acheives the highest accuracy ($0.76$), highest \acrshort{ari} ($0.27$) and second highest \acrshort{dor} ($10.85$) it is chosen as the best PVC model to identify heart failure among patients.
 \end{comment}
 
 \begin{figure}[htb]
@@ -288,8 +288,8 @@ Since method \textit{complete/2} acheives the highest accuracy ($0.76$), highest
         \caption{\textit{Average/2} cluster assignments.}
         \label{fig:scatter_gls_ef_average2}
     \end{subfigure}
-    \caption{Scatterplot of peak GLS values in each view. Colors in the of the different dots are given by heart failure diagnosis, and cluster assignments of 
-             ward/2, complete/2 and average/2 methods. Numbers are not included on the axes because the point of the figure is to illustrate the separability 
+    \caption{Scatterplot of peak \acrshort{gls} values in each view. Colors in the of the different dots are given by heart failure diagnosis, and cluster assignments of 
+             ward/2, complete/2 and average/2 models. Numbers are not included on the axes because the point of the figure is to illustrate the separability 
              of clusters, and heart failure.}
              \label{fig:scatter_gls_ef_hf_cluster_assignments}
 \end{figure}
@@ -302,39 +302,39 @@ Since method \textit{complete/2} acheives the highest accuracy ($0.76$), highest
     \centering
     % \includegraphics[width=\textwidth]{results/dl_hf_dor_sens_spec_dist.png}
     \input{results/hf/dl_hf_dor_sens_spec_dist.pgf}
-    \caption{(a) Distribution plot of DOR of all NN models evaluated at two cluster centers when trained to predict heart failure.
+    \caption{(a) Distribution plot of \acrshort{dor} of all \acrshort{ann} models evaluated at two cluster centers when trained to predict heart failure.
              (b) Scatter plot of the same models sensitivity, and specificity.}
     \label{fig:dl_hf_dor_sens_spec_dist}
 \end{figure}
 
-From the distribution plot in figure \ref{fig:dl_hf_dor_sens_spec_dist}a one can see that the most frequent DOR by NN models when training them to predict heart failure is zero .
-The highest DOR of $1.36$ is attained by using only the GLS curve from the 4CH view as input, as can be seen from table \ref{tab:dl_hf_dor_sens_spec_dist}.
+From the distribution plot in figure \ref{fig:dl_hf_dor_sens_spec_dist}a one can see that the most frequent \acrshort{dor} by \acrshort{ann} models when training them to predict heart failure is zero .
+The highest \acrshort{dor} of $1.36$ is attained by using only the \acrshort{gls} curve from the \acrshort{4ch} view as input, as can be seen from table \ref{tab:dl_hf_dor_sens_spec_dist}.
 In the scatterplot in figure \ref{fig:dl_hf_dor_sens_spec_dist}b one can see that sensitivity scores vary between $0.15$ and $0.65$, and the specificity scores vary between $0$ and $0.68$.
-The majority of the NN variations acheive a sensitivity, specificity and accuracy below $0.50$.
+The majority of the \acrshort{ann} variations acheive a sensitivity, specificity and accuracy below $0.50$.
 The accuracy of the model variations are also fairly low, $0.54$ being the highest accuracy acheived.
 Since the heart failure dataset is fairly evenly distribution (recall figure \ref{fig:hf_ind_dist}) an accuracy of $0.54$ is not much better than what could be acheived 
 by randomly guessing the label. 
-The 11 highest DORs attained by NN models trained to classify heart failure are acheived using only curves from single views as input, and only GLS, or RLS curves.
-\textit{Gls/4CH/upsampled} will be considered the best model variation of the NNs at predicting heart failure since it acheives the highest accuracy and DOR . \bigskip
+The 11 highest \acrshort{dor}s attained by \acrshort{ann} models trained to classify heart failure are acheived using only curves from single views as input, and only \acrshort{gls}, or \acrshort{rls} curves.
+\textit{Gls/4CH/upsampled} will be considered the best model variation of the \acrshort{ann}s at predicting heart failure since it acheives the highest accuracy and \acrshort{dor} . \bigskip
 
 \begin{comment}
-\textbf{COMMON PARAGRAPH TO ALL METHODS}.
-[X] \textbf{Comment on spread of DOR.}
-    * From the distribution plot in figure \ref{fig:dl_hf_dor_sens_spec_dist}a one can see that the most frequent DOR by the NN models is zero when training them to predict heart failure.
-    * The highest DOR of $1.36$ is attained by using only the GLS curve from the 4-chamber view as input, as can be seen from table \ref{tab:dl_hf_dor_sens_spec_dist}.
+\textbf{COMMON PARAGRAPH TO ALL modelS}.
+[X] \textbf{Comment on spread of \acrshort{dor}.}
+    * From the distribution plot in figure \ref{fig:dl_hf_dor_sens_spec_dist}a one can see that the most frequent \acrshort{dor} by the \acrshort{ann} models is zero when training them to predict heart failure.
+    * The highest \acrshort{dor} of $1.36$ is attained by using only the \acrshort{gls} curve from the 4-chamber view as input, as can be seen from table \ref{tab:dl_hf_dor_sens_spec_dist}.
 [X] \textbf{Comment on spread of sensitivity and specificity.}
     * In the scatterplot in figure \ref{fig:dl_hf_dor_sens_spec_dist}b one can see that sensitivity scores vary between $0.15$ and $0.65$, and the specificity scores vary between $0$ and $0.68$.
-    * The majority of the NN variations acheive a sensitivity, specificity and accuracy below $0.50$.
+    * The majority of the \acrshort{ann} variations acheive a sensitivity, specificity and accuracy below $0.50$.
     * The accuracy of the model variations are also fairly low, $0.54$ being the highest accuracy acheived.
     * Since the heart failure dataset is fairly evenly distribution (recall figure \ref{fig:hf_ind_dist}) an accuracy of $0.54$ is not much better than what could be acheived 
       by randomly guessing the label. 
-[X] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
-    * The 11 highest DORs attained by NN models trained to classify heart failure are acheived using only curves from a single view as input, and only GLS curves, or only RLS curves.
-[X] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
-[X] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
-\textbf{IF NOT CLUSTERING METHOD}
-[X] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
-    * \textit{gls/4CH/upsampled} will be considered the best model variation of the NN at predicting heart failure since it acheives the highest accuracy ($0.54$) and DOR ($1.36$). 
+[X] \textbf{Comment on common traits in the high performing models.} Here you can refer to raw performance results in appendix.
+    * The 11 highest \acrshort{dor}s attained by \acrshort{ann} models trained to classify heart failure are acheived using only curves from a single view as input, and only \acrshort{gls} curves, or only \acrshort{rls} curves.
+[X] \textbf{Comment on common traits in the low performing models.} Here you can refer to raw performance results in appendix.
+[X] \textbf{Select one - three models that are good contendors for being the best model/model in the group and comment on their traits}
+\textbf{IF NOT CLUSTERING model}
+[X] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, and \acrshort{dor}, and make an informed choice.}
+    * \textit{gls/4CH/upsampled} will be considered the best model variation of the \acrshort{ann} at predicting heart failure since it acheives the highest accuracy ($0.54$) and \acrshort{dor} ($1.36$). 
 \end{comment}
 
 \begin{table*}
@@ -342,7 +342,7 @@ The 11 highest DORs attained by NN models trained to classify heart failure are 
     \ra{1.3}
     \begin{tabular}{lrrrr}
         \toprule
-        Dataset-Model         &  Accuracy &  Sensitivity &  Specificity &  DOR \\
+        Dataset-Model         &  Accuracy &  Sensitivity &  Specificity &  \acrshort{dor} \\
         \midrule
         gls/4CH/upsampled     &      0.54 &         0.46 &         0.61 & 1.36 \\
         rls/APLAX/regular     &      0.53 &         0.48 &         0.58 & 1.30 \\
@@ -351,7 +351,7 @@ The 11 highest DORs attained by NN models trained to classify heart failure are 
         gls/2CH/downsampled   &      0.51 &         0.61 &         0.40 & 1.03 \\
         \bottomrule
     \end{tabular}
-    \caption{The accuracy, DOR, sensitivity and specicity scores of the five best performing variations of the NN in terms of DOR, at detecting heart failure.
+    \caption{The accuracy, \acrshort{dor}, sensitivity and specicity scores of the five best performing variations of the \acrshort{ann} in terms of \acrshort{dor}, at detecting heart failure.
              The \textbf{Dataset-Model} column indicates \textit{Dataset used}$/$\textit{View used}$/$\textit{Whether curve has been upsampled, downsampled or is regular}.}
     \label{tab:dl_hf_dor_sens_spec_dist}
 \end{table*}
@@ -363,43 +363,43 @@ The 11 highest DORs attained by NN models trained to classify heart failure are 
     \centering
     % \includegraphics[width=\textwidth]{results/pvmlc_hf_dor_sens_spec_dist.png}
     \input{results/hf/pvmlc_hf_dor_sens_spec_dist.pgf}
-    \caption{(a) Distribution plot of DOR of all PVSC models evaluated at two cluster centers when trained to predict heart failure.
+    \caption{(a) Distribution plot of \acrshort{dor} of all PVSC models evaluated at two cluster centers when trained to predict heart failure.
              (b) Scatter plot of the same models sensitivity, and specificity.}
     \label{fig:pvmlc_hf_dor_sens_spec_dis}
 \end{figure}
 
-From the distribution plot depicted in figure \ref{fig:pvmlc_hf_dor_sens_spec_dis}a one can see that the PVSC models overall acheive relatively high DORs, 
+From the distribution plot depicted in figure \ref{fig:pvmlc_hf_dor_sens_spec_dis}a one can see that the PVSC models overall acheive relatively high \acrshort{dor}s, 
 with a range of approximately two to nine.
 The scatterplot in figure \ref{fig:pvmlc_hf_dor_sens_spec_dis}b shows that the models are quite concentrated in terms of sensitivity and specificity scores. 
 The majority of the models achieve sensitivity, and specificity scores in the ranges $0.6$ to $0.75$, with some outliers acheiving specificity below $0.5$ and sensitivity above $0.75$.
 What is even more concentrated are the accuracy scores of the models. 
 As can be seen in table \ref{tab:pvmlc_hf_dor_sens_spec_dis}, the accuracy of top five PVSC models are all $0.75$
-As with PVC all the best performing PVSC models use a combination of EF and peak systolic strain values, 
-and no specific ML model seems to outperform the others on all the datasets in term of DOR.
-The table also shows that the highest DOR of $9.4$ is acheived by model \textit{gls-EF/Gaissian-Process}. 
-Although the DOR, sensitivity and specificity scores are very similar for the five best performing models \textit{gls-EF/Gaussian-Process} 
-is chosen as the PVSC model that performs best at predicting heart failure as it acheives the highest DOR.
+As with PVC all the best performing PVSC models use a combination of \acrshort{ef} and peak systolic strain values, 
+and no specific \acrshort{ml} model seems to outperform the others on all the datasets in term of \acrshort{dor}.
+The table also shows that the highest \acrshort{dor} of $9.4$ is acheived by model \textit{gls-EF/Gaissian-Process}. 
+Although the \acrshort{dor}, sensitivity and specificity scores are very similar for the five best performing models \textit{gls-EF/Gaussian-Process} 
+is chosen as the PVSC model that performs best at predicting heart failure as it acheives the highest \acrshort{dor}.
 
 \begin{comment}
-\textbf{COMMON PARAGRAPH TO ALL METHODS}.
-[X] \textbf{Comment on spread of DOR.}
-    * From the distribution plot depicted in figure \ref{fig:pvmlc_hf_dor_sens_spec_dis}a one can see that the PVSC models overall acheive relatively high DORs, 
+\textbf{COMMON PARAGRAPH TO ALL modelS}.
+[X] \textbf{Comment on spread of \acrshort{dor}.}
+    * From the distribution plot depicted in figure \ref{fig:pvmlc_hf_dor_sens_spec_dis}a one can see that the PVSC models overall acheive relatively high \acrshort{dor}s, 
       with a range of approximately two to nine.
 [X] \textbf{Comment on spread of sensitivity and specificity.}
     * The scatterplot in figure \ref{fig:pvmlc_hf_dor_sens_spec_dis}b shows that the models are quite concentrated in terms of sensitivity and specificity scores. 
     * The majority of the models achieve sensitivity, and specificity scores in the ranges $0.6$ to $0.75$, with some outliers acheiving specificity below $0.5$ and sensitivity above $0.75$.
     * What is even more concentrated are the accuracy scores of the models. 
     * As can be seen in table \ref{tab:pvmlc_hf_dor_sens_spec_dis}, the accuracy of top five PVSC models are all $0.75$
-[X] \textbf{Comment on common traits in the high performing methods.} Here you can refer to raw performance results in appendix.
-    * As with PVC all the best performing PVSC models use a combination of EF and peak systolic strain values, 
-      and no specific ML model seems to outperform the others on all the datasets in term of DOR.
-[X] \textbf{Comment on common traits in the low performing methods.} Here you can refer to raw performance results in appendix.
-[X] \textbf{Select one - three methods that are good contendors for being the best method/model in the group and comment on their traits}
-    * The table also shows that the highest DOR of $9.4$ is acheived by model \textit{gls-EF/Gaissian-Process}. 
-\textbf{IF NOT CLUSTERING METHOD}
-[X] \textbf{Make arguments for and against the top three methods in terms of accuracy, sensitivity, specificity, and DOR, and make an informed choice.}
-    * Although the DOR, sensitivity and specificity scores are very similar for the five best performing models \textit{gls-EF/Gaissian-Process} 
-      is chosen as the PVSC model that performs best at predicting heart failure as it acheives the highest DOR.
+[X] \textbf{Comment on common traits in the high performing models.} Here you can refer to raw performance results in appendix.
+    * As with PVC all the best performing PVSC models use a combination of \acrshort{ef} and peak systolic strain values, 
+      and no specific \acrshort{ml} model seems to outperform the others on all the datasets in term of \acrshort{dor}.
+[X] \textbf{Comment on common traits in the low performing models.} Here you can refer to raw performance results in appendix.
+[X] \textbf{Select one - three models that are good contendors for being the best model/model in the group and comment on their traits}
+    * The table also shows that the highest \acrshort{dor} of $9.4$ is acheived by model \textit{gls-EF/Gaissian-Process}. 
+\textbf{IF NOT CLUSTERING model}
+[X] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, and \acrshort{dor}, and make an informed choice.}
+    * Although the \acrshort{dor}, sensitivity and specificity scores are very similar for the five best performing models \textit{gls-EF/Gaissian-Process} 
+      is chosen as the PVSC model that performs best at predicting heart failure as it acheives the highest \acrshort{dor}.
 \end{comment}
 
 \begin{table*}
@@ -407,7 +407,7 @@ is chosen as the PVSC model that performs best at predicting heart failure as it
     \ra{1.3}
     \begin{tabular}{lrrrr}
         \toprule
-        Dataset-Model           &  Accuracy &  Sensitivity &  Specificity &  DOR \\
+        Dataset-Model           &  Accuracy &  Sensitivity &  Specificity &  \acrshort{dor} \\
         \midrule
         gls-EF/Gaussian-Process &      0.75 &         0.78 &         0.73 & 9.40 \\
         rls-EF/MLP              &      0.75 &         0.76 &         0.74 & 9.37 \\
@@ -416,8 +416,8 @@ is chosen as the PVSC model that performs best at predicting heart failure as it
         gls-EF/Naive-Bayes      &      0.75 &         0.76 &         0.74 & 8.79 \\
         \bottomrule
     \end{tabular}
-    \caption{The accuracy, DOR, sensitivity and specicity scores of the five best performing PVSC in terms of DOR, at detecting heart failure.
-             The \textbf{Dataset-Model} column indicates \textit{Dataset used}$/$\textit{The specific ML model used}.}
+    \caption{The accuracy, \acrshort{dor}, sensitivity and specicity scores of the five best performing PVSC in terms of \acrshort{dor}, at detecting heart failure.
+             The \textbf{Dataset-Model} column indicates \textit{Dataset used}$/$\textit{The specific \acrshort{ml} model used}.}
     \label{tab:pvmlc_hf_dor_sens_spec_dis}
 \end{table*}
 
@@ -429,50 +429,50 @@ is chosen as the PVSC model that performs best at predicting heart failure as it
     \ra{1.3}
     \begin{tabular}{lcccc}
         \toprule
-        Dataset-Model                           &  Accuracy &  Sensitivity &  Specificity &  DOR \\
+        Dataset-Model                           &  Accuracy &  Sensitivity &  Specificity &  \acrshort{dor} \\
         \midrule
         \textbf{TSC}-gls/2CH/regular/centroid/2 &      0.76 &         0.87 &         0.64 & 11.72 \\
         \textbf{PVC}-gls-EF/complete/2          &      0.76 &         0.81 &         0.72 & 10.85 \\
-        \textbf{NN}-gls/4CH/upsampled           &      0.54 &         0.46 &         0.61 & 1.36 \\
+        \textbf{ANN}-gls/4CH/upsampled           &      0.54 &         0.46 &         0.61 & 1.36 \\
         \textbf{PVSC}-gls-EF/Gaussian-Process   &      0.75 &         0.78 &         0.73 & 9.40 \\
         \midrule
         Dataset-Model                           &  TP &  TN &  FP &  FN \\
         \midrule
         \textbf{TSC}-gls/2CH/regular/centroid/2 &  86 &  62 &  35 &  13 \\
         \textbf{PVC}-gls-EF/complete/2          &  77 &  72 &  28 &  18 \\
-        \textbf{NN}-gls/4CH/upsampled           &  46 &  61 &  39 &  53 \\
+        \textbf{ANN}-gls/4CH/upsampled           &  46 &  61 &  39 &  53 \\
         \textbf{PVSC}-gls-EF/Gaussian-Process   &  74 &  72 &  27 &  21 \\
         \bottomrule
     \end{tabular}
     \caption{A table comparing the best contenders within each model group for predicting heart failure among patients. 
-             The top table comprare the models by their accuracy, sensitivity, specificity and DOR, 
+             The top table comprare the models by their accuracy, sensitivity, specificity and \acrshort{dor}, 
              and the bottom table shows the number of TPs, TNs, FPs and FNs that the different models attain.}
     \label{tab:hf_compare}
 \end{table*}
 
-With exeption of the NN, the models performance of the different models are very close in terms of DOR and accuracy.
-From table \ref{tab:hf_compare} one can see that the TSC method \textit{gls/2CH/regular/centroid/2} achieves the highest sensitivity of all the models applied to predict heart failure,
+With exeption of the \acrshort{ann}, the models performance of the different models are very close in terms of \acrshort{dor} and accuracy.
+From table \ref{tab:hf_compare} one can see that the\acrshort{tsc} model \textit{gls/2CH/regular/centroid/2} achieves the highest sensitivity of all the models applied to predict heart failure,
 but it achieves the second lowest specificity of the four model groups. This can be confirmed by the fact that it attains 86 TPs, and 35 FPs.
 The PVSC model \textit{gls-EF/Gaussian-Process} attains the most balanced score in terms of sensitivity and specificity, and the highest specificity score of all the model groups.
-However, the PVC model \textit{gls-EF/complete/2} attains a higher accuracy, sensitivity and DOR than the PVSC model. 
+However, the PVC model \textit{gls-EF/complete/2} attains a higher accuracy, sensitivity and \acrshort{dor} than the PVSC model. 
 One can also see that the PVC model attains more TP, the same number of TN, fewer FP and fewer FN than the PVSC model.
-It should also be noted that the PVC model and the PVSC model are using the same dataset which is a combination of peak systolic GLS values, and EF.
+It should also be noted that the PVC model and the PVSC model are using the same dataset which is a combination of peak systolic \acrshort{gls} values, and \acrshort{ef}.
 To conclude this particular case study, the PVC model is picked as the best model at predicting heart failure among patients as it achieves the highest accuracy of the model groups, highest
 number of TN, and one of the most balanced combinations of sensitivity, and specificity.
 
 \begin{comment}
 [ ] \textbf{How big is the difference in performance between the models? Can this be confirmed by the number of TP/TN attained.}
-    * With exeption of the NN, the models performance of the different models are very close in terms of DOR and accuracy.
+    * With exeption of the \acrshort{ann}, the models performance of the different models are very close in terms of \acrshort{dor} and accuracy.
 [ ] \textbf{Do any of the models score particularily high on sensitivity or specificity? Can this be confirmed by the number of TP/TN attained.}
-    * From table \ref{tab:hf_compare} one can see that the TSC method \textit{gls/2CH/regular/centroid/2} achieves the highest sensitivity of all the models applied to predict heart failure,
+    * From table \ref{tab:hf_compare} one can see that the\acrshort{tsc} model \textit{gls/2CH/regular/centroid/2} achieves the highest sensitivity of all the models applied to predict heart failure,
       but it achieves the second lowest specificity of the four model groups. This can be confirmed by the fact that it attains 86 TPs, and 35 FPs.
 [ ] \textbf{Which model gets the most balanced score?}
     * The PVSC model \textit{gls-EF/Gaussian-Process} attains the most balanced score in terms of sensitivity and specificity, and the highest specificity score of all the model groups.
 [ ] \textbf{Is the most balanced model the best one, or is there a model that performs better.}
-    * However, the PVC model \textit{gls-EF/complete/2} attains a higher accuracy, sensitivity and DOR than the PVSC model. 
+    * However, the PVC model \textit{gls-EF/complete/2} attains a higher accuracy, sensitivity and \acrshort{dor} than the PVSC model. 
 [ ] \textbf{Comments}
     * One can also see that the PVC model attains more TP, the same number of TN, fewer FP and fewer FN than the PVSC model.
-    * It should also be noted that the PVC model and the PVSC model are using the same dataset which is a combination of peak systolic GLS values, and EF.
+    * It should also be noted that the PVC model and the PVSC model are using the same dataset which is a combination of peak systolic \acrshort{gls} values, and \acrshort{ef}.
 [ ] \textbf{Conclusion}
     * To conclude this particular case study, the PVC model is picked as the best model at predicting heart failure among patients as it achieves the highest accuracy of the model groups, highest
       number of TN, and one of the most balanced combinations of sensitivity, and specificity.

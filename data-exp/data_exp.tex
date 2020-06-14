@@ -15,26 +15,25 @@ Target variables are used both in training to correct erroneus predictions that 
 The patient meta-data that will be considered in this section are age, gender, \acrfull{bmi} and blood pressure.
 
 \begin{figure}
-    \begin{center}
-    \includegraphics[width=\textwidth]{data-exp/metadataDist4.png}
-    \end{center}
+    \centering
+    \input{data-exp/metaDataDist4.pgf}
     \caption{Distribution of age, gender and \acrshort{bmi}.}
-    \label{fig:meta-dist4}
+    \label{fig:meta_dist4}
 \end{figure}
 
 \begin{figure}
-    \begin{center}
-    \includegraphics[width=0.4\textwidth]{data-exp/bp.png}
-    \end{center}
+    \centering
+    % \includegraphics[width=0.4\textwidth]{data-exp/bp.png}
+    \input{data-exp/bp.pgf}
     \caption{A joint distribtion plot of systolic and diastolic blood pressure of the patients.}
-    \label{fig:bp-dist}
+    \label{fig:bp_dist}
 \end{figure}
 
-Figure \ref{fig:meta-dist4} shows the patient distributions with regard to age, gender and \acrshort{bmi}. 
+Figure \ref{fig:meta_dist4} shows the patient distributions with regard to age, gender and \acrshort{bmi}. 
 As evident from the figure the patients that make up the dataset is made up of 138 males and 57 females. 
 The majority of the patients are in the age group 60-80 years with a number of patients in the range 80-90 years (AGE SECTION SUBJECT TO CHANGE). 
 The \acrshort{bmi} distribution of patients is centered around 26 $kg/m^2$. 
-Figure \ref{fig:bp-dist} shows the joint distribution of systolic and diastolic blood pressure among the patients. \bigskip
+Figure \ref{fig:bp_dist} shows the joint distribution of systolic and diastolic blood pressure among the patients. \bigskip
 
 \section{Input variables} \label{sec:covariates}
 As mentioned earlier in section REF the different machine learning models that will be applied will apply two types of input data, 
@@ -48,17 +47,17 @@ Figure \ref{fig:gls_dist} shows the distribution of peak systolic \acrshort{gls}
 As evident from the figure, the values are centered around $-12.5$ with tails going as low as $-29$, and as high as $-2.5$. \bigskip
 
 \begin{figure}[h]
-    \begin{center}
-    \includegraphics[width=\textwidth]{data-exp/EF_dist.png}
-    \end{center}
+    \centering
+    % \includegraphics[width=\textwidth]{data-exp/EF_dist.png}
+    \input{data-exp/EF_dist.pgf}
     \caption{Distribution of patient \acrshort{ef} values.}
     \label{fig:EF_dist}
 \end{figure}
 
 \begin{figure}
-    \begin{center}
-    \includegraphics[width=\textwidth]{data-exp/peak_sys_gls_dist.png}
-    \end{center}
+    \centering
+    % \includegraphics[width=\textwidth]{data-exp/peak_sys_gls_dist.png}
+    \input{data-exp/peak_sys_gls_dist.pgf}
     \caption{Distribution of peak systolic global longitudinal strain.}
     \label{fig:gls_dist}
 \end{figure}
@@ -72,17 +71,17 @@ Each strain curve has a standardized length of one heart cycle, due to this diff
 Figure \ref{fig:fr_sample_dist} shows the distribution of frame rates, and number of samples among the total number of strain curves. \bigskip
 
 \begin{figure}[h]
-    \begin{center}
-    \includegraphics[width=0.95\textwidth]{data-exp/patient_strain_curves_4CH.png}
-    \end{center}
+    \centering
+    % \includegraphics[width=0.95\textwidth]{data-exp/patient_strain_curves_4CH.png}
+    \input{data-exp/patient_strain_curves_4CH.pgf}
     \caption{Plot of the global and regional longitudinal strain curves of one patient in the 4CH view.}
     \label{fig:strain_curves}
 \end{figure}
 
 \begin{figure}
-    \begin{center}
-    \includegraphics[width=\textwidth]{data-exp/fr_sample_dist.png}
-    \end{center}
+    \centering
+    % \includegraphics[width=\textwidth]{data-exp/fr_sample_dist.png}
+    \input{data-exp/fr_sample_dist.pgf}
     \caption{Distribution of the frame rate used in the ultrasound imaging used to obtain the strain curves (left), and sample count of the different strain curves (right).}
     \label{fig:fr_sample_dist}
 \end{figure}
@@ -98,9 +97,9 @@ The groups of patients with STEMI, and NSTEMI indications consist of 60 and 39 p
 Finally, the group of patients with heart failure, but with a non-stemic indication (labelled OTHER in left barplot in figure \ref{fig:hf_ind_dist}) consists of 69 patients. \bigskip
 
 \begin{figure}[h]
-    \begin{center}
-    \includegraphics[width=\textwidth]{data-exp/hf_indication_dist.png}
-    \end{center}
+    \centering
+    % \includegraphics[width=\textwidth]{data-exp/hf_indication_dist.png}
+    \input{data-exp/hf_indication_dist.pgf}
     \caption{The distribution of heart failure and different indications within patients.}
     \label{fig:hf_ind_dist}
 \end{figure}
@@ -116,25 +115,25 @@ and figure \ref{fig:gls_ind_dist} follows the same distribution as the heart fai
 However, it is hard to make an evaluation on this since the sample size of the control group is much smaller than the group of diagnosed patients.\bigskip
 
 \begin{figure}[h]
-    \begin{center}
-    \includegraphics[width=\textwidth]{data-exp/EF_HF_ind_dist.png}
-    \end{center}
+    \centering
+    % \includegraphics[width=\textwidth]{data-exp/EF_HF_ind_dist.png}
+    \input{data-exp/EF_HF_ind_dist.pgf}
     \caption{Distribution of \acrshort{ef} for patients with and without heart failure (left), and distribution of \acrshort{ef} for patients in the control group, and patients with a diagnosis.}
     \label{fig:ef_hf_ind_dist}
 \end{figure}
 
 \begin{figure}[h]
-    \begin{center}
-    \includegraphics[width=\textwidth]{data-exp/gls_hf_dist.png}
-    \end{center}
+    \centering
+    % \includegraphics[width=\textwidth]{data-exp/gls_hf_dist.png}
+    \input{data-exp/gls_hf_dist.pgf}
     \caption{Distribution of \acrshort{gls} for patients with and without heart failure.}
     \label{fig:gls_hf_dist}
 \end{figure}
 
 \begin{figure}[!h]
-    \begin{center}
-    \includegraphics[width=\textwidth]{data-exp/gls_indication_dist.png}
-    \end{center}
+    \centering
+    % \includegraphics[width=\textwidth]{data-exp/gls_indication_dist.png}
+    \input{data-exp/gls_indication_dist.pgf}
     \caption{Distribution of \acrshort{gls} for patients in the healthy control group, and the other patients.}
     \label{fig:gls_ind_dist}
 \end{figure}
@@ -149,9 +148,9 @@ To counteract this one can change the taxonomy of the labels such that the class
 The dataset is then fairly evenly distributed with 1695 \textit{Normal} labels and 1818 \textit{Not normal} labels. \bigskip
 
 \begin{figure}[!h]
-    \begin{center}
-    \includegraphics[width=\textwidth]{data-exp/segment_label_distribution.png}
-    \end{center}
+    \centering
+    % \includegraphics[width=\textwidth]{data-exp/segment_label_distribution.png}
+    \input{data-exp/segment_label_distribution.pgf}
     \caption{Distribution segment indication labels.}
     \label{fig:segm_label_dist}
 \end{figure}

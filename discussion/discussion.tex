@@ -3,212 +3,143 @@
 In the results chapter, the performance results were presented in the order of the different target variables that were explored. 
 In the discussion chapter a different approach is taken, and the each model will be discussed individually based on their performance in the case studies.
 
-\section{Time-series Clustering}
+\section{Time-series Clustering} \label{sec:disc_tsc}
 
-\begin{itemize}
-    \item \textbf{Give a brief summary of how the TSC model was implemented.}
-    \begin{itemize}
-        \item Before dissimilarity was measured between strain curves, curves were preprocessed in one of four ways. 
-        \item Curves were either: not preprocessed, scaled between zero and one, normalized between zero and one or z-score normalized.
-        \item The TSC model was implemented by using DTW distance between strain curves as a dissimilarity measure to achieve a shape-based TSC model.
-        \item All the dissimilarity measures between a specific strain curve of one patient to the same strain curve of every other patient were combined into a dissimilarity matrix.
-        \item If the dataset represented patients with more than one strain curve the dissimilarity matrices of each indivial strain curves were added together,
-              such that there was a single dissimilarity matrix that represented the dissimilarity between the patients.
-        \item The dissimilarity matrix was then passed to the hierarchical agglomorative clustering algorithm which started out with each patient as an indivial cluster, 
-              and merged clusters together based on a specific linkage criteria.
-        \item Seven linkage criteria were tested: single, complete, average, ward, centroid, median and weighted.
-        \item The clustering model was calculated at the different number of cluster centers between two and nine.
-        \item The ARI was estimated for the all the cluster assignments generated, and the different target variables.
-        \item For the cluster assignments yielded by a clustering model evaluated at two cluster centers the accuracy, sensitivity, specicity and DOR was also calculated.
-    \end{itemize}
-    \item \textbf{Mention briefly which placements TSC has in the different case studies.}
-    \begin{itemize}
-        \item The TSC models did not perform best in any of the case studies, 
-              but variations of the TSC models generally yielded results with high performance in terms of accuracy, sensitivity and specicity.
-        \item In the heart failure case study the best variation of the TSC model achieved the highest sensitivity and DOR, but it was outperformed by the best variation of the PVC model overall.
-        \item In the patient diagnosis case study the best variation of the TSC model outperformed the best variation of the PVC model, but they were both outperformed by the best PVSC model.
-        \item In the segment indication case study the best variation of the TSC model attains the highest accuracy, specicity and DOR, 
-              but is outperformed by the NN because it attains a higher sensitivity score, and thereby attains a more balanced accuracy in the positives and negatives.
-    \end{itemize}
-    \item \textbf{Discuss why methods using data from single view performed better.}
-    \begin{itemize}
-        \item As discussed in section REFERENCE, a challenge for all statistical models is the ''curse of dimensionality''. 
-              Briefly described, in ML, and data mining the curse of dimensionality refers to the issue of attaining a good balance 
-              between the number of dimensions that an object is represented in, and the number of objects used to train and/or evaluate the model. 
-        \item In the heart failure and patient diagnoses case studies the TSC models that perform best in terms of DOR, 
-              and ARI are the models that use datasets where there are objects are represented by fewer dimensions.
-        \item A reason for this could be that for 200 patients, the heart failure diagnoses, and patient diagnoses are most seperable for the TSC models when only one strain curve is used. 
-        \item The curve that then gives the easiest separation of patients is then the 2CH GLS curve.
-        \item In the heart failure study the TSC models that attain the five best performing models in terms of DOR and ARI only use the GLS curve from the 2CH view, 
-              meaning that these methods only use one of 21 possible curves. This can be confirmed from table \ref{tab:tsc_hf_dor_sens_spec_dist} and \ref{tab:tsc_hf_ari}.
-        \item In the patient diagnoses study one can see from table \ref{tab:tsc_ind_dor_sens_spec_dist} that the five methods 
-              that attain the highest DOR also only use the GLS curve from the 2CH view. 
-        \item These two observations support the claim that at a dataset size of 200 objects using fewer strain curves makes it easier for TSC models to separate heart failure diagnoses, 
-              and patient diagnoses.
-        \item An observation that does not directly support this claim is that in the patient diagnosis case study, the TSC models that attain the four highest ARI use a combination of GLS and RLS
-              curves in the 4CH view, or use the GLS curves from all views.
-        \item However, these methods also only use three and seven of 21 curves in total, so this observation does not negate the claim entirely. 
-    \end{itemize}
-    \item \textbf{Discuss why methods using data using ''regular'' or ''scaled'' performed better than methods using normalization or z-normalization.}
-    \begin{itemize}
-        \item In all case studies it was found that TSC models that performed best in terms of DOR, and ARI used no preprocessing. 
-        \item In some cases models using scaling as a form of preprocessing yielded the same cluster assignments, which could indicate that scaling the curves before measuring dissimilarity
-              does not make much of a difference.
-        \item Since TSC models using normalization or z-score normalization as a form of preprocessing were not among the top five methods in terms of DOR, or ARI in any of the case studies
-              the argument could be made that these form of preprocessing are not suited when using DTW as a dissimilarity on left ventrice strain curves.
-    \end{itemize}
-    \item \textbf{Talk about the performance of different linkages.}
-    \begin{itemize}
-        \item Of the seven linkages tested, it was the centroid, weighted and ward linkages that went into the TSC models 
-              that performed best at predicting heart failure, patient diagnosis and segment indication respectively, in the different case studies. 
-        \item However, the single, complete and average linkages also went into the methods that appeared in the top five candidates in terms of DOR, or ARI.
-        \item So it is not possible to say certainly that all linkages other than centroid, weighted and ward linkages are not suited for clustering left ventricle strain curves,
-              but one can say with some degree of certainty that the median linkage does not go into any of the TSC models that perform well in any of the three case studies. 
-    \end{itemize}
-    \item \textbf{Talk about run-time challenges.}
-    \begin{itemize}
-        \item When calculating the dissimilarity matrix of a set of 200 curves, it took approximately 0.3 seconds using the C-optimized functions of the dtaidistance library.
-        \item The time it took to compute the clustering varied between 0.15 and 0.45 seconds depending on what linkage was used. 
-        \item The single linkage criteria was found to be the fastest, and the complete linkage was found to be the slowest. 
-        \item That the single linkage was the fastest could is to be expected, as it fairly easy to compute. 
-        \item However, it was unexpected that the complete linkage was the one that took the longest time to compute as one would expect the more complex linkages such as the ward linkage
-              to take the longest time to compute.
-        \item When the size of the dataset was increased to approximately 3600 curves it took 162 seconds to compute the dissimilarity matrix.
-        \item This increase in run time is in agreement with the time complexity of the DTW algorithm described in section REFERENCE.
-        \item In addition, the time it took to compute the clustering after the dissimilarity matrix was computed also increased to vary between 3 seconds for the single linkage, and 871 seconds for the ward linkage.
-        \item So for a bigger dataset the run time of the different linkages were more as expected. 
-        \item Although these run-times are attained with a with a regular desktop Lenove G510 laptop, it illustrates possible challenge of how run-time of the calculations of the dissimilarity matrix, and clustering increase quadratically with the size of the dataset.
-    \end{itemize}
-    \item \textbf{Improvements that could be done on the existing model}
-    \begin{itemize}
-        \item It was often found that the PVC models that used EF in addition to peak systolic strain values performed better than the PVC models that only used strain values.
-        \item It would be interesting to see whether incorporating EF in the TSC model would improve its performance as well.
-        \item Since the hierarchical agglomorative clustering algorithm is uses dissimilarity matrix to cluster objects, 
-              it should be fairly straight-forward to calculate the dissimilarity matrix between a patients EF values, and add that to the dissimilarity matrices of the indivial curves.
-        \item However, it falls outside the scope of this thesis.
-    \end{itemize}
-\end{itemize}
+% \textbf{Give a brief summary of how the TSC model was implemented.}
+Before dissimilarity was measured between strain curves, curves were preprocessed in one of four ways. 
+Curves were either: not preprocessed, scaled between zero and one, normalized between zero and one or z-score normalized.
+The TSC model was implemented by using DTW distance between strain curves as a dissimilarity measure to achieve a shape-based TSC model.
+All the dissimilarity measures between a specific strain curve of one patient to the same strain curve of every other patient were combined into a dissimilarity matrix.
+If the dataset represented patients with more than one strain curve the dissimilarity matrices of each indivial strain curves were added together, such that there was a single dissimilarity matrix that represented the dissimilarity between the patients.
+The dissimilarity matrix was then passed to the hierarchical agglomorative clustering algorithm which started out with each patient as an indivial cluster, and merged clusters together based on a specific linkage criteria.
+Seven linkage criteria were tested: single, complete, average, ward, centroid, median and weighted.
+The clustering model was calculated at the different number of cluster centers between two and nine.
+The ARI was estimated for the all the cluster assignments generated, and the different target variables.
+For the cluster assignments yielded by a clustering model evaluated at two cluster centers the accuracy, sensitivity, specicity and DOR was also calculated. \bigskip
+
+% \textbf{Mention briefly which placements TSC has in the different case studies.}
+The TSC models did not perform best in any of the case studies, but variations of the TSC models generally yielded results with high performance in terms of accuracy, sensitivity and specicity.
+In the heart failure case study the best variation of the TSC model achieved the highest sensitivity and DOR, but it was outperformed by the best variation of the PVC model overall.
+In the patient diagnosis case study the best variation of the TSC model outperformed the best variation of the PVC model, but they were both outperformed by the best PVSC model.
+In the segment indication case study the best variation of the TSC model attains the highest accuracy, specicity and DOR, but is outperformed by the NN because it attains a higher sensitivity score, and thereby attains a more balanced accuracy in the positives and negatives.
+% \textbf{Discuss why methods using data from single view performed better.}
+As discussed in section REFERENCE, a challenge for all statistical models is the ''curse of dimensionality''. Briefly described, in ML, and data mining the curse of dimensionality refers to the issue of attaining a good balance between the number of dimensions that an object is represented in, and the number of objects used to train and/or evaluate the model. 
+In the heart failure and patient diagnoses case studies the TSC models that perform best in terms of DOR, and ARI are the models that use datasets where there are objects are represented by fewer dimensions.
+A reason for this could be that for 200 patients, the heart failure diagnoses, and patient diagnoses are most seperable for the TSC models when only one strain curve is used. 
+The curve that then gives the easiest separation of patients is then the 2CH GLS curve.
+In the heart failure study the TSC models that attain the five best performing models in terms of DOR and ARI only use the GLS curve from the 2CH view, meaning that these methods only use one of 21 possible curves. This can be confirmed from table \ref{tab:tsc_hf_dor_sens_spec_dist} and \ref{tab:tsc_hf_ari}.
+In the patient diagnoses study one can see from table \ref{tab:tsc_ind_dor_sens_spec_dist} that the five methods that attain the highest DOR also only use the GLS curve from the 2CH view. 
+These two observations support the claim that at a dataset size of 200 objects using fewer strain curves makes it easier for TSC models to separate heart failure diagnoses, and patient diagnoses.
+An observation that does not directly support this claim is that in the patient diagnosis case study, the TSC models that attain the four highest ARI use a combination of GLS and RLS curves in the 4CH view, or use the GLS curves from all views.
+However, these methods also only use three and seven of 21 curves in total, so this observation does not negate the claim entirely. 
+% \textbf{Discuss why methods using data using ''regular'' or ''scaled'' performed better than methods using normalization or z-normalization.}
+In all case studies it was found that TSC models that performed best in terms of DOR, and ARI used no preprocessing. 
+In some cases models using scaling as a form of preprocessing yielded the same cluster assignments, which could indicate that scaling the curves before measuring dissimilarity does not make much of a difference.
+Since TSC models using normalization or z-score normalization as a form of preprocessing were not among the top five methods in terms of DOR, or ARI in any of the case studies the argument could be made that these form of preprocessing are not suited when using DTW as a dissimilarity on left ventrice strain curves.
+% \textbf{Talk about the performance of different linkages.}
+Of the seven linkages tested, it was the centroid, weighted and ward linkages that went into the TSC models that performed best at predicting heart failure, patient diagnosis and segment indication respectively, in the different case studies. 
+However, the single, complete and average linkages also went into the methods that appeared in the top five candidates in terms of DOR, or ARI.
+So it is not possible to say certainly that all linkages other than centroid, weighted and ward linkages are not suited for clustering left ventricle strain curves, but one can say with some degree of certainty that the median linkage does not go into any of the TSC models that perform well in any of the three case studies. 
+% \textbf{Talk about run-time challenges.}
+When calculating the dissimilarity matrix of a set of 200 curves, it took approximately 0.3 seconds using the C-optimized functions of the dtaidistance library.
+The time it took to compute the clustering varied between 0.15 and 0.45 seconds depending on what linkage was used. 
+The single linkage criteria was found to be the fastest, and the complete linkage was found to be the slowest. 
+That the single linkage was the fastest could is to be expected, as it fairly easy to compute. 
+However, it was unexpected that the complete linkage was the one that took the longest time to compute as one would expect the more complex linkages such as the ward linkage to take the longest time to compute.
+When the size of the dataset was increased to approximately 3600 curves it took 162 seconds to compute the dissimilarity matrix.
+This increase in run time is in agreement with the time complexity of the DTW algorithm described in section REFERENCE.
+In addition, the time it took to compute the clustering after the dissimilarity matrix was computed also increased to vary between 3 seconds for the single linkage, and 871 seconds for the ward linkage.
+So for a bigger dataset the run time of the different linkages were more as expected. 
+Although these run-times are attained with a with a regular desktop Lenove G510 laptop, it illustrates possible challenge of how run-time of the calculations of the dissimilarity matrix, and clustering increase quadratically with the size of the dataset.
+% \textbf{Improvements that could be done on the existing model}
+It was often found that the PVC models that used EF in addition to peak systolic strain values performed better than the PVC models that only used strain values.
+It would be interesting to see whether incorporating EF in the TSC model would improve its performance as well.
+Since the hierarchical agglomorative clustering algorithm is uses dissimilarity matrix to cluster objects, it should be fairly straight-forward to calculate the dissimilarity matrix between a patients EF values, and add that to the dissimilarity matrices of the indivial curves.
+One could also consider the approach taken by CITATION, where they split the strain curves of one heart cycle into systolic, and diastolic strain curves, and pass them to the model separately. 
+Although the authors achieved good results with this, they also say that annotating points of every strain curve as systolic or diastolic is very time consuming.
 
 \section{Peak-value Clustering}
 
-\begin{itemize}
-    \item \textbf{Give a brief summary of how the PVC model was implemented.}
-    \begin{itemize}
-        \item The PVC model was implemented in a similar fashion as the TSC model.
-        \item The datapoints used to represent patients were passed to an implementation of hierarchical agglomorative clustering in scikit-learn.
-        \item The dissimilarity between patients was measured as the Euclidean distance between the dimensions used to represent them.
-        \item The scikit-learn implementation did not have all the same clustering linkages available as the scipy implementation used for TSC,
-              so only the following four linkages were tested: single, complete, average and ward.
-        \item The evaluation procedure for the PVC model was the same as the procedure used for TSC.
-    \end{itemize}
-    \item \textbf{Mention briefly which placements PVC has in the different case studies.}
-    \begin{itemize}
-        \item The best variations of the PVC model had a high performance in the heart failure, and in the patient diagnosis case studies. 
-        \item It was chosen as the best model in the heart failure case study, but was closely followed by the TSC, and PVSC models.
-        \item In the patient diagnosis case study the best variation of the PVC models attained the highest specicity, and second highest DOR of the three models compared. 
-        \item However, it was outperformed by both the TSC, and PVSC models due to its low sensitivity.
-    \end{itemize}
-    \item \textbf{Note that the PVC methods that use combination of peak systolic strain values and EF performs significantly better, future work could be to combine EF values with strain curves as well.}
-    \begin{itemize}
-        \item In both case studies PVC models that used datasets that were a combination of peak systolic strain values and EF performed consistently better than the models than only
-              used the strain values. 
-        \item This is to some degree expected in the heart failure case study, as EF is parameter that is established in the current medical procedures used to diagnose patients with heart failure.
-    \end{itemize}
-    \item \textbf{Talk about the performance of different linkages.}
-    \begin{itemize}
-        \item In the heart failure case study it was the complete linkage which was used in the model that was chosen as the best performer, but the ward, and average linkages were also used
-              in the models that attained the top five DOR and ARI scores.
-        \item In the patient diagnosis case study the complete linkages was also used in the model that was chosen as the best performer.
-        \item In both case studies where PVC models where tested the models that were chosen as the best performers used the complete linkage, but the average and ward linkages were also used by
-              other model variations that attained the five highest DOR and ARI.
-        \item Hence, for PVC models using peak systolic strain values, and EF to identify heart failure among patients, and patient diagnosis the single linkage was not found to be suited.
-    \end{itemize}
-    \item \textbf{Talk about run-time challenges.}
-    \begin{itemize}
-        \item Since a scikit learn implementation was used for the PVC model, it was not possible to separate run-time of the dissimilarity calculation and the clustering itself.  
-        \item However, Euclidean distance is known to scale linearly with the number of dimensions per object, and number of objects in the dataset.
-        \item Since the underlying algorithm used by scikit learn is the same as the one used by scipy it is assumed that it would perform similarily to the TSC model in terms of run time.
-    \end{itemize}
-\end{itemize}
+% \textbf{Give a brief summary of how the PVC model was implemented.}
+The PVC model was implemented in a similar fashion as the TSC model.
+The datapoints used to represent patients were passed to an implementation of hierarchical agglomorative clustering in scikit-learn.
+The dissimilarity between patients was measured as the Euclidean distance between the dimensions used to represent them.
+The scikit-learn implementation did not have all the same clustering linkages available as the scipy implementation used for TSC, so only the following four linkages were tested: single, complete, average and ward.
+The evaluation procedure for the PVC model was the same as the procedure used for TSC.
+% \textbf{Mention briefly which placements PVC has in the different case studies.}
+The best variations of the PVC model had a high performance in the heart failure, and in the patient diagnosis case studies. 
+It was chosen as the best model in the heart failure case study, but was closely followed by the TSC, and PVSC models.
+In the patient diagnosis case study the best variation of the PVC models attained the highest specicity, and second highest DOR of the three models compared. 
+However, it was outperformed by both the TSC, and PVSC models due to its low sensitivity.
+% \textbf{Note that the PVC methods that use combination of peak systolic strain values and EF performs significantly better, future work could be to combine EF values with strain curves as well.}
+In both case studies PVC models that used datasets that were a combination of peak systolic strain values and EF performed consistently better than the models than only used the strain values. 
+This is to some degree expected in the heart failure case study, as EF is parameter that is established in the current medical procedures used to diagnose patients with heart failure.
+% \textbf{Talk about the performance of different linkages.}
+In the heart failure case study it was the complete linkage which was used in the model that was chosen as the best performer, but the ward, and average linkages were also used in the models that attained the top five DOR and ARI scores.
+In the patient diagnosis case study the complete linkages was also used in the model that was chosen as the best performer.
+In both case studies where PVC models where tested the models that were chosen as the best performers used the complete linkage, but the average and ward linkages were also used by other model variations that attained the five highest DOR and ARI.
+Hence, for PVC models using peak systolic strain values, and EF to identify heart failure among patients, and patient diagnosis the single linkage was not found to be suited.
+% \textbf{Talk about run-time challenges.}
+Since a scikit learn implementation was used for the PVC model, it was not possible to separate run-time of the dissimilarity calculation and the clustering itself.  
+However, Euclidean distance is known to scale linearly with the number of dimensions per object, and number of objects in the dataset.
+Since the underlying algorithm used by scikit learn is the same as the one used by scipy it is assumed that it would perform similarily to the TSC model in terms of run time.
 
 \section{Neural Networks}
 
-\begin{itemize}
-    \item \textbf{Give a brief summary of how the NN model was implemented.}
-    \begin{itemize}
-        \item For the NN two types of preprocessing were tested in addition the option of not preprocessing at all, upsampling the curves to the highest sample rate in the dataset and downsampling the curves to the lowest sample rate.
-        \item The curves of the dataset were then passed as input to the NN architecture detailed in section REFERENCE together with the relevant target variables.
-        \item The NN was trained for five epochs using the backpropagation algorithm and SGD.
-        \item To validate the NN models 10-fold cross validation was used, at the end of each fold the TP, TN, FP, and FN of the model were noted. 
-        \item After the NN had effectively attempted to predict every object of the dataset all the TP, TN, FP, and FN were summed and this grand total was used to estimate the models accuracy, sensitivity, specicity and DOR.
-    \end{itemize}
-    \item \textbf{Mention briefly which placements NN has in the different case studies.}
-    \begin{itemize}
-        \item The NN models performed worst of the four model groups in the heart failure case study, and the patient diagnosis case study.
-        \item However, it attained the highest sensitivity in the segment indication case study, and was chosen as the best performing model because its sensitivity and specicity were more balanced than the TSC model.
-    \end{itemize}
-    \item \textbf{Talk about performance of NN in different case studies.}
-    \begin{itemize}
-        \item In the patient diagnosis case study close to all of the NN models predicted all the patients to be unhealthy. 
-        \item It is evident that a NN with the architecture used in this assignment was not suited to classify patient diagnosies with a skewed dataset of only 170 unhealthy patients and 30 healthy patients.
-        \item It is the authors opinion that the reason that the NN models performed so bad at predicting patient diagnosis is an aspect of ''the curse of dimensionality'', and that the network was not able to generalize the characteristics of healthy patients in the study, and therefore minimized loss function by predicting the outcome that was most probable.
-        \item From table \ref{tab:dl_hf_raw_results} one can see that the top nine variations of the NN model that performed best in the heart failure case study with regard to DOR, were models that used only the GLS curve from a single view, which supports the claim that 
-        \item Since the different NN models differed in architecture depending on how many curves were used to represent one patient, they also varied in the number of trainable parameters they have. 
-        \item The NN models which only take a single strain curve as input have 39457 trainable parameters, and the NN models that take 21 curves as input have 80417 trainable parameters.
-        \item Even though there is no exact ratio of how big a dataset should be with regard to how many trainable parameters a model has, between 40 and 80 thousand parameters for a dataset of size 200 is likely too many trainable parameters.
-        \item On the other hand, the NN model was chosen as the best performing model at predicting segment indication. 
-        \item In that case study though the size of the dataset is significantly larger, and each object is represented by a single curve. 
-        \item Considering that the architecture of the NN was given, and not developed specifically for this classification problem the performance that the model achieves is significant. 
-    \end{itemize}
-    \item \textbf{Possible improvements}
-    \begin{itemize}
-        \item It is the authors opinion that if more time is spent adapting the model to the dataset at hand, even better performances are within reach. 
-        \item Especially for the segment indication classification problem where there is so much data, there is potential.
-        \item There are alternatives to SGD that could be tested such as batch gradient descent, and the most popular choice mini-batch gradient descent which is a middle road between the two, and is often considered the best alternative REFERENCE.
-        \item There is also the GRU cells that are an alternative to the LSTM cells. Like LSTM cells, GRU cells are able capture time-dependent connections. GRU cells are simpler than LSTM cells in composition, and are said to require less training data, to achieve the same accuracies as LSTM cells REFERENCE.
-        \item It could also be considered whether it would be beneficial to use some form of dimensionality reduction such as a max pooling layers, which for time series can be considered as a max-filter where only the highest value in a segment of a curve is kept on. 
-        \item Dropout layers are also a technique that are used frequently when NN architecture become deep and complex, they introduce the probability that any particular perceptron in the layers preceding the dropout layer can ''drop out'' meaning that they become inactive.
-        \item In complex NN architectures it is often found that during training the model becomes overly dependent on certain perceptrons, and specific paths through the network. This leads to the NN not entirely utilizing all the perceptrons at its disposal, and the accuracy suffers. It is found that by adding a probability that any given neuron can drop out during training remedies this effect, and can increase accuracy overall.
-    \end{itemize}
-    \item \textbf{Talk about run-time challenges.}
-    \begin{itemize}
-        \item Training, and validating the NN models were one of the more time-consuming computations required.
-        \item The time it took to train the network depended on what dataset was used, which makes sense as increasing the number of curves the NN can take as input also increases the number of trainable parameters that need to be trained for each step of the SCG algorithm.
-        \item When validating the NN models, a single fold in the 10-fold cross validation took approximately 100 seconds in the heart failure, and patient diagnosis case studies.
-        \item The time it took to execute one fold in the segment indication case study took approximately 640 seconds (11 min)
-        \item However, these times do not reflect the times it will take to use the NN to evaluate new cases after training, so the same challenge one has with clustering is not as pressing should the aim be to deploy the NN in a real-time clinical setting.
-    \end{itemize}
-\end{itemize}
+% \textbf{Give a brief summary of how the NN model was implemented.}
+For the NN two types of preprocessing were tested in addition the option of not preprocessing at all, upsampling the curves to the highest sample rate in the dataset and downsampling the curves to the lowest sample rate.
+The curves of the dataset were then passed as input to the NN architecture detailed in section REFERENCE together with the relevant target variables.
+The NN was trained for five epochs using the backpropagation algorithm and SGD.
+To validate the NN models 10-fold cross validation was used, at the end of each fold the TP, TN, FP, and FN of the model were noted. 
+After the NN had effectively attempted to predict every object of the dataset all the TP, TN, FP, and FN were summed and this grand total was used to estimate the models accuracy, sensitivity, specicity and DOR.
+% \textbf{Mention briefly which placements NN has in the different case studies.}
+The NN models performed worst of the four model groups in the heart failure case study, and the patient diagnosis case study.
+However, it attained the highest sensitivity in the segment indication case study, and was chosen as the best performing model because its sensitivity and specicity were more balanced than the TSC model.
+% \textbf{Talk about performance of NN in different case studies.}
+In the patient diagnosis case study close to all of the NN models predicted all the patients to be unhealthy. 
+It is evident that a NN with the architecture used in this assignment was not suited to classify patient diagnosies with a skewed dataset of only 170 unhealthy patients and 30 healthy patients.
+It is the authors opinion that the reason that the NN models performed so bad at predicting patient diagnosis is an aspect of ''the curse of dimensionality'', and that the network was not able to generalize the characteristics of healthy patients in the study, and therefore minimized loss function by predicting the outcome that was most probable.
+From table \ref{tab:dl_hf_raw_results} one can see that the top nine variations of the NN model that performed best in the heart failure case study with regard to DOR, were models that used only the GLS curve from a single view, which supports the claim that 
+Since the different NN models differed in architecture depending on how many curves were used to represent one patient, they also varied in the number of trainable parameters they have. 
+The NN models which only take a single strain curve as input have 39457 trainable parameters, and the NN models that take 21 curves as input have 80417 trainable parameters.
+Even though there is no exact ratio of how big a dataset should be with regard to how many trainable parameters a model has, between 40 and 80 thousand parameters for a dataset of size 200 is likely too many trainable parameters.
+On the other hand, the NN model was chosen as the best performing model at predicting segment indication. 
+In that case study though the size of the dataset is significantly larger, and each object is represented by a single curve. 
+Considering that the architecture of the NN was given, and not developed specifically for this classification problem the performance that the model achieves is significant. 
+% \textbf{Possible improvements}
+It is the authors opinion that if more time is spent adapting the model to the dataset at hand, even better performances are within reach. 
+Especially for the segment indication classification problem where there is so much data, there is potential.
+There are alternatives to SGD that could be tested such as batch gradient descent, and the most popular choice mini-batch gradient descent which is a middle road between the two, and is often considered the best alternative REFERENCE.
+There is also the GRU cells that are an alternative to the LSTM cells. Like LSTM cells, GRU cells are able capture time-dependent connections. GRU cells are simpler than LSTM cells in composition, and are said to require less training data, to achieve the same accuracies as LSTM cells REFERENCE.
+It could also be considered whether it would be beneficial to use some form of dimensionality reduction such as a max pooling layers, which for time series can be considered as a max-filter where only the highest value in a segment of a curve is kept on. 
+Dropout layers are also a technique that are used frequently when NN architecture become deep and complex, they introduce the probability that any particular perceptron in the layers preceding the dropout layer can ''drop out'' meaning that they become inactive.
+In complex NN architectures it is often found that during training the model becomes overly dependent on certain perceptrons, and specific paths through the network. This leads to the NN not entirely utilizing all the perceptrons at its disposal, and the accuracy suffers. It is found that by adding a probability that any given neuron can drop out during training remedies this effect, and can increase accuracy overall.
+% \textbf{Talk about run-time challenges.}
+Training, and validating the NN models were one of the more time-consuming computations required.
+The time it took to train the network depended on what dataset was used, which makes sense as increasing the number of curves the NN can take as input also increases the number of trainable parameters that need to be trained for each step of the SCG algorithm.
+When validating the NN models, a single fold in the 10-fold cross validation took approximately 100 seconds in the heart failure, and patient diagnosis case studies.
+The time it took to execute one fold in the segment indication case study took approximately 640 seconds (11 min)
+However, these times do not reflect the times it will take to use the NN to evaluate new cases after training, so the same challenge one has with clustering is not as pressing should the aim be to deploy the NN in a real-time clinical setting.
 
-\section{Peak-value Supervised Classifiers}
+\section{Peak-value Supervised Classifiers} \label{sec:disc_pvsc}
 
-\begin{itemize}
-    \item \textbf{Give a brief summary of how the PVSC model was implemented.}
-    \begin{itemize}
-        \item The different peak-value datasets are passed the different supervised classifiers in the model group. 
-        \item The different datasets are detailed in section \ref{sec:datasets}, and the different supervised classifiers tested are detailed in section REFERENCE.
-        \item Each combination of dataset and classifiers is validated by a 10-fold cross-validation in the same manner as the NN. 
-    \end{itemize}
-    \item \textbf{Mention briefly which placements PVSC has in the different case studies.}
-    \begin{itemize}
-        \item In the heart failure case study the best PVSC model outperformed the best variations of the TSC, and NN models and had a performance that was on par with the PVC, although the best PVC model was ultimately deemed better in the end.
-        \item In the patient diagnosis case study the best PVSC model attained the highest accuracy, sensitivity and DOR of the four model groups, and it was deemed the best model group at predict patient diagnosis. 
-    \end{itemize}
-    \item \textbf{Mention that DOR distribution of PVSC models were significantly higher centered than the other models groups DOR distribution.}
-    \begin{itemize}
-        \item What should be adressed is the fact that the distribution of the DOR for the different PVSC models, differ from the DOR distributions of the other models in some key ways.
-        \item In both the heart failure case study, and the patient diagnosis case study the distribution of DOR for variations of TSC, PVC and NN models are highly concentrated around zero. 
-        \item For the PVSC models the lowest DOR attained by a PVSC model in the heart failure study is 1.94, and the lowest DOR attained by a PVSC model in the patient diagnosis case study is 3.68.
-        \item In the heart failure case study it is especially evident that the DOR of the different PVSC models is distributed differently than the DOR of the other models.
-        \item It can be confirmed from figure \ref{fig:pvmlc_hf_dor_sens_spec_dis} that the distribution of DOR for the PVSC is especially concentrated in the range between four to eight.
-        \item The significance of this difference of DOR distribution is two-fold, the first thing to keep in mind is that not very much time was spent optimizing the hyperparameters of the PVSC models as it falls outside the scope of this thesis, and that in contrast to the clustering models the outcome of the PVSC model is probabilistic in the sense that it is highly dependent on the initial conditions of the model before it is trained. 
-        \item Since the DOR distribution of PVSC models in the heart failure, and patient diagnosis case studies are distributed higher in general than the TSC and PVC models, and that the PVSC are configured with what can be considered as ''standard hyperparameters'' it is probable that spending time on optimizing the hyperparameters of the PVSC models, and testing different initial conditions could improve the performance of all the PVSC models. 
-    \end{itemize}
-    \item \textbf{Talk about run-time challenges.}
-    \begin{itemize}
-        \item The time it took to train and validate the PVSC models varied, and was highly dependent on the dimensions of the dataset and which specific ML model was used. 
-        \item The shortest training time encountered was at 201 seconds, and the longest was at 365 seconds.
-        \item These were the shortest training times encountered among the four model groups.
-        \item Similarily to the NN model the training times of the PVSC models do not hinder their ability to make predictions in real time, and deploy them in a clinical setting.
-    \end{itemize}
-\end{itemize}
+% \textbf{Give a brief summary of how the PVSC model was implemented.}
+The different peak-value datasets are passed the different supervised classifiers in the model group. 
+The different datasets are detailed in section \ref{sec:datasets}, and the different supervised classifiers tested are detailed in section REFERENCE.
+Each combination of dataset and classifiers is validated by a 10-fold cross-validation in the same manner as the NN. 
+% \textbf{Mention briefly which placements PVSC has in the different case studies.}
+In the heart failure case study the best PVSC model outperformed the best variations of the TSC, and NN models and had a performance that was on par with the PVC, although the best PVC model was ultimately deemed better in the end.
+In the patient diagnosis case study the best PVSC model attained the highest accuracy, sensitivity and DOR of the four model groups, and it was deemed the best model group at predict patient diagnosis. 
+% \textbf{Mention that DOR distribution of PVSC models were significantly higher centered than the other models groups DOR distribution.}
+What should be adressed is the fact that the distribution of the DOR for the different PVSC models, differ from the DOR distributions of the other models in some key ways.
+In both the heart failure case study, and the patient diagnosis case study the distribution of DOR for variations of TSC, PVC and NN models are highly concentrated around zero. 
+For the PVSC models the lowest DOR attained by a PVSC model in the heart failure study is 1.94, and the lowest DOR attained by a PVSC model in the patient diagnosis case study is 3.68.
+In the heart failure case study it is especially evident that the DOR of the different PVSC models is distributed differently than the DOR of the other models.
+It can be confirmed from figure \ref{fig:pvmlc_hf_dor_sens_spec_dis} that the distribution of DOR for the PVSC is especially concentrated in the range between four to eight.
+The significance of this difference of DOR distribution is two-fold, the first thing to keep in mind is that not very much time was spent optimizing the hyperparameters of the PVSC models as it falls outside the scope of this thesis, and that in contrast to the clustering models the outcome of the PVSC model is probabilistic in the sense that it is highly dependent on the initial conditions of the model before it is trained. 
+Since the DOR distribution of PVSC models in the heart failure, and patient diagnosis case studies are distributed higher in general than the TSC and PVC models, and that the PVSC are configured with what can be considered as ''standard hyperparameters'' it is probable that spending time on optimizing the hyperparameters of the PVSC models, and testing different initial conditions could improve the performance of all the PVSC models. 
+% \textbf{Talk about run-time challenges.}
+The time it took to train and validate the PVSC models varied, and was highly dependent on the dimensions of the dataset and which specific ML model was used. 
+The shortest training time encountered was at 201 seconds, and the longest was at 365 seconds.
+These were the shortest training times encountered among the four model groups.
+Similarily to the NN model the training times of the PVSC models do not hinder their ability to make predictions in real time, and deploy them in a clinical setting.
