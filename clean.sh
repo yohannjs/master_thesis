@@ -19,3 +19,4 @@ rm master_thesis.alg
 rm master_thesis.glg
 rm master_thesis.gls
 rm master_thesis.synctex.gz
+rm master_thesis.pdf
