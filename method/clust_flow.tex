@@ -1,0 +1,23 @@
+\tikzstyle{IO} = [draw, ellipse,fill=red!20, minimum height=2em]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=7em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{evl} = [rectangle, draw, fill=green!20, text width=7em, text centered, minimum height=2em]
+\tikzstyle{arrow} = [thin,->,>=stealth]
+
+\begin{tikzpicture}
+% Shapes
+\node (input)   [IO] {Input data};
+\node (preproc) [block, node distance=1.5cm, below of=input]   {Preprocessing};
+\node (diss)    [block, node distance=1.5cm, below of=preproc] {Dissimilarity measurement};
+\node (clust)   [block, node distance=2cm, below of=diss]  {Hierarchical Agglomorative Clustering};
+\node (output)  [IO,    node distance=2cm, below of=clust] {Cluster assignments};
+\node (ari)     [evl,   node distance=1.5cm, below of=output, xshift=-3cm] {ARI};
+\node (dor)     [evl,   node distance=2.1cm, below of=output, xshift=3cm] {Accuracy, sensitivity, specificity, and DOR};
+
+% Arrows
+\draw [arrow] (input)   --node[anchor=west] {}                     (preproc);
+\draw [arrow] (preproc) --node[anchor=west] {Processed data}       (diss);
+\draw [arrow] (diss)    --node[anchor=west] {Dissimilarity matrix} (clust);
+\draw [arrow] (clust)   --node[anchor=west] {}                     (output);
+\draw [arrow] (output)  --node[anchor=east] {$2 \rightarrow 9$}    (ari);
+\draw [arrow] (output)  --node[anchor=west] {2}                    (dor);
+\end{tikzpicture}
