@@ -29,26 +29,16 @@ The patient meta-data that will be considered in this section are age, gender, \
     \label{fig:bp_dist}
 \end{figure}
 
-Figure \ref{fig:meta_dist4} shows the patient distributions with regard to age, gender and \acrshort{bmi}. 
-As evident from the figure the patients that make up the dataset is made up of 138 males and 57 females. 
-The majority of the patients are in the age group 60-80 years with a number of patients in the range 80-90 years (AGE SECTION SUBJECT TO CHANGE). 
-The \acrshort{bmi} distribution of patients is centered around 26 $kg/m^2$. 
-Figure \ref{fig:bp_dist} shows the joint distribution of systolic and diastolic blood pressure among the patients. \bigskip
+Figure \ref{fig:meta_dist4} shows the patient distributions with regard to age, gender and \acrshort{bmi}. As evident from the figure the patients that make up the dataset is made up of 138 males and 57 females. From the age distribution plot in figure \ref{fig:meta_dist4} one can see that the majority of the patients are in the age group 60-80 years with a number of patients in the range 80-90 years. However, it should be mentioned that barely any information about the patients age has been made available. During the process of anonmization an error occured so only eleven of 200 ages were included. The \acrshort{bmi} distribution of patients is centered around 26 $kg/m^2$. Even though the \acrshort{bmi} is not always accuracte for individuals, for a population of 200 an average \acrshort{bmi} at 26 is quite high as scores above 24.9 are considered overweight. Figure \ref{fig:bp_dist} shows the joint distribution of systolic and diastolic blood pressure among the patients. \bigskip
 
 \section{Input variables} \label{sec:covariates}
-As mentioned earlier in section REF the different machine learning models that will be applied will apply two types of input data, 
-time-series data in the form of longitudinal strain curves, and point-values in the form of peak systolic global longitudinal strain and patient \acrshort{ef}. \bigskip
+As mentioned earlier in section REF the different machine learning models that will be applied use two different types of input data; time-series data in the form of longitudinal strain curves, and point-values in the form of peak systolic global longitudinal strain and patient \acrshort{ef}. \bigskip
 
 \subsection{Peak values}
-As mentioned in section REFERENCE \acrshort{ef} values below 40-50$\%$ is regarded as unhealthy with regard to probability of heart failure. 
-Keeping that in mind, one should note that the distribution of \acrshort{ef} values among the patients shown in figure \ref{fig:EF_dist} 
-is centered at approximately 40$\%$ with tails going as low as 8$\%$ and as high as 70$\%$. 
-Figure \ref{fig:gls_dist} shows the distribution of peak systolic \acrshort{gls} values, four the three different views. 
-As evident from the figure, the values are centered around $-12.5$ with tails going as low as $-29$, and as high as $-2.5$. \bigskip
+As mentioned in section REFERENCE \acrshort{ef} values below 40-50$\%$ is regarded as unhealthy with regard to probability of heart failure. Keeping that in mind, one should note that the distribution of \acrshort{ef} values among the patients shown in figure \ref{fig:EF_dist} is centered at approximately 40$\%$ with tails going as low as 20$\%$ and as high as 70$\%$. Figure \ref{fig:gls_dist} shows the distribution of peak systolic \acrshort{gls} values, four the three different views. As evident from the figure, the values are centered around $-12.5$ with tails going as low as $-29$, and as high as $-2.5$. \bigskip
 
 \begin{figure}[h]
     \centering
-    % \includegraphics[width=\textwidth]{data-exp/EF_dist.png}
     \input{data-exp/EF_dist.pgf}
     \caption{Distribution of patient \acrshort{ef} values.}
     \label{fig:EF_dist}
@@ -56,19 +46,16 @@ As evident from the figure, the values are centered around $-12.5$ with tails go
 
 \begin{figure}
     \centering
-    % \includegraphics[width=\textwidth]{data-exp/peak_sys_gls_dist.png}
     \input{data-exp/peak_sys_gls_dist.pgf}
     \caption{Distribution of peak systolic global longitudinal strain.}
     \label{fig:gls_dist}
 \end{figure}
 
+\clearpage
+
 \subsection{Strain curves}
 Figure \ref{fig:strain_curves} shows what a typical set of strain curves look like for a patient. 
-Only the six regional strain curves, and the one global strain curve from the 4CH view have been included as they are fairly similar across the different views. 
-Since the data from the different patients have been taken at different times, and possibly with different ultrasound machines 
-factors such as number of samples per strain curve, and the frame rate of the particular ultrasound machine during an examination. 
-Each strain curve has a standardized length of one heart cycle, due to this different curves have different number of samples. 
-Figure \ref{fig:fr_sample_dist} shows the distribution of frame rates, and number of samples among the total number of strain curves. \bigskip
+Only the six regional strain curves, and the one global strain curve from the 4CH view have been included as they are fairly similar across the different views. Since the data from the different patients have been taken at different times, and possibly with different ultrasound machines factors such as number of samples per strain curve, and the frame rate of the particular ultrasound machine during an examination. Each strain curve has a standardized length of one heart cycle, due to this different curves have different number of samples. Figure \ref{fig:fr_sample_dist} shows the distribution of frame rates, and number of samples among the total number of strain curves. \bigskip
 
 \begin{figure}[h]
     \centering
@@ -89,69 +76,63 @@ Figure \ref{fig:fr_sample_dist} shows the distribution of frame rates, and numbe
 \newpage
 
 \section{Target variables} \label{sec:target}
-Figure \ref{fig:hf_ind_dist} shows the distribution of heart failure among patients (left), and the distribution of different indications (right). 
-Since the dataset has approximately as many patients with a heart failure diagnosis as without, it can be considered balanced in that regard. 
-With regard to the different patient diagnosises, their rate of occurance can is not uniform in this dataset. 
-The control group of healthy individuals consists of 31 patients. 
-The groups of patients with STEMI, and NSTEMI indications consist of 60 and 39 patients respectively. 
-Finally, the group of patients with heart failure, but with a non-stemic indication (labelled OTHER in left barplot in figure \ref{fig:hf_ind_dist}) consists of 69 patients. \bigskip
+Figure \ref{fig:hf_ind_dist} shows the distribution of heart failure among patients (left), and the distribution of different indications (right). Since the dataset has approximately as many patients with a heart failure diagnosis as without, it can be considered balanced in that regard. With regard to the different patient diagnosises, their rate of occurance is not uniform in this dataset. The control group of healthy individuals consists of 30 patients. The groups of patients with STEMI, and NSTEMI indications consist of 60 and 39 patients respectively. Finally, the group of patients with heart failure, but with a non-stemic indication (labelled OTHER in left barplot in figure \ref{fig:hf_ind_dist}) consists of 70 patients. To simplify the classification problem this work will only attempt to separate healthy patients from unhealthy patients. All the 169 diagnosed patients are therefore grouped together under the label \textit{unhealthy}. \bigskip
 
 \begin{figure}[h]
     \centering
-    % \includegraphics[width=\textwidth]{data-exp/hf_indication_dist.png}
     \input{data-exp/hf_indication_dist.pgf}
     \caption{The distribution of heart failure and different indications within patients.}
     \label{fig:hf_ind_dist}
 \end{figure}
 
-To illustrate the diagnostic power of \acrshort{ef}, and peak strain values figure \ref{fig:ef_hf_ind_dist} 
-shows the distribution of \acrshort{ef} for patients with and without heart failure (left), and the distribution of \acrshort{ef} for patients in the control group and the other patients (right). 
-Figure \ref{fig:gls_hf_dist} shows the distribution of peak systolic \acrshort{gls} values for patients with and without heart failure, 
-and figure \ref{fig:gls_ind_dist} shows the distribution of peak systolic \acrshort{gls} values for patients in the control group and the rest of the patients. 
-From the samples used to produce the left plot in figure \ref{fig:ef_hf_ind_dist} and figure \ref{fig:gls_hf_dist} 
-it seems as though the heart failure patients are more separable with the \acrshort{ef} values than with the \acrshort{gls} values. 
-With regard to separability of patients with diagnoses and patients in the control group it seems as though the right plot in figure \ref{fig:ef_hf_ind_dist}, 
-and figure \ref{fig:gls_ind_dist} follows the same distribution as the heart failure patients. 
-However, it is hard to make an evaluation on this since the sample size of the control group is much smaller than the group of diagnosed patients.\bigskip
+To illustrate the diagnostic power of peak systolic strain, and \acrshort{ef} \ref{fig:ef_hf_ind_dist} shows the distribution of \acrshort{ef} for patients with and without heart failure (left), and the distribution of \acrshort{ef} for patients with and without a heart disease diagnosis (right). Figure \ref{fig:gls_hf_dist} shows the distribution of peak systolic \acrshort{gls} values for patients with and without heart failure, and figure \ref{fig:gls_ind_dist} shows the distribution of peak systolic \acrshort{gls} values for patients  with and without a heart disease diagnosis. From the samples used to produce the left plot in figure \ref{fig:ef_hf_ind_dist} and figure \ref{fig:gls_hf_dist} it seems as though the heart failure patients are more separable with the \acrshort{ef} values than with the \acrshort{gls} values. With regard to separability of patients with diagnoses and patients in the control group it seems as though the right plot in figure \ref{fig:ef_hf_ind_dist}, and figure \ref{fig:gls_ind_dist} follow the same distribution as the heart failure patients. However, it is hard to make an evaluation on this since the sample size of the control group is much smaller than the group of patients with a heart disease diagnosis.\bigskip
 
-\begin{figure}[h]
+\begin{figure}
     \centering
-    % \includegraphics[width=\textwidth]{data-exp/EF_HF_ind_dist.png}
     \input{data-exp/EF_HF_ind_dist.pgf}
     \caption{Distribution of \acrshort{ef} for patients with and without heart failure (left), and distribution of \acrshort{ef} for patients in the control group, and patients with a diagnosis.}
     \label{fig:ef_hf_ind_dist}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}
     \centering
-    % \includegraphics[width=\textwidth]{data-exp/gls_hf_dist.png}
     \input{data-exp/gls_hf_dist.pgf}
     \caption{Distribution of \acrshort{gls} for patients with and without heart failure.}
     \label{fig:gls_hf_dist}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}
     \centering
-    % \includegraphics[width=\textwidth]{data-exp/gls_indication_dist.png}
     \input{data-exp/gls_indication_dist.pgf}
     \caption{Distribution of \acrshort{gls} for patients in the healthy control group, and the other patients.}
     \label{fig:gls_ind_dist}
 \end{figure}
 
-\newpage
+\clearpage
 
-Figure \ref{fig:segm_label_dist} shows the distribution of the different segment indications, for all the left ventricle segments of all the patients in the dataset. 
-Since the occurance of indications other that ''normal'' and ''hypokinetic'' are very rare, the occurance axis has been used as logarithmic. 
-The imbalance of segment-indication labels illustrated in figure \ref{fig:segm_label_dist} means that it will challenging for any statistical model 
-to perform well in the classes with low occurance. 
-To counteract this one can change the taxonomy of the labels such that the classification problem becomes binary with the labels \textit{Normal} and \textit{Not normal}. 
-The dataset is then fairly evenly distributed with 1695 \textit{Normal} labels and 1818 \textit{Not normal} labels. \bigskip
+Figure \ref{fig:gls_curves_vs_hf_and_ind} shows five random sample \acrshort{gls} curves from all views for patients with different conditions. \acrshort{gls} curves for patients with, and without heart failure is illustrated on the column to the left, and patients with and without a heart disease diagnosis is illustrated to the right. For the curves it is not easy to visually discern the difference between heart failure patients, and diseased patients based on the shape.
 
-\begin{figure}[!h]
+\begin{figure}
     \centering
-    % \includegraphics[width=\textwidth]{data-exp/segment_label_distribution.png}
+    \input{data-exp/gls_curves_vs_hf_and_ind.pgf}
+    \caption{The left column shows five sample \acrshort{gls} curves for patients with (top), and without (bottom) heart failure. The right column shows five sample \acrshort{gls} curves for unhealthy (top) and healthy (bottom) patients.}
+    \label{fig:gls_curves_vs_hf_and_ind}
+\end{figure}
+
+\clearpage
+
+Figure \ref{fig:segm_label_dist} shows the distribution of the different segment indications, for all the left ventricle segments of all the patients in the dataset. Since the occurance of indications other that ''normal'' and ''hypokinetic'' are very rare, the occurance axis has been represented logarithmicly. The imbalance of segment-indication labels illustrated in figure \ref{fig:segm_label_dist} means that it will challenging for any statistical model to perform well in the classes with low occurance. To counteract this the taxonomy of the labels is changed such that the classification problem becomes binary with the labels \textit{Normal} and \textit{Not normal}, similarily as was done with the patient diagnoses. The dataset is then fairly evenly distributed with 1695 \textit{Normal} labels and 1818 \textit{Not normal} labels. Figure \ref{fig:rls_curves_vs_segm_labels} shows five random sample \acrshort{rls} curves that represent the different segment indication labels. Figure \ref{fig:rls_curves_vs_segm_labels} shows five random sample \acrshort{rls} curves that represent the different labels. In this case, it is easier to see the difference between the different segmental labels. For the \acrshort{rls} curves that are labelled as hyperkinetic, one can see that compared to the curves regarded as normal these curves in general have troughs in strain that go further down than the normal curves. The \acrshort{rls} curves regarded as normal rarely go below -20, whereas the hyperkinetic curves regularily pass -20 and some of them go as low as -30. This observation is consistent with the label ''hyperkinetic'' indicating that the segment has a larger range of motion than normal.  The curves with the hypokinetic, akinetic and dyskinetic all show similar characteristics of various degrees, the curves within these three categories have peaks, and troughs that are smaller in magnitude than the curves that are considered normal. The \acrshort{rls} curves regarded as akinetic, and dyskinetic are also smaller than the curves with the hypokinetic label. These observations also agree with the label names, as segments labelled hypokinetic, dyskinetic and akinetic all indicate that the segments have different degrees of reduced range of motion. The \acrshort{rls} curves that are labelled aneurysmal have significantly more positive strain than the curves with any other label. Two curves have peaks as high as 20, whereas the curves with the other labels rarely pass 5.
+
+\begin{figure}
+    \centering
     \input{data-exp/segment_label_distribution.pgf}
     \caption{Distribution segment indication labels.}
     \label{fig:segm_label_dist}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \input{data-exp/rls_curves_vs_segm_labels.pgf}
+    \caption{Each plot in this figure shows five random sample \acrshort{rls} curves that are labelled with the indication in the title of the plot.}
+    \label{fig:rls_curves_vs_segm_labels}
+\end{figure}

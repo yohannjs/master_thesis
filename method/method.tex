@@ -1,19 +1,8 @@
 \chapter{Method}
 
-\section{Models} 
-This is the section where we detail the specific models used. \bigskip
-
-\subsection{Time-series clustering}
-
-\subsection{Peak-value clustering}
-
-\subsection{Recurrent Neural Network}
-
-\subsection{Supervised Peak-value Classifiers}
-
 \section{Description of The Datasets} \label{sec:datasets}
 
-Since the different \acrshort{ml} models detailed in chapter REFERENCE require different types of input data the, datasets have been divided into two main categories: 
+Since the different \acrshort{ml} models require different types of input data the, datasets have been divided into two main categories: 
 The peak-value datasets and the time-series datasets. \bigskip
 
 \subsection{Time-series Datasets}
@@ -36,17 +25,7 @@ The peak-value datasets and the time-series datasets. \bigskip
 \end{table*}
 
 Table \ref{tab:ts_dsets} shows the different time-series datasets that will be used. 
-All the datasets except \textit{Single \acrshort{rls} curves} will be used to predict whether or not the patient is diagnosed, and whether the patient has heart failure.
-Recall that the different diagnosises are described in section REFERENCE, and there occurance rate are illustrated in figure \ref{fig:hf_ind_dist}.
-\textit{Single \acrshort{rls} curves} will be used to predict the segment indications shown in figure \ref{fig:segm_label_dis} and described in section REFERENCE. 
-The point of classifying individual segments of a patients left ventricle is that if a single segment is found to be \textit{not normal}, 
-this would also mean that the patient can be considered as \textit{not healthy}.
-As mentioned in the description of table \ref{tab:ts_dsets} the ''Shape'' parameter shows how many objects each dataset has, and how many curves are associated to each object. 
-Since each ultrasound examination takes ultrasound inspections from three views (four chamber, two chamber, and APLAX chamber), each patient has three views to estimate a \acrshort{gls} curve from. 
-Since each \acrshort{gls} curve, also can be divided into six \acrshort{rls} curves, there is a total of 21 strain curves per patient. 
-Since each patient has 18 \acrshort{rls} curves, there are $18 \times 200 = 3600$ curves that make up dataset number 1.
-Both the \acrshort{ann}, and the \acrshort{tsc} model are applied on the datasets listed in table \ref{tab:ts_dsets}, 
-\bigskip
+All the datasets except \textit{Single \acrshort{rls} curves} will be used to predict whether or not the patient is diagnosed, and whether the patient has heart failure. Recall that the different diagnosises are described in section REFERENCE, and there occurance rate are illustrated in figure \ref{fig:hf_ind_dist}.\textit{Single \acrshort{rls} curves} will be used to predict the segment indications shown in figure \ref{fig:segm_label_dist} and described in section REFERENCE. The point of classifying individual segments of a patients left ventricle is that if a single segment is found to be \textit{not normal}, this would also mean that the patient can be considered as \textit{not healthy}. As mentioned in the description of table \ref{tab:ts_dsets} the ''Shape'' parameter shows how many objects each dataset has, and how many curves are associated to each object. Since each ultrasound examination takes ultrasound inspections from three views (four chamber, two chamber, and APLAX chamber), each patient has three views to estimate a \acrshort{gls} curve from. Since each \acrshort{gls} curve, also can be divided into six \acrshort{rls} curves, there is a total of 21 strain curves per patient. Since each patient has 18 \acrshort{rls} curves, there are $18 \times 200 = 3600$ curves that make up dataset number 1. For datasets two to three it will also be experimented with wether using data from a single view performs better than data from all views. For dataset two that means that the number of curves used to represent an object will be either 6 or 18, for dataset three it will be either 1 or 3 curves and for dataset four patients will be represented with either 7 or 21 curves. Both the \acrshort{ann}, and the \acrshort{tsc} model are applied on the datasets listed in table \ref{tab:ts_dsets}. \bigskip
 
 \subsection{Peak-value Datasets}
 
@@ -55,25 +34,86 @@ Both the \acrshort{ann}, and the \acrshort{tsc} model are applied on the dataset
     \ra{1.3}
     \begin{tabular}{ rlr }
         \toprule
-        Nr & Input variables                     & Shape \\
+        Nr & Input variables                                           & Shape \\
         \midrule                              
-        1  & Single peak systolic \acrshort{rls} values                & $(3600,1)$ \\
-        2  & Peak systolic \acrshort{rls} values                       & $(200,18)$ \\
-        3  & Peak systolic \acrshort{gls} values                       & $(200,3)$  \\
-        4  & Peak systolic strain values                               & $(200,21)$ \\
-        5  & Peak systolic \acrshort{rls}, and \acrshort{ef} values    & $(200,19)$ \\
-        6  & Peak systolic \acrshort{gls}, and \acrshort{ef} values    & $(200,4)$  \\
-        7  & Peak systolic strain, and \acrshort{ef} values            & $(200,22)$ \\
+        1  & Peak systolic \acrshort{rls} values                       & $(200,18)$ \\
+        2  & Peak systolic \acrshort{gls} values                       & $(200,3)$  \\
+        3  & Peak systolic strain values                               & $(200,21)$ \\
+        4  & Peak systolic \acrshort{rls}, and \acrshort{ef} values    & $(200,19)$ \\
+        5  & Peak systolic \acrshort{gls}, and \acrshort{ef} values    & $(200,4)$  \\
+        6  & Peak systolic strain, and \acrshort{ef} values            & $(200,22)$ \\
         \bottomrule
     \end{tabular}
     \caption{Peak-value datasets. The ''Shape'' parameter is indicates: (Number of objects in the dataset, Number of dimensions used to represent each individual object).}
     \label{tab:pv_dsets}
 \end{table*}
 
-Table \ref{tab:pv_dsets} shows the different peak-value datasets. 
-All the datasets with exception of \textit{Single peak systolic \acrshort{rls} values} will be used to predict the diagnosis of patients, 
-and whether the patient has heart failure. \textit{Single peak systolic \acrshort{rls} values} is also the only peak-value dataset that is not suited for clustering, 
-since a minimum of two dimensions is required to cluster a point-value dataset. The reason that there are more peak-value datasets than there are time-series datasets, 
-is that the peak-value version of three datasets in table \ref{tab:ts_dsets} have been combined with \acrshort{ef} to determine whether a combination of peak systolic strain,
-and \acrshort{ef} can have a higher predictive power than strain alone.
+Table \ref{tab:pv_dsets} shows the different peak-value datasets. All the datasets will be used to predict the diagnosis of patients, and whether the patient has heart failure. Single peak systolic \acrshort{rls} values were not considered suited for \acrshort{pvc} or \acrshort{pvsc} models to predict segment indication, because the best model one can hope for from a one dimensional point-value dataset is a form of threshold classifier. The reason that there are more peak-value datasets than there are time-series datasets, is that the peak-value version of three datasets in table \ref{tab:ts_dsets} have been combined with \acrshort{ef} to determine whether a combination of peak systolic strain, and \acrshort{ef} can have a higher predictive power than strain alone.
+
+\section{Clustering} \label{sec:meth_clust}
+
+The implementations of the two clustering models that are applied in this work are described together in the same section because conceptually, they are almost identical. It is only the method used to measure dissimilarity that separates the \acrshort{pvc} and \acrshort{tsc} models. The general implementation of the clustering models is illustrated in figure \ref{fig:clust_flow}. Time-series datasets are preprocessed before dissimilarity measurement, peak-value datasets are not. In the coming subsections the processes in each of the boxes in the flow diagram will be expanded upon.
+
+\begin{figure}
+    \centering
+    \input{method/clust_flow}
+    \caption{A flow diagram to give an overview of how the \acrshort{pvc} and \acrshort{tsc} models are implemented and evaluated.}
+    \label{fig:clust_flow}
+\end{figure}
+
+\clearpage
+
+\subsection{Time-series Preprocessing}
+Preprocessing of the time series is done because it is known that the \acrshort{dtw} distance is sensitive to absolute difference, and offsets of time series. In addition to clustering the longitudinal strain time series without preprocessing three forms of preprocessing were tested to see whether they could improve the predictive performance of the clustering algorithm: Normalization, scaling and Z-score normalization. The normalized version of a time series ($\{x_t\}_N$) is calculated by equation \eqref{eq:ts_norm}. The smallest recorded value in the time series ($\mathrm{min}\{x_t\}$) is subtracted from the time series ($\{x_t\}$), then the time series is divided by the difference between the highest recorded value ($\mathrm{max}\{x_t\}$), and lowest recorded value in the time series.
+
+\begin{equation}
+    \{x_t\}_N = \frac{\{x_t\} - \mathrm{min}\{x_t\}}{\mathrm{max}\{x_t\} - \mathrm{min}\{x_t\}}
+    \label{eq:ts_norm}
+\end{equation}
+
+The ''scaled'' version of a times is calculated in a similar fashion. Scaling can be considered as normalizing a time series with regard to the highest, and lowest recorded values of the entire set of time series it is being compared to. If one lets $\{ \left \{ x_t \} \right \}$ represent the set of time series to be scaled, $\mathrm{min}\{ \left \{ x_t \} \right \}$ represent the smallest recorded value in the entire set of time series and $\mathrm{max}\{ \left \{ x_t \} \right \}$ represent the highest recorded value in the set of time series, the scaled version of a time series ($\{x_t\}_S$) is given by eqation \eqref{eq:ts_scale}.
+
+\begin{equation}
+    \{x_t\}_S = \frac{\{x_t\} - \mathrm{min}\{ \left \{ x_t \} \right \}}{\mathrm{max}\{ \left \{ x_t \} \right \} - \mathrm{min}\{ \left \{ x_t \} \right \}}
+    \label{eq:ts_scale}
+\end{equation}
+
+The Z-score normalization is done by transforming each observation of a time series to it's Z-score. The Z-score of an individual time-series observation is calculated by subracting the expected value of the time series, and dividing by the standard deviation. The unbiased estimators used to calculate the expected value, and standard deviation of a time series are given in equations \eqref{eq:ev_est}, and \eqref{eq:std_est} respectively. The Z-score normalized version of a time series ($\{x_t\}_Z$) is calculated using equation \eqref{eq:ts_zscn}
+
+\begin{equation}
+    \hat{\mu} = \frac{1}{n} \sum^n_{t = 1} x_t
+    \label{eq:ev_est}
+\end{equation}
+
+\begin{equation}
+    \hat{\sigma} = \sqrt{\frac{1}{n - 1} \sum^n_{t = 1} (x_t - \hat{\mu})^2}
+    \label{eq:std_est}
+\end{equation}
+
+\begin{equation}
+    \{x_t\}_Z = \frac{\{x_t\} - \hat{\mu}}{\hat{\sigma}}
+    \label{eq:ts_zscn}
+\end{equation}
+
+Figure \ref{fig:preproc} illustrates how the different preprocessing methods work on the \acrshort{4ch} \acrshort{gls} curves of four random patients. By comparing \ref{fig:preproc}a and \ref{fig:preproc}d one can see that scaling preserves both the relative offsets and relative size differences between the curves. From \ref{fig:preproc}b one can see that though normalization preserves the offsets of the curves, the relative sizes are not. From \ref{fig:preproc}c one can see that Z-score normalization preserves the offsets of the curves, the relative sizes are only preserved to a certain extent. In addition, the normalized, and scaled curves are constricted between 0 and 1, while the Z-score normalized curves are not. 
+
+\begin{figure}
+    \centering
+    \input{method/preproc_curves.pgf}
+    \caption{Four plots of three random \acrshort{4ch} \acrshort{gls} curves that are preprocessed in the three different ways. (a) no preprocessing, (b) normalization, (c) Z-score normalization and (d) scaling}
+    \label{fig:preproc}
+\end{figure}
+
+\subsection{Dissimilarity measurement}
+
+When estimating dissimilarity between patients represented by a peak-value dataset Euclidean distance was used. To measure the dissimilarity between longitudinal strain curves in the \acrshort{tsc} model \acrshort{dtw} distanse was used. Recall that the \acrshort{dtw} distance between to time series is the length of the shortest \acrshort{dtw} path between them. To calculate the \acrshort{dtw} distance the \textbf{dtaidistance} library was used. The \textbf{dtaidistance} library is used by the DTAI Research Group to measure distances between time series. To encapsulate all the dissimilarity between patients in a single matrix, one first has to calculate one matrix of \acrshort{dtw} distances for each of the time series used to represent patients. Say that a patient was represented using the \acrshort{gls} curves in the three views. To calculate the dissimilarity matrix one would first estimate the \acrshort{dtw} distance between all the \acrshort{4ch}/\acrshort{gls} curves, then all the \acrshort{2ch}/\acrshort{gls} curves and finally all the \acrshort{aplax}/\acrshort{gls} curves. By adding the three matrices of \acrshort{dtw} distances together one gets the dissimilarity matrix. \bigskip
+
+\subsection{Hierarchical Agglomorative Clustering}
+
+\subsection{Cluster Assignment Evaluation}
+
+\section{Artificial Neural Network} \label{sec:meth_nn}
+
+\section{Peak-value Supervised Classifiers} \label{sec:meth_pvsc}
+
 
