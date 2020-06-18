@@ -107,11 +107,13 @@ On the other hand, the NN model was chosen as the best performing model at predi
 In that case study though the size of the dataset is significantly larger, and each object is represented by a single curve. 
 Considering that the architecture of the NN was given, and not developed specifically for this classification problem the performance that the model achieves is significant. 
 % \textbf{Possible improvements}
-It is the authors opinion that if more time is spent adapting the model to the dataset at hand, even better performances are within reach. 
-Especially for the segment indication classification problem where there is so much data, there is potential.
+It is the authors opinion that if more time is spent adapting the model to the dataset at hand, even better performances are within reach for the NN models. 
+Especially for the segment indication classification problem, since it is much bigger than the two other datasets.
 There are alternatives to SGD that could be tested such as batch gradient descent, and the most popular choice mini-batch gradient descent which is a middle road between the two, and is often considered the best alternative REFERENCE.
 There is also the GRU cells that are an alternative to the LSTM cells. Like LSTM cells, GRU cells are able capture time-dependent connections. GRU cells are simpler than LSTM cells in composition, and are said to require less training data, to achieve the same accuracies as LSTM cells REFERENCE.
-It could also be considered whether it would be beneficial to use some form of dimensionality reduction such as a max pooling layers, which for time series can be considered as a max-filter where only the highest value in a segment of a curve is kept on. 
+The biggest flaw of the NN models is that they have so many trainable parameters compared to the number of objects in the datasets they are applied on.
+So the first improvements that could be done the NN models is reduce its complexity, by removing layers or reducing the number of filters and units in individual layers.
+One could also consider introducing layers that reduce complexity such as a max pooling layers, which for time series can be considered as a max-value filter where only the highest value in a segment of a curve is kept on. 
 Dropout layers are also a technique that are used frequently when NN architecture become deep and complex, they introduce the probability that any particular perceptron in the layers preceding the dropout layer can ''drop out'' meaning that they become inactive.
 In complex NN architectures it is often found that during training the model becomes overly dependent on certain perceptrons, and specific paths through the network. This leads to the NN not entirely utilizing all the perceptrons at its disposal, and the accuracy suffers. It is found that by adding a probability that any given neuron can drop out during training remedies this effect, and can increase accuracy overall.
 % \textbf{Talk about run-time challenges.}

@@ -1,6 +1,6 @@
-\tikzstyle{IO} = [draw, ellipse,fill=red!20, minimum height=2em]
+\tikzstyle{IO}    = [draw, ellipse,fill=red!20, minimum height=2em]
 \tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=7em, text centered, rounded corners, minimum height=2em]
-\tikzstyle{evl} = [rectangle, draw, fill=green!20, text width=7em, text centered, minimum height=2em]
+\tikzstyle{evl}   = [rectangle, draw, fill=green!20, text width=7em, text centered, minimum height=2em]
 \tikzstyle{arrow} = [thin,->,>=stealth]
 
 \begin{tikzpicture}
@@ -11,7 +11,7 @@
 \node (clust)   [block, node distance=2cm, below of=diss]  {Hierarchical Agglomorative Clustering};
 \node (output)  [IO,    node distance=2cm, below of=clust] {Cluster assignments};
 \node (ari)     [evl,   node distance=1.5cm, below of=output, xshift=-3cm] {ARI};
-\node (dor)     [evl,   node distance=2.1cm, below of=output, xshift=3cm] {Accuracy, sensitivity, specificity, and DOR};
+\node (dor)     [evl,   node distance=2.1cm, below of=output, xshift=3cm] {TP, TN, FP and FN};
 
 % Arrows
 \draw [arrow] (input)   --node[anchor=west] {}                     (preproc);

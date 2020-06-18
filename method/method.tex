@@ -5,7 +5,7 @@
 Since the different \acrshort{ml} models require different types of input data the, datasets have been divided into two main categories: 
 The peak-value datasets and the time-series datasets. \bigskip
 
-\subsection{Time-series Datasets}
+\subsection{Time-series Datasets} \label{sec:ts_dsets}
 
 \begin{table*}[h]
     \centering
@@ -95,7 +95,7 @@ The Z-score normalization is done by transforming each observation of a time ser
     \label{eq:ts_zscn}
 \end{equation}
 
-Figure \ref{fig:preproc} illustrates how the different preprocessing methods work on the \acrshort{4ch} \acrshort{gls} curves of four random patients. By comparing \ref{fig:preproc}a and \ref{fig:preproc}d one can see that scaling preserves both the relative offsets and relative size differences between the curves. From \ref{fig:preproc}b one can see that though normalization preserves the offsets of the curves, the relative sizes are not. From \ref{fig:preproc}c one can see that Z-score normalization preserves the offsets of the curves, the relative sizes are only preserved to a certain extent. In addition, the normalized, and scaled curves are constricted between 0 and 1, while the Z-score normalized curves are not. 
+Figure \ref{fig:preproc} illustrates how the different preprocessing methods work on the \acrshort{4ch} \acrshort{gls} curves of four random patients. By comparing \ref{fig:preproc}a and \ref{fig:preproc}d one can see that scaling preserves both the relative offsets and relative size differences between the curves. From \ref{fig:preproc}b one can see that though normalization preserves the offsets of the curves, the relative sizes are not. From \ref{fig:preproc}c one can see that Z-score normalization preserves the offsets of the curves, the relative sizes are only preserved to a certain extent. In addition, the normalized, and scaled curves are constricted between 0 and 1, while the Z-score normalized curves are not.  
 
 \begin{figure}
     \centering
@@ -106,14 +106,85 @@ Figure \ref{fig:preproc} illustrates how the different preprocessing methods wor
 
 \subsection{Dissimilarity measurement}
 
-When estimating dissimilarity between patients represented by a peak-value dataset Euclidean distance was used. To measure the dissimilarity between longitudinal strain curves in the \acrshort{tsc} model \acrshort{dtw} distanse was used. Recall that the \acrshort{dtw} distance between to time series is the length of the shortest \acrshort{dtw} path between them. To calculate the \acrshort{dtw} distance the \textbf{dtaidistance} library was used. The \textbf{dtaidistance} library is used by the DTAI Research Group to measure distances between time series. To encapsulate all the dissimilarity between patients in a single matrix, one first has to calculate one matrix of \acrshort{dtw} distances for each of the time series used to represent patients. Say that a patient was represented using the \acrshort{gls} curves in the three views. To calculate the dissimilarity matrix one would first estimate the \acrshort{dtw} distance between all the \acrshort{4ch}/\acrshort{gls} curves, then all the \acrshort{2ch}/\acrshort{gls} curves and finally all the \acrshort{aplax}/\acrshort{gls} curves. By adding the three matrices of \acrshort{dtw} distances together one gets the dissimilarity matrix. \bigskip
+When estimating dissimilarity between patients represented by a peak-value dataset Euclidean distance was used. To measure the dissimilarity between longitudinal strain curves in the \acrshort{tsc} model \acrshort{dtw} distanse was used. Recall that the \acrshort{dtw} distance between to time series is the length of the shortest \acrshort{dtw} path between them. To calculate the \acrshort{dtw} distance the \textbf{dtaidistance 1.2.5} library was used. The \textbf{dtaidistance} library is used by the DTAI Research Group to measure distances between time series. To encapsulate all the dissimilarity between patients in a single matrix, one first has to calculate one matrix of \acrshort{dtw} distances for each of the time series used to represent patients. Say that a patient was represented using the \acrshort{gls} curves in the three views. To calculate the dissimilarity matrix one would first estimate the \acrshort{dtw} distance between all the \acrshort{4ch} \acrshort{gls} curves, then all the \acrshort{2ch} \acrshort{gls} curves and finally all the \acrshort{aplax} \acrshort{gls} curves. By adding the three matrices of \acrshort{dtw} distances together one gets the dissimilarity matrix. \bigskip
 
 \subsection{Hierarchical Agglomorative Clustering}
 
+As mentioned in section REFERENCE, the hierarchical agglomorative clustering algorithm takes inn the dissimilarity matrix, and starts with every patient being represented by one cluster each. For each number of possible clusters then two clusters are merged based on minimizing one of the six linkage criterions. There are also various options of distance metrics that can be used by the clustering algorithm to measure difference between elements of the dissimilarity matrix, but in this work only Euclidean distance is used. The clustering algorithm used for time-series data is implemented using the \textbf{scipy.cluster.hierarchy 1.4.1} library, and in the \acrshort{tsc} model all six linkages detailed in section REFERENCE are tested. In the \acrshort{pvc} models a more holistic implementation is applied using the \textbf{scikit-learn 0.22.1} library. The implementation of the \acrshort{pvc} models does both the dissimilarity and clustering using one library, and because the scikit-learn library supports fewer linkage criteria only the single, complete, average and ward linkages are tested. 
+
 \subsection{Cluster Assignment Evaluation}
+
+When evaluating a specific \acrshort{tsc}, or \acrshort{pvc} clustering model, the model is evaluated at two to nine cluster cluster centers. For the cluster assignments given by evaluating the model at two cluster centers the models \acrshort{tp}, \acrshort{tn}, \acrshort{fp} and \acrshort{fn} are calculated. These metrics are then used to estimate the models accuracy, sensitivity, specificity and DOR. The cluster assignments for a clustering model evaluated at two cluster centers can be either 1 or 2, and since clustering is a form of unsupervised machine learning it is not given whether cluster 1 or 2 corresponds to the 1 or 0 of the target variable. Therefore, the evaluation metrics are calculated twice for each clustering model evaluated at two cluster centers, once where cluster 1 corresponds to target variable 1, and once where cluster 2 corresponds to target variable 1. The calculation that yields the highest accuracy is kept, and the other is disregarded. In addition to these matrics the ARI is used to evaluate all the cluster assignments yielded from evaluating a clustering model at between two to nine cluster centers. The ARI is used because it can give a measure of how correlated the distributions of the cluster centers are with regard to the distribution of the target variables. This can give insight into whether a clustering model evaluated at a higher number of cluster centers than two is better at capturing a particular target variable. In the heart failure, and patient diagnosis case studies there are twelve different datasets, four types of preprocessing, and seven different linkages tested. This yields a total of 336 variations of the \acrshort{tsc} model that are tested in the heart failure, and patient diagnosis case studies. In the segment indication case study, there are only 28 variations of the \acrshort{tsc} model tested since there is only one dataset. For the \acrshort{pvc} models there are six datasets tested, and four linkages tested yielding 24 variations of the \acrshort{pvc} model tested in the heart failure and patient diagnosis case studies.
 
 \section{Artificial Neural Network} \label{sec:meth_nn}
 
+\subsection{Preprocessing}
+
+Two methods of preprocessing were tested on the data used as input for the \acrshort{ann} in addition to testing the \acrshort{ann} models witout preprocessing. Since neural networks with recurrent layers perform better when the sample rates of the input time series are equal, as they usually aren't correlated with the target variable. Since the frame rate of the ultrasound videos vary from patient to patient, the frame rates of the longitudinal strain curve time series also vary, and in this case sample rate is not correlated with heart failure, patient diagnosis or segment indication. To counteract with this it was tested whether upsampling all the strain curves to the highest sample rate, or downsampling them all to the lowest frame rate would affect the performance of the \acrshort{ann}. 
+
+\subsection{Architecture}
+
+The architecture of the \acrshort{ann} used in this work was not designed by the author himself, as there sadly was not enough time. The architecture was designed by student Benjamin Nedregård and was used to estimate heart phase, and patient health using blood flow curves as input. The reason why this architecture was applied is because it showed great promise when applied to blood flow time series, which share charactaristics with left ventricle longitudinal strain time series. The network was implemented using the \textbf{keras} with \textbf{tensorflow 2.1.0} as backend. The architecture used for the \acrshort{ann} is illustrated in figure \ref{fig:nn_arch}. One aspect that is not shown in figure \ref{fig:nn_arch} is the total numbe of trainable parameters of the architecture. The reason for this is because it varies based on the shape of the dataset it is applied on. In section \ref{sec:ts_dsets} the different time-series datasets that are used in this thesis are detailed. Recall that the different datasets will use different combinations of \acrshort{gls} and \acrshort{rls} curves from one or all of the three ultrasound views. Because of this the number of curves used as input for the \acrshort{ann} can be 1, 3, 6, 7, 18 or 21.
+
+\begin{figure}
+    \centering
+    \input{method/nn_arch}
+    \caption{A block diagram illustrating the architecture of the \acrshort{ann} used in this work.}
+    \label{fig:nn_arch}
+\end{figure}
+
+\begin{table*}
+    \centering
+    \ra{1.3}
+    \begin{tabular}{ llrr }
+        \toprule
+        Strain curves used                              & Views used  & Nr. of time series & Nr. of trainable parameters \\
+        \midrule                                     
+        \acrshort{gls}, or single \acrshort{rls} curves & Single view &         1          & 39,457 \\
+        \acrshort{gls} curves                           &  All views  &         3          & 43,553 \\
+        \acrshort{rls} curves                           & Single view &         6          & 49,697 \\
+        \acrshort{rls} curves                           &  All views  &        18          & 74,273 \\
+        \acrshort{gls} and \acrshort{rls} curves        & Single view &         7          & 51,745 \\
+        \acrshort{gls} and \acrshort{rls} curves        &  All views  &        21          & 80,417 \\
+        \bottomrule
+    \end{tabular}
+    \caption{This table shows the total number of trainable parameters of the \acrshort{ann}, for different number of time-series inputs.}
+    \label{tab:train_params}
+\end{table*}
+
+Since the author did not design the architecture of the network, a thorough defence of the architecture will not be given. However, a brief explanation of the properties the different layers contribute with to the model as a whole will be given. The two first layers in the \acrshort{ann} are convolutional, and are intended to detect simple structures in the time series such as linear regions, curved regions and rapid changes in the signal. The recurrent layer is intended to detect time dependant relations of the signal such as periodicity and frequency. Finally the dense layers are intended to connect the features extracted by the previous layers to specific values the target variable can have, and make a prediction.
+
+\subsection{Training and Validation}
+
+Binary cross entropy was used as loss function during training of the variations of the \acrshort{ann} model Each variation was trained for five epochs, using back propagation and \acrshort{sgd}. The ADAM learning rate optimizer was used with an initial learning rate of $10^{-3}$ with the intention of avoiding that the loss function of the \acrshort{ann} got stuck in local minima during training. The baises of each layer were initialized as zeros, and the weights of the individual units were initialized by sampling from the standard normal distribution function. \bigskip. 
+
+To validate the \acrshort{ann} models, 10-fold cross-validation was used. $N$-fold cross validation of a model-dataset combination entails dividing the dataset into N chunks of equal size, and preferably with an approximately equal distribution of target-variable values in each chunk. Then in N rounds, called \textit{folds} $N-1$ chunks are used to train the model and the final chunk is used to test the model. For each round one also changes which chunk is used to test the model such that it is able to attempt making a prediction on every value of the dataset. When validating the variations of the \acrshort{ann} using cross-validation the number of \acrshort{tp}, \acrshort{tn}, \acrshort{fp} and \acrshort{fn} attained during each fold were recorded and added together after all the folds were complete. The sum of all \acrshort{tp}, \acrshort{tn}, \acrshort{fp} and \acrshort{fn} attained during cross-validation are used to estimate the models' accuracy, sensitivity, specificity and DOR. Since there are a total of twelve datasets and three types of preprocessing tested, there are a total of 36 variations of the \acrshort{ann} model applied in the heart failure and patient diagnosis case studies. In the segment indication case study there is only one dataset, and three forms of preprocessing tested, so there are only three variations of the \acrshort{ann} model tested.
+
 \section{Peak-value Supervised Classifiers} \label{sec:meth_pvsc}
 
+Eleven base supervised classifiers are included in the \acrshort{pvsc} model group. In this section a short description of the theory behind these classifiers, and the hyperparameters used in this work will be given. The \acrshort{pvsc} models are validated using 10-fold cross-validation in the same manner as the \acrshort{ann} models.
 
+\subsection*{Multi-layer Perceptron}
+The multi-layer perceptron is mentioned earlier described earlier in section REFERENCE. 
+
+\subsection*{K Nearest Neighbors}
+
+\subsection*{Support Vector  Classifier With a Linear Kernel}
+
+\subsection*{Support Vector  Classifier With a Radial Basis Function as Kernel}
+
+\subsection*{Gaussian Process Classifier}
+
+\subsection*{Decision Tree Classifier}
+
+\subsection*{Ada boost classifier}
+
+\subsection*{Random Forest Classifier}
+
+\subsection*{Extra Trees Classifier}
+
+\subsection*{Naive Bayes Classifier}
+
+\subsection*{Quadratic Discriminant Analysis}
+
+\section{Presentation of Results}
