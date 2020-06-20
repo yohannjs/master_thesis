@@ -76,12 +76,12 @@ Only the six regional strain curves, and the one global strain curve from the 4C
 \newpage
 
 \section{Target variables} \label{sec:target}
-Figure \ref{fig:hf_ind_dist} shows the distribution of heart failure among patients (left), and the distribution of different indications (right). Since the dataset has approximately as many patients with a heart failure diagnosis as without, it can be considered balanced in that regard. With regard to the different patient diagnosises, their rate of occurance is not uniform in this dataset. The control group of healthy individuals consists of 30 patients. The groups of patients with STEMI, and NSTEMI indications consist of 60 and 39 patients respectively. Finally, the group of patients with heart failure, but with a non-stemic indication (labelled OTHER in left barplot in figure \ref{fig:hf_ind_dist}) consists of 70 patients. To simplify the classification problem this work will only attempt to separate healthy patients from unhealthy patients. All the 169 diagnosed patients are therefore grouped together under the label \textit{unhealthy}. \bigskip
+Figure \ref{fig:hf_ind_dist} shows the distribution of heart failure among patients (left), and the distribution of different diagnoses (right). Since the dataset has approximately as many patients with a heart failure diagnosis as without, it can be considered balanced in that regard. With regard to the different patient diagnosises, their rate of occurance is not uniform in this dataset. The control group of healthy individuals consists of 30 patients. The groups of patients with STEMI, and NSTEMI diagnoses consist of 60 and 39 patients respectively. Finally, the group of patients with heart failure, but with a non-stemic indication (labelled OTHER in left barplot in figure \ref{fig:hf_ind_dist}) consists of 70 patients. To simplify the classification problem this work will only attempt to separate healthy patients from unhealthy patients. All the 169 diagnosed patients are therefore grouped together under the label \textit{unhealthy}. \bigskip
 
 \begin{figure}[h]
     \centering
     \input{data-exp/hf_indication_dist.pgf}
-    \caption{The distribution of heart failure and different indications within patients.}
+    \caption{The distribution of heart failure and different diagnoses within patients.}
     \label{fig:hf_ind_dist}
 \end{figure}
 
