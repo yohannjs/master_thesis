@@ -89,7 +89,7 @@ Since the underlying algorithm used by scikit learn is the same as the one used 
 % \textbf{Give a brief summary of how the NN model was implemented.}
 For the NN two types of preprocessing were tested in addition the option of not preprocessing at all, upsampling the curves to the highest sample rate in the dataset and downsampling the curves to the lowest sample rate.
 The curves of the dataset were then passed as input to the NN architecture detailed in section REFERENCE together with the relevant target variables.
-The NN was trained for five epochs using the backpropagation algorithm and SGD.
+The NN was trained for five epochs using SGD with back-propagation.
 To validate the NN models 10-fold cross validation was used, at the end of each fold the TP, TN, FP, and FN of the model were noted. 
 After the NN had effectively attempted to predict every object of the dataset all the TP, TN, FP, and FN were summed and this grand total was used to estimate the models accuracy, sensitivity, specicity and DOR.
 % \textbf{Mention briefly which placements NN has in the different case studies.}

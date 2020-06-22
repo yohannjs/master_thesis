@@ -152,7 +152,7 @@ The architecture of the \acrshort{ann} used in this work was not designed by the
     \label{tab:train_params}
 \end{table*}
 
-Since the author did not design the architecture of the network, a thorough defence of the architecture will not be given. However, a brief explanation of the properties the different layers contribute with to the model as a whole will be given. The two first layers in the \acrshort{ann} are convolutional, and are intended to detect simple structures in the time series such as linear regions, curved regions and rapid changes in the signal. The recurrent layer is intended to detect time dependant relations of the signal such as periodicity and frequency. Finally the dense layers are intended to connect the features extracted by the previous layers to specific values the target variable can have, and make a prediction.
+Since the author did not design the architecture of the network, a thorough defence of the architecture will not be given. However, a brief explanation of the properties the different layers contribute with to the model as a whole will be given. The two first layers in the \acrshort{ann} are convolutional, and are intended to detect simple structures in the time series such as linear regions, curved regions and rapid changes in the signal. The recurrent layer is intended to detect time dependant relations of the signal such as periodicity and frequency. Regularization terms are added to the outputs of the convolutional, and recurrent layers to attempt to bias the weights toward zero, which is a technique used to avoid overfitting.Finally the dense layers are intended to connect the features extracted by the previous layers to specific values the target variable can have, and make a prediction.
 
 \subsection{Training and Validation}
 
@@ -165,23 +165,33 @@ To validate the \acrshort{ann} models, 10-fold cross-validation was used. $N$-fo
 Eleven base supervised classifiers are included in the \acrshort{pvsc} model group. In this section a short description of the theory behind these classifiers, and the hyperparameters used in this work will be given. The \acrshort{pvsc} models are validated using 10-fold cross-validation in the same manner as the \acrshort{ann} models.
 
 \subsection*{Multi-layer Perceptron}
-The multi-layer perceptron is mentioned earlier described earlier in section REFERENCE. 
+The \acrshort{mlp} is mentioned earlier described earlier in section \ref{sec:mlp}. This \acrshort{mlp} is configured with a single dense layer with a 100 neurons with the \acrshort{relu} activation, and an output layer of a single neuron since the classification problem is binary. It is trained with using \acrshort{sgd} with back-propagation, with ADAM as gradient descent optimizer, and an initial learning rate of $10^{-3}$.
 
 \subsection*{K Nearest Neighbors}
+\acrfull{knn} is an unbiased machine learning model that can be used for classification and for regression. When used for classification the target variable is predicted based on the points from the training set which are ''nearest'' in terms of input variable values. In the implementation used in this work, the model was constricted to only consider five closest neighbors weighted equally. 
 
-\subsection*{Support Vector  Classifier With a Linear Kernel}
+\subsection*{Support Vector Classifier}
+Support vector machines were originally implemented as a type of binary classifier that could classify linearly separable variables, as classifiers they are referred to as \acrfull{svc}. Under ideal conditions \acrshort{svc} transform input variables to a set of hyperplanes where the target variable values are linearly separable \cite{svm_wikipedia}. The transformation used depends on what kernel is used, some examples of kernel functions include: Linear kernal, radial basis function and sigmoid function. In this work two versions of the \acrshort{svc} are tested, one with a linear kernel and one where the radial basis function is used. The radial basis function is given in in equation \eqref{eq:rbf}, where $\gamma$ and $c$ are trainable parameters. $\gamma$ is initialized as $1 / \mathrm{Nr. input variables} \times Var(\mathbf{x})$, and $c$ is randomly initialized. 
 
-\subsection*{Support Vector  Classifier With a Radial Basis Function as Kernel}
+\begin{equation}
+    \mathrm{RBF}(\mathbf{x}) = e^{\gamma \left ( \mathbf{x} - \mathbf{c} \right )^2}
+    \label{eq:rbf}
+\end{equation}
 
 \subsection*{Gaussian Process Classifier}
+\acrshort{gp} are a probabilistic machine learning technique that can be used for regression, and classification tasks. Similar to \acrshort{svc} they perform best when the relationship between the input variables and the target variable are linear, but by the use of kernels they can map the input variables to a hyperplane where the targets are linearly seperable \cite{GP_book}. The defining diference are that \acrshort{gp} are probabilistic while \acrshort{svc} are deterministic. Where \acrshort{svc} work with a single kernel \acrshort{gp} work with an infinite set of kernels, and the training process amounts to finding an optimal linear combination of the different kernals.
 
-\subsection*{Decision Tree Classifier}
+\subsection*{Decision Tree Classifiers}
+
+\begin{itemize}
+    \item Single decision tree
+    \item Extra decision tree
+    \item Random forest
+\end{itemize}
+
+Decision tree classifiers are classifiers that recursively build trees of rules that let the model make decisions about what value to predict for the target variable given specific values of the input variables.
 
 \subsection*{Ada boost classifier}
-
-\subsection*{Random Forest Classifier}
-
-\subsection*{Extra Trees Classifier}
 
 \subsection*{Naive Bayes Classifier}
 

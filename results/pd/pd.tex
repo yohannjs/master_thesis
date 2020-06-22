@@ -398,7 +398,7 @@ The \acrshort{ann} models are will therefore not be discussed further with relat
         Dataset-Model          &  Accuracy &  Sensitivity &  Specificity &  \acrshort{dor} \\
         \midrule
         gls-rls-EF/Ada-Boost   &      0.95 &         0.97 &         0.79 & 138.42 \\
-        gls-rls/KANN            &      0.93 &         0.95 &         0.82 &  84.53 \\
+        gls-rls/KNN            &      0.93 &         0.95 &         0.82 &  84.53 \\
         rls-EF/Extra-Trees     &      0.93 &         0.96 &         0.75 &  76.50 \\
         gls-rls-EF/Extra-Trees &      0.93 &         0.97 &         0.71 &  75.00 \\
         gls-rls/Extra-Trees    &      0.93 &         0.97 &         0.71 &  75.00 \\
@@ -409,15 +409,15 @@ The \acrshort{ann} models are will therefore not be discussed further with relat
     \label{tab:pvsc_hf_dor_sens_spec_dist}
 \end{table*}
 
-From the distribution plot in figure \ref{fig:pvsc_hf_dor_sens_spec_dist} it might seem like the majority of the \acrshort{dor} scores are close to zero, but in that is due to the shear spread of \acrshort{dor} scores so it should be said explicitly that the lowest \acrshort{dor} score of a PVSC model is 3.68 and is attained by the \textit{gls/Gaussian-Process} model.
+From the distribution plot in figure \ref{fig:pvmlc_ind_dor_sens_spec_dist} it might seem like the majority of the \acrshort{dor} scores are close to zero, but in that is due to the shear spread of \acrshort{dor} scores so it should be said explicitly that the lowest \acrshort{dor} score of a PVSC model is 3.68 and is attained by the \textit{gls/Gaussian-Process} model.
 The spread of \acrshort{dor} is so great that some models attain a \acrshort{dor} close to 100, and one model attains a \acrshort{dor} close to 150.
-From the scatter plot in figure \ref{fig:pvsc_hf_dor_sens_spec_dist} one can see that the sensitivity ranges from $0.75$ to 1, and the specificity ranges from 
+From the scatter plot in figure \ref{fig:pvmlc_ind_dor_sens_spec_dist} one can see that the sensitivity ranges from $0.75$ to 1, and the specificity ranges from 
 close to zero to approximately $0.95$. 
 Among the top five PVSC models in terms of \acrshort{dor} are many different combinations of models, and datasets. 
-Three of the five highest \acrshort{dor} scores are attained by Extra-Trees models, and the top two scores are attained by KANN and Ada Boost classifiers. 
-\textit{gls-rls-EF/Ada-Boost} and \textit{gls-rls/KANN} are the two top PVSC performers with regard to \acrshort{dor}.
-\textit{gls-rls-EF/Ada-Boost} achieves the highest sensitivity of the two by two points, and \textit{gls-rls/KANN} achieves the highest specificity of the two by three points.
-Since sensitivity and specificity is weighted equally in this study \textit{gls-rls/KANN} is chosen as the best of the PVSC models trained to identify patient diagnoses.
+Three of the five highest \acrshort{dor} scores are attained by Extra-Trees models, and the top two scores are attained by KNN and Ada Boost classifiers. 
+\textit{gls-rls-EF/Ada-Boost} and \textit{gls-rls/KNN} are the two top PVSC performers with regard to \acrshort{dor}.
+\textit{gls-rls-EF/Ada-Boost} achieves the highest sensitivity of the two by two points, and \textit{gls-rls/KNN} achieves the highest specificity of the two by three points.
+Since sensitivity and specificity is weighted equally in this study \textit{gls-rls/KNN} is chosen as the best of the PVSC models trained to identify patient diagnoses.
 
 \begin{comment}
 [X] \textbf{Comment on spread of \acrshort{dor}.}
@@ -428,14 +428,14 @@ Since sensitivity and specificity is weighted equally in this study \textit{gls-
       close to zero to approximately $0.95$. 
 [X] \textbf{Comment on common traits in the high performing models.} Here you can refer to raw performance results in appendix.
     * Among the top five PVSC models in terms of \acrshort{dor} are many different combinations of models, and datasets. 
-    * Three of the five highest \acrshort{dor} scores are attained by Extra-Trees models, and the top two scores are attained by KANN and Ada Boost classifiers. 
+    * Three of the five highest \acrshort{dor} scores are attained by Extra-Trees models, and the top two scores are attained by KNN and Ada Boost classifiers. 
 [X] \textbf{Comment on common traits in the low performing models.} Here you can refer to raw performance results in appendix.
 [X] \textbf{Select one - three models that are good contendors for being the best model/model in the group and comment on their traits}
-    * \textit{gls-rls-EF/Ada-Boost} and \textit{gls-rls/KANN} are the two top PVSC performers with regard to \acrshort{dor}.
-    * \textit{gls-rls-EF/Ada-Boost} achieves the highest sensitivity of the two by two points, and \textit{gls-rls/KANN} achieves the highest specificity of the two by three points.
+    * \textit{gls-rls-EF/Ada-Boost} and \textit{gls-rls/KNN} are the two top PVSC performers with regard to \acrshort{dor}.
+    * \textit{gls-rls-EF/Ada-Boost} achieves the highest sensitivity of the two by two points, and \textit{gls-rls/KNN} achieves the highest specificity of the two by three points.
 \textbf{IF NOT CLUSTERING model}
 [X] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, and \acrshort{dor}, and make an informed choice.}
-    * Since sensitivity and specificity is weighted equally in this study \textit{gls-rls/KANN} is chosen as the best of the PVSC models trained to identify patient diagnoses.
+    * Since sensitivity and specificity is weighted equally in this study \textit{gls-rls/KNN} is chosen as the best of the PVSC models trained to identify patient diagnoses.
 \end{comment}
 
 \newpage
@@ -470,7 +470,7 @@ From the top table in \ref{tab:pd_compare} one can see that there is a significa
 The \acrshort{tsc} model \textit{gls/all-views/regular/weighted/2} attains the second highest accuracy, sensitivity and specificity of the three models, but also attains the lowest \acrshort{dor}.
 The \acrshort{tsc} model can also be said to attain the most balanced scores in terms of sensitivity and specificity. 
 The PVC model \textit{rls-EF/complete/2} attains the highest specificity, second highest \acrshort{dor}, but lowest sensitivity and accuracy of the three models. 
-The PVSC model \textit{gls-rls/KANN} attains the highest accuracy, sensitivity and \acrshort{dor} of all the models, but it also achieves the lowest specificity of all the models. 
+The PVSC model \textit{gls-rls/KNN} attains the highest accuracy, sensitivity and \acrshort{dor} of all the models, but it also achieves the lowest specificity of all the models. 
 However, since the PVSC model is so close to the \acrshort{tsc} model in terms of specificity, and is so much better than the other two models in all other metrics, it is chosen as the best model of 
 identifying patient diagnoses.
 This can be confirmed from the bottom table in \ref{tab:pd_compare}, where one can see that the PVSC model only gets one \acrshort{tn} less than the \acrshort{tsc} model, but attains 11 more \acrshort{tp}.
@@ -484,7 +484,7 @@ This can be confirmed from the bottom table in \ref{tab:pd_compare}, where one c
     * The PVC model \textit{rls-EF/complete/2} attains the highest specificity, second highest \acrshort{dor}, but lowest sensitivity and accuracy of the three models. 
 [0] \textbf{Which model gets the most balanced score?}
 [0] \textbf{Is the most balanced model the best one, or is there a model that performs better.}
-    * The PVSC model \textit{gls-rls/KANN} attains the highest accuracy, sensitivity and \acrshort{dor} of all the models, but it also achieves the lowest specificity of all the models. 
+    * The PVSC model \textit{gls-rls/KNN} attains the highest accuracy, sensitivity and \acrshort{dor} of all the models, but it also achieves the lowest specificity of all the models. 
 [0] \textbf{Comments}
 [0] \textbf{Conclusion}
     * However, since the PVSC model is so close to the \acrshort{tsc} model in terms of specificity, and is so much better than the other two models in all other metrics, it is chosen as the best model of 
