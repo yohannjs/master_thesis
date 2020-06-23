@@ -171,7 +171,7 @@ The \acrshort{mlp} is mentioned earlier described earlier in section \ref{sec:ml
 \acrfull{knn} is an unbiased machine learning model that can be used for classification and for regression. When used for classification the target variable is predicted based on the points from the training set which are ''nearest'' in terms of input variable values. In the implementation used in this work, the model was constricted to only consider five closest neighbors weighted equally. 
 
 \subsection*{Support Vector Classifier}
-Support vector machines were originally implemented as a type of binary classifier that could classify linearly separable variables, as classifiers they are referred to as \acrfull{svc}. Under ideal conditions \acrshort{svc} transform input variables to a set of hyperplanes where the target variable values are linearly separable \cite{svm_wikipedia}. The transformation used depends on what kernel is used, some examples of kernel functions include: Linear kernal, radial basis function and sigmoid function. In this work two versions of the \acrshort{svc} are tested, one with a linear kernel and one where the radial basis function is used. The radial basis function is given in in equation \eqref{eq:rbf}, where $\gamma$ and $c$ are trainable parameters. $\gamma$ is initialized as $1 / \mathrm{Nr. input variables} \times Var(\mathbf{x})$, and $c$ is randomly initialized. 
+Support vector machines were originally implemented as a type of binary classifier that could classify linearly separable variables, as classifiers they are referred to as \acrfull{svc}. Under ideal conditions \acrshort{svc} transform input variables to a set of hyperplanes where the target variable values are linearly separable \cite{svm_wikipedia}. The transformation used depends on what kernel is used, some examples of kernel functions include: Linear kernal, \acrfull{rbf} and sigmoid function. In this work two versions of the \acrshort{svc} are tested, one with a linear kernel and one where the \acrshort{rbf} is used. The \acrshort{rbf} is given in in equation \eqref{eq:rbf}, where $\gamma$ is equal to 2. Both \acrshort{svc} applied use an $L_2$ regularization penalty to avoid overfitting. For the \acrshort{rbf} \acrshort{svc} parameter $C$ which is the inverse strength of the regularization is set to 1. For the linear \acrshort{svc} C is set to $0.025$.
 
 \begin{equation}
     \mathrm{RBF}(\mathbf{x}) = e^{\gamma \left ( \mathbf{x} - \mathbf{c} \right )^2}
@@ -179,7 +179,7 @@ Support vector machines were originally implemented as a type of binary classifi
 \end{equation}
 
 \subsection*{Gaussian Process Classifier}
-\acrshort{gp} are a probabilistic machine learning technique that can be used for regression, and classification tasks. Similar to \acrshort{svc} they perform best when the relationship between the input variables and the target variable are linear, but by the use of kernels they can map the input variables to a hyperplane where the targets are linearly seperable \cite{GP_book}. The defining diference are that \acrshort{gp} are probabilistic while \acrshort{svc} are deterministic. Where \acrshort{svc} work with a single kernel \acrshort{gp} work with an infinite set of kernels, and the training process amounts to finding an optimal linear combination of the different kernals.
+\acrshort{gp} are a probabilistic machine learning technique that can be used for regression, and classification tasks. Similar to \acrshort{svc} they perform best when the relationship between the input variables and the target variable are linear, but by the use of what is called \textit{basis functions} they can map the input variables to a hyperplane where the targets are linearly seperable \cite{GP_book}. One can say that basis functions are for \acrshort{gp}, what kernels are for \acrshort{svc}. The defining difference are that \acrshort{gp} are probabilistic while \acrshort{svc} are deterministic. Where \acrshort{svc} work with a single kernel \acrshort{gp} work with an infinite set of basis functions, and much of the training process amounts to finding an optimal linear combination of the set of kernals available \cite{GP_book}.
 
 \subsection*{Decision Tree Classifiers}
 
@@ -189,7 +189,7 @@ Support vector machines were originally implemented as a type of binary classifi
     \item Random forest
 \end{itemize}
 
-Decision tree classifiers are classifiers that recursively build trees of rules that let the model make decisions about what value to predict for the target variable given specific values of the input variables.
+Decision tree classifiers are classifiers that create hierarchies of rules that are used to make predictions of the target variable based on the values of the input variables \cite{scikit_learn}.
 
 \subsection*{Ada boost classifier}
 
