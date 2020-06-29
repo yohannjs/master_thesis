@@ -31,6 +31,7 @@
 % \addbibresource{references_snowballing.bib}
 \addbibresource{references_theory.bib}
 \addbibresource{references_echocardiography.bib}
+\addbibresource{references_lit.bib}
 
 %% Abbreviations
 \input{abbrev.tex}
@@ -73,13 +74,13 @@
 \end{center}
 \end{titlepage}
 
-\begin{abstract}
-    This is the abstract.
-    \medskip
+% \begin{abstract}
+%     This is the abstract.
+%     \medskip
 
-    \begin{center} \textbf{Acknowledgements} \end{center}
-    These are my acknowledgements. Lasse Løvstakken, Doctor who provided data, Andreas Østvik, Benjamin Nedregård, Espen Waaga. 
-\end{abstract}
+%     \begin{center} \textbf{Acknowledgements} \end{center}
+%     These are my acknowledgements. Lasse Løvstakken, Doctor who provided data, Andreas Østvik, Benjamin Nedregård, Espen Waaga. 
+% \end{abstract}
 
 \pagenumbering{arabic} % Page numbering in the table of contents
 \fancyhf{}
@@ -87,6 +88,10 @@
 %\rhead{right header}
 %\lfoot{left footer}
 \rfoot{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+
+\input{abstract.tex}
+\input{sammendrag.tex}
+\input{preface.tex}
 
 \tableofcontents
 % \newpage
