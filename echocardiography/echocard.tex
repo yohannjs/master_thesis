@@ -53,17 +53,76 @@ The specific method of echocardiography used to collect the data used in this th
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.99\textwidth]{echocardiography/us_view_examples.png}
-    \caption{Examples of ultrasound images taken from the three views: \acrfull{4ch}, \acrfull{2ch} and \acrfull{aplax}. Note that these images are flipped vertically because the ultrasound images are taken from below the heart.}
+    \begin{subfigure}[b]{0.3\textwidth} 
+        \includegraphics[width=0.99\textwidth]{echocardiography/4ch_frame.png}
+        \caption{\acrshort{4ch}}
+        \label{fig:us_view_examples_4ch}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=0.99\textwidth]{echocardiography/2ch_frame.png}
+        \caption{\acrshort{2ch}}
+        \label{fig:us_view_examples_2ch}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=0.99\textwidth]{echocardiography/aplax_frame.png}
+        \caption{\acrshort{aplax}}
+        \label{fig:us_view_examples_aplax}
+    \end{subfigure}
+    \caption{Examples of ultrasound images taken from the three views: (a) \acrfull{4ch}, (b) \acrfull{2ch} and (c) \acrfull{aplax}. Note that these images are flipped vertically because the ultrasound images are taken from below the heart.}
     \label{fig:us_view_examples}
 \end{figure}
 
-It is commonplace among clinicians to focus on the state of health of the left ventricle of the heart, as it hold particularily much information about the state of health of the patient \cite{myocardial_imaging}. In clinical procedure the left ventricle is divided into 16, 17 or 18 segments. This work will follow the 18-segment model, as that is the model chosen by the clinician who has annotated the images. Figure \ref{fig:18_segment_model} shows how the left ventricle is divided into segments, and what the names of the individual segments are. When referring to the entire intersection of the left ventricle that is visible from a particular view, it is called the \textit{global segment}.
+It is commonplace among clinicians to focus on the state of health of the left ventricle of the heart. In clinical procedure the left ventricle is divided into 16, 17 or 18 segments. This work will follow the 18-segment model, as that is the model chosen by the clinician who has annotated the images. Figure \ref{fig:18_segment_model} illustrates the 18 different segments of the left ventricle, and how they can be seen in the different views. The names of the different segments are shown in table \ref{tab:segment_names}, where the segment numbers correspond to the numbers in figure \ref{fig:18_segment_model}. When referring to the entire intersection of the left ventricle that is visible from a particular view, it is called the \textit{global segment}.
+
+\begin{table*}
+    \centering
+    \ra{1}
+    \begin{tabular}{cc}
+        \toprule
+        Segment nr. & Segment name \\
+        \midrule
+        1           & Basal Septal  \\
+        2           & Mid Septal  \\
+        3           & Apical Septal  \\
+        4           & Apical Lateral  \\
+        5           & Mid Lateral  \\
+        6           & Basal Lateral  \\
+        7           & Basal Inferior  \\
+        8           & Mid Inferior  \\
+        9           & Apical Inferior  \\
+        10          & Apical Anterior  \\
+        11          & Mid Anterior  \\
+        12          & Basal Anterior  \\
+        13          & Basal Posterior  \\
+        14          & Mid Posterior  \\
+        15          & Apical Posterior  \\
+        16          & Apical Anteroseptal  \\
+        17          & Mid Anteroseptal  \\
+        18          & Basal Anteroseptal  \\
+        \bottomrule
+    \end{tabular}
+    \caption{A table matching the segment numbers shown in figure \ref{fig:18_segment_model}, with the segment name.}
+    \label{tab:segment_names}
+\end{table*}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.99\textwidth]{echocardiography/18_segment_model.png}
-    \caption{An illustration of the 18-segment model of the heart. It shows which segment can be seen in which view, and the names of the individual segments. Like in figure \ref{fig:us_view_examples} the images are flipped vertically, and so are the naming conventions. The names of the chambers are given from the patients point of view, e.g. the \textit{left ventricle} is on the \textit{left} from the patients point of view.}
+    \begin{subfigure}[b]{0.3\textwidth} 
+        \includegraphics[width=0.99\textwidth]{echocardiography/4ch_frame_segmented.png}
+        \caption{\acrshort{4ch}}
+        \label{fig:18_segment_model_4ch}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=0.99\textwidth]{echocardiography/2ch_frame_segmented.png}
+        \caption{\acrshort{2ch}}
+        \label{fig:18_segment_model_2ch}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=0.99\textwidth]{echocardiography/aplax_frame_segmented.png}
+        \caption{\acrshort{aplax}}
+        \label{fig:18_segment_model_aplax}
+    \end{subfigure}
+    \caption{An illustration of the 18-segment model of the heart. It shows which segment can be seen in which view. Like in figure \ref{fig:us_view_examples} the images are flipped vertically. Note that the boundaries drawn on the figure are only meant to be illustrative, and are not the actual boundaries of the regional segments.}
     \label{fig:18_segment_model}
 \end{figure}
 
@@ -84,17 +143,26 @@ Strain is a relative measure of deformation, so it has no unit, and is measured 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.99\textwidth]{echocardiography/strain_estimation.png}
-    \caption{Illustration of how strain of a segment is estimated. Note that the segment borders drawn on these images are only illustrative, and are not the actual segment borders used to estimate the strain. (a) shows the strain estimation of the global segment, and (b) shows the strain estimation of the regional segments.}
+    \begin{subfigure}[b]{0.49\textwidth} 
+        \includegraphics[width=0.99\textwidth]{echocardiography/gls_estimation.png}
+        \caption{\acrshort{gls} estimation}
+        \label{fig:gls_estimation}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includegraphics[width=0.99\textwidth]{echocardiography/rls_estimation.png}
+        \caption{\acrshort{rls} estimation}
+        \label{fig:rls_estimation}
+    \end{subfigure}
+    \caption{Illustration of how strain of a segment is estimated. Note that the segment borders drawn on these images are only illustrative, and are not the actual segment borders used to estimate the strain. (a) shows the strain estimation of the global segment, and (b) shows the strain estimation of the regional segments. In (a) the centerline is showed in red, and in (b) the centerline is shown in white.}
     \label{fig:strain_estimation}
 \end{figure}
 
-By collecting all the strain values of a segment from the different ultrasound images into a time series, one gets a \textit{strain curve}. If the strain curve consists of strain values estimated from a global segment as depicted in figure \ref{fig:strain_estimation}a, the curve is called a \acrfull{gls} curve. If the strain values are estimated from one of the six regional segments, as depicted in figure \ref{fig:strain_estimation}b, the curves are called \acrfull{rls} curves. In diagnostic procedure it is common to extract specific values from the longitudinal strain curves. Typical strain values extracted are the peak value during the systole, the peak value during the diastole, trough values during the systole and trough values during the diastole. Figure \ref{fig:pss_illustration} shows what a typical longitudinal strain curve looks like, the peak and trough values are illustrated by red dots on the strain curve. The colour shading under the curves illustrate whether the heart cycle is in systole (blue), or diastole (red). In this work specific strain values will be tested as input data for classification models, the value that is extracted is the smallest strain value during the systole. This extracted strain value will be referred to as \textit{peak systolic strain}.
+By collecting all the strain values of a segment from the different ultrasound images into a time series, one gets a \textit{strain curve}. If the strain curve consists of strain values estimated from a global segment as depicted in figure \ref{fig:strain_estimation}a, the curve is called a \acrfull{gls} curve. If the strain values are estimated from one of the six regional segments, as depicted in figure \ref{fig:strain_estimation}b, the curves are called \acrfull{rls} curves. In diagnostic procedure it is common to extract specific values from the longitudinal strain curves. Typical strain values extracted are the peak value during the systole, the peak value during the diastole, trough values during the systole and trough values during the diastole. Figure \ref{fig:pss_illustration} shows what a typical longitudinal strain curve looks like. The peak and trough strain values during systole are illustrated by blue dots on the strain curve. The peak and trough strain values during diastole are illustrated by red dots on the strain curve. The colour shading under the curves illustrate whether the heart cycle is in systole (blue), or diastole (red). In this work one specific strain value will be tested as input data for classification models, the value that is extracted is the trough of the strain curve during the systole. This extracted strain value will be referred to as \textit{peak systolic strain}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.99\textwidth]{echocardiography/pss_illustration.png}
-    \caption{Example of a longitudinal strain curve. Red dots indicate peak and trough values, and the shading below the curves indicate whether the heart cycle is in systole (blue) or diastole (red).}
+    \input{echocardiography/pss_illustration_plt.pgf}
+    \caption{Example of a longitudinal strain curve. Red dots indicate peak and trough values, and the shading below the curves indicate whether the heart cycle is in systole (blue) or diastole (red). The blue dots indicate the peaks and troughs in strain during systole, and the red dots illustrate the peaks and troughs in strain during diastole.}
     \label{fig:pss_illustration}
 \end{figure}
 
