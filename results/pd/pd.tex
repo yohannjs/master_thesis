@@ -340,7 +340,7 @@ and a more balanced sensitivity/specificity than \textit{gls-EF/ward/2} that att
     \ra{1.3}
     \begin{tabular}{lrrrr}
         \toprule
-        Dataset-Model              &  Accuracy &  Sensitivity &  Specificity &  \acrshort{dor} \\
+        Dataset-model              &  Accuracy &  Sensitivity &  Specificity &  \acrshort{dor} \\
         \midrule
         all-strain/4CH/upsampled   &      0.83 &         0.99 &         0.00 & 0.00 \\
         all-strain/2CH/regular     &      0.85 &         1.00 &         0.00 &  NaN \\
@@ -350,7 +350,7 @@ and a more balanced sensitivity/specificity than \textit{gls-EF/ward/2} that att
         \bottomrule
     \end{tabular}
     \caption{The accuracy, \acrshort{dor}, sensitivity and specicity scores of the five best performing variations of the \acrshort{ann} in terms of \acrshort{dor}, when trained to predict patient diagnoses.
-             The \textbf{Dataset-Model} column indicates \textit{Dataset used}$/$\textit{View used}$/$\textit{Whether curve has been upsampled, downsampled or is regular}.}
+             The \textbf{Dataset-model} column indicates \textit{Dataset used}$/$\textit{View used}$/$\textit{Whether curve has been upsampled, downsampled or is regular}.}
     \label{tab:dl_hf_dor_sens_spec_dist}
 \end{table*}
 
@@ -395,7 +395,7 @@ The \acrshort{ann} models are will therefore not be discussed further with relat
     \ra{1.3}
     \begin{tabular}{lrrrr}
         \toprule
-        Dataset-Model          &  Accuracy &  Sensitivity &  Specificity &  \acrshort{dor} \\
+        Dataset-model          &  Accuracy &  Sensitivity &  Specificity &  \acrshort{dor} \\
         \midrule
         gls-rls-EF/Ada-Boost   &      0.95 &         0.97 &         0.79 & 138.42 \\
         gls-rls/KNN            &      0.93 &         0.95 &         0.82 &  84.53 \\
@@ -405,7 +405,7 @@ The \acrshort{ann} models are will therefore not be discussed further with relat
         \bottomrule
     \end{tabular}
     \caption{The accuracy, \acrshort{dor}, sensitivity and specicity scores of the five best performing PVSC models in terms of \acrshort{dor}, when trained to predict patient diagnosis.
-             The \textbf{Dataset-Model} column indicates \textit{Dataset used}$/$\textit{Specific machine learning model used}.}
+             The \textbf{Dataset-model} column indicates \textit{Dataset used}$/$\textit{Specific machine learning model used}.}
     \label{tab:pvsc_hf_dor_sens_spec_dist}
 \end{table*}
 
@@ -447,13 +447,13 @@ Since sensitivity and specificity is weighted equally in this study \textit{gls-
     \ra{1.3}
     \begin{tabular}{lcccc}
         \toprule
-        Dataset-Model                                 &  Accuracy &  Sensitivity &  Specificity &  \acrshort{dor} \\
+        Dataset-model                                 &  Accuracy &  Sensitivity &  Specificity &  \acrshort{dor} \\
         \midrule
         \textbf{TSC}-gls/all-views/regular/weighted/2 &      0.82 &         0.81 &         0.83 & 21.06 \\
         \textbf{PVC}-rls-EF/complete/2                &      0.77 &         0.74 &         0.93 & 37.61 \\
         \textbf{PVSC}-gls-rls/KNN                     &      0.93 &         0.95 &         0.82 & 84.53 \\
         \midrule
-        Dataset-Model                                 &  \acrshort{tp} &  \acrshort{tn} &  \acrshort{fp} &  \acrshort{fn} \\
+        Dataset-model                                 &  \acrshort{tp} &  \acrshort{tn} &  \acrshort{fp} &  \acrshort{fn} \\
         \midrule
         \textbf{TSC}-gls/all-views/regular/weighted/2 & 136 &  24 &   5 &  31 \\
         \textbf{PVC}-rls-EF/complete/2                & 117 &  27 &   2 &  42 \\
@@ -461,7 +461,7 @@ Since sensitivity and specificity is weighted equally in this study \textit{gls-
         \bottomrule
     \end{tabular}
     \caption{A table comparing the best contenders within each model group for predicting patient diagnoses. 
-             The top table comprare the models by their accuracy, sensitivity, specificity and \acrshort{dor}, 
+             The top table compare the models by their accuracy, sensitivity, specificity and \acrshort{dor}, 
              and the bottom table shows the number of \acrshort{tp}s, \acrshort{tn}s, \acrshort{fp}s and \acrshort{fn}s that the different models attain on their respective datasets.}
     \label{tab:pd_compare}
 \end{table*}
@@ -473,7 +473,7 @@ The PVC model \textit{rls-EF/complete/2} attains the highest specificity, second
 The PVSC model \textit{gls-rls/KNN} attains the highest accuracy, sensitivity and \acrshort{dor} of all the models, but it also achieves the lowest specificity of all the models. 
 However, since the PVSC model is so close to the \acrshort{tsc} model in terms of specificity, and is so much better than the other two models in all other metrics, it is chosen as the best model of 
 identifying patient diagnoses.
-This can be confirmed from the bottom table in \ref{tab:pd_compare}, where one can see that the PVSC model only gets one \acrshort{tn} less than the \acrshort{tsc} model, but attains 11 more \acrshort{tp}.
+This can be confirmed from the bottom table in \ref{tab:pd_compare}, where one can see that the \acrshort{pvsc} model only gets one \acrshort{tn} less than the \acrshort{tsc} model, but attains 11 more \acrshort{tp}. 
 
 \begin{comment}
 [0] \textbf{How big is the difference in performance between the models? Can this be confirmed by the number of \acrshort{tp}/TN attained.}
@@ -493,4 +493,3 @@ This can be confirmed from the bottom table in \ref{tab:pd_compare}, where one c
 \end{comment}
 
 \newpage
-

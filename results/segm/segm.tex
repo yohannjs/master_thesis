@@ -6,7 +6,7 @@
     \centering
     \input{results/segm/tsc_segm_ind_dor_sens_spec_dist.pgf}
     % \includegraphics[width=\textwidth]{results/tsc_segm_ind_dor_sens_spec_dist.png}
-    \caption{Distribution of \acrshort{dor}, sensitivity and specificity for the different \acrshort{tsc} models when classifying left ventrice segment indication.}
+    \caption{Distribution of \acrshort{dor}, sensitivity and specificity for the different \acrshort{tsc} models when classifying left ventricle segment indication.}
     \label{fig:tsc_segm_ind_dor_sens_spec_dist}
 \end{figure}
 
@@ -161,19 +161,19 @@ and accuracy is higher than the model that uses upsampling.
     \ra{1.3}
     \begin{tabular}{lcccc}
         \toprule
-        Dataset-Model               & Accuracy & Sensitivity & Specificity & \acrshort{dor} \\
+        Dataset-model               & Accuracy & Sensitivity & Specificity & \acrshort{dor} \\
         \midrule
         \textbf{TSC}-regular/ward/2 &     0.76 &        0.64 &        0.88 & 13.15 \\
-        \textbf{ANN}-downsampled     &     0.74 &        0.74 &        0.75 & 8.38 \\
+        \textbf{ANN}-downsampled    &     0.74 &        0.74 &        0.75 & 8.38 \\
         \midrule
-        Dataset-Model               &  TP  &  TN  &  FP  &  FN \\
+        Dataset-model               &  TP  &  TN  &  FP  &  FN \\
         \midrule
         \textbf{TSC}-regular/ward/2 & 1202 & 1491 &  204 &  616 \\
-        \textbf{ANN}-downsampled     & 1255 & 1390 &  473 &  440 \\
+        \textbf{ANN}-downsampled    & 1255 & 1390 &  473 &  440 \\
         \bottomrule
     \end{tabular}
     \caption{A table comparing the best contenders within each model group for predicting segment indication. 
-             The top table comprare the models by their accuracy, sensitivity, specificity and \acrshort{dor}, 
+             The top table compare the models by their accuracy, sensitivity, specificity and \acrshort{dor}, 
              and the bottom table shows the number of TPs, TNs, FPs and FNs that the different models attain.}
     \label{tab:segm_ind_compare}
 \end{table*}

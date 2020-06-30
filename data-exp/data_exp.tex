@@ -1,15 +1,7 @@
 \chapter{Data Exploration} \label{chap:data}
 
 % This section will contain the exploration of the patient metadata, input data (peak strain values, and strain curves) and target variables. \bigskip
-In this chapter the variability, distribution and type of data used in the assignment will be explored. 
-The exploration is divided into three sections corresponding to the three main groups of variables: 
-The \textit{patient meta-data}, the \textit{input variables} and the \textit{target variables}. 
-The \textit{meta-data} is the data about the patients which is not used in the classification models, 
-but can be used to give a description of the patient demographich which makes up the dataset. 
-The \textit{input variables} are the variables that are inputed into the machine learning models in order to train them, 
-and later used to make predictions about the patients' \textit{target variables}. 
-The target variables are then variables that the models will be trained to predict. 
-Target variables are used both in training to correct erroneus predictions that models make during training, and to evaluate the accuracy of the model after training. \bigskip
+In this chapter the variability, distribution and type of data used in the assignment will be explored. The exploration is divided into three sections corresponding to the three main groups of variables: The \textit{patient meta-data}, the \textit{input variables} and the \textit{target variables}. The \textit{meta-data} is the data about the patients which is not used in the classification models, but can be used to give a description of the patient demographic which makes up the dataset. The \textit{input variables} are the variables that are inputed into the machine learning models in order to train them, and later used to make predictions about the patients' \textit{target variables}. The target variables are then variables that the models will be trained to predict. Target variables are used both in training to correct erroneus predictions that models make during training, and to evaluate the accuracy of the model after training. \bigskip
 
 \section{Patient Meta-data} \label{sec:metadata}
 The patient meta-data that will be considered in this section are age, gender, \acrfull{bmi} and blood pressure.
@@ -29,12 +21,12 @@ The patient meta-data that will be considered in this section are age, gender, \
     \label{fig:bp_dist}
 \end{figure}
 
-Figure \ref{fig:meta_dist4} shows the patient distributions with regard to age, gender and \acrshort{bmi}. As evident from the figure the patients that make up the dataset is made up of 138 males and 57 females. From the age distribution plot in figure \ref{fig:meta_dist4} one can see that the majority of the patients are in the age group 60-80 years with a number of patients in the range 80-90 years. However, it should be mentioned that barely any information about the patients age has been made available. During the process of anonmization an error occured so only eleven of 200 ages were included. The \acrshort{bmi} distribution of patients is centered around 26 $kg/m^2$. Even though the \acrshort{bmi} is not always accuracte for individuals, for a population of 200 an average \acrshort{bmi} at 26 is quite high as scores above 24.9 are considered overweight. Figure \ref{fig:bp_dist} shows the joint distribution of systolic and diastolic blood pressure among the patients. \bigskip
+Figure \ref{fig:meta_dist4} shows the patient distributions with regard to age, gender and \acrshort{bmi}. As evident from the figure the patients that make up the dataset is made up of 138 males and 57 females. From the age distribution plot in figure \ref{fig:meta_dist4} one can see that the majority of the patients are in the age group 60-80 years with a number of patients in the range 80-90 years. However, it should be mentioned that barely any information about the patients age has been made available. During the process of anonymisation an error occured so only eleven of 200 ages were included. The \acrshort{bmi} distribution of patients is centered around 26 $kg/m^2$. Even though the \acrshort{bmi} is not always accuracte for individuals, for a population of 200 an average \acrshort{bmi} at 26 is quite high as scores above 24.9 are considered overweight. Figure \ref{fig:bp_dist} shows the joint distribution of systolic and diastolic blood pressure among the patients. \bigskip
 
-\section{Input variables} \label{sec:covariates}
+\section{Input Variables} \label{sec:covariates}
 As mentioned earlier in section REF the different machine learning models that will be applied use two different types of input data; time-series data in the form of longitudinal strain curves, and point-values in the form of peak systolic global longitudinal strain and patient \acrshort{ef}. \bigskip
 
-\subsection{Peak values}
+\subsection{Peak Values}
 As mentioned in section REFERENCE \acrshort{ef} values below 40-50$\%$ is regarded as unhealthy with regard to probability of heart failure. Keeping that in mind, one should note that the distribution of \acrshort{ef} values among the patients shown in figure \ref{fig:EF_dist} is centered at approximately 40$\%$ with tails going as low as 20$\%$ and as high as 70$\%$. Figure \ref{fig:gls_dist} shows the distribution of peak systolic \acrshort{gls} values, four the three different views. As evident from the figure, the values are centered around $-12.5$ with tails going as low as $-29$, and as high as $-2.5$. \bigskip
 
 \begin{figure}[h]
@@ -53,9 +45,8 @@ As mentioned in section REFERENCE \acrshort{ef} values below 40-50$\%$ is regard
 
 \clearpage
 
-\subsection{Strain curves}
-Figure \ref{fig:strain_curves} shows what a typical set of strain curves look like for a patient. 
-Only the six regional strain curves, and the one global strain curve from the 4CH view have been included as they are fairly similar across the different views. Since the data from the different patients have been taken at different times, and possibly with different ultrasound machines factors such as number of samples per strain curve, and the frame rate of the particular ultrasound machine during an examination. Each strain curve has a standardized length of one heart cycle, due to this different curves have different number of samples. Figure \ref{fig:fr_sample_dist} shows the distribution of frame rates, and number of samples among the total number of strain curves. \bigskip
+\subsection{Strain Curves}
+Figure \ref{fig:strain_curves} shows what a typical set of strain curves look like for a patient. Only the six regional strain curves, and the one global strain curve from the 4CH view have been included as they are fairly similar across the different views. Since the data from the different patients have been taken at different times, and possibly with different ultrasound machines factors such as number of samples per strain curve, and the frame rate of the particular ultrasound machine during an examination. Each strain curve has a standardized length of one heart cycle, due to this different curves have different number of samples. Figure \ref{fig:fr_sample_dist} shows the distribution of frame rates, and number of samples among the total number of strain curves. \bigskip
 
 \begin{figure}[h]
     \centering
@@ -75,7 +66,7 @@ Only the six regional strain curves, and the one global strain curve from the 4C
 
 \newpage
 
-\section{Target variables} \label{sec:target}
+\section{Target Variables} \label{sec:target}
 Figure \ref{fig:hf_ind_dist} shows the distribution of heart failure among patients (left), and the distribution of different diagnoses (right). Since the dataset has approximately as many patients with a heart failure diagnosis as without, it can be considered balanced in that regard. With regard to the different patient diagnosises, their rate of occurance is not uniform in this dataset. The control group of healthy individuals consists of 30 patients. The groups of patients with STEMI, and NSTEMI diagnoses consist of 60 and 39 patients respectively. Finally, the group of patients with heart failure, but without myocardial infarction (labelled OTHER in left barplot in figure \ref{fig:hf_ind_dist}) consists of 70 patients. To simplify the classification problem this work will only attempt to separate healthy patients from unhealthy patients. All the 169 diagnosed patients are therefore grouped together under the label \textit{unhealthy}. \bigskip
 
 \begin{figure}[h]
@@ -85,7 +76,8 @@ Figure \ref{fig:hf_ind_dist} shows the distribution of heart failure among patie
     \label{fig:hf_ind_dist}
 \end{figure}
 
-To illustrate the diagnostic power of \acrshort{ef}, and peak systolic strain \ref{fig:ef_hf_ind_dist} shows the distribution of \acrshort{ef} for patients with and without heart failure (left), and the distribution of \acrshort{ef} for patients with and without a heart disease diagnosis (right). Figure \ref{fig:gls_hf_dist} shows the distribution of peak systolic \acrshort{gls} values for patients with and without heart failure, and figure \ref{fig:gls_ind_dist} shows the distribution of peak systolic \acrshort{gls} values for patients  with and without a heart disease diagnosis. From the samples used to produce the left plot in figure \ref{fig:ef_hf_ind_dist} and figure \ref{fig:gls_hf_dist} it seems as though the heart failure patients are more separable with the \acrshort{ef} values than with the \acrshort{gls} values. With regard to separability of patients with diagnoses and patients in the control group it seems as though the right plot in figure \ref{fig:ef_hf_ind_dist}, and figure \ref{fig:gls_ind_dist} follow the same distribution as the heart failure patients. However, it is hard to make an evaluation on this since the sample size of the control group is much smaller than the group of patients with a heart disease diagnosis.\bigskip
+To illustrate the diagnostic power of \acrshort{ef}, and peak systolic strain \ref{fig:ef_hf_ind_dist} shows the distribution of \acrshort{ef} for patients with and without heart failure (left), and the distribution of \acrshort{ef} for patients with and without a heart disease diagnosis (right). Figure \ref{fig:gls_hf_dist} shows the distribution of peak systolic \acrshort{gls} values for patients with and without heart failure, and figure \ref{fig:gls_ind_dist} shows the distribution of peak systolic \acrshort{gls} values for diseased patients and control patients. From the left plot in figure \ref{fig:ef_hf_ind_dist} and figure \ref{fig:gls_hf_dist} it seems as though the heart failure patients are more separable with the \acrshort{ef} values than with the \acrshort{gls} values. With regard to the separability of patients with diagnoses and patients in the control group, it seems as though the right plot in figure \ref{fig:ef_hf_ind_dist}, and figure \ref{fig:gls_ind_dist} follow the same distribution as the heart failure patients. However, it is hard to evaluate this since the sample size of the control group is much smaller than the group of patients with a heart disease diagnosis. Since \acrshort{ef} is so well established in clinical procedure, it is interesting to see how well a threshold classifier on \acrshort{ef} would perform in predicting heart failure. So a prediction was made based on the normal threshold mentioned in \textcite{myocardial_imaging} of $45\%$. The results were an accuracy of 0.77, sensitivity of 0.86, specificity of 0.69 and \acrshort{dor} of 13.48. This is quite high, and will serve as a benchmark for the models, when they are applied to predict heart failure among patients.  
+\bigskip
 
 \begin{figure}
     \centering

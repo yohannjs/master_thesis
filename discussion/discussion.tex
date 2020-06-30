@@ -11,7 +11,7 @@ Curves were either: not preprocessed, scaled between zero and one, normalized be
 The TSC model was implemented by using DTW distance between strain curves as a dissimilarity measure to achieve a shape-based TSC model.
 All the dissimilarity measures between a specific strain curve of one patient to the same strain curve of every other patient were combined into a dissimilarity matrix.
 If the dataset represented patients with more than one strain curve the dissimilarity matrices of each indivial strain curves were added together, such that there was a single dissimilarity matrix that represented the dissimilarity between the patients.
-The dissimilarity matrix was then passed to the hierarchical agglomorative clustering algorithm which started out with each patient as an indivial cluster, and merged clusters together based on a specific linkage criteria.
+The dissimilarity matrix was then passed to the hierarchical agglomerative clustering algorithm which started out with each patient as an indivial cluster, and merged clusters together based on a specific linkage criteria.
 Seven linkage criteria were tested: single, complete, average, ward, centroid, median and weighted.
 The clustering model was calculated at the different number of cluster centers between two and nine.
 The ARI was estimated for the all the cluster assignments generated, and the different target variables.
@@ -54,7 +54,7 @@ Although these run-times are attained with a with a regular desktop Lenove G510 
 % \textbf{Improvements that could be done on the existing model}
 It was often found that the PVC models that used EF in addition to peak systolic strain values performed better than the PVC models that only used strain values.
 It would be interesting to see whether incorporating EF in the TSC model would improve its performance as well.
-Since the hierarchical agglomorative clustering algorithm is uses dissimilarity matrix to cluster objects, it should be fairly straight-forward to calculate the dissimilarity matrix between a patients EF values, and add that to the dissimilarity matrices of the indivial curves.
+Since the hierarchical agglomerative clustering algorithm is uses dissimilarity matrix to cluster objects, it should be fairly straight-forward to calculate the dissimilarity matrix between a patients EF values, and add that to the dissimilarity matrices of the indivial curves.
 One could also consider the approach taken by CITATION, where they split the strain curves of one heart cycle into systolic, and diastolic strain curves, and pass them to the model separately. 
 Although the authors achieved good results with this, they also say that annotating points of every strain curve as systolic or diastolic is very time consuming.
 
@@ -62,7 +62,7 @@ Although the authors achieved good results with this, they also say that annotat
 
 % \textbf{Give a brief summary of how the PVC model was implemented.}
 The PVC model was implemented in a similar fashion as the TSC model.
-The datapoints used to represent patients were passed to an implementation of hierarchical agglomorative clustering in scikit-learn.
+The datapoints used to represent patients were passed to an implementation of hierarchical agglomerative clustering in scikit-learn.
 The dissimilarity between patients was measured as the Euclidean distance between the dimensions used to represent them.
 The scikit-learn implementation did not have all the same clustering linkages available as the scipy implementation used for TSC, so only the following four linkages were tested: single, complete, average and ward.
 The evaluation procedure for the PVC model was the same as the procedure used for TSC.

@@ -8,7 +8,7 @@
 \node (input)   [IO] {Input data};
 \node (preproc) [block, node distance=1.5cm, below of=input]   {Preprocessing};
 \node (diss)    [block, node distance=1.5cm, below of=preproc] {Dissimilarity measurement};
-\node (clust)   [block, node distance=2cm, below of=diss]  {Hierarchical Agglomorative Clustering};
+\node (clust)   [block, node distance=2cm, below of=diss]  {Hierarchical Agglomerative Clustering};
 \node (output)  [IO,    node distance=2cm, below of=clust] {Cluster assignments};
 \node (ari)     [evl,   node distance=1.5cm, below of=output, xshift=-3cm] {ARI};
 \node (dor)     [evl,   node distance=2.1cm, below of=output, xshift=3cm] {TP, TN, FP and FN};
