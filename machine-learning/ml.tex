@@ -65,7 +65,7 @@ The warping distance of the warping path $P$ is the sum of the \acrshort{lcm} el
     \label{eq:dp_dtw}
 \end{equation}
 
-Although the \acrshort{dtw} distance is more flexible than estimating Euclidean distance between two time series, it comes at the cost of much higher run time and space requirements. The time complexity for calculating the dissimilarity matrix of a set of $N$ time series using the \acrshort{dtw} distance is $O\left ( n m N^{2} \right )$ CITATION? % ESPEN, PJOTR, TSC_REV
+Although the \acrshort{dtw} distance is more flexible than estimating Euclidean distance between two time series, it comes at the cost of much higher run time and space requirements. The time complexity for calculating the dissimilarity matrix of a set of $N$ time series using the \acrshort{dtw} distance is $O\left ( n m N^{2} \right )$ CITATION? % TSC_REV
 An illustration of how the \acrshort{dtw} distance between two time series is estimated is shown in figure \ref{fig:warping_path}. 
 
 \begin{figure}
@@ -97,7 +97,7 @@ There are two main types of hierarchical clustering algorithms, \textit{divisive
 
 One of the obvious disadvantages of the hierarchical clustering algorithms is that they have quadratic time complexity $O(N^2)$, they have also received critique for lacking flexibility \cite{tsc_rev}. The lack of flexibility is due to the fact that after two clusters are merged they cannot be split, for re-evaluation when lower number of clusters are considered. 
 
-\subsection{Curse of Dimensionality}
+\subsection{Curse of Dimensionality} \label{sec:curse_dimensionality}
 The curse of dimensionality is a term used to explain the problem of having \textit{too much} information about each individual object, with regard to the number of objects that make up the dataset. This concept may sound counterintuitive, but it is a real issue in classification, and regression problems. For every new parameter that is added to a data object (or every dimension that is added to a dataset) additional unwanted stochastic behaviour is added as well. Unwanted stochastic behaviour is often refered to as \textit{noise}, because it makes it harder to detect the relation between the input variables, and the target variable. If the amount of noise in a dataset becomes high enough, a machine learning model will become unable to generalize the relation between the input variables, and the target variables. The curse of dimensionality refers to the issue of the noise that is added when there is used too many dimensions to represent a dataset. The number of dimensions used to represent a dataset must be chosen in context to how many objects there are in the dataset, becase if the number of objects in the dataset is great enough the information added by an additional dimension could outweigh the additional noise cost.
 
 \clearpage
