@@ -11,40 +11,7 @@
     \label{fig:tsc_ind_dor_sens_spec_dist}
 \end{figure}
 
-From the distribution plot in figure \ref{fig:tsc_ind_dor_sens_spec_dist}a one can see that the majority of \acrshort{dor}s are close to zero, but there are some models that acheive a \acrshort{dor} above 30.
-In the scatter plot in figure \ref{fig:tsc_ind_dor_sens_spec_dist}b one can see that the specificity of the models and range from $0.5$ to 1, 
-and the sensitivity scores range from 0 to $0.93$. 
-As with heart failure, the \acrshort{tsc} models that perform best in terms of \acrshort{dor} use data from a single view. 
-The \acrshort{2ch} view, and \acrshort{gls} curves are the only view and curve that are used among the models that achieve the five highest \acrshort{dor}s.
-From the table of all the model results in the appendix \ref{tab:tsc_ind_raw_results} one can see that the highest performing model in terms of \acrshort{dor}
-to use a dataset other than \acrshort{gls} curves alone is \textit{gls-rls/2CH/scaled/ward/2} and it achieves a \acrshort{dor} of $26.76$.
-One can also note that the highest performing model in terms of \acrshort{dor} that uses a view other than only \acrshort{2ch} is \textit{rls/all-views/normalized/weighted/2}
-which achieves a \acrshort{dor} of 25.56.
-The \acrshort{tsc} models that achieve the highest \acrshort{dor} scores all use no preprocessing, or scaling. 
-From table \ref{tab:tsc_ind_dor_sens_spec_dist} one can see that the \acrshort{tsc} models that acheive the highest \acrshort{dor} scores are \textit{gls/2CH/regular/centroid/2}, 
-and \textit{gls/2CH/scaled/centroid/2} which are the same two models that achieve the highest \acrshort{dor}s in the heart failure case study.
-
-\begin{comment}
-[X] \textbf{Comment on spread of \acrshort{dor}.}
-    * From the distribution plot in figure \ref{fig:tsc_ind_dor_sens_spec_dist}a one can see that the majority of \acrshort{dor}s are close to zero, but there are some models that acheive a \acrshort{dor} above 30.
-[X] \textbf{Comment on spread of sensitivity and specificity.}
-    * In the scatter plot in figure \ref{fig:tsc_ind_dor_sens_spec_dist}b one can see that the specificity of the models and range from $0.5$ to 1, 
-      and the sensitivity scores range from 0 to $0.93$. 
-[X] \textbf{Comment on common traits in the high performing models.} Here you can refer to raw performance results in appendix.
-    * As with heart failure, the \acrshort{tsc} models that perform best in terms of \acrshort{dor} use data from a single view. 
-      The \acrshort{2ch} view, and \acrshort{gls} curves are the only view and curve that are used among the models that achieve the five highest \acrshort{dor}s.
-    * From the table of all the model results in the appendix \ref{tab:tsc_ind_raw_results} one can see that the highest performing model in terms of \acrshort{dor}
-      to use a dataset other than \acrshort{gls} curves alone is \textit{gls-rls/2CH/scaled/ward/2} and it achieves a \acrshort{dor} of $26.76$.
-    * One can also note that the highest performing model in terms of \acrshort{dor} that uses a view other than only \acrshort{2ch} is \textit{rls/all-views/normalized/weighted/2}
-      which achieves a \acrshort{dor} of 25.56.
-    * The \acrshort{tsc} models that achieve the highest \acrshort{dor} scores all use no preprocessing, or scaling. 
-[X] \textbf{Comment on common traits in the low performing models.} Here you can refer to raw performance results in appendix.
-[X] \textbf{Select one - three models that are good contendors for being the best model/model in the group and comment on their traits}
-    * From table \ref{tab:tsc_ind_dor_sens_spec_dist} one can see that the \acrshort{tsc} models that acheive the highest \acrshort{dor} scores are \textit{gls/2CH/regular/centroid/2}, 
-      and \textit{gls/2CH/scaled/centroid/2} which are the same two models that achieve the highest \acrshort{dor}s in the heart failure case study.
-\textbf{IF NOT CLUSTERING model}
-[NA] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, and \acrshort{dor}, and make an informed choice.}
-\end{comment}
+From the distribution plot in figure \ref{fig:tsc_ind_dor_sens_spec_dist}a one can see that the majority of \acrshort{dor} are close to zero, but there are some models that acheive a \acrshort{dor} above 30. In the scatter plot in figure \ref{fig:tsc_ind_dor_sens_spec_dist}b one can see that the specificity of the models and range from $0.5$ to 1, and the sensitivity scores range from 0 to $0.93$. As with heart failure, the \acrshort{tsc} models that perform best in terms of \acrshort{dor} use data from a single view. The \acrshort{2ch} view, and \acrshort{gls} curves are the only view and curve that are used among the models that achieve the five highest \acrshort{dor}. From the table of all the model results in the appendix \ref{tab:tsc_ind_raw_results} one can see that the highest performing model in terms of \acrshort{dor} to use a dataset other than \acrshort{gls} curves alone is \textit{gls-rls/2CH/scaled/ward/2} and it achieves a \acrshort{dor} of $26.76$. One can also note that the highest performing model in terms of \acrshort{dor} that uses a view other than only \acrshort{2ch} is \textit{rls/all-views/normalized/weighted/2} which achieves a \acrshort{dor} of 25.56. The \acrshort{tsc} models that achieve the highest \acrshort{dor} scores all use no preprocessing, or scaling. From table \ref{tab:tsc_ind_dor_sens_spec_dist} one can see that the \acrshort{tsc} models that acheive the highest \acrshort{dor} scores are \textit{gls/2CH/regular/centroid/2}, and \textit{gls/2CH/scaled/centroid/2} which are the same two models that achieve the highest \acrshort{dor} in the heart failure case study.
 
 \begin{table*}
     \centering
@@ -85,61 +52,7 @@ and \textit{gls/2CH/scaled/centroid/2} which are the same two models that achiev
     \label{tab:tsc_ind_ari}
 \end{table*}
 
-The majority of the \acrshort{ari} scorer for all the \acrshort{tsc} models evaluated at two to nine cluster centers are centered around zero.
-As with the \acrshort{tsc} models attaining the highest \acrshort{dor}s the models using no preprocessing or scaling acheive the highest \acrshort{ari} indices when used to identify patient diagnoses.
-In addition, the \acrshort{gls} curves are also most often part of the dataset for the \acrshort{tsc} models receiving the highest \acrshort{ari} when used to identify patient diagnoses.
-From table \ref{tab:tsc_ind_ari} one can see that the \acrshort{tsc} models receiving the five highest \acrshort{ari} scores, are not among the \acrshort{tsc} models that receive the highest \acrshort{dor} scores. 
-The \acrshort{tsc} model \textit{gls-rls/4CH/regular/complete/2} attains the highest \acrshort{ari} score when applied to identify patient diagnoses, and achieves an 
-accuracy of $0.84$, a sensitivity of $0.87$ a specificity of $0.69$ and a \acrshort{dor} $14.65$. 
-The \acrshort{tsc} model \textit{gls/all-views/regular/weighted/2} achieves the second highest \acrshort{ari} when applied to identify patient diagnoses, and achieves an
-accuracy of $0.82$, a sensitivity of $0.81$ a specificity of $0.83$ and a \acrshort{dor} $21.06$. 
-What should also be noted is that the \acrshort{tsc} models achieving the two highest \acrshort{ari}s when applied to identify patient diagnoses are models evaluated at two cluster centers,
-which means that none of the \acrshort{tsc} models evaluated at cluster centers between three and nine can perform better than the ones evaluated at two cluster centers.
-It may seem strange that the ordered lists of \acrshort{dor}s, and \acrshort{ari}s are so different. 
-The reason for this is not because \acrshort{dor} inherently values sensitivity higher than specificity, but stems from how the \acrshort{dor} is defined. 
-Recall that $\mathrm{DOR = ( TP \times TN )/ (FP \times FN)}$, since the patient diagnoses dataset is skewed in favour of positives \acrshort{tp} has the potential of being as high as 170 
-while \acrshort{tn} can be as high as 30. 
-Therefore the \acrshort{dor} will be higher for models with a high sensitivity than for models with an equally high sensitivity.
-In figure \ref{fig:five_members_gls_rls_4CH_regular_complete_two} curves of five random cluster members assigned by the \textit{gls/all-views/regular/weighted/2} model are plotted.
-As with the observations made with regard to figure \ref{fig:tsc_hf_best_meth_5_samples} it is not possible to make any conclusive statements as to what the similarities are
-based on such a small sample size.
-However, based on the small sample size in \ref{fig:five_members_gls_rls_4CH_regular_complete_two} it seems as though the curves in cluster 2 (column (b)) are smoother in shape,
-than the curves in cluster 1 (column (a)).
-The \acrshort{tsc} model that is chosen as the best model for identifying patient diagnoses is \textit{gls/all-views/regular/weighted/2}, because it achieves the second highest \acrshort{ari}, and
-because it's sensitivity and specificity are more balanced than the model attaining the highest \acrshort{ari} and the models that achieve higher \acrshort{dor}s.
-
-\begin{comment}
-\textbf{ARI PARAGRAPH. ONLY FOR CLUSTERING modelS}.
-[X] \textbf{Comment on the spread of \acrshort{ari} scores. Be specific since the distribution plots are ommitted}
-    * The majority of the \acrshort{ari} scorer for all the \acrshort{tsc} models evaluated at two to nine cluster centers are centered around zero.
-[X] \textbf{Comment on the general trends of high performing models in terms of \acrshort{ari} - are they the same trends as scores performing high in terms of \acrshort{dor}?}
-    * As with the \acrshort{tsc} models attaining the highest \acrshort{dor}s the models using no preprocessing or scaling acheive the highest \acrshort{ari} indices when used to identify patient diagnoses.
-    * In addition, the \acrshort{gls} curves are also most often part of the dataset for the \acrshort{tsc} models receiving the highest \acrshort{ari} when used to identify patient diagnoses.
-[X] \textbf{Comment on whether the models in the top 5 \acrshort{ari}s are the same models with the highest \acrshort{dor}. If not, mention it.}
-    * From table \ref{tab:tsc_ind_ari} one can see that the \acrshort{tsc} models receiving the five highest \acrshort{ari} scores, are not among the \acrshort{tsc} models that receive the highest \acrshort{dor} scores. 
-    * The \acrshort{tsc} model \textit{gls-rls/4CH/regular/complete/2} attains the highest \acrshort{ari} score when applied to identify patient diagnoses, and achieves an 
-      accuracy of $0.84$, a sensitivity of $0.87$ a specificity of $0.69$ and a \acrshort{dor} $14.65$. 
-    * The \acrshort{tsc} model \textit{gls/all-views/regular/weighted/2} achieves the second highest \acrshort{ari} when applied to identify patient diagnoses, and achieves an
-      accuracy of $0.82$, a sensitivity of $0.81$ a specificity of $0.83$ and a \acrshort{dor} $21.06$. 
-    * What should also be noted is that the \acrshort{tsc} models achieving the two highest \acrshort{ari}s when applied to identify patient diagnoses are models evaluated at two cluster centers,
-      which means that none of the \acrshort{tsc} models evaluated at cluster centers between three and nine can perform better than the ones evaluated at two cluster centers.
-[NA] \textbf{If the top 1 or 2 \acrshort{ari}s are also top in \acrshort{dor} no further discussion is needed. You can then plot some of the cluster realizations to see what they look like.}
-[X] \textbf{If NOT, why do they differ? Is the model with the highest \acrshort{ari} evaluated at a higher cluster number that 2? Attempt to visualize it, if it is not too difficult.}
-    * It may seem strange that the ordered lists of \acrshort{dor}s, and \acrshort{ari}s are so different. 
-    * The reason for this is not because \acrshort{dor} inherently values sensitivity higher than specificity, but stems from how the \acrshort{dor} is defined. 
-    * Recall that $\mathrm{DOR = ( \acrshort{tp} \times \acrshort{tn} )/ (FP \times \acrshort{fn})}$, since the patient diagnoses dataset is skewed in favour of positives \acrshort{tp} has the potential of being as high as 170 
-      while \acrshort{tn} can be as high as 30. 
-    * Therefore the \acrshort{dor} will be higher for models with a high sensitivity than for models with an equally high sensitivity.
-[X] \textbf{Plot some visualizations of the clustering, and comment on them.}
-    * In figure \ref{fig:five_members_gls_rls_4CH_regular_complete_two} curves of five random cluster members assigned by the \textit{gls/all-views/regular/weighted/2} model are plotted.
-    * As with the observations made with regard to figure \ref{fig:tsc_hf_best_meth_5_samples} it is not possible to make any conclusive statements as to what the similarities are
-      based on such a small sample size.
-    * However, based on the small sample size in \ref{fig:five_members_gls_rls_4CH_regular_complete_two} it seems as though the curves in cluster 2 (column (b)) are smoother in shape,
-      than the curves in cluster 1 (column (a)).
-[X] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, \acrshort{dor}, \acrshort{ari} and potentially the plots, and make an informed choice.}
-    * The \acrshort{tsc} model that is chosen as the best model for identifying patient diagnoses is \textit{gls/all-views/regular/weighted/2}, because it achieves the second highest \acrshort{ari}, and
-      because it's sensitivity and specificity are more balanced than the model attaining the highest \acrshort{ari} and the models that achieve higher \acrshort{dor}s.
-\end{comment}
+The majority of the \acrshort{ari} scorer for all the \acrshort{tsc} models evaluated at two to nine cluster centers are centered around zero. As with the \acrshort{tsc} models attaining the highest \acrshort{dor} the models using no preprocessing or scaling acheive the highest \acrshort{ari} indices when used to identify patient diagnoses. In addition, the \acrshort{gls} curves are also most often part of the dataset for the \acrshort{tsc} models receiving the highest \acrshort{ari} when used to identify patient diagnoses. From table \ref{tab:tsc_ind_ari} one can see that the \acrshort{tsc} models receiving the five highest \acrshort{ari} scores, are not among the \acrshort{tsc} models that receive the highest \acrshort{dor} scores. The \acrshort{tsc} model \textit{gls-rls/4CH/regular/complete/2} attains the highest \acrshort{ari} score when applied to identify patient diagnoses, and achieves an accuracy of $0.84$, a sensitivity of $0.87$ a specificity of $0.69$ and a \acrshort{dor} $14.65$. The \acrshort{tsc} model \textit{gls/all-views/regular/weighted/2} achieves the second highest \acrshort{ari} when applied to identify patient diagnoses, and achieves an accuracy of $0.82$, a sensitivity of $0.81$ a specificity of $0.83$ and a \acrshort{dor} $21.06$. What should also be noted is that the \acrshort{tsc} models achieving the two highest \acrshort{ari} when applied to identify patient diagnoses are models evaluated at two cluster centers, which means that none of the \acrshort{tsc} models evaluated at cluster centers between three and nine can perform better than the ones evaluated at two cluster centers. It may seem strange that the ordered lists of \acrshort{dor}, and \acrshort{ari} are so different. The reason for this is not because \acrshort{dor} inherently values sensitivity higher than specificity, but stems from how the \acrshort{dor} is defined. Recall that $\mathrm{DOR = ( TP \times TN )/ (FP \times FN)}$, since the patient diagnoses dataset is skewed in favour of positives \acrshort{tp} has the potential of being as high as 170 while \acrshort{tn} can be as high as 30. Therefore the \acrshort{dor} will be higher for models with a high sensitivity than for models with an equally high sensitivity. In figure \ref{fig:five_members_gls_rls_4CH_regular_complete_two} curves of five random cluster members assigned by the \textit{gls/all-views/regular/weighted/2} model are plotted. As with the observations made with regard to figure \ref{fig:tsc_hf_best_meth_5_samples} it is not possible to make any conclusive statements as to what the similarities are based on such a small sample size. However, based on the small sample size in \ref{fig:five_members_gls_rls_4CH_regular_complete_two} it seems as though the curves in cluster 2 (column (b)) are smoother in shape, than the curves in cluster 1 (column (a)). The \acrshort{tsc} model that is chosen as the best model for identifying patient diagnoses is \textit{gls/all-views/regular/weighted/2}, because it achieves the second highest \acrshort{ari}, and because it's sensitivity and specificity are more balanced than the model attaining the highest \acrshort{ari} and the models that achieve higher \acrshort{dor}.
 
 \clearpage
 
@@ -165,30 +78,7 @@ because it's sensitivity and specificity are more balanced than the model attain
     \label{fig:pvc_ind_dor_sens_spec_dist}
 \end{figure}
 
-From the distribution plot in figure \ref{fig:pvc_ind_dor_sens_spec_dist}a one can see that the majority of the PVC models get \acrshort{dor}s close to zero,
-but there are a few models that attain \acrshort{dor}s above 30, and close to 40. 
-From the scatter plot in \ref{fig:pvc_ind_dor_sens_spec_dist}b one can see that almost all the sensitivity scores are above $0.5$, while the specificity scores are concentrated
-in the areas $0$ to $0.25$ and $0.95$.
-As with the heart failure case study the PVC models that perform high in terms of \acrshort{dor} use a dataset that is a combination of peak systolic strain values and \acrshort{ef}.
-From table \ref{tab:pvc_ind_dor_sens_spec_dist} one can see that \textit{gls-EF/ward/2} and \textit{rls-EF/complete/2} are the two top performers in terms of \acrshort{dor}. 
-\textit{gls-EF/ward/2} achieves a slightly higher specificity score, where as \textit{rls-EF/complete/2} attains a slightly higher specificity score.
-
-\begin{comment}
-[X] \textbf{Comment on spread of \acrshort{dor}.}
-    * From the distribution plot in figure \ref{fig:pvc_ind_dor_sens_spec_dist}a one can see that the majority of the PVC models get \acrshort{dor}s close to zero,
-      but there are a few models that attain \acrshort{dor}s above 30, and close to 40. 
-[X] \textbf{Comment on spread of sensitivity and specificity.}
-    * From the scatter plot in \ref{fig:pvc_ind_dor_sens_spec_dist}b one can see that almost all the sensitivity scores are above $0.5$, while the specificity scores are concentrated
-      in the areas $0$ to $0.25$ and $0.95$.
-[X] \textbf{Comment on common traits in the high performing models.} Here you can refer to raw performance results in appendix.
-    * As with the heart failure case study the PVC models that perform high in terms of \acrshort{dor} use a dataset that is a combination of peak systolic strain values and \acrshort{ef}.
-[X] \textbf{Comment on common traits in the low performing models.} Here you can refer to raw performance results in appendix.
-[X] \textbf{Select one - three models that are good contendors for being the best model/model in the group and comment on their traits}
-    * From table \ref{tab:pvc_ind_dor_sens_spec_dist} one can see that \textit{gls-EF/ward/2} and \textit{rls-EF/complete/2} are the two top performers in terms of \acrshort{dor}. 
-    * \textit{gls-EF/ward/2} achieves a slightly higher specificity score, where as \textit{rls-EF/complete/2} attains a slightly higher specificity score.
-\textbf{IF NOT CLUSTERING model}
-[NA] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, and \acrshort{dor}, and make an informed choice.}
-\end{comment}
+From the distribution plot in figure \ref{fig:pvc_ind_dor_sens_spec_dist}a one can see that the majority of the PVC models get \acrshort{dor} close to zero, but there are a few models that attain \acrshort{dor} above 30, and close to 40. From the scatter plot in \ref{fig:pvc_ind_dor_sens_spec_dist}b one can see that almost all the sensitivity scores are above $0.5$, while the specificity scores are concentrated in the areas $0$ to $0.25$ and $0.95$. As with the heart failure case study the PVC models that perform high in terms of \acrshort{dor} use a dataset that is a combination of peak systolic strain values and \acrshort{ef}. From table \ref{tab:pvc_ind_dor_sens_spec_dist} one can see that \textit{gls-EF/ward/2} and \textit{rls-EF/complete/2} are the two top performers in terms of \acrshort{dor}. \textit{gls-EF/ward/2} achieves a slightly higher specificity score, where as \textit{rls-EF/complete/2} attains a slightly higher specificity score.
 
 \begin{table*}
     \centering
@@ -228,68 +118,7 @@ From table \ref{tab:pvc_ind_dor_sens_spec_dist} one can see that \textit{gls-EF/
     \label{tab:pvc_ind_ari}
 \end{table*}
 
-The majority of the \acrshort{ari} scores of PVC models applied to identify patient diagnoses are centered around zero, but as one can see from table \ref{tab:pvc_ind_ari}
-there are a few models that acieve an \acrshort{ari} above $0.2$ close to $0.3$.
-For a change, the PVC models that perform best in terms of \acrshort{ari}, are neither models evaluated at two cluster centers, or models that are applied on a combination
-of peak systolic strain values and \acrshort{ef}.
-In contrast to the heart failure case study, the PVC models that achieve the highest \acrshort{ari}s, when applied to identify patient diagnoses, are not the same models that achieve the 
-highest \acrshort{dor}s.
-The two PVC models that achieve the highest \acrshort{ari}s are the \textit{gls/average} model evaluated at 6 and 7 cluster centers respectively. 
-To get a better idea of why \textit{gls/average/6} and \textit{gls/average/7} attain the \acrshort{ari}s they do, scatter plots of these two models, and \textit{gls-EF/ward/2}
-have been given in figure \ref{fig:scatter_gls_ef_hf_cluster_assignments}. A scatter plot of the target variable patient diagnosis is also given for comparison.
-The dimensions used are peak systolic \acrshort{gls} in all three views as these are the dimensions that are common to all three models.
-From the scatter plot in plot \ref{fig:scatter_gls_pd} one can see that the healthy patients are in the minority, and are concentrated in the corner 
-with low peak systolic \acrshort{gls} values in the \acrshort{4ch}, \acrshort{2ch} and \acrshort{aplax} views. 
-There are also some healthy patients with low-medium peak systolic \acrshort{gls} values, and very few healthy patients with high peak systolic \acrshort{gls} values.
-From plot \ref{fig:scatter_gls_ef_ward2_ind} one can see that \textit{gls-EF/ward/2} is able to isolate the concentration of healthy patients with low peak systolic \acrshort{gls}, 
-but at the cost of many \acrshort{fn}s.
-* In plot \ref{fig:scatter_gls_average6} and \ref{fig:scatter_gls_average7} one can see that cluster 1 of model \textit{gls/average/6}, 
-and cluster 2 of model \textit{gls/average/7} capture the healthy patients with low peak systolic \acrshort{gls}, but are unable of capturing the healthy patients with
-medium to high values.
-If one combines clusters 1 and 5 of \textit{gls/average/6}, and lets them represent healthy patients, and let the remaining clusters represent unhealthy patients the model attains 
-an accuracy of $0.74$, a sensitivity of $0.70$, a specificity of $0.94$ and a \acrshort{dor} of $34.90$.
-If one combines clusters 2 and 5 of \textit{gls/average/7}, and lets them represent healthy patients, and let the remaining clusters represent unhealthy patients this model attains 
-an accuracy of $0.74$, a sensitivity of $0.70$, a specificity of $0.94$ and a \acrshort{dor} of $35.94$.
-While the performance of the revised \textit{gls/average/6} and \textit{gls/average/6} models are good, 
-they are still not as good as the performance of the top three performers in terms of \acrshort{dor}, which attain higher accuracy, sensitivity and \acrshort{dor}s.
-Therefore, \textit{rls-EF/complete/2} is chosen as the best of the PVC models at identifying patient diagnosis, as it achieves the second highest \acrshort{dor}, 
-and a more balanced sensitivity/specificity than \textit{gls-EF/ward/2} that attains the highest \acrshort{dor} score.
-
-\begin{comment}
-\textbf{ARI PARAGRAPH. ONLY FOR CLUSTERING modelS}.
-[X] \textbf{Comment on the spread of \acrshort{ari} scores. Be specific since the distribution plots are ommitted}
-    * The majority of the \acrshort{ari} scores of PVC models applied to identify patient diagnoses are centered around zero, but as one can see from table \ref{tab:pvc_ind_ari}
-      there are a few models that acieve an \acrshort{ari} above $0.2$ close to $0.3$.
-[X] \textbf{Comment on the general trends of high performing models in terms of \acrshort{ari} - are they the same trends as scores performing high in terms of \acrshort{dor}?}
-    * For a change, the PVC models that perform best in terms of \acrshort{ari}, are neither models evaluated at two cluster centers, or models that are applied on a combination
-      of peak systolic strain values and \acrshort{ef}.
-[X] \textbf{Comment on whether the models in the top 5 \acrshort{ari}s are the same models with the highest \acrshort{dor}. If not, mention it.}
-    * In contrast to the heart failure case study, the PVC models that achieve the highest \acrshort{ari}s, when applied to identify patient diagnoses, are not the same models that achieve the 
-      highest \acrshort{dor}s.
-    * The two PVC models that achieve the highest \acrshort{ari}s are the \textit{gls/average} model evaluated at 6 and 7 cluster centers respectively. 
-[NA] \textbf{If the top 1 or 2 \acrshort{ari}s are also top in \acrshort{dor} no further discussion is needed. You can then plot some of the cluster realizations to see what they look like.}
-[X] \textbf{Plot some visualizations of the clustering, and comment on them.}
-    * To get a better idea of why \textit{gls/average/6} and \textit{gls/average/7} attain the \acrshort{ari}s they do, scatter plots of these two models, and \textit{gls-EF/ward/2}
-      have been given in figure \ref{fig:scatter_gls_ef_hf_cluster_assignments}. A scatter plot of the target variable patient diagnosis is also given for comparison.
-      The dimensions used are peak systolic \acrshort{gls} in all three views as these are the dimensions that are common to all three models.
-    * From the scatter plot in plot \ref{fig:scatter_gls_pd} one can see that the healthy patients are in the minority, and are concentrated in the corner 
-      with low peak systolic \acrshort{gls} values in the \acrshort{4ch}, \acrshort{2ch} and \acrshort{aplax} views. 
-    * There are also some healthy patients with low-medium peak systolic \acrshort{gls} values, and very few healthy patients with high peak systolic \acrshort{gls} values.
-    * From plot \ref{fig:scatter_gls_ef_ward2_ind} one can see that \textit{gls-EF/ward/2} is able to isolate the concentration of healthy patients with low peak systolic \acrshort{gls}, 
-      but at the cost of many \acrshort{fn}s.
-      * In plot \ref{fig:scatter_gls_average6} and \ref{fig:scatter_gls_average7} one can see that cluster 1 of model \textit{gls/average/6}, 
-      and cluster 2 of model \textit{gls/average/7} capture the healthy patients with low peak systolic \acrshort{gls}, but are unable of capturing the healthy patients with
-      medium to high values.
-    * If one combines clusters 1 and 5 of \textit{gls/average/6}, and lets them represent healthy patients, and let the remaining clusters represent unhealthy patients the model attains 
-      an accuracy of $0.74$, a sensitivity of $0.70$, a specificity of $0.94$ and a \acrshort{dor} of $34.90$.
-    * If one combines clusters 2 and 5 of \textit{gls/average/7}, and lets them represent healthy patients, and let the remaining clusters represent unhealthy patients this model attains 
-      an accuracy of $0.74$, a sensitivity of $0.70$, a specificity of $0.94$ and a \acrshort{dor} of $35.94$.
-[X] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, \acrshort{dor}, \acrshort{ari} and potentially the plots, and make an informed choice.}
-    * While the performance of the revised \textit{gls/average/6} and \textit{gls/average/6} models are good, 
-      they are still not as good as the performance of the top three performers in terms of \acrshort{dor}, which attain higher accuracy, sensitivity and \acrshort{dor}s.
-      * Therefore, \textit{rls-EF/complete/2} is chosen as the best of the PVC models at identifying patient diagnosis, as it achieves the second highest \acrshort{dor}, 
-      and a more balanced sensitivity/specificity than \textit{gls-EF/ward/2} that attains the highest \acrshort{dor} score.
-\end{comment}
+The majority of the \acrshort{ari} scores of PVC models applied to identify patient diagnoses are centered around zero, but as one can see from table \ref{tab:pvc_ind_ari} there are a few models that acieve an \acrshort{ari} above $0.2$ close to $0.3$. For a change, the PVC models that perform best in terms of \acrshort{ari}, are neither models evaluated at two cluster centers, or models that are applied on a combination of peak systolic strain values and \acrshort{ef}. In contrast to the heart failure case study, the PVC models that achieve the highest \acrshort{ari}, when applied to identify patient diagnoses, are not the same models that achieve the highest \acrshort{dor}. The two PVC models that achieve the highest \acrshort{ari} are the \textit{gls/average} model evaluated at 6 and 7 cluster centers respectively. To get a better idea of why \textit{gls/average/6} and \textit{gls/average/7} attain the \acrshort{ari} they do, scatter plots of these two models, and \textit{gls-EF/ward/2} have been given in figure \ref{fig:scatter_gls_ef_hf_cluster_assignments}. A scatter plot of the target variable patient diagnosis is also given for comparison. The dimensions used are peak systolic \acrshort{gls} in all three views as these are the dimensions that are common to all three models. From the scatter plot in plot \ref{fig:scatter_gls_pd} one can see that the healthy patients are in the minority, and are concentrated in the corner with low peak systolic \acrshort{gls} values in the \acrshort{4ch}, \acrshort{2ch} and \acrshort{aplax} views. There are also some healthy patients with low-medium peak systolic \acrshort{gls} values, and very few healthy patients with high peak systolic \acrshort{gls} values. From plot \ref{fig:scatter_gls_ef_ward2_ind} one can see that \textit{gls-EF/ward/2} is able to isolate the concentration of healthy patients with low peak systolic \acrshort{gls}, but at the cost of many \acrshort{fn}. In plot \ref{fig:scatter_gls_average6} and \ref{fig:scatter_gls_average7} one can see that cluster 1 of model \textit{gls/average/6}, and cluster 2 of model \textit{gls/average/7} capture the healthy patients with low peak systolic \acrshort{gls}, but are unable of capturing the healthy patients with medium to high values. If one combines clusters 1 and 5 of \textit{gls/average/6}, and lets them represent healthy patients, and let the remaining clusters represent unhealthy patients the model attains an accuracy of $0.74$, a sensitivity of $0.70$, a specificity of $0.94$ and a \acrshort{dor} of $34.90$. If one combines clusters 2 and 5 of \textit{gls/average/7}, and lets them represent healthy patients, and let the remaining clusters represent unhealthy patients this model attains an accuracy of $0.74$, a sensitivity of $0.70$, a specificity of $0.94$ and a \acrshort{dor} of $35.94$. While the performance of the revised \textit{gls/average/6} and \textit{gls/average/6} models are good, they are still not as good as the performance of the top three performers in terms of \acrshort{dor}, which attain higher accuracy, sensitivity and \acrshort{dor}. Therefore, \textit{rls-EF/complete/2} is chosen as the best of the PVC models at identifying patient diagnosis, as it achieves the second highest \acrshort{dor}, and a more balanced sensitivity/specificity than \textit{gls-EF/ward/2} that attains the highest \acrshort{dor} score.
 
 \begin{figure}[H]
     \centering
@@ -354,28 +183,7 @@ and a more balanced sensitivity/specificity than \textit{gls-EF/ward/2} that att
     \label{tab:dl_hf_dor_sens_spec_dist}
 \end{table*}
 
-From the distribution plot in figure \ref{fig:dl_ind_dor_sens_spec_dist} one can see that the collective performance of the different variations of the \acrshort{ann} trained to predict patient diagnosis
-is terrible.
-The \acrshort{dor} of all the models are either zero because the number of \acrshort{tn}s attained are zero, or not defined because the number of \acrshort{fn}s are zero. 
-The sensitivities are all 1, or close to 1, and the specificities are all 0. 
-It is evident that the \acrshort{ann}s are not able to generalize the traits of the healthy patients from such a small dataset. 
-The \acrshort{ann} models are will therefore not be discussed further with relation to prediction of patient diagnosis, and are not included in the comparison of the four model groups.
-
-\begin{comment}
-[X] \textbf{Comment on spread of \acrshort{dor}.}
-    * From the distribution plot in figure \ref{fig:dl_ind_dor_sens_spec_dist} one can see that the collective performance of the different variations of the \acrshort{ann} trained to predict patient diagnosis
-      is terrible.
-    * The \acrshort{dor} of all the models are either zero because the number of \acrshort{tn}s attained are zero, or not defined because the number of \acrshort{fn}s are zero. 
-[X] \textbf{Comment on spread of sensitivity and specificity.}
-    * The sensitivities are all 1, or close to 1, and the specificities are all 0. 
-    * It is evident that the \acrshort{ann}s are not able to generalize the traits of the healthy patients from such a small dataset. 
-    * The \acrshort{ann} models are will therefore not be discussed further with relation to prediction of patient diagnosis, and are not included in the comparison of the four model groups.
-[X] \textbf{Comment on common traits in the high performing models.} Here you can refer to raw performance results in appendix.
-[X] \textbf{Comment on common traits in the low performing models.} Here you can refer to raw performance results in appendix.
-[X] \textbf{Select one - three models that are good contendors for being the best model/model in the group and comment on their traits}
-\textbf{IF NOT CLUSTERING model}
-[X] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, and \acrshort{dor}, and make an informed choice.}
-\end{comment}
+From the distribution plot in figure \ref{fig:dl_ind_dor_sens_spec_dist} one can see that the collective performance of the different variations of the \acrshort{ann} trained to predict patient diagnosis is terrible. The \acrshort{dor} of all the models are either zero because the number of \acrshort{tn} attained are zero, or not defined because the number of \acrshort{fn} are zero. The sensitivities are all 1, or close to 1, and the specificities are all 0. It is evident that the \acrshort{ann} are not able to generalize the traits of the healthy patients from such a small dataset. The \acrshort{ann} models are will therefore not be discussed further with relation to prediction of patient diagnosis, and are not included in the comparison of the four model groups.
 
 \newpage
 
@@ -409,34 +217,7 @@ The \acrshort{ann} models are will therefore not be discussed further with relat
     \label{tab:pvsc_hf_dor_sens_spec_dist}
 \end{table*}
 
-From the distribution plot in figure \ref{fig:pvmlc_ind_dor_sens_spec_dist} it might seem like the majority of the \acrshort{dor} scores are close to zero, but in that is due to the shear spread of \acrshort{dor} scores so it should be said explicitly that the lowest \acrshort{dor} score of a PVSC model is 3.68 and is attained by the \textit{gls/Gaussian-Process} model.
-The spread of \acrshort{dor} is so great that some models attain a \acrshort{dor} close to 100, and one model attains a \acrshort{dor} close to 150.
-From the scatter plot in figure \ref{fig:pvmlc_ind_dor_sens_spec_dist} one can see that the sensitivity ranges from $0.75$ to 1, and the specificity ranges from 
-close to zero to approximately $0.95$. 
-Among the top five PVSC models in terms of \acrshort{dor} are many different combinations of models, and datasets. 
-Three of the five highest \acrshort{dor} scores are attained by Extra-Trees models, and the top two scores are attained by KNN and Ada Boost classifiers. 
-\textit{gls-rls-EF/Ada-Boost} and \textit{gls-rls/KNN} are the two top PVSC performers with regard to \acrshort{dor}.
-\textit{gls-rls-EF/Ada-Boost} achieves the highest sensitivity of the two by two points, and \textit{gls-rls/KNN} achieves the highest specificity of the two by three points.
-Since sensitivity and specificity is weighted equally in this study \textit{gls-rls/KNN} is chosen as the best of the PVSC models trained to identify patient diagnoses.
-
-\begin{comment}
-[X] \textbf{Comment on spread of \acrshort{dor}.}
-    * From the distribution plot in figure \ref{fig:pvsc_hf_dor_sens_spec_dist} one can see that the majority of the \acrshort{dor} scores are close to zero, but there are couple of models that attain \acrshort{dor}s 
-      close to 100, and one model that attains a \acrshort{dor} close to 150.
-[X] \textbf{Comment on spread of sensitivity and specificity.}
-    * From the scatter plot in figure \ref{fig:pvsc_hf_dor_sens_spec_dist} one can see that the sensitivity ranges from $0.75$ to 1, and the specificity ranges from 
-      close to zero to approximately $0.95$. 
-[X] \textbf{Comment on common traits in the high performing models.} Here you can refer to raw performance results in appendix.
-    * Among the top five PVSC models in terms of \acrshort{dor} are many different combinations of models, and datasets. 
-    * Three of the five highest \acrshort{dor} scores are attained by Extra-Trees models, and the top two scores are attained by KNN and Ada Boost classifiers. 
-[X] \textbf{Comment on common traits in the low performing models.} Here you can refer to raw performance results in appendix.
-[X] \textbf{Select one - three models that are good contendors for being the best model/model in the group and comment on their traits}
-    * \textit{gls-rls-EF/Ada-Boost} and \textit{gls-rls/KNN} are the two top PVSC performers with regard to \acrshort{dor}.
-    * \textit{gls-rls-EF/Ada-Boost} achieves the highest sensitivity of the two by two points, and \textit{gls-rls/KNN} achieves the highest specificity of the two by three points.
-\textbf{IF NOT CLUSTERING model}
-[X] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, and \acrshort{dor}, and make an informed choice.}
-    * Since sensitivity and specificity is weighted equally in this study \textit{gls-rls/KNN} is chosen as the best of the PVSC models trained to identify patient diagnoses.
-\end{comment}
+From the distribution plot in figure \ref{fig:pvmlc_ind_dor_sens_spec_dist} it might seem like the majority of the \acrshort{dor} scores are close to zero, but in that is due to the shear spread of \acrshort{dor} scores so it should be said explicitly that the lowest \acrshort{dor} score of a PVSC model is 3.68 and is attained by the \textit{gls/Gaussian-Process} model. The spread of \acrshort{dor} is so great that some models attain a \acrshort{dor} close to 100, and one model attains a \acrshort{dor} close to 150. From the scatter plot in figure \ref{fig:pvmlc_ind_dor_sens_spec_dist} one can see that the sensitivity ranges from $0.75$ to 1, and the specificity ranges from close to zero to approximately $0.95$. Among the top five PVSC models in terms of \acrshort{dor} are many different combinations of models, and datasets. Three of the five highest \acrshort{dor} scores are attained by Extra-Trees models, and the top two scores are attained by KNN and Ada Boost classifiers. \textit{gls-rls-EF/Ada-Boost} and \textit{gls-rls/KNN} are the two top PVSC performers with regard to \acrshort{dor}. \textit{gls-rls-EF/Ada-Boost} achieves the highest sensitivity of the two by two points, and \textit{gls-rls/KNN} achieves the highest specificity of the two by three points. Since sensitivity and specificity is weighted equally in this study \textit{gls-rls/KNN} is chosen as the best of the PVSC models trained to identify patient diagnoses.
 
 \newpage
 
@@ -462,34 +243,12 @@ Since sensitivity and specificity is weighted equally in this study \textit{gls-
     \end{tabular}
     \caption{A table comparing the best contenders within each model group for predicting patient diagnoses. 
              The top table compare the models by their accuracy, sensitivity, specificity and \acrshort{dor}, 
-             and the bottom table shows the number of \acrshort{tp}s, \acrshort{tn}s, \acrshort{fp}s and \acrshort{fn}s that the different models attain on their respective datasets.}
+             and the bottom table shows the number of \acrshort{tp}, \acrshort{tn}, \acrshort{fp} and \acrshort{fn} that the different models attain on their respective datasets.}
     \label{tab:pd_compare}
 \end{table*}
 
-From the top table in \ref{tab:pd_compare} one can see that there is a significant difference in performance between the three models included for comparison.
-The \acrshort{tsc} model \textit{gls/all-views/regular/weighted/2} attains the second highest accuracy, sensitivity and specificity of the three models, but also attains the lowest \acrshort{dor}.
-The \acrshort{tsc} model can also be said to attain the most balanced scores in terms of sensitivity and specificity. 
-The PVC model \textit{rls-EF/complete/2} attains the highest specificity, second highest \acrshort{dor}, but lowest sensitivity and accuracy of the three models. 
-The PVSC model \textit{gls-rls/KNN} attains the highest accuracy, sensitivity and \acrshort{dor} of all the models, but it also achieves the lowest specificity of all the models. 
-However, since the PVSC model is so close to the \acrshort{tsc} model in terms of specificity, and is so much better than the other two models in all other metrics, it is chosen as the best model of 
-identifying patient diagnoses.
-This can be confirmed from the bottom table in \ref{tab:pd_compare}, where one can see that the \acrshort{pvsc} model only gets one \acrshort{tn} less than the \acrshort{tsc} model, but attains 11 more \acrshort{tp}. 
+From the top table in \ref{tab:pd_compare} one can see that there is a significant difference in performance between the three models included for comparison. The \acrshort{tsc} model \textit{gls/all-views/regular/weighted/2} attains the second highest accuracy, sensitivity and specificity of the three models, but also attains the lowest \acrshort{dor}. The \acrshort{tsc} model can also be said to attain the most balanced scores in terms of sensitivity and specificity. The PVC model \textit{rls-EF/complete/2} attains the highest specificity, second highest \acrshort{dor}, but lowest sensitivity and accuracy of the three models. The PVSC model \textit{gls-rls/KNN} attains the highest accuracy, sensitivity and \acrshort{dor} of all the models, but it also achieves the lowest specificity of all the models. However, since the PVSC model is so close to the \acrshort{tsc} model in terms of specificity, and is so much better than the other two models in all other metrics, it is chosen as the best model of identifying patient diagnoses. This can be confirmed from the bottom table in \ref{tab:pd_compare}, where one can see that the \acrshort{pvsc} model only gets one \acrshort{tn} less than the \acrshort{tsc} model, but attains 11 more \acrshort{tp}. 
 
-\begin{comment}
-[0] \textbf{How big is the difference in performance between the models? Can this be confirmed by the number of \acrshort{tp}/TN attained.}
-    * From the top table in \ref{tab:pd_compare} one can see that there is a significant difference in performance between the three models included for comparison.
-[0] \textbf{Do any of the models score particularily high on sensitivity or specificity? Can this be confirmed by the number of \acrshort{tp}/TN attained.}
-    * The \acrshort{tsc} model \textit{gls/all-views/regular/weighted/2} attains the second highest accuracy, sensitivity and specificity of the three models, but also attains the lowest \acrshort{dor}.
-    * The \acrshort{tsc} model can also be said to attain the most balanced scores in terms of sensitivity and specificity. 
-    * The PVC model \textit{rls-EF/complete/2} attains the highest specificity, second highest \acrshort{dor}, but lowest sensitivity and accuracy of the three models. 
-[0] \textbf{Which model gets the most balanced score?}
-[0] \textbf{Is the most balanced model the best one, or is there a model that performs better.}
-    * The PVSC model \textit{gls-rls/KNN} attains the highest accuracy, sensitivity and \acrshort{dor} of all the models, but it also achieves the lowest specificity of all the models. 
-[0] \textbf{Comments}
-[0] \textbf{Conclusion}
-    * However, since the PVSC model is so close to the \acrshort{tsc} model in terms of specificity, and is so much better than the other two models in all other metrics, it is chosen as the best model of 
-      identifying patient diagnoses.
-    * This can be confirmed from the bottom table in \ref{tab:pd_compare}, where one can see that the PVSC model only gets one \acrshort{tn} less than the \acrshort{tsc} model, but attains 11 more \acrshort{tp}.
-\end{comment}
+
 
 \newpage

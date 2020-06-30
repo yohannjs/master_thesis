@@ -29,46 +29,7 @@
     \label{tab:tsc_segm_ind_dor_sens_spec_dist}
 \end{table*}
 
-From the distribution plot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}a one can see that the majority of the \acrshort{dor}s are close to zero, 
-but a few models are able to achieve \acrshort{dor}s above 12, and some models attain a \acrshort{dor} close to 15 when applied to identify segment indication.
-From the scatter plot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}b one can see that the sensitivity of the \acrshort{tsc} models range from $0.25$ to 1, 
-and the specificity of the \acrshort{tsc} models range from 0 to approximately 1. 
-The spread in both sensitivity and specificity is quite large, and there are very few models that are 
-able to a attain a high sensitivity while at the same time attaining a high specificity, and vice versa. 
-Common to the high performing \acrshort{tsc} models in terms of \acrshort{dor} is that they all use either no preprocessing at all, or scaling.
-\textit{z-norm/complete/2} is the seventh best \acrshort{tsc} model in terms of \acrshort{dor}, and attains a \acrshort{dor} of 5.92 when applied to identify segment indication. 
-\textit{norm/ward/2} is the ninth best models in terms of \acrshort{dor}, and attains a \acrshort{dor} of 1.56, when applied to identify segment indication.
-This can be comfirmed from table \ref{tab:tsc_segm_ind_raw_results}
-The two \acrshort{tsc} models attaining the highest \acrshort{dor}s \textit{regular/weighted/2}, and \textit{scaled/weighted/2} differ only in type of preprocessing used.
-From table \ref{tab:tsc_segm_ind_dor_sens_spec_dist} and table \ref{tab:tsc_segm_ind_raw_results} one can see that the two models attain the same scores in all metrics,
-this is because they yield the exact same cluster assignments to the individual segment strain curves.
-The same goes for the next two \acrshort{tsc} models in line \textit{regular/ward/2} \textit{scaled/ward/2}, these two models are also the models that attain the highest accarcy of all the \acrshort{tsc} models.
-Of the two \acrshort{tsc} models \textit{regular/weighted/2}, and \textit{regular/ward/2} the latter is preferred for predicting segment indication because \textit{regular/ward/2} has a more persistent
-performance in both sensitivity and specificity, where as \textit{regular/weighted/2} has a high specificity, but a very low sensitivity.
-
-\begin{comment}
-[X] \textbf{Comment on spread of \acrshort{dor}.}
-    * From the distribution plot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}a one can see that the majority of the \acrshort{dor}s are close to zero, 
-      but a few models are able to achieve \acrshort{dor}s above 12, and some models attain a \acrshort{dor} close to 15 when applied to identify segment indication.
-[X] \textbf{Comment on spread of sensitivity and specificity.}
-    * From the scatterplot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}b one can see that the sensitivity of the \acrshort{tsc} models range from $0.25$ to 1, 
-      and the specificity of the \acrshort{tsc} models range from 0 to approximately 1. 
-    * The spread in both sensitivity and specificity is quite large, and there are very few models that are 
-      able to a attain a high sensitivity while at the same time attaining a high specificity, and vice versa. 
-[X] \textbf{Comment on common traits in the high performing models.} Here you can refer to raw performance results in appendix.
-    * Common to the high performing \acrshort{tsc} models in terms of \acrshort{dor} is that they all use either no preprocessing at all, or scaling.
-[X] \textbf{Comment on common traits in the low performing models.} Here you can refer to raw performance results in appendix.
-    * \textit{z-norm/complete/2} is the seventh best \acrshort{tsc} model in terms of \acrshort{dor}, and attains a \acrshort{dor} of 5.92 when applied to identify segment indication. 
-    * \textit{norm/ward/2} is the ninth best models in terms of \acrshort{dor}, and attains a \acrshort{dor} of 1.56, when applied to identify segment indication.
-    * This can be comfirmed from table \ref{tab:tsc_segm_ind_raw_results}
-[X] \textbf{Select one - three models that are good contendors for being the best model/model in the group and comment on their traits}
-    * The two \acrshort{tsc} models attaining the highest \acrshort{dor}s \textit{regular/weighted/2}, and \textit{scaled/weighted/2} differ only in type of preprocessing used.
-    * From table \ref{tab:tsc_segm_ind_dor_sens_spec_dist} and table \ref{tab:tsc_segm_ind_raw_results} one can see that the two models attain the same scores in all metrics,
-      this is because they yield the exact same cluster assignments to the individual segment strain curves.
-    * The same goes for the next two \acrshort{tsc} models in line \textit{regular/ward/2} \textit{scaled/ward/2}, these two models are also the models that attain the highest accarcy of all the \acrshort{tsc} models.
-    * Of the two \acrshort{tsc} models \textit{regular/weighted/2}, and \textit{regular/ward/2} the latter is preferred for predicting segment indication because \textit{regular/ward/2} has a more persistent
-      performance in both sensitivity and specificity, where as \textit{regular/weighted/2} has a high specificity, but a very low sensitivity.
-\end{comment}
+From the distribution plot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}a one can see that the majority of the \acrshort{dor}s are close to zero, but a few models are able to achieve \acrshort{dor}s above 12, and some models attain a \acrshort{dor} close to 15 when applied to identify segment indication. From the scatter plot in figure \ref{fig:tsc_segm_ind_dor_sens_spec_dist}b one can see that the sensitivity of the \acrshort{tsc} models range from $0.25$ to 1, and the specificity of the \acrshort{tsc} models range from 0 to approximately 1. The spread in both sensitivity and specificity is quite large, and there are very few models that are able to a attain a high sensitivity while at the same time attaining a high specificity, and vice versa. Common to the high performing \acrshort{tsc} models in terms of \acrshort{dor} is that they all use either no preprocessing at all, or scaling. \textit{z-norm/complete/2} is the seventh best \acrshort{tsc} model in terms of \acrshort{dor}, and attains a \acrshort{dor} of 5.92 when applied to identify segment indication. \textit{norm/ward/2} is the ninth best models in terms of \acrshort{dor}, and attains a \acrshort{dor} of 1.56, when applied to identify segment indication. This can be comfirmed from table \ref{tab:tsc_segm_ind_raw_results}. The two \acrshort{tsc} models attaining the highest \acrshort{dor}s \textit{regular/weighted/2}, and \textit{scaled/weighted/2} differ only in type of preprocessing used. From table \ref{tab:tsc_segm_ind_dor_sens_spec_dist} and table \ref{tab:tsc_segm_ind_raw_results} one can see that the two models attain the same scores in all metrics, this is because they yield the exact same cluster assignments to the individual segment strain curves. The same goes for the next two \acrshort{tsc} models in line \textit{regular/ward/2} \textit{scaled/ward/2}, these two models are also the models that attain the highest accarcy of all the \acrshort{tsc} models. Of the two \acrshort{tsc} models \textit{regular/weighted/2}, and \textit{regular/ward/2} the latter is preferred for predicting segment indication because \textit{regular/ward/2} has a more persistent performance in both sensitivity and specificity, where as \textit{regular/weighted/2} has a high specificity, but a very low sensitivity.
 
 \begin{table*}
     \centering
@@ -89,31 +50,7 @@ performance in both sensitivity and specificity, where as \textit{regular/weight
     \label{tab:tsc_segm_ind_ari}
 \end{table*}
 
-The majority of the \acrshort{ari}s of \acrshort{tsc} models applied to identify segment indication, but as one can see from table \ref{tab:tsc_segm_ind_ari} some models are able to attain \acrshort{ari}s above 25.
-As with the other case studies, the \acrshort{tsc} models that attain the highest \acrshort{ari}s are models that use either no preprocessing at all or scaling. 
-Puzzlingly enough the top two \acrshort{tsc} models for classifying segment indication in terms of \acrshort{ari}, are models evaluated at five cluster centers, not two. 
-TSC models \textit{scaled/centroid/5}, and \textit{regular/centroid/5} differ only in type of preprocessing used, and they yield the exact same cluster assignments, and evaluations scores.
-The next two models in order of \acrshort{ari} \textit{regular/ward/2}, and \textit{scaled/ward/2} are familiar from the list of \acrshort{tsc} models attaining the highest \acrshort{dor}s when applied to identify segment indication.
-From table \ref{tab:tsc_segm_ind_ari} one can also see that the difference in \acrshort{ari} between \textit{regular/centroid/5}, and \textit{regular/ward/2} is only 0.002
-Since the \textit{regular/ward/2} model will be considered the best of the \acrshort{tsc} models at classifying segment indication.
-It attains the third highest \acrshort{ari} of all the \acrshort{tsc} models applied to identify segment indication, and is the preferred model among the \acrshort{tsc} models evaluated at two cluster centers.
-
-\begin{comment}
-\textbf{ARI PARAGRAPH. ONLY FOR CLUSTERING modelS}.
-[0] \textbf{Comment on the spread of \acrshort{ari} scores. Be specific since the distribution plots are ommitted}
-    * The majority of the \acrshort{ari}s of \acrshort{tsc} models applied to identify segment indication, but as one can see from table \ref{tab:tsc_segm_ind_ari} some models are able to attain \acrshort{ari}s above 25.
-[0] \textbf{Comment on the general trends of high performing models in terms of \acrshort{ari} - are they the same trends as scores performing high in terms of \acrshort{dor}?}
-    * As with the other case studies, the \acrshort{tsc} models that attain the highest \acrshort{ari}s are models that use either no preprocessing at all or scaling. 
-[0] \textbf{Comment on whether the models in the top 5 \acrshort{ari}s are the same models with the highest \acrshort{dor}. If not, mention it.}
-    * Puzzlingly enough the top two \acrshort{tsc} models for classifying segment indication in terms of \acrshort{ari}, are models evaluated at five cluster centers, not two. 
-    * \acrshort{tsc} models \textit{scaled/centroid/5}, and \textit{regular/centroid/5} differ only in type of preprocessing used, and they yield the exact same cluster assignments, and evaluations scores.
-    * The next two models in order of \acrshort{ari} \textit{regular/ward/2}, and \textit{scaled/ward/2} are familiar from the list of \acrshort{tsc} models attaining the highest \acrshort{dor}s when applied to identify segment indication.
-    * From table \ref{tab:tsc_segm_ind_ari} one can also see that the difference in \acrshort{ari} between \textit{regular/centroid/5}, and \textit{regular/ward/2} is only 0.002
-[0] \textbf{Plot some visualizations of the clustering, and comment on them.}
-[0] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, \acrshort{dor}, \acrshort{ari} and potentially the plots, and make an informed choice.}
-    * Since the \textit{regular/ward/2} model will be considered the best of the \acrshort{tsc} models at classifying segment indication.
-    * It attains the third highest \acrshort{ari} of all the \acrshort{tsc} models applied to identify segment indication, and is the preferred model among the \acrshort{tsc} models evaluated at two cluster centers.
-\end{comment}
+The majority of the \acrshort{ari}s of \acrshort{tsc} models applied to identify segment indication, but as one can see from table \ref{tab:tsc_segm_ind_ari} some models are able to attain \acrshort{ari}s above 25. As with the other case studies, the \acrshort{tsc} models that attain the highest \acrshort{ari}s are models that use either no preprocessing at all or scaling. Puzzlingly enough the top two \acrshort{tsc} models for classifying segment indication in terms of \acrshort{ari}, are models evaluated at five cluster centers, not two. TSC models \textit{scaled/centroid/5}, and \textit{regular/centroid/5} differ only in type of preprocessing used, and they yield the exact same cluster assignments, and evaluations scores. The next two models in order of \acrshort{ari} \textit{regular/ward/2}, and \textit{scaled/ward/2} are familiar from the list of \acrshort{tsc} models attaining the highest \acrshort{dor}s when applied to identify segment indication. From table \ref{tab:tsc_segm_ind_ari} one can also see that the difference in \acrshort{ari} between \textit{regular/centroid/5}, and \textit{regular/ward/2} is only 0.002 Since the \textit{regular/ward/2} model will be considered the best of the \acrshort{tsc} models at classifying segment indication. It attains the third highest \acrshort{ari} of all the \acrshort{tsc} models applied to identify segment indication, and is the preferred model among the \acrshort{tsc} models evaluated at two cluster centers.
 
 \newpage
 
@@ -135,24 +72,7 @@ It attains the third highest \acrshort{ari} of all the \acrshort{tsc} models app
     \label{tab:ANN_segm_ind_perf}
 \end{table*}
 
-Of the three variations of the \acrshort{ann} model, the one that uses no resampling, and the one that downsamples all signals to the lowest sample rate achieve relatively similar \acrshort{dor} scores. 
-The variation that upsamples the sample rate of all the curves to the highest sample rate performs significantly worse than the other two in terms of \acrshort{dor} and sensitivity. 
-Of the three variations the model that uses downsampling is the preferred model of the three since its sensitivity and specificity are more balanced than the model that uses no resampling,
-and accuracy is higher than the model that uses upsampling.
-
-\begin{comment}
-[ ] \textbf{Comment on spread of \acrshort{dor}.}
-    * Of the three variations of the \acrshort{ann} model, the one that uses no resampling, and the one that downsamples all signals to the lowest sample rate achieve relatively similar \acrshort{dor} scores. 
-    * The variation that upsamples the sample rate of all the curves to the highest sample rate performs significantly worse than the other two in terms of \acrshort{dor} and sensitivity. 
-[ ] \textbf{Comment on spread of sensitivity and specificity.}
-[ ] \textbf{Comment on common traits in the high performing models.} Here you can refer to raw performance results in appendix.
-[ ] \textbf{Comment on common traits in the low performing models.} Here you can refer to raw performance results in appendix.
-[ ] \textbf{Select one - three models that are good contendors for being the best model/model in the group and comment on their traits}
-    * Of the three variations the model that uses downsampling is the preferred model of the three since its sensitivity and specificity are more balanced than the model that uses no resampling,
-      and accuracy is higher than the model that uses upsampling.
-\textbf{IF NOT CLUSTERING model}
-[ ] \textbf{Make arguments for and against the top three models in terms of accuracy, sensitivity, specificity, and \acrshort{dor}, and make an informed choice.}
-\end{comment}
+Of the three variations of the \acrshort{ann} model, the one that uses no resampling, and the one that downsamples all signals to the lowest sample rate achieve relatively similar \acrshort{dor} scores. The variation that upsamples the sample rate of all the curves to the highest sample rate performs significantly worse than the other two in terms of \acrshort{dor} and sensitivity. Of the three variations the model that uses downsampling is the preferred model of the three since its sensitivity and specificity are more balanced than the model that uses no resampling, and accuracy is higher than the model that uses upsampling.
 
 \subsection{Comparisons}
 
@@ -178,27 +98,4 @@ and accuracy is higher than the model that uses upsampling.
     \label{tab:segm_ind_compare}
 \end{table*}
 
-From table \ref{tab:segm_ind_compare} one can see that the performances of the \acrshort{ann}, and \acrshort{tsc} models are quite close in terms of accuracy,
-but differ significantly in the other metrics. 
-The \acrshort{tsc} model \textit{regular/ward/2} attains a higher accuracy, specificity and \acrshort{dor} than the \acrshort{ann} model \textit{downsampled}. 
-This can also be confirmed by the fact that the \acrshort{tsc} model attains more TN, and fewer FP than the \acrshort{ann} model. 
-The \acrshort{ann} model attains the highest sensitivity, which can be confirmed by the fact that it attains more TP and fewer FN than the \acrshort{tsc} model.
-The \acrshort{ann} model is also the model that attains the most balanced scores of sensitivity and specificity.
-Therefore the \acrshort{ann} model is chosen as the best performer at predicting the segment indication. 
-
-\begin{comment}
-[ ] \textbf{How big is the difference in performance between the models? Can this be confirmed by the number of TP/TN attained.}
-    * From table \ref{tab:pd_compare} one can see that the performances of the \acrshort{ann}, and \acrshort{tsc} models are quite close in terms of accuracy,
-      but differ significantly in the other metrics. 
-[ ] \textbf{Do any of the models score particularily high on sensitivity or specificity? Can this be confirmed by the number of TP/TN attained.}
-    * The \acrshort{tsc} model \textit{regular/ward/2} attains a higher accuracy, specificity and \acrshort{dor} than the \acrshort{ann} model \textit{downsampled}. 
-    * This can also be confirmed by the fact that the \acrshort{tsc} model attains more TN, and fewer FP than the \acrshort{ann} model. 
-    * The \acrshort{ann} model attains the highest sensitivity, which can be confirmed by the fact that it attains more TP and fewer FN than the \acrshort{tsc} model.
-[ ] \textbf{Which model gets the most balanced score?}
-    * The \acrshort{ann} model is also the model that attains the most balanced scores of sensitivity and specificity.
-[ ] \textbf{Is the most balanced model the best one, or is there a model that performs better.}
-[ ] \textbf{Comments}
-[ ] \textbf{Conclusion}
-    * Therefore the \acrshort{ann} model is chosen as the best performer at predicting the segment indication. 
-\end{comment}
-
+From table \ref{tab:segm_ind_compare} one can see that the performances of the \acrshort{ann}, and \acrshort{tsc} models are quite close in terms of accuracy, but differ significantly in the other metrics. The \acrshort{tsc} model \textit{regular/ward/2} attains a higher accuracy, specificity and \acrshort{dor} than the \acrshort{ann} model \textit{downsampled}. This can also be confirmed by the fact that the \acrshort{tsc} model attains more TN, and fewer FP than the \acrshort{ann} model.  The \acrshort{ann} model attains the highest sensitivity, which can be confirmed by the fact that it attains more TP and fewer FN than the \acrshort{tsc} model. The \acrshort{ann} model is also the model that attains the most balanced scores of sensitivity and specificity. Therefore the \acrshort{ann} model is chosen as the best performer at predicting the segment indication. 
