@@ -10,15 +10,15 @@ It was found that \acrshort{pvc}, and \acrshort{pvsc} models using a combination
 
 \section{Limitations}
 
-The biggest limitation encountered was the number of objects in the dataset. This is particularly evident in the performance of the \acrshort{ann} in the heart failure, and patient diagnosis case studies. It performed much better in the segment indication case study, as the dimensionality was reduced to only a single time series as input, and the number of objects was multiplied by 18. So it is impossible to make any conclusive statements as to whether any specific machine learning model is inappropriate for the applications in this work, because the dataset is too small. 
+The biggest limitation encountered was the number of objects in the dataset. This is particularly evident in the performance of the \acrshort{ann} in the heart failure and patient diagnosis case studies. It performed much better in the segment indication case study, as the dimensionality was reduced to only a single time series as input, and the number of objects was multiplied by 18. No conclusive statements are made as to whether any specific machine learning model is inappropriate for the applications in this work, because the dataset is too small. 
 
 \section{Future Work}
 
-In this section further improvements that can be done on the \acrshort{tsc} models, \acrshort{ann} models, and \acrshort{pvsc} models are discussed. 
+In this section further improvements that can be made on the \acrshort{tsc} models, \acrshort{ann} models, and \acrshort{pvsc} models are discussed. 
 
 \subsection*{Dimensionality Reduction in Time-series Clustering}
 
-This work focused on feature selection by testing different subsets of the datasets as inputs. In future work one could consider trying the approach of \cite{hf_diagnosis_ml} of using principle component analysis to reduce the dimensionality into more information-dense combinations of the input features. Additionally, one should consider the approach mentioned in the section \ref{sec:disc_tsc} of combining point-value \acrshort{ef} to the \acrshort{tsc}. This could be done by calculating the dissimilarity matrix of \acrshort{ef} values separately using a distance metric such as Euclidean distance, and adding it to the other dissimilarity matrices as if it were another curve dimension.
+This work focused on feature selection by testing different subsets of the datasets as inputs. In future work one could consider trying the approach of \cite{hf_diagnosis_ml}, using principle component analysis to reduce the dimensionality into more information-dense combinations of the input features. Additionally, one should consider the approach mentioned in the section \ref{sec:disc_tsc} of combining point-value \acrshort{ef} to the \acrshort{tsc}. This could be done by calculating the dissimilarity matrix of \acrshort{ef} values separately, using a distance metric such as Euclidean distance, and adding it to the other dissimilarity matrices as if it were another curve dimension.
 
 \subsection*{Development of an Artificial Neural Network for Segment Indication}
 

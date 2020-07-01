@@ -180,10 +180,10 @@ The majority of the \acrshort{ari} scores of PVC models applied to identify pati
     \end{tabular}
     \caption{The accuracy, \acrshort{dor}, sensitivity and specicity scores of the five best performing variations of the \acrshort{ann} in terms of \acrshort{dor}, when trained to predict patient diagnoses.
              The \textbf{Dataset-model} column indicates \textit{Dataset used}$/$\textit{View used}$/$\textit{Whether curve has been upsampled, downsampled or is regular}.}
-    \label{tab:dl_hf_dor_sens_spec_dist}
+    \label{tab:dl_ind_dor_sens_spec_dist}
 \end{table*}
 
-From the distribution plot in figure \ref{fig:dl_ind_dor_sens_spec_dist} one can see that the collective performance of the different variations of the \acrshort{ann} trained to predict patient diagnosis is terrible. The \acrshort{dor} of all the models are either zero because the number of \acrshort{tn} attained are zero, or not defined because the number of \acrshort{fn} are zero. The sensitivities are all 1, or close to 1, and the specificities are all 0. It is evident that the \acrshort{ann} are not able to generalize the traits of the healthy patients from such a small dataset. The \acrshort{ann} models are will therefore not be discussed further with relation to prediction of patient diagnosis, and are not included in the comparison of the four model groups.
+From the distribution plot in figure \ref{fig:dl_ind_dor_sens_spec_dist}, and table \ref{tab:dl_ind_dor_sens_spec_dist} one can see that the collective performance of the different variations of the \acrshort{ann} trained to predict patient diagnosis is terrible. The \acrshort{dor} of all the models are either zero because the number of \acrshort{tn} attained are zero, or not defined because the number of \acrshort{fn} are zero. The sensitivities are all 1, or close to 1, and the specificities are all 0. It is evident that the \acrshort{ann} models are not able to generalize the traits of the healthy patients from such a small dataset. The \acrshort{ann} models will therefore not be discussed further with relation to prediction of patient diagnosis, and are not included in the comparison of the four model groups.
 
 \newpage
 
